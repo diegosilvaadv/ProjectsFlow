@@ -241,58 +241,59 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               fontWeight: FontWeight.w500,
                             ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                        child: StreamBuilder<List<UsersRecord>>(
-                          stream: queryUsersRecord(
-                            queryBuilder: (usersRecord) => usersRecord.where(
-                              'uid',
-                              isEqualTo: currentUserUid,
-                            ),
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitPulse(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<UsersRecord> textUsersRecordList =
-                                snapshot.data!;
-                            // Return an empty Container when the item does not exist.
-                            if (snapshot.data!.isEmpty) {
-                              return Container();
-                            }
-                            final textUsersRecord =
-                                textUsersRecordList.isNotEmpty
-                                    ? textUsersRecordList.first
-                                    : null;
-                            return Text(
-                              ', ${textUsersRecord?.displayName}!'
-                                  .maybeHandleOverflow(
-                                maxChars: 20,
-                                replacement: '…',
+                      if (currentUserEmail != '')
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              5.0, 0.0, 0.0, 0.0),
+                          child: StreamBuilder<List<UsersRecord>>(
+                            stream: queryUsersRecord(
+                              queryBuilder: (usersRecord) => usersRecord.where(
+                                'uid',
+                                isEqualTo: currentUserUid,
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    fontWeight: FontWeight.w600,
+                              singleRecord: true,
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitPulse(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 50.0,
+                                    ),
                                   ),
-                            );
-                          },
+                                );
+                              }
+                              List<UsersRecord> textUsersRecordList =
+                                  snapshot.data!;
+                              // Return an empty Container when the item does not exist.
+                              if (snapshot.data!.isEmpty) {
+                                return Container();
+                              }
+                              final textUsersRecord =
+                                  textUsersRecordList.isNotEmpty
+                                      ? textUsersRecordList.first
+                                      : null;
+                              return Text(
+                                ', ${textUsersRecord?.displayName}!'
+                                    .maybeHandleOverflow(
+                                  maxChars: 20,
+                                  replacement: '…',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              );
+                            },
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 if (responsiveVisibility(
@@ -597,7 +598,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               animationsMap['buttonOnActionTriggerAnimation3']!,
                             ),
                           ),
-                          if (currentUserEmailVerified == true)
+                          if (currentUserEmailVerified == false)
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
@@ -689,7 +690,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                 ),
                               ),
                             ),
-                          if (currentUserEmailVerified == false)
+                          if (currentUserEmailVerified == true)
                             AuthUserStreamWidget(
                               builder: (context) => FFButtonWidget(
                                 onPressed: () async {
