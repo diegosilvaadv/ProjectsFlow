@@ -286,18 +286,11 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       StreamBuilder<List<PagamentosRecord>>(
                                         stream: queryPagamentosRecord(
                                           queryBuilder: (pagamentosRecord) =>
-                                              pagamentosRecord
-                                                  .where(
-                                                    'userID',
-                                                    isEqualTo:
-                                                        currentUserReference,
-                                                  )
-                                                  .where(
-                                                    'linkProjeto',
-                                                    isEqualTo: widget
-                                                        .detalhesProjects
-                                                        ?.linkProjeto,
-                                                  ),
+                                              pagamentosRecord.where(
+                                            'linkProjeto',
+                                            isEqualTo: widget
+                                                .detalhesProjects?.linkProjeto,
+                                          ),
                                           singleRecord: true,
                                         ),
                                         builder: (context, snapshot) {
