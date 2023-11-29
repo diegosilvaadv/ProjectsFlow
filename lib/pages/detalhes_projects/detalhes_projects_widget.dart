@@ -324,104 +324,98 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           return Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              if (rowPagamentosRecord
-                                                      ?.statusCompra ==
-                                                  false)
-                                                FFButtonWidget(
-                                                  onPressed: () async {
+                                              FFButtonWidget(
+                                                onPressed: () async {
+                                                  logFirebaseEvent(
+                                                      'DETALHES_PROJECTS_COMPRAR_PROJETO_BTN_ON');
+                                                  if (currentUserEmail != '') {
                                                     logFirebaseEvent(
-                                                        'DETALHES_PROJECTS_COMPRAR_PROJETO_BTN_ON');
-                                                    if (currentUserEmail !=
-                                                        '') {
-                                                      logFirebaseEvent(
-                                                          'Button_navigate_to');
+                                                        'Button_navigate_to');
 
-                                                      context.pushNamed(
-                                                        'Pagamento',
-                                                        queryParameters: {
-                                                          'detalhesProdutos':
-                                                              serializeParam(
-                                                            widget
-                                                                .detalhesProjects,
-                                                            ParamType.Document,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'detalhesProdutos': widget
+                                                    context.pushNamed(
+                                                      'Pagamento',
+                                                      queryParameters: {
+                                                        'detalhesProdutos':
+                                                            serializeParam(
+                                                          widget
                                                               .detalhesProjects,
-                                                        },
-                                                      );
-                                                    } else {
-                                                      logFirebaseEvent(
-                                                          'Button_bottom_sheet');
-                                                      await showModalBottomSheet(
-                                                        isScrollControlled:
-                                                            true,
-                                                        backgroundColor:
-                                                            Color(0xBE14181B),
-                                                        enableDrag: false,
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return WebViewAware(
-                                                              child:
-                                                                  GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  CriarcontaWidget(),
-                                                            ),
-                                                          ));
-                                                        },
-                                                      ).then((value) =>
-                                                          safeSetState(() {}));
-                                                    }
-                                                  },
-                                                  text: 'Comprar Projeto',
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: Color(0xFF09D707),
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.black,
-                                                          fontWeight:
-                                                              FontWeight.w500,
+                                                          ParamType.Document,
                                                         ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        'detalhesProdutos': widget
+                                                            .detalhesProjects,
+                                                      },
+                                                    );
+                                                  } else {
+                                                    logFirebaseEvent(
+                                                        'Button_bottom_sheet');
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Color(0xBE14181B),
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child:
+                                                                CriarcontaWidget(),
+                                                          ),
+                                                        ));
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  }
+                                                },
+                                                text: 'Comprar Projeto',
+                                                options: FFButtonOptions(
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          24.0, 0.0, 24.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: Color(0xFF09D707),
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
                                                   ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
                                                 ),
+                                              ),
                                               if (rowPagamentosRecord
                                                       ?.statusCompra ==
                                                   true)

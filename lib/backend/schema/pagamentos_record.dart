@@ -26,11 +26,6 @@ class PagamentosRecord extends FirestoreRecord {
   String get descricao => _descricao ?? '';
   bool hasDescricao() => _descricao != null;
 
-  // "userID" field.
-  DocumentReference? _userID;
-  DocumentReference? get userID => _userID;
-  bool hasUserID() => _userID != null;
-
   // "valor" field.
   double? _valor;
   double get valor => _valor ?? 0.0;
@@ -56,15 +51,20 @@ class PagamentosRecord extends FirestoreRecord {
   String get transacionID => _transacionID ?? '';
   bool hasTransacionID() => _transacionID != null;
 
+  // "userID" field.
+  String? _userID;
+  String get userID => _userID ?? '';
+  bool hasUserID() => _userID != null;
+
   void _initializeFields() {
     _produto = snapshotData['produto'] as String?;
     _descricao = snapshotData['descricao'] as String?;
-    _userID = snapshotData['userID'] as DocumentReference?;
     _valor = castToType<double>(snapshotData['valor']);
     _linkProjeto = snapshotData['linkProjeto'] as String?;
     _statusCompra = snapshotData['statusCompra'] as bool?;
     _ultimos4dig = snapshotData['ultimos4dig'] as String?;
     _transacionID = snapshotData['transacionID'] as String?;
+    _userID = snapshotData['userID'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -104,23 +104,23 @@ class PagamentosRecord extends FirestoreRecord {
 Map<String, dynamic> createPagamentosRecordData({
   String? produto,
   String? descricao,
-  DocumentReference? userID,
   double? valor,
   String? linkProjeto,
   bool? statusCompra,
   String? ultimos4dig,
   String? transacionID,
+  String? userID,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'produto': produto,
       'descricao': descricao,
-      'userID': userID,
       'valor': valor,
       'linkProjeto': linkProjeto,
       'statusCompra': statusCompra,
       'ultimos4dig': ultimos4dig,
       'transacionID': transacionID,
+      'userID': userID,
     }.withoutNulls,
   );
 
@@ -134,24 +134,24 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
   bool equals(PagamentosRecord? e1, PagamentosRecord? e2) {
     return e1?.produto == e2?.produto &&
         e1?.descricao == e2?.descricao &&
-        e1?.userID == e2?.userID &&
         e1?.valor == e2?.valor &&
         e1?.linkProjeto == e2?.linkProjeto &&
         e1?.statusCompra == e2?.statusCompra &&
         e1?.ultimos4dig == e2?.ultimos4dig &&
-        e1?.transacionID == e2?.transacionID;
+        e1?.transacionID == e2?.transacionID &&
+        e1?.userID == e2?.userID;
   }
 
   @override
   int hash(PagamentosRecord? e) => const ListEquality().hash([
         e?.produto,
         e?.descricao,
-        e?.userID,
         e?.valor,
         e?.linkProjeto,
         e?.statusCompra,
         e?.ultimos4dig,
-        e?.transacionID
+        e?.transacionID,
+        e?.userID
       ]);
 
   @override
