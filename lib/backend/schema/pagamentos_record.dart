@@ -26,9 +26,45 @@ class PagamentosRecord extends FirestoreRecord {
   String get descricao => _descricao ?? '';
   bool hasDescricao() => _descricao != null;
 
+  // "userID" field.
+  DocumentReference? _userID;
+  DocumentReference? get userID => _userID;
+  bool hasUserID() => _userID != null;
+
+  // "valor" field.
+  double? _valor;
+  double get valor => _valor ?? 0.0;
+  bool hasValor() => _valor != null;
+
+  // "linkProjeto" field.
+  String? _linkProjeto;
+  String get linkProjeto => _linkProjeto ?? '';
+  bool hasLinkProjeto() => _linkProjeto != null;
+
+  // "statusCompra" field.
+  bool? _statusCompra;
+  bool get statusCompra => _statusCompra ?? false;
+  bool hasStatusCompra() => _statusCompra != null;
+
+  // "ultimos4dig" field.
+  String? _ultimos4dig;
+  String get ultimos4dig => _ultimos4dig ?? '';
+  bool hasUltimos4dig() => _ultimos4dig != null;
+
+  // "transacionID" field.
+  String? _transacionID;
+  String get transacionID => _transacionID ?? '';
+  bool hasTransacionID() => _transacionID != null;
+
   void _initializeFields() {
     _produto = snapshotData['produto'] as String?;
     _descricao = snapshotData['descricao'] as String?;
+    _userID = snapshotData['userID'] as DocumentReference?;
+    _valor = castToType<double>(snapshotData['valor']);
+    _linkProjeto = snapshotData['linkProjeto'] as String?;
+    _statusCompra = snapshotData['statusCompra'] as bool?;
+    _ultimos4dig = snapshotData['ultimos4dig'] as String?;
+    _transacionID = snapshotData['transacionID'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -68,11 +104,23 @@ class PagamentosRecord extends FirestoreRecord {
 Map<String, dynamic> createPagamentosRecordData({
   String? produto,
   String? descricao,
+  DocumentReference? userID,
+  double? valor,
+  String? linkProjeto,
+  bool? statusCompra,
+  String? ultimos4dig,
+  String? transacionID,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'produto': produto,
       'descricao': descricao,
+      'userID': userID,
+      'valor': valor,
+      'linkProjeto': linkProjeto,
+      'statusCompra': statusCompra,
+      'ultimos4dig': ultimos4dig,
+      'transacionID': transacionID,
     }.withoutNulls,
   );
 
@@ -84,12 +132,27 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
 
   @override
   bool equals(PagamentosRecord? e1, PagamentosRecord? e2) {
-    return e1?.produto == e2?.produto && e1?.descricao == e2?.descricao;
+    return e1?.produto == e2?.produto &&
+        e1?.descricao == e2?.descricao &&
+        e1?.userID == e2?.userID &&
+        e1?.valor == e2?.valor &&
+        e1?.linkProjeto == e2?.linkProjeto &&
+        e1?.statusCompra == e2?.statusCompra &&
+        e1?.ultimos4dig == e2?.ultimos4dig &&
+        e1?.transacionID == e2?.transacionID;
   }
 
   @override
-  int hash(PagamentosRecord? e) =>
-      const ListEquality().hash([e?.produto, e?.descricao]);
+  int hash(PagamentosRecord? e) => const ListEquality().hash([
+        e?.produto,
+        e?.descricao,
+        e?.userID,
+        e?.valor,
+        e?.linkProjeto,
+        e?.statusCompra,
+        e?.ultimos4dig,
+        e?.transacionID
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is PagamentosRecord;

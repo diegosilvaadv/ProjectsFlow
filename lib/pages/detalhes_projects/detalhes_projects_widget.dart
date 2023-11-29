@@ -283,121 +283,199 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           ],
                                         ),
                                       ),
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          logFirebaseEvent(
-                                              'DETALHES_PROJECTS_COMPRAR_PROJETO_BTN_ON');
-                                          if (currentUserEmailVerified) {
-                                            logFirebaseEvent(
-                                                'Button_navigate_to');
-
-                                            context.pushNamed(
-                                              'Pagamento',
-                                              queryParameters: {
-                                                'detalhesProdutos':
-                                                    serializeParam(
-                                                  widget.detalhesProjects,
-                                                  ParamType.Document,
+                                      StreamBuilder<List<PagamentosRecord>>(
+                                        stream: queryPagamentosRecord(
+                                          queryBuilder: (pagamentosRecord) =>
+                                              pagamentosRecord
+                                                  .where(
+                                                    'userID',
+                                                    isEqualTo:
+                                                        currentUserReference,
+                                                  )
+                                                  .where(
+                                                    'linkProjeto',
+                                                    isEqualTo: widget
+                                                        .detalhesProjects
+                                                        ?.linkProjeto,
+                                                  ),
+                                          singleRecord: true,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitPulse(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 50.0,
                                                 ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'detalhesProdutos':
-                                                    widget.detalhesProjects,
-                                              },
+                                              ),
                                             );
-                                          } else {
-                                            logFirebaseEvent(
-                                                'Button_bottom_sheet');
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Color(0xBE14181B),
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return WebViewAware(
-                                                    child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: CriarcontaWidget(),
-                                                  ),
-                                                ));
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
                                           }
-                                        },
-                                        text: 'Comprar Projeto',
-                                        options: FFButtonOptions(
-                                          height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFF09D707),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.w500,
+                                          List<PagamentosRecord>
+                                              rowPagamentosRecordList =
+                                              snapshot.data!;
+                                          // Return an empty Container when the item does not exist.
+                                          if (snapshot.data!.isEmpty) {
+                                            return Container();
+                                          }
+                                          final rowPagamentosRecord =
+                                              rowPagamentosRecordList.isNotEmpty
+                                                  ? rowPagamentosRecordList
+                                                      .first
+                                                  : null;
+                                          return Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              if (rowPagamentosRecord
+                                                      ?.statusCompra ==
+                                                  false)
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'DETALHES_PROJECTS_COMPRAR_PROJETO_BTN_ON');
+                                                    if (currentUserEmail !=
+                                                        '') {
+                                                      logFirebaseEvent(
+                                                          'Button_navigate_to');
+
+                                                      context.pushNamed(
+                                                        'Pagamento',
+                                                        queryParameters: {
+                                                          'detalhesProdutos':
+                                                              serializeParam(
+                                                            widget
+                                                                .detalhesProjects,
+                                                            ParamType.Document,
+                                                          ),
+                                                        }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'detalhesProdutos': widget
+                                                              .detalhesProjects,
+                                                        },
+                                                      );
+                                                    } else {
+                                                      logFirebaseEvent(
+                                                          'Button_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Color(0xBE14181B),
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  CriarcontaWidget(),
+                                                            ),
+                                                          ));
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    }
+                                                  },
+                                                  text: 'Comprar Projeto',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF09D707),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
                                                   ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                      ),
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          logFirebaseEvent(
-                                              'DETALHES_PROJECTS_ACESSAR_PROJETO_BTN_ON');
-                                          logFirebaseEvent(
-                                              'Button_launch_u_r_l');
-                                          await launchURL(widget
-                                              .detalhesProjects!.linkProjeto);
-                                        },
-                                        text: 'Acessar Projeto',
-                                        options: FFButtonOptions(
-                                          height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFF10DAD3),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Color(0xFF131313),
+                                                ),
+                                              if (rowPagamentosRecord
+                                                      ?.statusCompra ==
+                                                  true)
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'DETALHES_PROJECTS_ACESSAR_PROJETO_BTN_ON');
+                                                    logFirebaseEvent(
+                                                        'Button_launch_u_r_l');
+                                                    await launchURL(widget
+                                                        .detalhesProjects!
+                                                        .linkProjeto);
+                                                  },
+                                                  text: 'Acessar Projeto',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF10DAD3),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color:
+                                                              Color(0xFF131313),
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
                                                   ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
+                                                ),
+                                            ],
+                                          );
+                                        },
                                       ),
                                     ],
                                   ),
