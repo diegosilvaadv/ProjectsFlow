@@ -653,7 +653,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                               'cartao') {
                                             logFirebaseEvent(
                                                 'Button_bottom_sheet');
-                                            showModalBottomSheet(
+                                            await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
                                                   Colors.transparent,

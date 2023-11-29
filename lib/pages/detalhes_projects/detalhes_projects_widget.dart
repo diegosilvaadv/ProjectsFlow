@@ -16,6 +16,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'detalhes_projects_model.dart';
 export 'detalhes_projects_model.dart';
@@ -286,11 +287,17 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       StreamBuilder<List<PagamentosRecord>>(
                                         stream: queryPagamentosRecord(
                                           queryBuilder: (pagamentosRecord) =>
-                                              pagamentosRecord.where(
-                                            'linkProjeto',
-                                            isEqualTo: widget
-                                                .detalhesProjects?.linkProjeto,
-                                          ),
+                                              pagamentosRecord
+                                                  .where(
+                                                    'linkProjeto',
+                                                    isEqualTo: widget
+                                                        .detalhesProjects
+                                                        ?.linkProjeto,
+                                                  )
+                                                  .where(
+                                                    'userID',
+                                                    isEqualTo: currentUserUid,
+                                                  ),
                                           singleRecord: true,
                                         ),
                                         builder: (context, snapshot) {
@@ -324,101 +331,105 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           return Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              FFButtonWidget(
-                                                onPressed: () async {
-                                                  logFirebaseEvent(
-                                                      'DETALHES_PROJECTS_COMPRAR_PROJETO_BTN_ON');
-                                                  if (currentUserEmail != '') {
+                                              if (rowPagamentosRecord?.userID !=
+                                                  currentUserUid)
+                                                FFButtonWidget(
+                                                  onPressed: () async {
                                                     logFirebaseEvent(
-                                                        'Button_navigate_to');
+                                                        'DETALHES_PROJECTS_COMPRAR_PROJETO_BTN_ON');
+                                                    if (currentUserEmail !=
+                                                        '') {
+                                                      logFirebaseEvent(
+                                                          'Button_navigate_to');
 
-                                                    context.pushNamed(
-                                                      'Pagamento',
-                                                      queryParameters: {
-                                                        'detalhesProdutos':
-                                                            serializeParam(
-                                                          widget
+                                                      context.pushNamed(
+                                                        'Pagamento',
+                                                        queryParameters: {
+                                                          'detalhesProdutos':
+                                                              serializeParam(
+                                                            widget
+                                                                .detalhesProjects,
+                                                            ParamType.Document,
+                                                          ),
+                                                        }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'detalhesProdutos': widget
                                                               .detalhesProjects,
-                                                          ParamType.Document,
+                                                        },
+                                                      );
+                                                    } else {
+                                                      logFirebaseEvent(
+                                                          'Button_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Color(0xBE14181B),
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  CriarcontaWidget(),
+                                                            ),
+                                                          ));
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    }
+                                                  },
+                                                  text: 'Comprar Projeto',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF09D707),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                         ),
-                                                      }.withoutNulls,
-                                                      extra: <String, dynamic>{
-                                                        'detalhesProdutos': widget
-                                                            .detalhesProjects,
-                                                      },
-                                                    );
-                                                  } else {
-                                                    logFirebaseEvent(
-                                                        'Button_bottom_sheet');
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Color(0xBE14181B),
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return WebViewAware(
-                                                            child:
-                                                                GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                CriarcontaWidget(),
-                                                          ),
-                                                        ));
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
-                                                  }
-                                                },
-                                                text: 'Comprar Projeto',
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 0.0, 24.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: Color(0xFF09D707),
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            color: Colors.black,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
                                                 ),
-                                              ),
-                                              if (rowPagamentosRecord
-                                                      ?.statusCompra ==
-                                                  true)
+                                              if (rowPagamentosRecord?.userID ==
+                                                  currentUserUid)
                                                 FFButtonWidget(
                                                   onPressed: () async {
                                                     logFirebaseEvent(
@@ -550,7 +561,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 10.0, 0.0),
-                                              child: Text(
+                                              child: GradientText(
                                                 formatNumber(
                                                   widget
                                                       .detalhesProjects!.valor,
@@ -566,7 +577,19 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 30.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                         ),
+                                                colors: [
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary
+                                                ],
+                                                gradientDirection:
+                                                    GradientDirection.ltr,
+                                                gradientType:
+                                                    GradientType.linear,
                                               ),
                                             ),
                                             FFButtonWidget(
