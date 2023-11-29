@@ -116,10 +116,6 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
             );
           }
           List<UserPagRecord> columnUserPagRecordList = snapshot.data!;
-          // Return an empty Container when the item does not exist.
-          if (snapshot.data!.isEmpty) {
-            return Container();
-          }
           final columnUserPagRecord = columnUserPagRecordList.isNotEmpty
               ? columnUserPagRecordList.first
               : null;
