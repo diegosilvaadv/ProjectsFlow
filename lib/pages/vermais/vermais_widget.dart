@@ -221,7 +221,18 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                             const AlignmentDirectional(0.00, 0.00),
                                         child:
                                             StreamBuilder<List<PaginasRecord>>(
-                                          stream: queryPaginasRecord(),
+                                          stream: queryPaginasRecord(
+                                            queryBuilder: (paginasRecord) =>
+                                                paginasRecord
+                                                    .where(
+                                                      'identificacao',
+                                                      isEqualTo: widget.all,
+                                                    )
+                                                    .where(
+                                                      'Categoria',
+                                                      isEqualTo: widget.tag,
+                                                    ),
+                                          ),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {

@@ -16,8 +16,6 @@ class ResetarSenhaModel extends FlutterFlowModel<ResetarSenhaWidget> {
   FocusNode? senhaDeskFocusNode;
   TextEditingController? senhaDeskController;
   String? Function(BuildContext, String?)? senhaDeskControllerValidator;
-  // Stores action output result for [Custom Action - updateSupabasePassword] action in Button-Login widget.
-  bool? resposta;
 
   /// Initialization and disposal methods.
 

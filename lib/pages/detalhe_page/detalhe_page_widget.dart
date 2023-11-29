@@ -454,7 +454,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      12.0),
+                                                                      18.0),
                                                         ),
                                                         child: Container(
                                                           width: 100.0,
@@ -467,7 +467,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        18.0),
                                                           ),
                                                           child: Padding(
                                                             padding:

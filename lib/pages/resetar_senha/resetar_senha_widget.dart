@@ -1,12 +1,9 @@
-import '/componts/direcionar_senha/direcionar_senha_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'resetar_senha_model.dart';
 export 'resetar_senha_model.dart';
 
@@ -567,53 +564,9 @@ class _ResetarSenhaWidgetState extends State<ResetarSenhaWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 24.0, 0.0, 0.0),
                                             child: FFButtonWidget(
-                                              onPressed: () async {
-                                                logFirebaseEvent(
-                                                    'RESETAR_SENHA_PAGE_Button-Login_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Button-Login_custom_action');
-                                                _model.resposta = await actions
-                                                    .updateSupabasePassword(
-                                                  _model
-                                                      .senhaDeskController.text,
-                                                );
-                                                if (_model.resposta!) {
-                                                  logFirebaseEvent(
-                                                      'Button-Login_bottom_sheet');
-                                                  await showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                        const Color(0x81000000),
-                                                    enableDrag: false,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return WebViewAware(
-                                                          child:
-                                                              GestureDetector(
-                                                        onTap: () => _model
-                                                                .unfocusNode
-                                                                .canRequestFocus
-                                                            ? FocusScope.of(
-                                                                    context)
-                                                                .requestFocus(_model
-                                                                    .unfocusNode)
-                                                            : FocusScope.of(
-                                                                    context)
-                                                                .unfocus(),
-                                                        child: Padding(
-                                                          padding: MediaQuery
-                                                              .viewInsetsOf(
-                                                                  context),
-                                                          child:
-                                                              const DirecionarSenhaWidget(),
-                                                        ),
-                                                      ));
-                                                    },
-                                                  ).then((value) =>
-                                                      safeSetState(() {}));
-                                                }
-
-                                                setState(() {});
+                                              onPressed: () {
+                                                print(
+                                                    'Button-Login pressed ...');
                                               },
                                               text: 'Criar Nova Senha',
                                               options: FFButtonOptions(
