@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "50227155074",
+    "project_id": "projetosflutterflow7",
+    "storage_bucket": "projetosflutterflow7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50227155074:android:a47f0ea2bb691ec8f6649b",
+        "android_client_info": {
+          "package_name": "com.adv7dev.projectsflow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHWyOqEr9hJWjGxsMVrPXJlpThVsGHj48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
