@@ -1420,11 +1420,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             produtor: false,
                                                           ));
 
-                                                      logFirebaseEvent(
-                                                          'Button_auth');
-                                                      await authManager
-                                                          .sendEmailVerification();
-
                                                       context.goNamedAuth(
                                                           'HomePage',
                                                           context.mounted);
