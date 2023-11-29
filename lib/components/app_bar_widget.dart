@@ -197,89 +197,91 @@ class _AppBarWidgetState extends State<AppBarWidget>
           alignment: AlignmentDirectional(0.00, 0.00),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(50.0, 20.0, 50.0, 20.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (responsiveVisibility(
-                  context: context,
-                  phone: false,
-                ))
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.asset(
-                          'assets/images/ff_logo_small_(1).png',
-                          width: 50.0,
-                          height: 50.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ).animateOnPageLoad(
-                          animationsMap['imageOnPageLoadAnimation']!),
-                      Text(
-                        'Projects Flow',
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Rubik',
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation']!),
-                    ],
-                  ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
-                if (FFAppState().AppBar == 'home')
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        functions.saudacao(),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 21.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+            child: StreamBuilder<List<UsersRecord>>(
+              stream: queryUsersRecord(
+                queryBuilder: (usersRecord) => usersRecord.where(
+                  'uid',
+                  isEqualTo: currentUserUid,
+                ),
+                singleRecord: true,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: SpinKitPulse(
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 50.0,
                       ),
-                      if (currentUserEmail != '')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 0.0, 0.0, 0.0),
-                          child: StreamBuilder<List<UsersRecord>>(
-                            stream: queryUsersRecord(
-                              queryBuilder: (usersRecord) => usersRecord.where(
-                                'uid',
-                                isEqualTo: currentUserUid,
-                              ),
-                              singleRecord: true,
+                    ),
+                  );
+                }
+                List<UsersRecord> rowUsersRecordList = snapshot.data!;
+                // Return an empty Container when the item does not exist.
+                if (snapshot.data!.isEmpty) {
+                  return Container();
+                }
+                final rowUsersRecord = rowUsersRecordList.isNotEmpty
+                    ? rowUsersRecordList.first
+                    : null;
+                return Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                    ))
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(0.0),
+                            child: Image.asset(
+                              'assets/images/ff_logo_small_(1).png',
+                              width: 50.0,
+                              height: 50.0,
+                              fit: BoxFit.cover,
                             ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: SpinKitPulse(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 50.0,
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<UsersRecord> textUsersRecordList =
-                                  snapshot.data!;
-                              // Return an empty Container when the item does not exist.
-                              if (snapshot.data!.isEmpty) {
-                                return Container();
-                              }
-                              final textUsersRecord =
-                                  textUsersRecordList.isNotEmpty
-                                      ? textUsersRecordList.first
-                                      : null;
-                              return Text(
-                                ', ${textUsersRecord?.displayName}!'
+                          ).animateOnPageLoad(
+                              animationsMap['imageOnPageLoadAnimation']!),
+                          Text(
+                            'Projects Flow',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Rubik',
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ).animateOnPageLoad(
+                              animationsMap['textOnPageLoadAnimation']!),
+                        ],
+                      ).animateOnPageLoad(
+                          animationsMap['rowOnPageLoadAnimation']!),
+                    if (FFAppState().AppBar == 'home')
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            functions.saudacao(),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 21.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                          if (currentUserEmail != '')
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                ', ${rowUsersRecord?.displayName}!'
                                     .maybeHandleOverflow(
                                   maxChars: 20,
                                   replacement: '…',
@@ -290,331 +292,69 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                       fontFamily: 'Outfit',
                                       fontWeight: FontWeight.w600,
                                     ),
-                              );
-                            },
-                          ),
-                        ),
-                    ],
-                  ),
-                if (responsiveVisibility(
-                  context: context,
-                  tablet: false,
-                  tabletLandscape: false,
-                  desktop: false,
-                ))
-                  Expanded(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.asset(
-                            'assets/images/ff_logo_small_(1).png',
-                            width: 50.0,
-                            height: 50.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            'Copy Page',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Rubik',
-                                  fontSize: 30.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                if (responsiveVisibility(
-                  context: context,
-                  phone: false,
-                ))
-                  Flexible(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 5.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'APP_BAR_COMP_HOME_BTN_ON_TAP');
-                                logFirebaseEvent('Button_update_app_state');
-                                setState(() {
-                                  FFAppState().AppBar = 'home';
-                                });
-                                logFirebaseEvent('Button_navigate_to');
-
-                                context.goNamed(
-                                  'HomePage',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                    ),
-                                  },
-                                );
-                              },
-                              text: 'HOME',
-                              icon: Icon(
-                                Icons.house,
-                                color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'home'
-                                      ? Colors.white
-                                      : FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                  FlutterFlowTheme.of(context).primaryText,
-                                ),
-                                size: 15.0,
                               ),
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'home'
-                                      ? FlutterFlowTheme.of(context).primary
-                                      : FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                  FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
+                            ),
+                        ],
+                      ),
+                    if (responsiveVisibility(
+                      context: context,
+                      tablet: false,
+                      tabletLandscape: false,
+                      desktop: false,
+                    ))
+                      Expanded(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: Image.asset(
+                                'assets/images/ff_logo_small_(1).png',
+                                width: 50.0,
+                                height: 50.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Copy Page',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
                                     .override(
                                       fontFamily: 'Rubik',
-                                      color: valueOrDefault<Color>(
-                                        FFAppState().AppBar == 'home'
-                                            ? Colors.white
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                      fontSize: 20.0,
+                                      fontSize: 30.0,
                                       fontWeight: FontWeight.w600,
                                     ),
-                                elevation: 7.0,
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                                hoverColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                hoverBorderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  width: 1.0,
-                                ),
-                                hoverTextColor:
-                                    FlutterFlowTheme.of(context).secondary,
                               ),
-                              showLoadingIndicator: false,
-                            ).animateOnActionTrigger(
-                              animationsMap['buttonOnActionTriggerAnimation1']!,
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 5.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'APP_BAR_COMP_TUTORIAL_BTN_ON_TAP');
-                                logFirebaseEvent('Button_update_app_state');
-                                setState(() {
-                                  FFAppState().AppBar = 'tutorial';
-                                });
-                                logFirebaseEvent('Button_navigate_to');
-
-                                context.goNamed(
-                                  'Tutorial',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                    ),
-                                  },
-                                );
-                              },
-                              text: 'Tutorial',
-                              icon: Icon(
-                                Icons.video_chat,
-                                color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'tutorial'
-                                      ? Colors.white
-                                      : FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                  FlutterFlowTheme.of(context).primaryText,
-                                ),
-                                size: 15.0,
-                              ),
-                              options: FFButtonOptions(
-                                height: 40.0,
+                          ],
+                        ),
+                      ),
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                    ))
+                      Flexible(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'tutorial'
-                                      ? FlutterFlowTheme.of(context).primary
-                                      : FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                  FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Rubik',
-                                      color: valueOrDefault<Color>(
-                                        FFAppState().AppBar == 'tutorial'
-                                            ? Colors.white
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                elevation: 7.0,
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                                hoverColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                hoverBorderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  width: 1.0,
-                                ),
-                                hoverTextColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                              showLoadingIndicator: false,
-                            ).animateOnActionTrigger(
-                              animationsMap['buttonOnActionTriggerAnimation2']!,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 5.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'APP_BAR_COMP_CONTATO_BTN_ON_TAP');
-                                logFirebaseEvent('Button_update_app_state');
-                                setState(() {
-                                  FFAppState().AppBar = 'contato';
-                                });
-                                logFirebaseEvent('Button_navigate_to');
-
-                                context.goNamed(
-                                  'contato',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                    ),
-                                  },
-                                );
-                              },
-                              text: 'Contato',
-                              icon: Icon(
-                                Icons.contact_mail,
-                                color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'contato'
-                                      ? Colors.white
-                                      : FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                  FlutterFlowTheme.of(context).primaryText,
-                                ),
-                                size: 15.0,
-                              ),
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'contato'
-                                      ? FlutterFlowTheme.of(context).primary
-                                      : FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                  FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Rubik',
-                                      color: valueOrDefault<Color>(
-                                        FFAppState().AppBar == 'contato'
-                                            ? Colors.white
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                elevation: 7.0,
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                                hoverColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                hoverBorderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  width: 1.0,
-                                ),
-                                hoverTextColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                              showLoadingIndicator: false,
-                            ).animateOnActionTrigger(
-                              animationsMap['buttonOnActionTriggerAnimation3']!,
-                            ),
-                          ),
-                          if (currentUserEmailVerified == false)
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => FFButtonWidget(
+                                    0.0, 0.0, 5.0, 0.0),
+                                child: FFButtonWidget(
                                   onPressed: () async {
                                     logFirebaseEvent(
-                                        'APP_BAR_COMP_PERFIL_BTN_ON_TAP');
+                                        'APP_BAR_COMP_HOME_BTN_ON_TAP');
                                     logFirebaseEvent('Button_update_app_state');
                                     setState(() {
-                                      FFAppState().AppBar = 'perfil';
+                                      FFAppState().AppBar = 'home';
                                     });
                                     logFirebaseEvent('Button_navigate_to');
 
                                     context.goNamed(
-                                      'perfil',
+                                      'HomePage',
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: TransitionInfo(
                                           hasTransition: true,
@@ -625,11 +365,11 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                       },
                                     );
                                   },
-                                  text: 'Perfil',
+                                  text: 'HOME',
                                   icon: Icon(
-                                    Icons.location_history,
+                                    Icons.house,
                                     color: valueOrDefault<Color>(
-                                      FFAppState().AppBar == 'perfil'
+                                      FFAppState().AppBar == 'home'
                                           ? Colors.white
                                           : FlutterFlowTheme.of(context)
                                               .primaryText,
@@ -644,7 +384,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: valueOrDefault<Color>(
-                                      FFAppState().AppBar == 'perfil'
+                                      FFAppState().AppBar == 'home'
                                           ? FlutterFlowTheme.of(context).primary
                                           : FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -656,7 +396,96 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                         .override(
                                           fontFamily: 'Rubik',
                                           color: valueOrDefault<Color>(
-                                            FFAppState().AppBar == 'perfil'
+                                            FFAppState().AppBar == 'home'
+                                                ? Colors.white
+                                                : FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                    elevation: 7.0,
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    hoverColor: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    hoverBorderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      width: 1.0,
+                                    ),
+                                    hoverTextColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                  showLoadingIndicator: false,
+                                ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'buttonOnActionTriggerAnimation1']!,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 5.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'APP_BAR_COMP_TUTORIAL_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_update_app_state');
+                                    setState(() {
+                                      FFAppState().AppBar = 'tutorial';
+                                    });
+                                    logFirebaseEvent('Button_navigate_to');
+
+                                    context.goNamed(
+                                      'Tutorial',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  text: 'Tutorial',
+                                  icon: Icon(
+                                    Icons.video_chat,
+                                    color: valueOrDefault<Color>(
+                                      FFAppState().AppBar == 'tutorial'
+                                          ? Colors.white
+                                          : FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      FlutterFlowTheme.of(context).primaryText,
+                                    ),
+                                    size: 15.0,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 10.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: valueOrDefault<Color>(
+                                      FFAppState().AppBar == 'tutorial'
+                                          ? FlutterFlowTheme.of(context).primary
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Rubik',
+                                          color: valueOrDefault<Color>(
+                                            FFAppState().AppBar == 'tutorial'
                                                 ? Colors.white
                                                 : FlutterFlowTheme.of(context)
                                                     .primaryText,
@@ -686,194 +515,380 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   showLoadingIndicator: false,
                                 ).animateOnActionTrigger(
                                   animationsMap[
-                                      'buttonOnActionTriggerAnimation4']!,
+                                      'buttonOnActionTriggerAnimation2']!,
                                 ),
                               ),
-                            ),
-                          if (currentUserEmailVerified == true)
-                            AuthUserStreamWidget(
-                              builder: (context) => FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'APP_BAR_COMP_CRIAR_CONTA_BTN_ON_TAP');
-                                  logFirebaseEvent('Button_navigate_to');
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 5.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'APP_BAR_COMP_CONTATO_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_update_app_state');
+                                    setState(() {
+                                      FFAppState().AppBar = 'contato';
+                                    });
+                                    logFirebaseEvent('Button_navigate_to');
 
-                                  context.goNamed(
-                                    'login',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.scale,
-                                        alignment: Alignment.bottomCenter,
-                                      ),
-                                    },
-                                  );
-                                },
-                                text: 'CRIAR CONTA',
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0x7AE13C27),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Rubik',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  hoverColor: Color(0x00F1F4F8),
-                                  hoverBorderSide: BorderSide(
-                                    color: Color(0x00F1F4F8),
-                                    width: 0.0,
-                                  ),
-                                  hoverTextColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                                showLoadingIndicator: false,
-                              ).animateOnActionTrigger(
-                                animationsMap[
-                                    'buttonOnActionTriggerAnimation5']!,
-                              ),
-                            ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 12.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'APP_BAR_COMP_lightDark_small_ON_TAP');
-                                if ((Theme.of(context).brightness ==
-                                        Brightness.light) ==
-                                    true) {
-                                  logFirebaseEvent(
-                                      'lightDark_small_set_dark_mode_settings');
-                                  setDarkModeSetting(context, ThemeMode.dark);
-                                  logFirebaseEvent(
-                                      'lightDark_small_widget_animation');
-                                  if (animationsMap[
-                                          'containerOnActionTriggerAnimation'] !=
-                                      null) {
-                                    animationsMap[
-                                            'containerOnActionTriggerAnimation']!
-                                        .controller
-                                        .forward(from: 0.0);
-                                  }
-                                } else {
-                                  logFirebaseEvent(
-                                      'lightDark_small_set_dark_mode_settings');
-                                  setDarkModeSetting(context, ThemeMode.light);
-                                  logFirebaseEvent(
-                                      'lightDark_small_widget_animation');
-                                  if (animationsMap[
-                                          'containerOnActionTriggerAnimation'] !=
-                                      null) {
-                                    animationsMap[
-                                            'containerOnActionTriggerAnimation']!
-                                        .controller
-                                        .reverse();
-                                  }
-                                }
-                              },
-                              child: Container(
-                                width: 80.0,
-                                height: 40.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    width: 1.0,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2.0, 2.0, 2.0, 2.0),
-                                  child: Stack(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.90, 0.00),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  6.0, 0.0, 0.0, 0.0),
-                                          child: Icon(
-                                            Icons.wb_sunny_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
+                                    context.goNamed(
+                                      'contato',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
                                         ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(1.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 6.0, 0.0),
-                                          child: Icon(
-                                            Icons.mode_night_rounded,
-                                            color: Color(0xFF57636C),
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(1.00, 0.00),
-                                        child: Container(
-                                          width: 36.0,
-                                          height: 36.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
+                                      },
+                                    );
+                                  },
+                                  text: 'Contato',
+                                  icon: Icon(
+                                    Icons.contact_mail,
+                                    color: valueOrDefault<Color>(
+                                      FFAppState().AppBar == 'contato'
+                                          ? Colors.white
+                                          : FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      FlutterFlowTheme.of(context).primaryText,
+                                    ),
+                                    size: 15.0,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 10.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: valueOrDefault<Color>(
+                                      FFAppState().AppBar == 'contato'
+                                          ? FlutterFlowTheme.of(context).primary
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Rubik',
+                                          color: valueOrDefault<Color>(
+                                            FFAppState().AppBar == 'contato'
+                                                ? Colors.white
+                                                : FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            FlutterFlowTheme.of(context)
                                                 .primaryText,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 4.0,
-                                                color: Color(0x430B0D0F),
-                                                offset: Offset(0.0, 2.0),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(30.0),
-                                            shape: BoxShape.rectangle,
                                           ),
-                                        ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation']!,
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w500,
                                         ),
+                                    elevation: 7.0,
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    hoverColor: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    hoverBorderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      width: 1.0,
+                                    ),
+                                    hoverTextColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                  showLoadingIndicator: false,
+                                ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'buttonOnActionTriggerAnimation3']!,
+                                ),
+                              ),
+                              if (currentUserEmail != '')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 5.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'APP_BAR_COMP_PERFIL_BTN_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Button_update_app_state');
+                                      setState(() {
+                                        FFAppState().AppBar = 'perfil';
+                                      });
+                                      logFirebaseEvent('Button_navigate_to');
+
+                                      context.goNamed(
+                                        'perfil',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    text: 'Perfil',
+                                    icon: Icon(
+                                      Icons.location_history,
+                                      color: valueOrDefault<Color>(
+                                        FFAppState().AppBar == 'perfil'
+                                            ? Colors.white
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
-                                    ],
+                                      size: 15.0,
+                                    ),
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 10.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: valueOrDefault<Color>(
+                                        FFAppState().AppBar == 'perfil'
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Rubik',
+                                            color: valueOrDefault<Color>(
+                                              FFAppState().AppBar == 'perfil'
+                                                  ? Colors.white
+                                                  : FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                            ),
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                      elevation: 7.0,
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      hoverColor: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      hoverBorderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        width: 1.0,
+                                      ),
+                                      hoverTextColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                    showLoadingIndicator: false,
+                                  ).animateOnActionTrigger(
+                                    animationsMap[
+                                        'buttonOnActionTriggerAnimation4']!,
+                                  ),
+                                ),
+                              if (currentUserEmail == '')
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'APP_BAR_COMP_CRIAR_CONTA_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_navigate_to');
+
+                                    context.goNamed(
+                                      'login',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.scale,
+                                          alignment: Alignment.bottomCenter,
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  text: 'CRIAR CONTA',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 10.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0x7AE13C27),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Rubik',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    hoverColor: Color(0x00F1F4F8),
+                                    hoverBorderSide: BorderSide(
+                                      color: Color(0x00F1F4F8),
+                                      width: 0.0,
+                                    ),
+                                    hoverTextColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                  showLoadingIndicator: false,
+                                ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'buttonOnActionTriggerAnimation5']!,
+                                ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 12.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'APP_BAR_COMP_lightDark_small_ON_TAP');
+                                    if ((Theme.of(context).brightness ==
+                                            Brightness.light) ==
+                                        true) {
+                                      logFirebaseEvent(
+                                          'lightDark_small_set_dark_mode_settings');
+                                      setDarkModeSetting(
+                                          context, ThemeMode.dark);
+                                      logFirebaseEvent(
+                                          'lightDark_small_widget_animation');
+                                      if (animationsMap[
+                                              'containerOnActionTriggerAnimation'] !=
+                                          null) {
+                                        animationsMap[
+                                                'containerOnActionTriggerAnimation']!
+                                            .controller
+                                            .forward(from: 0.0);
+                                      }
+                                    } else {
+                                      logFirebaseEvent(
+                                          'lightDark_small_set_dark_mode_settings');
+                                      setDarkModeSetting(
+                                          context, ThemeMode.light);
+                                      logFirebaseEvent(
+                                          'lightDark_small_widget_animation');
+                                      if (animationsMap[
+                                              'containerOnActionTriggerAnimation'] !=
+                                          null) {
+                                        animationsMap[
+                                                'containerOnActionTriggerAnimation']!
+                                            .controller
+                                            .reverse();
+                                      }
+                                    }
+                                  },
+                                  child: Container(
+                                    width: 80.0,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          2.0, 2.0, 2.0, 2.0),
+                                      child: Stack(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -0.90, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.wb_sunny_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 6.0, 0.0),
+                                              child: Icon(
+                                                Icons.mode_night_rounded,
+                                                color: Color(0xFF57636C),
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
+                                            child: Container(
+                                              width: 36.0,
+                                              height: 36.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 4.0,
+                                                    color: Color(0x430B0D0F),
+                                                    offset: Offset(0.0, 2.0),
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                                shape: BoxShape.rectangle,
+                                              ),
+                                            ).animateOnActionTrigger(
+                                              animationsMap[
+                                                  'containerOnActionTriggerAnimation']!,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-              ],
+                  ],
+                );
+              },
             ),
           ),
         ),
