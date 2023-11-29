@@ -602,7 +602,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               animationsMap['buttonOnActionTriggerAnimation3']!,
                             ),
                           ),
-                          if (currentUserEmailVerified)
+                          if (currentUserEmailVerified == true)
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
