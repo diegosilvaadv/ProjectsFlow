@@ -3,16 +3,20 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'editarnome_model.dart';
 export 'editarnome_model.dart';
 
 class EditarnomeWidget extends StatefulWidget {
   const EditarnomeWidget({
-    super.key,
+    Key? key,
     required this.nome,
-  });
+  }) : super(key: key);
 
   final String? nome;
 
@@ -52,9 +56,9 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -62,7 +66,7 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
             children: [
               Padding(
                 padding:
-                    const EdgeInsetsDirectional.fromSTEB(100.0, 100.0, 100.0, 100.0),
+                    EdgeInsetsDirectional.fromSTEB(100.0, 100.0, 100.0, 100.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.6,
                   height: MediaQuery.sizeOf(context).height * 0.2,
@@ -76,7 +80,7 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +96,7 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
                                 logFirebaseEvent('Icon_bottom_sheet');
                                 Navigator.pop(context);
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.close_sharp,
                                 color: Color(0xFFFF0004),
                                 size: 40.0,
@@ -102,7 +106,7 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 10.0, 10.0, 10.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -110,7 +114,7 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 8.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.tituloController,
@@ -185,7 +189,7 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
                               context.goNamed(
                                 'perfil',
                                 extra: <String, dynamic>{
-                                  kTransitionInfoKey: const TransitionInfo(
+                                  kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
                                   ),
@@ -195,9 +199,9 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
                             text: 'MUDAR NOME',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -207,7 +211,7 @@ class _EditarnomeWidgetState extends State<EditarnomeWidget> {
                                     color: Colors.white,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

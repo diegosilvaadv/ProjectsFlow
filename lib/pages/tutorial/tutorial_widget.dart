@@ -5,12 +5,14 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/flutter_flow_youtube_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tutorial_model.dart';
 export 'tutorial_model.dart';
 
 class TutorialWidget extends StatefulWidget {
-  const TutorialWidget({super.key});
+  const TutorialWidget({Key? key}) : super(key: key);
 
   @override
   _TutorialWidgetState createState() => _TutorialWidgetState();
@@ -69,7 +71,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                     wrapWithModel(
                       model: _model.appBarModel,
                       updateCallback: () => setState(() {}),
-                      child: const AppBarWidget(),
+                      child: AppBarWidget(),
                     ),
                     Expanded(
                       child: Card(
@@ -80,7 +82,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 20.0, 20.0, 20.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -96,7 +98,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 16.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -114,10 +116,10 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.00, 0.00),
+                                              AlignmentDirectional(-1.00, 0.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 0.0),
                                             child: Card(
                                               clipBehavior:
@@ -131,7 +133,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 10.0, 10.0, 10.0),
                                                 child: FlutterFlowYoutubePlayer(
@@ -158,7 +160,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -180,7 +182,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            const Icon(
+                                            Icon(
                                               Icons.discord_sharp,
                                               color: Color(0xFF5765F2),
                                               size: 100.0,
@@ -189,7 +191,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           6.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -208,7 +210,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                               ],
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: FFButtonWidget(
@@ -223,14 +225,14 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                                 text: 'ENTRAR',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
-                                                  color: const Color(0xFF5765F2),
+                                                  color: Color(0xFF5765F2),
                                                   textStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -241,7 +243,7 @@ class _TutorialWidgetState extends State<TutorialWidget> {
                                                             color: Colors.white,
                                                           ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),

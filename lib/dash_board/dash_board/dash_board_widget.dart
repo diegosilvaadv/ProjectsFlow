@@ -1,14 +1,17 @@
 import '/components/app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'dash_board_model.dart';
 export 'dash_board_model.dart';
 
 class DashBoardWidget extends StatefulWidget {
-  const DashBoardWidget({super.key});
+  const DashBoardWidget({Key? key}) : super(key: key);
 
   @override
   _DashBoardWidgetState createState() => _DashBoardWidgetState();
@@ -66,7 +69,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                   wrapWithModel(
                     model: _model.appBarModel,
                     updateCallback: () => setState(() {}),
-                    child: const AppBarWidget(),
+                    child: AppBarWidget(),
                   ),
                   Expanded(
                     child: Column(
@@ -81,7 +84,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            child: const Column(
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Row(

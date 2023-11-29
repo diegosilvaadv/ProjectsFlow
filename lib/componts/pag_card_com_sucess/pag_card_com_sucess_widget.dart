@@ -1,8 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'pag_card_com_sucess_model.dart';
@@ -10,11 +15,11 @@ export 'pag_card_com_sucess_model.dart';
 
 class PagCardComSucessWidget extends StatefulWidget {
   const PagCardComSucessWidget({
-    super.key,
+    Key? key,
     this.detalhesProdutos,
     required this.cartaoFinal,
     required this.transacionID,
-  });
+  }) : super(key: key);
 
   final ProjetosRecord? detalhesProdutos;
   final String? cartaoFinal;
@@ -57,7 +62,7 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Align(
-          alignment: const AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.00, 0.00),
           child: Container(
             width: MediaQuery.sizeOf(context).width * 0.5,
             height: MediaQuery.sizeOf(context).height * 0.5,
@@ -68,12 +73,12 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
             child: Stack(
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -90,7 +95,7 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -98,7 +103,7 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                           children: [
                             Flexible(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 6.0),
                                 child: Text(
                                   'Pagamento Realizado com sucesso! ',
@@ -116,16 +121,16 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.00, 0.00),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 24.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -167,9 +172,9 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                                   options: FFButtonOptions(
                                     width: 270.0,
                                     height: 50.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color:
                                         FlutterFlowTheme.of(context).secondary,
@@ -182,7 +187,7 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                                           fontSize: 20.0,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),

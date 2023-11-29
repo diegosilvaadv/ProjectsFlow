@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -17,7 +18,7 @@ import 'perfil_model.dart';
 export 'perfil_model.dart';
 
 class PerfilWidget extends StatefulWidget {
-  const PerfilWidget({super.key});
+  const PerfilWidget({Key? key}) : super(key: key);
 
   @override
   _PerfilWidgetState createState() => _PerfilWidgetState();
@@ -73,11 +74,11 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                 wrapWithModel(
                   model: _model.appBarModel,
                   updateCallback: () => setState(() {}),
-                  child: const AppBarWidget(),
+                  child: AppBarWidget(),
                 ),
                 Expanded(
                   child: Align(
-                    alignment: const AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -100,7 +101,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 10.0),
                             child: StreamBuilder<List<UsersRecord>>(
                               stream: queryUsersRecord(
@@ -147,7 +148,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 0.0, 16.0, 0.0),
                                           child: Container(
                                             width: 250.0,
@@ -160,19 +161,19 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary
                                                 ],
-                                                stops: const [0.0, 1.0],
-                                                begin: const AlignmentDirectional(
+                                                stops: [0.0, 1.0],
+                                                begin: AlignmentDirectional(
                                                     1.0, -1.0),
-                                                end: const AlignmentDirectional(
+                                                end: AlignmentDirectional(
                                                     -1.0, 1.0),
                                               ),
                                               shape: BoxShape.circle,
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.00, 0.00),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 4.0, 4.0, 4.0),
                                                 child: Container(
@@ -186,7 +187,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(5.0, 5.0,
                                                                 5.0, 5.0),
                                                     child: ClipRRect(
@@ -213,7 +214,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ],
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -244,7 +245,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                       MediaQuery.viewInsetsOf(
                                                           context),
                                                   child: EditarnomeWidget(
-                                                    nome: columnUsersRecord.displayName,
+                                                    nome: columnUsersRecord!
+                                                        .displayName,
                                                   ),
                                                 ),
                                               ));
@@ -268,11 +270,11 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 0.0),
                                       child: GradientText(
                                         valueOrDefault<String>(
-                                          columnUsersRecord.email,
+                                          columnUsersRecord?.email,
                                           'e-mail',
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -295,14 +297,14 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          if (columnUsersRecord.produtor ==
+                                          if (columnUsersRecord?.produtor ==
                                               true)
                                             FFButtonWidget(
                                               onPressed: () async {
@@ -333,7 +335,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                         padding: MediaQuery
                                                             .viewInsetsOf(
                                                                 context),
-                                                        child: const AddWidget(),
+                                                        child: AddWidget(),
                                                       ),
                                                     ));
                                                   },
@@ -343,11 +345,11 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                               text: 'Adcionar Páginas',
                                               options: FFButtonOptions(
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -363,7 +365,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                           fontSize: 20.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -371,7 +373,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                             ),
-                                          if (columnUsersRecord.produtor ==
+                                          if (columnUsersRecord?.produtor ==
                                               false)
                                             FFButtonWidget(
                                               onPressed: () async {
@@ -382,7 +384,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                 await showModalBottomSheet(
                                                   isScrollControlled: true,
                                                   backgroundColor:
-                                                      const Color(0xAB1D2428),
+                                                      Color(0xAB1D2428),
                                                   enableDrag: false,
                                                   context: context,
                                                   builder: (context) {
@@ -403,7 +405,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                             .viewInsetsOf(
                                                                 context),
                                                         child:
-                                                            const EntraremcontatoWidget(),
+                                                            EntraremcontatoWidget(),
                                                       ),
                                                     ));
                                                   },
@@ -414,11 +416,11 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                   'Quero Trabalhar como Produtor',
                                               options: FFButtonOptions(
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -434,7 +436,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                           fontSize: 20.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -446,7 +448,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -473,12 +475,12 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             text: 'SAIR',
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFF88180F),
+                                              color: Color(0xFF88180F),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -489,7 +491,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                         fontSize: 20.0,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),

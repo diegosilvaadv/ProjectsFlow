@@ -33,7 +33,7 @@ const kYoutubeAspectRatio = 16 / 9;
 final _youtubeFullScreenControllerMap = <String, YoutubePlayerController>{};
 
 class FlutterFlowYoutubePlayer extends StatefulWidget {
-  const FlutterFlowYoutubePlayer({super.key, 
+  const FlutterFlowYoutubePlayer({
     required this.url,
     this.width,
     this.height,
@@ -159,7 +159,7 @@ class _FlutterFlowYoutubePlayerState extends State<FlutterFlowYoutubePlayer>
   @override
   Widget build(BuildContext context) => FittedBox(
         fit: BoxFit.cover,
-        child: SizedBox(
+        child: Container(
           height: height,
           width: width,
           child: _controller != null
@@ -177,7 +177,7 @@ class _FlutterFlowYoutubePlayerState extends State<FlutterFlowYoutubePlayer>
 
 /// Wraps the page in order to properly show the YouTube video when fullscreen.
 class YoutubeFullScreenWrapper extends StatefulWidget {
-  const YoutubeFullScreenWrapper({super.key, required this.child});
+  YoutubeFullScreenWrapper({Key? key, required this.child}) : super(key: key);
 
   final Widget child;
 

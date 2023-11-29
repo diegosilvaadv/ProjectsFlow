@@ -12,6 +12,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'detalhes_projects_model.dart';
@@ -19,9 +22,9 @@ export 'detalhes_projects_model.dart';
 
 class DetalhesProjectsWidget extends StatefulWidget {
   const DetalhesProjectsWidget({
-    super.key,
+    Key? key,
     required this.detalhesProjects,
-  });
+  }) : super(key: key);
 
   final ProjetosRecord? detalhesProjects;
 
@@ -82,14 +85,14 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                   wrapWithModel(
                     model: _model.appBarModel,
                     updateCallback: () => setState(() {}),
-                    child: const AppBarWidget(),
+                    child: AppBarWidget(),
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 12.0, 12.0, 12.0),
                           child: Material(
                             color: Colors.transparent,
@@ -111,7 +114,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           15.0, 2.0, 0.0, 2.0),
                                       child: FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
@@ -134,7 +137,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                             'HomePage',
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
-                                                  const TransitionInfo(
+                                                  TransitionInfo(
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.fade,
@@ -147,7 +150,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
@@ -158,11 +161,11 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                     ),
                                     Container(
                                       height: 100.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       alignment:
-                                          const AlignmentDirectional(0.00, 0.00),
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: Text(
                                           valueOrDefault<String>(
@@ -183,7 +186,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
@@ -193,16 +196,16 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 16.0, 0.0),
                                       child: Container(
                                         height: 100.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            AlignmentDirectional(0.00, 0.00),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 0.0, 16.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
@@ -241,14 +244,14 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             100.0, 20.0, 100.0, 20.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 50.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -301,7 +304,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                               'Button_bottom_sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
-                                            backgroundColor: const Color(0xBE14181B),
+                                            backgroundColor: Color(0xBE14181B),
                                             enableDrag: false,
                                             context: context,
                                             builder: (context) {
@@ -318,7 +321,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                   padding:
                                                       MediaQuery.viewInsetsOf(
                                                           context),
-                                                  child: const CriarcontaWidget(),
+                                                  child: CriarcontaWidget(),
                                                 ),
                                               ));
                                             },
@@ -329,12 +332,12 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       text: 'Comprar Projeto',
                                       options: FFButtonOptions(
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFF09D707),
+                                        color: Color(0xFF09D707),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -343,7 +346,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                               fontWeight: FontWeight.w500,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -362,20 +365,20 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       text: 'Acessar Projeto',
                                       options: FFButtonOptions(
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFF10DAD3),
+                                        color: Color(0xFF10DAD3),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: const Color(0xFF131313),
+                                              color: Color(0xFF131313),
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -387,7 +390,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 6.0, 50.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -395,7 +398,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 6.0, 50.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -410,7 +413,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
@@ -434,7 +437,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               dateTimeFormat(
@@ -455,7 +458,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 6.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -464,7 +467,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               formatNumber(
@@ -491,10 +494,10 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                             text: 'Testar Projeto',
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -509,7 +512,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                         .primaryText,
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -524,7 +527,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 10.0, 10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -545,13 +548,13 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                         ),
-                                        child: SizedBox(
+                                        child: Container(
                                           width: double.infinity,
                                           height: 500.0,
                                           child: Stack(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 40.0),
                                                 child: PageView(
@@ -564,7 +567,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   10.0,
@@ -583,7 +586,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       10.0,
@@ -611,7 +614,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   90.0,
                                                                   10.0,
@@ -643,7 +646,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         10.0,
@@ -722,10 +725,10 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.00, 1.00),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 16.0),
                                                   child: smooth_page_indicator
@@ -742,7 +745,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                           .pageViewController1!
                                                           .animateToPage(
                                                         i,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 500),
                                                         curve: Curves.ease,
                                                       );
@@ -774,7 +777,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 0.0, 0.0),
                                       child: Material(
                                         color: Colors.transparent,
@@ -794,16 +797,16 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 10.0, 10.0, 10.0),
-                                            child: SizedBox(
+                                            child: Container(
                                               width: double.infinity,
                                               height: 500.0,
                                               child: Stack(
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 40.0),
                                                     child: PageView(
@@ -1065,11 +1068,11 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             -1.00, 1.00),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   0.0,
@@ -1090,7 +1093,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                               .pageViewController2!
                                                               .animateToPage(
                                                             i,
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     500),
                                                             curve: Curves.ease,

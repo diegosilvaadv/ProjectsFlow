@@ -2,12 +2,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'direcionar_senha_model.dart';
 export 'direcionar_senha_model.dart';
 
 class DirecionarSenhaWidget extends StatefulWidget {
-  const DirecionarSenhaWidget({super.key});
+  const DirecionarSenhaWidget({Key? key}) : super(key: key);
 
   @override
   _DirecionarSenhaWidgetState createState() => _DirecionarSenhaWidgetState();
@@ -42,7 +45,7 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.5,
         height: MediaQuery.sizeOf(context).height * 0.2,
@@ -51,19 +54,19 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Align(
-          alignment: const AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.00, 0.00),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 6.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 6.0),
                       child: Text(
                         'Senha Alterada com Sucesso!',
                         style: FlutterFlowTheme.of(context)
@@ -78,16 +81,16 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 20.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.00, 0.00),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
@@ -97,7 +100,7 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
                             context.goNamed(
                               'HomePage',
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType:
                                       PageTransitionType.bottomToTop,
@@ -109,9 +112,9 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
                           options: FFButtonOptions(
                             width: 270.0,
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -121,7 +124,7 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
                                   fontSize: 25.0,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

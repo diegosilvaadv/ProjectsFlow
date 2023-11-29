@@ -1,6 +1,12 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'editar_widget.dart' show EditarWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class EditarModel extends FlutterFlowModel<EditarWidget> {
   ///  State fields for stateful widgets in this component.
@@ -24,10 +30,8 @@ class EditarModel extends FlutterFlowModel<EditarWidget> {
 
   /// Initialization and disposal methods.
 
-  @override
   void initState(BuildContext context) {}
 
-  @override
   void dispose() {
     tituloFocusNode?.dispose();
     tituloController?.dispose();

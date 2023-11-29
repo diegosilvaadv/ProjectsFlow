@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 import '../cloud_functions/cloud_functions.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -58,7 +59,7 @@ class StatusPixCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Status Pix',
-      apiUrl: 'https://api.mercadopago.com/v1/payments/$idPix',
+      apiUrl: 'https://api.mercadopago.com/v1/payments/${idPix}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization':
@@ -153,7 +154,7 @@ class CriarPagPIXAPIPagBankCall {
     String? randow = '',
     String? token = '',
   }) async {
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "customer": {
     "name": "Diego Silva",
@@ -208,7 +209,7 @@ class CriarPagPIXAPIPagBankCall {
         'Authorization': 'Bearer 9610FD2583284F95B9661F0A69CD0389',
         'accept': 'application/json',
         'content-type': 'application/json',
-        'x-idempotency-key': '0d5020ed-1af6-469c-ae06-$randow',
+        'x-idempotency-key': '0d5020ed-1af6-469c-ae06-${randow}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -360,11 +361,11 @@ class ConsultarClienteCobreFacilCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'consultar Cliente CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/$userID',
+      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/${userID}',
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       returnBody: true,
@@ -389,19 +390,19 @@ class AtualizarClienteCobreFacilCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "personal_name": "$personalName",
-  "email": "$email",
+  "personal_name": "${personalName}",
+  "email": "${email}",
   "address": {
     "description": "Endereço Principal"
   }
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Atualizar Cliente CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/$userID',
+      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/${userID}',
       callType: ApiCallType.PUT,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -515,15 +516,15 @@ class EstornarCobrancaViaCartaoCobreFacilCall {
   }) async {
     final ffApiRequestBody = '''
 {
-    "amount": $valorEstorno
+    "amount": ${valorEstorno}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Estornar Cobranca via Cartao CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/invoices/$iDCobranca/refund',
+      apiUrl: 'https://api.cobrefacil.com.br/v1/invoices/${iDCobranca}/refund',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -596,11 +597,11 @@ class DeleterCobrancaViaCartaoCobreFacilCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'deleter  Cobranca via Cartao CobreFacil ',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/invoices/$iDCobranca',
+      apiUrl: 'https://api.cobrefacil.com.br/v1/invoices/${iDCobranca}',
       callType: ApiCallType.DELETE,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       returnBody: true,
@@ -634,7 +635,7 @@ class BuscarcepCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'BUSCARCEP',
-      apiUrl: 'viacep.com.br/ws/$cep/json/',
+      apiUrl: 'viacep.com.br/ws/${cep}/json/',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -674,11 +675,11 @@ class DeletarClienteCobreFacilCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Deletar Cliente CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/$iDCliente',
+      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/${iDCliente}',
       callType: ApiCallType.DELETE,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       returnBody: true,
@@ -699,7 +700,7 @@ class ListaCobrancasCobreFacilCall {
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       returnBody: true,
@@ -717,11 +718,11 @@ class DeletarCartoesCobreFacilCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Deletar Cartoes CobreFacil ',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/cards/$cardID',
+      apiUrl: 'https://api.cobrefacil.com.br/v1/cards/${cardID}',
       callType: ApiCallType.DELETE,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       returnBody: true,
@@ -743,7 +744,7 @@ class ListaCartoesCobreFacilCopyCall {
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       returnBody: true,

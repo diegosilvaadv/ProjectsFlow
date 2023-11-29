@@ -2,13 +2,16 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'entraremcontato_model.dart';
 export 'entraremcontato_model.dart';
 
 class EntraremcontatoWidget extends StatefulWidget {
-  const EntraremcontatoWidget({super.key});
+  const EntraremcontatoWidget({Key? key}) : super(key: key);
 
   @override
   _EntraremcontatoWidgetState createState() => _EntraremcontatoWidgetState();
@@ -43,9 +46,9 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -53,7 +56,7 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
             children: [
               Padding(
                 padding:
-                    const EdgeInsetsDirectional.fromSTEB(100.0, 100.0, 100.0, 100.0),
+                    EdgeInsetsDirectional.fromSTEB(100.0, 100.0, 100.0, 100.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.4,
                   height: MediaQuery.sizeOf(context).height * 0.478,
@@ -66,7 +69,7 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 0.0, 30.0, 10.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -83,7 +86,7 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
                                 logFirebaseEvent('Icon_bottom_sheet');
                                 Navigator.pop(context);
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.close_sharp,
                                 color: Color(0xFFFF0004),
                                 size: 40.0,
@@ -104,12 +107,12 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Padding(
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: FaIcon(
@@ -128,13 +131,13 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 10.0, 10.0, 10.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(16.0),
@@ -151,7 +154,7 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -168,11 +171,11 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
                               text: 'Enviar Mensagem',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFF0CEB29),
+                                color: Color(0xFF0CEB29),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -182,7 +185,7 @@ class _EntraremcontatoWidgetState extends State<EntraremcontatoWidget> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),

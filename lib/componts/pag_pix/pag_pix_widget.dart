@@ -1,15 +1,20 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'pag_pix_model.dart';
@@ -17,10 +22,10 @@ export 'pag_pix_model.dart';
 
 class PagPixWidget extends StatefulWidget {
   const PagPixWidget({
-    super.key,
+    Key? key,
     required this.status,
     required this.detalhesProduto,
-  });
+  }) : super(key: key);
 
   final dynamic status;
   final ProjetosRecord? detalhesProduto;
@@ -42,7 +47,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
           delay: 0.ms,
           duration: 1000.ms,
           hz: 7,
-          offset: const Offset(-13.0, 0.0),
+          offset: Offset(-13.0, 0.0),
           rotation: 0.087,
         ),
       ],
@@ -79,7 +84,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -92,13 +97,13 @@ class _PagPixWidgetState extends State<PagPixWidget>
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +124,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           10.0, 10.0, 10.0, 10.0),
                       child: Material(
                         color: Colors.transparent,
@@ -134,7 +139,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -142,7 +147,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.textController,
@@ -240,7 +245,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                             fontSize: 40.0,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -285,14 +290,14 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                 ).toString() !=
                                 'approved')
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 10.0, 20.0, 10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 6.0, 0.0),
                                       child: Icon(
                                         Icons.paid,
@@ -312,7 +317,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(0.00, 0.00),
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Lottie.asset(
                                         'assets/lottie_animations/Animation_-_1700667862033.json',
                                         width: 100.0,
@@ -329,14 +334,14 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                 ).toString() ==
                                 'approved')
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 10.0, 20.0, 20.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 6.0, 0.0),
                                       child: Icon(
                                         Icons.paid,
@@ -360,13 +365,13 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                 ),
                               ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 20.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 20.0, 20.0, 20.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -405,10 +410,10 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                             text: 'Atualizar Pagamento',
                                             options: FFButtonOptions(
                                               height: 59.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -423,7 +428,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                                         fontSize: 40.0,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -474,12 +479,12 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                             text: 'Acessar Projeto',
                                             options: FFButtonOptions(
                                               height: 59.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFF10DA26),
+                                              color: Color(0xFF10DA26),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -490,7 +495,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                                         fontSize: 40.0,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),

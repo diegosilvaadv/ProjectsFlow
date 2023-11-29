@@ -1,12 +1,15 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'app_bar_cell_model.dart';
 export 'app_bar_cell_model.dart';
 
 class AppBarCellWidget extends StatefulWidget {
-  const AppBarCellWidget({super.key});
+  const AppBarCellWidget({Key? key}) : super(key: key);
 
   @override
   _AppBarCellWidgetState createState() => _AppBarCellWidgetState();
@@ -54,7 +57,7 @@ class _AppBarCellWidgetState extends State<AppBarCellWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
