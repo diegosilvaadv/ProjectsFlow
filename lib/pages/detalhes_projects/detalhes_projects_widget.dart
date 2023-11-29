@@ -763,21 +763,22 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                       },
                                                       effect: smooth_page_indicator
                                                           .ExpandingDotsEffect(
-                                                        expansionFactor: 3.0,
-                                                        spacing: 8.0,
+                                                        expansionFactor: 5.0,
+                                                        spacing: 10.0,
                                                         radius: 16.0,
                                                         dotWidth: 16.0,
-                                                        dotHeight: 8.0,
+                                                        dotHeight: 15.0,
                                                         dotColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .accent1,
+                                                                .secondary,
                                                         activeDotColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .primaryText,
                                                         paintStyle:
-                                                            PaintingStyle.fill,
+                                                            PaintingStyle
+                                                                .stroke,
                                                       ),
                                                     ),
                                                   ),

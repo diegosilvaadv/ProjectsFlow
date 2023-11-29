@@ -241,63 +241,58 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               fontWeight: FontWeight.w500,
                             ),
                       ),
-                      if (currentUserEmailVerified)
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 0.0, 0.0, 0.0),
-                          child: AuthUserStreamWidget(
-                            builder: (context) =>
-                                StreamBuilder<List<UsersRecord>>(
-                              stream: queryUsersRecord(
-                                queryBuilder: (usersRecord) =>
-                                    usersRecord.where(
-                                  'uid',
-                                  isEqualTo: currentUserUid,
-                                ),
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: SpinKitPulse(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 50.0,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<UsersRecord> textUsersRecordList =
-                                    snapshot.data!;
-                                // Return an empty Container when the item does not exist.
-                                if (snapshot.data!.isEmpty) {
-                                  return Container();
-                                }
-                                final textUsersRecord =
-                                    textUsersRecordList.isNotEmpty
-                                        ? textUsersRecordList.first
-                                        : null;
-                                return Text(
-                                  ', ${textUsersRecord?.displayName}!'
-                                      .maybeHandleOverflow(
-                                    maxChars: 20,
-                                    replacement: '…',
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleLarge
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                );
-                              },
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                        child: StreamBuilder<List<UsersRecord>>(
+                          stream: queryUsersRecord(
+                            queryBuilder: (usersRecord) => usersRecord.where(
+                              'uid',
+                              isEqualTo: currentUserUid,
                             ),
+                            singleRecord: true,
                           ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: SpinKitPulse(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 50.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<UsersRecord> textUsersRecordList =
+                                snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final textUsersRecord =
+                                textUsersRecordList.isNotEmpty
+                                    ? textUsersRecordList.first
+                                    : null;
+                            return Text(
+                              ', ${textUsersRecord?.displayName}!'
+                                  .maybeHandleOverflow(
+                                maxChars: 20,
+                                replacement: '…',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            );
+                          },
                         ),
+                      ),
                     ],
                   ),
                 if (responsiveVisibility(
