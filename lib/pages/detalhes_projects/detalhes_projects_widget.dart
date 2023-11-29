@@ -319,10 +319,6 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                           List<PagamentosRecord>
                                               rowPagamentosRecordList =
                                               snapshot.data!;
-                                          // Return an empty Container when the item does not exist.
-                                          if (snapshot.data!.isEmpty) {
-                                            return Container();
-                                          }
                                           final rowPagamentosRecord =
                                               rowPagamentosRecordList.isNotEmpty
                                                   ? rowPagamentosRecordList
@@ -682,6 +678,8 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                                     10.0,
                                                                     10.0),
                                                         child: Container(
+                                                          width: 1280.0,
+                                                          height: 720.0,
                                                           decoration:
                                                               BoxDecoration(
                                                             color: FlutterFlowTheme
@@ -697,6 +695,8 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                             url: widget
                                                                 .detalhesProjects!
                                                                 .video,
+                                                            width: 1280.0,
+                                                            height: 720.0,
                                                             autoPlay: false,
                                                             looping: true,
                                                             mute: false,
