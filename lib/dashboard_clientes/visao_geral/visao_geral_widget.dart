@@ -966,7 +966,7 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                                             0.0),
                                                                     child: Text(
                                                                       formatNumber(
-                                                                        functions.calcularLista(maxWidthPagamentosRecordList
+                                                                        functions.calcaularlista(maxWidthPagamentosRecordList
                                                                             .map((e) =>
                                                                                 e.valor)
                                                                             .toList()),

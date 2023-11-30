@@ -56,14 +56,14 @@ String imgbase64(String codigobase64) {
   return 'data:image/png;base64,$codigobase64';
 }
 
-double? calcularLista(List<double>? numeros) {
-  // calcaularlista do banco de dados
+double? calcaularlista(List<double>? numeros) {
   if (numeros == null || numeros.isEmpty) {
-    return null;
+    return 0;
   }
+
   double soma = 0;
-  for (final numero in numeros) {
-    soma += numero;
+  for (double elemento in numeros) {
+    soma += elemento;
   }
-  return soma / numeros.length;
+  return soma;
 }
