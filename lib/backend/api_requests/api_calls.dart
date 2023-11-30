@@ -62,21 +62,19 @@ class PixMercadoPagoCall {
 class StatusPixCall {
   static Future<ApiCallResponse> call({
     int? idPix,
+    String? token = '',
   }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Status Pix',
-      apiUrl: 'https://api.mercadopago.com/v1/payments/${idPix}',
-      callType: ApiCallType.GET,
-      headers: {
-        'Authorization':
-            'Bearer APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'StatusPixCall',
+        'variables': {
+          'idPix': idPix,
+          'token': token,
+        },
       },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static dynamic status(dynamic response) => getJsonField(
@@ -360,72 +358,6 @@ class CriarCartaoCobreFacilCall {
       );
 }
 
-class ConsultarClienteCobreFacilCall {
-  static Future<ApiCallResponse> call({
-    String? token = '',
-    String? userID = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'consultar Cliente CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/${userID}',
-      callType: ApiCallType.GET,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${token}',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  static dynamic userId(dynamic response) => getJsonField(
-        response,
-        r'''$.data.id''',
-      );
-}
-
-class AtualizarClienteCobreFacilCall {
-  static Future<ApiCallResponse> call({
-    String? token = '',
-    String? userID = '',
-    String? personalName = '',
-    String? email = '',
-  }) async {
-    final ffApiRequestBody = '''
-{
-  "personal_name": "${personalName}",
-  "email": "${email}",
-  "address": {
-    "description": "Endereço Principal"
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'Atualizar Cliente CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/${userID}',
-      callType: ApiCallType.PUT,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${token}',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  static dynamic userId(dynamic response) => getJsonField(
-        response,
-        r'''$.data.id''',
-      );
-}
-
 class CapturarCobrancaViaCartaoCobreFacilCall {
   static Future<ApiCallResponse> call({
     String? token = '',
@@ -596,45 +528,6 @@ class DetalhesCobrancaViaCartaoCobreFacilCall {
       );
 }
 
-class DeleterCobrancaViaCartaoCobreFacilCall {
-  static Future<ApiCallResponse> call({
-    String? token = '',
-    String? iDCobranca = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'deleter  Cobranca via Cartao CobreFacil ',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/invoices/${iDCobranca}',
-      callType: ApiCallType.DELETE,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${token}',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  static dynamic userId(dynamic response) => getJsonField(
-        response,
-        r'''$.data.id''',
-      );
-  static dynamic statusPag(dynamic response) => getJsonField(
-        response,
-        r'''$.data.status''',
-      );
-  static dynamic transacaoID(dynamic response) => getJsonField(
-        response,
-        r'''$.data''',
-      );
-  static dynamic faturaURL(dynamic response) => getJsonField(
-        response,
-        r'''$.data.url''',
-      );
-}
-
 class BuscarcepCall {
   static Future<ApiCallResponse> call({
     String? cep = '',
@@ -674,91 +567,116 @@ class BuscarcepCall {
       );
 }
 
-class DeletarClienteCobreFacilCall {
+class CriarPagamentosCartaoMPCall {
   static Future<ApiCallResponse> call({
-    String? iDCliente = '',
+    String? accessToken = '',
+    String? uuid4 = '',
+    int? transactionAmount,
     String? token = '',
+    int? installments,
+    String? firstName = '',
+    String? lastName = '',
+    String? email = '',
+    String? identificationType = '',
+    String? identificationNumber = '',
+    String? zipCode = '',
+    String? streetName = '',
+    String? streetNumber = '',
+    String? neighborhood = '',
+    String? federalUnit = '',
+    String? description = '',
   }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Deletar Cliente CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/customers/${iDCliente}',
-      callType: ApiCallType.DELETE,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${token}',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'CriarPagamentosCartaoMPCall',
+        'variables': {
+          'accessToken': accessToken,
+          'uuid4': uuid4,
+          'transactionAmount': transactionAmount,
+          'token': token,
+          'installments': installments,
+          'firstName': firstName,
+          'lastName': lastName,
+          'email': email,
+          'identificationType': identificationType,
+          'identificationNumber': identificationNumber,
+          'zipCode': zipCode,
+          'streetName': streetName,
+          'streetNumber': streetNumber,
+          'neighborhood': neighborhood,
+          'federalUnit': federalUnit,
+          'description': description,
+        },
       },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
+
+  static dynamic transacionID(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  static dynamic statusPag(dynamic response) => getJsonField(
+        response,
+        r'''$.status''',
+      );
+  static dynamic ultimos4Dig(dynamic response) => getJsonField(
+        response,
+        r'''$.card.last_four_digits''',
+      );
+  static dynamic methodPag(dynamic response) => getJsonField(
+        response,
+        r'''$.payment_method.type''',
+      );
+  static dynamic erroM(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
 }
 
-class ListaCobrancasCobreFacilCall {
+class ApiTokenMpCall {
   static Future<ApiCallResponse> call({
-    String? token = '',
+    String? cardNumber = '',
+    String? cardholderName = '',
+    String? cardExpirationMonth = '',
+    String? cardExpirationYear = '',
+    String? securityCode = '',
+    String? identificationType = '',
+    String? identificationNumber = '',
+    String? accessToken = '',
+    String? publicKey = '',
+    String? uuid4 = '',
   }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Lista Cobrancas CobreFacil',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/invoices',
-      callType: ApiCallType.GET,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${token}',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'ApiTokenMpCall',
+        'variables': {
+          'cardNumber': cardNumber,
+          'cardholderName': cardholderName,
+          'cardExpirationMonth': cardExpirationMonth,
+          'cardExpirationYear': cardExpirationYear,
+          'securityCode': securityCode,
+          'identificationType': identificationType,
+          'identificationNumber': identificationNumber,
+          'accessToken': accessToken,
+          'publicKey': publicKey,
+          'uuid4': uuid4,
+        },
       },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
-}
 
-class DeletarCartoesCobreFacilCall {
-  static Future<ApiCallResponse> call({
-    String? token = '',
-    String? cardID = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Deletar Cartoes CobreFacil ',
-      apiUrl: 'https://api.cobrefacil.com.br/v1/cards/${cardID}',
-      callType: ApiCallType.DELETE,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${token}',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
-class ListaCartoesCobreFacilCopyCall {
-  static Future<ApiCallResponse> call({
-    String? token = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Lista Cartoes CobreFacil  Copy',
-      apiUrl:
-          'https://api.cobrefacil.com.br/v1/cards?customer_id=8J53ROD2J5ND62PQ47WG',
-      callType: ApiCallType.GET,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${token}',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
+  static dynamic tokenCard(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  static dynamic ultimos4dig(dynamic response) => getJsonField(
+        response,
+        r'''$.last_four_digits''',
+      );
 }
 
 class ApiPagingParams {
