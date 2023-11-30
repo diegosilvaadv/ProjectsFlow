@@ -683,6 +683,38 @@ class ApiTokenMpCall {
       );
 }
 
+class StatusCartaoCall {
+  static Future<ApiCallResponse> call({
+    String? accessToken = '',
+    String? idPag = '',
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'StatusCartaoCall',
+        'variables': {
+          'accessToken': accessToken,
+          'idPag': idPag,
+        },
+      },
+    );
+    return ApiCallResponse.fromCloudCallResponse(response);
+  }
+
+  static dynamic tokenCard(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  static dynamic erroMToken(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
+  static dynamic statusPag(dynamic response) => getJsonField(
+        response,
+        r'''$.status''',
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

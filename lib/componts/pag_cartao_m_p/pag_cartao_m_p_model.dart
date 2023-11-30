@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'pag_cartao_m_p_widget.dart' show PagCartaoMPWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,6 +89,8 @@ class PagCartaoMPModel extends FlutterFlowModel<PagCartaoMPWidget> {
   ApiCallResponse? resultadoGerarToken;
   // Stores action output result for [Backend Call - API (Criar Pagamentos Cartao MP)] action in Button widget.
   ApiCallResponse? resultadoCartaoPag;
+  // Stores action output result for [Backend Call - API (Status Cartao)] action in Button widget.
+  ApiCallResponse? resultadoStatus;
 
   /// Initialization and disposal methods.
 

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -2189,6 +2190,9 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                       if ((_model
                                               .resultadoGerarToken?.succeeded ??
                                           true)) {
+                                        logFirebaseEvent('Button_wait__delay');
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 2000));
                                         logFirebaseEvent('Button_backend_call');
                                         _model.resultadoCartaoPag =
                                             await CriarPagamentosCartaoMPCall
@@ -2235,35 +2239,35 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                             true,
                                           )}',
                                         );
-                                        if (CriarPagamentosCartaoMPCall
-                                                .statusPag(
+                                        if ((_model.resultadoCartaoPag
+                                                ?.succeeded ??
+                                            true)) {
+                                          logFirebaseEvent(
+                                              'Button_wait__delay');
+                                          await Future.delayed(const Duration(
+                                              milliseconds: 3000));
+                                          logFirebaseEvent(
+                                              'Button_backend_call');
+                                          _model.resultadoStatus =
+                                              await StatusCartaoCall.call(
+                                            accessToken:
+                                                'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                            idPag: CriarPagamentosCartaoMPCall
+                                                .transacionID(
                                               (_model.resultadoCartaoPag
                                                       ?.jsonBody ??
                                                   ''),
-                                            ).toString() ==
-                                            'Approved') {
-                                          logFirebaseEvent(
-                                              'Button_bottom_sheet');
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return WebViewAware(
-                                                  child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: PagCardComSucessWidget(
-                                                  detalhesProdutos:
-                                                      widget.detalhesProdutos,
-                                                  cartaoFinal: ApiTokenMpCall
-                                                      .ultimos4dig(
-                                                    (_model.resultadoGerarToken
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
+                                            ).toString(),
+                                          );
+                                          if ((_model
+                                                  .resultadoStatus?.succeeded ??
+                                              true)) {
+                                            logFirebaseEvent(
+                                                'Button_backend_call');
+
+                                            await PagamentosRecord.collection
+                                                .doc()
+                                                .set(createPagamentosRecordData(
                                                   transacionID:
                                                       CriarPagamentosCartaoMPCall
                                                           .transacionID(
@@ -2271,11 +2275,113 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                                             ?.jsonBody ??
                                                         ''),
                                                   ).toString(),
+                                                ));
+                                            logFirebaseEvent(
+                                                'Button_show_snack_bar');
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  StatusCartaoCall.statusPag(
+                                                    (_model.resultadoStatus
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ).toString(),
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 40.0,
+                                                  ),
                                                 ),
-                                              ));
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
+                                            );
+                                            logFirebaseEvent(
+                                                'Button_wait__delay');
+                                            await Future.delayed(const Duration(
+                                                milliseconds: 5000));
+                                            logFirebaseEvent(
+                                                'Button_bottom_sheet');
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return WebViewAware(
+                                                    child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: PagCardComSucessWidget(
+                                                    detalhesProdutos:
+                                                        widget.detalhesProdutos,
+                                                    cartaoFinal: ApiTokenMpCall
+                                                        .ultimos4dig(
+                                                      (_model.resultadoGerarToken
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString(),
+                                                    transacionID:
+                                                        CriarPagamentosCartaoMPCall
+                                                            .transacionID(
+                                                      (_model.resultadoCartaoPag
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString(),
+                                                  ),
+                                                ));
+                                              },
+                                            ).then(
+                                                (value) => safeSetState(() {}));
+                                          } else {
+                                            logFirebaseEvent(
+                                                'Button_backend_call');
+
+                                            await PagamentosRecord.collection
+                                                .doc()
+                                                .set(createPagamentosRecordData(
+                                                  transacionID:
+                                                      CriarPagamentosCartaoMPCall
+                                                          .transacionID(
+                                                    (_model.resultadoCartaoPag
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ).toString(),
+                                                ));
+                                            logFirebaseEvent(
+                                                'Button_alert_dialog');
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                    child: AlertDialog(
+                                                  title:
+                                                      Text('Cartão Recusado!'),
+                                                  content: Text(StatusCartaoCall
+                                                      .statusPag(
+                                                    (_model.resultadoStatus
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ).toString()),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ));
+                                              },
+                                            );
+                                          }
                                         } else {
                                           logFirebaseEvent(
                                               'Button_alert_dialog');
