@@ -272,20 +272,22 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Text(
-                                                valueOrDefault<String>(
-                                                  widget.detalhesProjects
-                                                      ?.descricao,
-                                                  'descricao',
+                                              Expanded(
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    widget.detalhesProjects
+                                                        ?.descricao,
+                                                    'descricao',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Serif',
+                                                        fontSize: 20.0,
+                                                      ),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Serif',
-                                                          fontSize: 20.0,
-                                                        ),
                                               ),
                                             ],
                                           ),

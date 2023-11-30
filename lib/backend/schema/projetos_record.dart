@@ -91,6 +91,11 @@ class ProjetosRecord extends FirestoreRecord {
   String get emailVendedor => _emailVendedor ?? '';
   bool hasEmailVendedor() => _emailVendedor != null;
 
+  // "requisitos" field.
+  String? _requisitos;
+  String get requisitos => _requisitos ?? '';
+  bool hasRequisitos() => _requisitos != null;
+
   void _initializeFields() {
     _titulo = snapshotData['Titulo'] as String?;
     _descricao = snapshotData['Descricao'] as String?;
@@ -107,6 +112,7 @@ class ProjetosRecord extends FirestoreRecord {
     _identificacao = snapshotData['identificacao'] as String?;
     _userIDVendedor = snapshotData['userIDVendedor'] as String?;
     _emailVendedor = snapshotData['emailVendedor'] as String?;
+    _requisitos = snapshotData['requisitos'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -159,6 +165,7 @@ Map<String, dynamic> createProjetosRecordData({
   String? identificacao,
   String? userIDVendedor,
   String? emailVendedor,
+  String? requisitos,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -177,6 +184,7 @@ Map<String, dynamic> createProjetosRecordData({
       'identificacao': identificacao,
       'userIDVendedor': userIDVendedor,
       'emailVendedor': emailVendedor,
+      'requisitos': requisitos,
     }.withoutNulls,
   );
 
@@ -202,7 +210,8 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e1?.creatData == e2?.creatData &&
         e1?.identificacao == e2?.identificacao &&
         e1?.userIDVendedor == e2?.userIDVendedor &&
-        e1?.emailVendedor == e2?.emailVendedor;
+        e1?.emailVendedor == e2?.emailVendedor &&
+        e1?.requisitos == e2?.requisitos;
   }
 
   @override
@@ -221,7 +230,8 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e?.creatData,
         e?.identificacao,
         e?.userIDVendedor,
-        e?.emailVendedor
+        e?.emailVendedor,
+        e?.requisitos
       ]);
 
   @override

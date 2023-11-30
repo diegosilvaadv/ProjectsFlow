@@ -16,19 +16,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
   ///  State fields for stateful widgets in this component.
 
+  final formKey8 = GlobalKey<FormState>();
   final formKey7 = GlobalKey<FormState>();
-  final formKey6 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
-  final formKey5 = GlobalKey<FormState>();
-  final formKey3 = GlobalKey<FormState>();
   final formKey4 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey6 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -70,7 +72,23 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
     }
 
     if (val.length > 500) {
-      return 'Descrição com Máximo 500 caracteres';
+      return 'Descrição com Máximo de 500 caracteres';
+    }
+
+    return null;
+  }
+
+  // State field(s) for requisitos widget.
+  FocusNode? requisitosFocusNode;
+  TextEditingController? requisitosController;
+  String? Function(BuildContext, String?)? requisitosControllerValidator;
+  String? _requisitosControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Obrigatório';
+    }
+
+    if (val.length > 500) {
+      return 'Requisito com Máximo de 500 caracteres';
     }
 
     return null;
@@ -109,6 +127,7 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
   // State field(s) for precoprojeto widget.
   FocusNode? precoprojetoFocusNode;
   TextEditingController? precoprojetoController;
+  final precoprojetoMask = MaskTextInputFormatter(mask: 'R\$ ###');
   String? Function(BuildContext, String?)? precoprojetoControllerValidator;
   String? _precoprojetoControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
@@ -127,6 +146,7 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
   void initState(BuildContext context) {
     tituloControllerValidator = _tituloControllerValidator;
     descricaoControllerValidator = _descricaoControllerValidator;
+    requisitosControllerValidator = _requisitosControllerValidator;
     linkprojetoControllerValidator = _linkprojetoControllerValidator;
     linkVideoControllerValidator = _linkVideoControllerValidator;
     precoprojetoControllerValidator = _precoprojetoControllerValidator;
@@ -138,6 +158,9 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
 
     descricaoFocusNode?.dispose();
     descricaoController?.dispose();
+
+    requisitosFocusNode?.dispose();
+    requisitosController?.dispose();
 
     linkprojetoFocusNode?.dispose();
     linkprojetoController?.dispose();
