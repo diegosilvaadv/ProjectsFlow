@@ -55,31 +55,3 @@ String imgbase64(String codigobase64) {
   // exibir uma imagem decodificando um codigo com base64
   return 'data:image/png;base64,$codigobase64';
 }
-
-String criartime(String tempo) {
-  // crie uma contagem regressiva a partir do argumento "tempo"
-  DateTime now = DateTime.now();
-  DateTime targetTime = DateTime.parse(tempo);
-  Duration remainingTime = targetTime.difference(now);
-  int seconds = remainingTime.inSeconds;
-  int minutes = remainingTime.inMinutes;
-  int hours = remainingTime.inHours;
-  int days = remainingTime.inDays;
-
-  String countdown = '';
-
-  if (seconds > 0) {
-    countdown += '$seconds segundos ';
-  }
-  if (minutes > 0) {
-    countdown += '$minutes minutos ';
-  }
-  if (hours > 0) {
-    countdown += '$hours horas ';
-  }
-  if (days > 0) {
-    countdown += '$days dias ';
-  }
-
-  return countdown.trim();
-}

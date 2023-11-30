@@ -64,6 +64,7 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
             creatData: getCurrentTimestamp,
             imgPagante: currentUserPhoto,
             userIDVendedor: widget.detalhesProdutos?.userIDVendedor,
+            emailVendedor: widget.detalhesProdutos?.emailVendedor,
           ));
       logFirebaseEvent('pagComSucess_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
@@ -125,39 +126,14 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Lottie.asset(
-                        'assets/lottie_animations/Animation_-_1701201365942.json',
+                        'assets/lottie_animations/Animation_-_1701362267269.json',
                         width: 150.0,
                         height: 130.0,
                         fit: BoxFit.cover,
+                        repeat: false,
                         animate: true,
                       ),
                     ],
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 4.0, 16.0, 6.0),
-                            child: Text(
-                              '5',
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
                   Padding(
                     padding:
