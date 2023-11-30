@@ -662,7 +662,6 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
-                                                        labelText: 'João Silva',
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -673,6 +672,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                   fontSize:
                                                                       20.0,
                                                                 ),
+                                                        hintText: 'João Silva',
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -817,8 +817,6 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText:
-                                                              '000.000.000-00',
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -829,6 +827,8 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                     fontSize:
                                                                         20.0,
                                                                   ),
+                                                          hintText:
+                                                              '000.000.000-00',
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -979,8 +979,6 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText:
-                                                              '4111111111111111',
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -991,6 +989,8 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                     fontSize:
                                                                         20.0,
                                                                   ),
+                                                          hintText:
+                                                              '1234 5678 9876 5432',
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1101,7 +1101,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
-                                                                0.0, 0.0),
+                                                                0.0, 4.0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1148,7 +1148,8 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                   false,
                                                               decoration:
                                                                   InputDecoration(
-                                                                labelText: '12',
+                                                                labelText:
+                                                                    'mês',
                                                                 labelStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -1158,6 +1159,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                       fontSize:
                                                                           20.0,
                                                                     ),
+                                                                hintText: '12',
                                                                 hintStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -1282,7 +1284,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
-                                                                    '2023',
+                                                                    'ano',
                                                                 labelStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -1292,6 +1294,8 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                       fontSize:
                                                                           20.0,
                                                                     ),
+                                                                hintText:
+                                                                    '2023',
                                                                 hintStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -1416,7 +1420,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
-                                                                    '123',
+                                                                    'cvv',
                                                                 labelStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -1426,6 +1430,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                       fontSize:
                                                                           20.0,
                                                                     ),
+                                                                hintText: '123',
                                                                 hintStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -1599,6 +1604,8 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium,
+                                                                  hintText:
+                                                                      '01234-567',
                                                                   hintStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -1727,6 +1734,8 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium,
+                                                                  hintText:
+                                                                      '0123',
                                                                   hintStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -1818,6 +1827,10 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                     .numeroControllerValidator
                                                                     .asValidator(
                                                                         context),
+                                                                inputFormatters: [
+                                                                  _model
+                                                                      .numeroMask
+                                                                ],
                                                               ),
                                                             ),
                                                           ),
@@ -2016,11 +2029,11 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                   false,
                                                               decoration:
                                                                   InputDecoration(
-                                                                labelText:
-                                                                    '(11) 91234-5678',
                                                                 labelStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium,
+                                                                hintText:
+                                                                    '(11) 91234-5678',
                                                                 hintStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium

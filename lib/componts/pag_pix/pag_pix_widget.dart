@@ -457,6 +457,13 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                                     descricao: widget
                                                         .detalhesProduto
                                                         ?.descricao,
+                                                    valor: widget
+                                                        .detalhesProduto?.valor,
+                                                    linkProjeto: widget
+                                                        .detalhesProduto
+                                                        ?.linkProjeto,
+                                                    statusCompra: true,
+                                                    userID: currentUserUid,
                                                   ));
                                               logFirebaseEvent(
                                                   'Button_navigate_to');
