@@ -55,3 +55,15 @@ String imgbase64(String codigobase64) {
   // exibir uma imagem decodificando um codigo com base64
   return 'data:image/png;base64,$codigobase64';
 }
+
+double? calcularLista(List<double>? numeros) {
+  // calcaularlista do banco de dados
+  if (numeros == null || numeros.isEmpty) {
+    return null;
+  }
+  double soma = 0;
+  for (final numero in numeros) {
+    soma += numero;
+  }
+  return soma / numeros.length;
+}
