@@ -58,13 +58,13 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
             statusCompra: true,
             ultimos4dig: widget.cartaoFinal,
             transacionID: widget.transacionID,
-            userID: currentUserUid,
+            userID: widget.detalhesProdutos?.userIDVendedor,
             nomePagante: currentUserDisplayName,
             email: currentUserEmail,
             creatData: getCurrentTimestamp,
             imgPagante: currentUserPhoto,
-            userIDVendedor: widget.detalhesProdutos?.userIDVendedor,
             emailVendedor: widget.detalhesProdutos?.emailVendedor,
+            userIDPagante: currentUserUid,
           ));
       logFirebaseEvent('pagComSucess_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
