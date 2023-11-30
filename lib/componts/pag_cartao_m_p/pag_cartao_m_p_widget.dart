@@ -2196,10 +2196,8 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                           accessToken:
                                               'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
                                           uuid4: functions.gerarUUID4(),
-                                          transactionAmount: functions
-                                              .doubleToInteger(widget
-                                                  .detalhesProdutos!.valor)
-                                              .toDouble(),
+                                          transactionAmount:
+                                              widget.detalhesProdutos?.valor,
                                           token: ApiTokenMpCall.tokenCard(
                                             (_model.resultadoGerarToken
                                                     ?.jsonBody ??
@@ -2237,9 +2235,13 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                             true,
                                           )}',
                                         );
-                                        if ((_model.resultadoCartaoPag
-                                                ?.succeeded ??
-                                            true)) {
+                                        if (CriarPagamentosCartaoMPCall
+                                                .statusPag(
+                                              (_model.resultadoCartaoPag
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ).toString() ==
+                                            'Approved') {
                                           logFirebaseEvent(
                                               'Button_bottom_sheet');
                                           await showModalBottomSheet(

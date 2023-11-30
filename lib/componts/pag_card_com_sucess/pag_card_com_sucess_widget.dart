@@ -146,6 +146,13 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                                               widget.detalhesProdutos?.titulo,
                                           descricao: widget
                                               .detalhesProdutos?.descricao,
+                                          valor: widget.detalhesProdutos?.valor,
+                                          linkProjeto: widget
+                                              .detalhesProdutos?.linkProjeto,
+                                          statusCompra: true,
+                                          ultimos4dig: widget.cartaoFinal,
+                                          transacionID: widget.transacionID,
+                                          userID: currentUserUid,
                                         ));
                                     logFirebaseEvent(
                                         'Button-Login_wait__delay');
