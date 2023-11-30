@@ -251,7 +251,10 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                                 child: Image.network(
-                                                  _model.uploadedFileUrl1,
+                                                  valueOrDefault<String>(
+                                                    _model.uploadedFileUrl1,
+                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
+                                                  ),
                                                   width: 100.0,
                                                   height: 100.0,
                                                   fit: BoxFit.cover,
@@ -397,7 +400,10 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                                 child: Image.network(
-                                                  _model.uploadedFileUrl2,
+                                                  valueOrDefault<String>(
+                                                    _model.uploadedFileUrl2,
+                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
+                                                  ),
                                                   width: 100.0,
                                                   height: 100.0,
                                                   fit: BoxFit.cover,
@@ -543,7 +549,10 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                                 child: Image.network(
-                                                  _model.uploadedFileUrl3,
+                                                  valueOrDefault<String>(
+                                                    _model.uploadedFileUrl3,
+                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
+                                                  ),
                                                   width: 100.0,
                                                   height: 100.0,
                                                   fit: BoxFit.cover,
@@ -810,7 +819,6 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                         controller:
                                             _model.linkprojetoController,
                                         focusNode: _model.linkprojetoFocusNode,
-                                        autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Link do Projeto',
@@ -921,7 +929,6 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                       child: TextFormField(
                                         controller: _model.linkVideoController,
                                         focusNode: _model.linkVideoFocusNode,
-                                        autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText:
@@ -1196,6 +1203,34 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                   logFirebaseEvent(
                                       'ADICIONAR_PROJETO_CRIAR_PROJETO_BTN_ON_T');
                                   logFirebaseEvent('Button_validate_form');
+                                  if (_model.formKey7.currentState == null ||
+                                      !_model.formKey7.currentState!
+                                          .validate()) {
+                                    return;
+                                  }
+                                  if (_model.uploadedFileUrl1 == null ||
+                                      _model.uploadedFileUrl1.isEmpty) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                            child: AlertDialog(
+                                          title: Text('Imagem obrigatória'),
+                                          content: Text(
+                                              'Campo da imagem principal é obrigatória.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        ));
+                                      },
+                                    );
+                                    return;
+                                  }
+                                  logFirebaseEvent('Button_validate_form');
                                   if (_model.formKey6.currentState == null ||
                                       !_model.formKey6.currentState!
                                           .validate()) {
@@ -1223,6 +1258,34 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                   if (_model.formKey3.currentState == null ||
                                       !_model.formKey3.currentState!
                                           .validate()) {
+                                    return;
+                                  }
+                                  logFirebaseEvent('Button_validate_form');
+                                  if (_model.formKey4.currentState == null ||
+                                      !_model.formKey4.currentState!
+                                          .validate()) {
+                                    return;
+                                  }
+                                  if (_model.dropDownValue == null) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                            child: AlertDialog(
+                                          title:
+                                              Text('Categoria é Obrigatória'),
+                                          content:
+                                              Text('Selecione uma categoria.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        ));
+                                      },
+                                    );
                                     return;
                                   }
                                   logFirebaseEvent('Button_backend_call');
