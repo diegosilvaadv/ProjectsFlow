@@ -334,7 +334,8 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                           return Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              if (rowPagamentosRecord?.userID !=
+                                              if (rowPagamentosRecord
+                                                      ?.userIDPagante !=
                                                   currentUserUid)
                                                 FFButtonWidget(
                                                   onPressed: () async {
@@ -431,7 +432,8 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                             8.0),
                                                   ),
                                                 ),
-                                              if (rowPagamentosRecord?.userID ==
+                                              if (rowPagamentosRecord
+                                                      ?.userIDPagante ==
                                                   currentUserUid)
                                                 FFButtonWidget(
                                                   onPressed: () async {
