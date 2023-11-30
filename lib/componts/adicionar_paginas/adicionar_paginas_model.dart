@@ -9,29 +9,27 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import 'adicionar_projeto_widget.dart' show AdicionarProjetoWidget;
+import 'adicionar_paginas_widget.dart' show AdicionarPaginasWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
+class AdicionarPaginasModel extends FlutterFlowModel<AdicionarPaginasWidget> {
   ///  State fields for stateful widgets in this component.
 
-  final formKey8 = GlobalKey<FormState>();
-  final formKey7 = GlobalKey<FormState>();
-  final formKey2 = GlobalKey<FormState>();
-  final formKey4 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   final formKey6 = GlobalKey<FormState>();
-  final formKey3 = GlobalKey<FormState>();
   final formKey5 = GlobalKey<FormState>();
+  final formKey7 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -115,21 +113,6 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
     return null;
   }
 
-  // State field(s) for linkVideo widget.
-  FocusNode? linkVideoFocusNode;
-  TextEditingController? linkVideoController;
-  String? Function(BuildContext, String?)? linkVideoControllerValidator;
-  String? _linkVideoControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Obrigatório';
-    }
-
-    if (!RegExp(kTextValidatorWebsiteRegex).hasMatch(val)) {
-      return 'Link Inválido';
-    }
-    return null;
-  }
-
   // State field(s) for precoprojeto widget.
   FocusNode? precoprojetoFocusNode;
   TextEditingController? precoprojetoController;
@@ -154,7 +137,6 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
     descricaoControllerValidator = _descricaoControllerValidator;
     requisitosControllerValidator = _requisitosControllerValidator;
     linkprojetoControllerValidator = _linkprojetoControllerValidator;
-    linkVideoControllerValidator = _linkVideoControllerValidator;
     precoprojetoControllerValidator = _precoprojetoControllerValidator;
   }
 
@@ -170,9 +152,6 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
 
     linkprojetoFocusNode?.dispose();
     linkprojetoController?.dispose();
-
-    linkVideoFocusNode?.dispose();
-    linkVideoController?.dispose();
 
     precoprojetoFocusNode?.dispose();
     precoprojetoController?.dispose();

@@ -40,7 +40,7 @@ class _ProjetoCriadoWidgetState extends State<ProjetoCriadoWidget> {
       logFirebaseEvent('ProjetoCriado_navigate_to');
 
       context.goNamed(
-        'Projetos',
+        'visaoGeral',
         extra: <String, dynamic>{
           kTransitionInfoKey: TransitionInfo(
             hasTransition: true,
@@ -109,7 +109,7 @@ class _ProjetoCriadoWidgetState extends State<ProjetoCriadoWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 6.0),
                             child: Text(
-                              'Projeto Criado com Sucesso!',
+                              'Criado com Sucesso!',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
@@ -135,10 +135,12 @@ class _ProjetoCriadoWidgetState extends State<ProjetoCriadoWidget> {
                           onPressed: () async {
                             logFirebaseEvent(
                                 'PROJETO_CRIADO_COMP_OK_BTN_ON_TAP');
+                            logFirebaseEvent('Button_bottom_sheet');
+                            Navigator.pop(context);
                             logFirebaseEvent('Button_navigate_to');
 
                             context.goNamed(
-                              'Projetos',
+                              'visaoGeral',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,

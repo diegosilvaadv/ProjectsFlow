@@ -14,23 +14,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'adicionar_projeto_model.dart';
-export 'adicionar_projeto_model.dart';
+import 'adicionar_paginas_model.dart';
+export 'adicionar_paginas_model.dart';
 
-class AdicionarProjetoWidget extends StatefulWidget {
-  const AdicionarProjetoWidget({Key? key}) : super(key: key);
+class AdicionarPaginasWidget extends StatefulWidget {
+  const AdicionarPaginasWidget({Key? key}) : super(key: key);
 
   @override
-  _AdicionarProjetoWidgetState createState() => _AdicionarProjetoWidgetState();
+  _AdicionarPaginasWidgetState createState() => _AdicionarPaginasWidgetState();
 }
 
-class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
-  late AdicionarProjetoModel _model;
+class _AdicionarPaginasWidgetState extends State<AdicionarPaginasWidget> {
+  late AdicionarPaginasModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -41,7 +40,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdicionarProjetoModel());
+    _model = createModel(context, () => AdicionarPaginasModel());
 
     _model.tituloController ??= TextEditingController();
     _model.tituloFocusNode ??= FocusNode();
@@ -54,9 +53,6 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
 
     _model.linkprojetoController ??= TextEditingController();
     _model.linkprojetoFocusNode ??= FocusNode();
-
-    _model.linkVideoController ??= TextEditingController();
-    _model.linkVideoFocusNode ??= FocusNode();
 
     _model.precoprojetoController ??= TextEditingController();
     _model.precoprojetoFocusNode ??= FocusNode();
@@ -122,7 +118,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                 showLoadingIndicator: true,
                                 onPressed: () async {
                                   logFirebaseEvent(
-                                      'ADICIONAR_PROJETO_COMP_close_ICN_ON_TAP');
+                                      'ADICIONAR_PAGINAS_COMP_close_ICN_ON_TAP');
                                   logFirebaseEvent('IconButton_bottom_sheet');
                                   Navigator.pop(context);
                                 },
@@ -147,14 +143,15 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'ADICIONAR_PROJETO_Container_mb6opi33_ON_');
+                                          'ADICIONAR_PAGINAS_Container_7neq5ebz_ON_');
                                       logFirebaseEvent(
                                           'Container_upload_media_to_firebase');
-                                      final selectedMedia = await selectMedia(
+                                      final selectedMedia =
+                                          await selectMediaWithSourceBottomSheet(
+                                        context: context,
                                         maxWidth: 1000.00,
                                         maxHeight: 1000.00,
-                                        mediaSource: MediaSource.photoGallery,
-                                        multiImage: false,
+                                        allowPhoto: true,
                                       );
                                       if (selectedMedia != null &&
                                           selectedMedia.every((m) =>
@@ -228,7 +225,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Form(
-                                              key: _model.formKey8,
+                                              key: _model.formKey1,
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
                                               child: ClipRRect(
@@ -278,7 +275,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         logFirebaseEvent(
-                                            'ADICIONAR_PROJETO_Container_tukws614_ON_');
+                                            'ADICIONAR_PAGINAS_Container_lg1bf2nh_ON_');
                                         logFirebaseEvent(
                                             'Container_upload_media_to_firebase');
                                         final selectedMedia = await selectMedia(
@@ -408,7 +405,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         logFirebaseEvent(
-                                            'ADICIONAR_PROJETO_Container_01yt5ifv_ON_');
+                                            'ADICIONAR_PAGINAS_Container_jh6egrmk_ON_');
                                         logFirebaseEvent(
                                             'Container_upload_media_to_firebase');
                                         final selectedMedia = await selectMedia(
@@ -538,7 +535,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         logFirebaseEvent(
-                                            'ADICIONAR_PROJETO_Container_9y2l1xu0_ON_');
+                                            'ADICIONAR_PAGINAS_Container_39ihwb1p_ON_');
                                         logFirebaseEvent(
                                             'Container_upload_media_to_firebase');
                                         final selectedMedia = await selectMedia(
@@ -676,7 +673,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Form(
-                                  key: _model.formKey7,
+                                  key: _model.formKey4,
                                   autovalidateMode: AutovalidateMode.disabled,
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -894,7 +891,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Form(
-                                    key: _model.formKey4,
+                                    key: _model.formKey6,
                                     autovalidateMode: AutovalidateMode.disabled,
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -905,7 +902,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText:
-                                              'Requisitos para usar esse projeto',
+                                              'Requisitos para usar esse Página/s',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium
@@ -1010,7 +1007,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Form(
-                                    key: _model.formKey1,
+                                    key: _model.formKey5,
                                     autovalidateMode: AutovalidateMode.disabled,
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -1021,7 +1018,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                         focusNode: _model.linkprojetoFocusNode,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Link do Projeto',
+                                          labelText: 'Link da Página',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium
@@ -1105,122 +1102,6 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                               0.0, 20.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Material(
-                                color: Colors.transparent,
-                                elevation: 5.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.5,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Form(
-                                    key: _model.formKey6,
-                                    autovalidateMode: AutovalidateMode.disabled,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 8.0, 8.0, 8.0),
-                                      child: TextFormField(
-                                        controller: _model.linkVideoController,
-                                        focusNode: _model.linkVideoFocusNode,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText:
-                                              ' Link do Vídeo do Youtube',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 20.0,
-                                                  ),
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 20.0,
-                                                  ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryBackground,
-                                          prefixIcon: FaIcon(
-                                            FontAwesomeIcons.youtube,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 35.0,
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 20.0,
-                                            ),
-                                        validator: _model
-                                            .linkVideoControllerValidator
-                                            .asValidator(context),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Material(
@@ -1237,100 +1118,120 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                         .primaryBackground,
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  child: Form(
-                                    key: _model.formKey3,
-                                    autovalidateMode: AutovalidateMode.disabled,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 8.0, 8.0, 8.0),
-                                      child: TextFormField(
-                                        controller:
-                                            _model.precoprojetoController,
-                                        focusNode: _model.precoprojetoFocusNode,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'Preço do Projeto',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 20.0,
-                                                  ),
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 20.0,
-                                                  ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Para deixar de graça coloque 0',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ),
+                                      Form(
+                                        key: _model.formKey7,
+                                        autovalidateMode:
+                                            AutovalidateMode.disabled,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8.0, 8.0, 8.0, 8.0),
+                                          child: TextFormField(
+                                            controller:
+                                                _model.precoprojetoController,
+                                            focusNode:
+                                                _model.precoprojetoFocusNode,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText: 'Preço da Página',
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 20.0,
+                                                      ),
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 20.0,
+                                                      ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              filled: true,
+                                              fillColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBackground,
-                                              width: 2.0,
+                                              prefixIcon: Icon(
+                                                Icons.attach_money,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 35.0,
+                                              ),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryBackground,
-                                          prefixIcon: Icon(
-                                            Icons.attach_money,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 35.0,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 20.0,
+                                                ),
+                                            keyboardType: TextInputType.number,
+                                            validator: _model
+                                                .precoprojetoControllerValidator
+                                                .asValidator(context),
+                                            inputFormatters: [
+                                              _model.precoprojetoMask
+                                            ],
                                           ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 20.0,
-                                            ),
-                                        keyboardType: TextInputType.number,
-                                        validator: _model
-                                            .precoprojetoControllerValidator
-                                            .asValidator(context),
-                                        inputFormatters: [
-                                          _model.precoprojetoMask
-                                        ],
                                       ),
-                                    ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -1359,7 +1260,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                         0.08,
                                     decoration: BoxDecoration(),
                                     child: Form(
-                                      key: _model.formKey5,
+                                      key: _model.formKey3,
                                       autovalidateMode:
                                           AutovalidateMode.disabled,
                                       child: Padding(
@@ -1426,22 +1327,10 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                 builder: (context) => FFButtonWidget(
                                   onPressed: () async {
                                     logFirebaseEvent(
-                                        'ADICIONAR_PROJETO_CRIAR_PROJETO_BTN_ON_T');
+                                        'ADICIONAR_PAGINAS_CRIAR_PÁGINA_BTN_ON_TA');
                                     logFirebaseEvent('Button_validate_form');
-                                    if (_model.formKey8.currentState == null ||
-                                        !_model.formKey8.currentState!
-                                            .validate()) {
-                                      return;
-                                    }
-                                    logFirebaseEvent('Button_validate_form');
-                                    if (_model.formKey7.currentState == null ||
-                                        !_model.formKey7.currentState!
-                                            .validate()) {
-                                      return;
-                                    }
-                                    logFirebaseEvent('Button_validate_form');
-                                    if (_model.formKey2.currentState == null ||
-                                        !_model.formKey2.currentState!
+                                    if (_model.formKey1.currentState == null ||
+                                        !_model.formKey1.currentState!
                                             .validate()) {
                                       return;
                                     }
@@ -1452,8 +1341,8 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                       return;
                                     }
                                     logFirebaseEvent('Button_validate_form');
-                                    if (_model.formKey1.currentState == null ||
-                                        !_model.formKey1.currentState!
+                                    if (_model.formKey2.currentState == null ||
+                                        !_model.formKey2.currentState!
                                             .validate()) {
                                       return;
                                     }
@@ -1464,14 +1353,20 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                       return;
                                     }
                                     logFirebaseEvent('Button_validate_form');
-                                    if (_model.formKey3.currentState == null ||
-                                        !_model.formKey3.currentState!
+                                    if (_model.formKey5.currentState == null ||
+                                        !_model.formKey5.currentState!
                                             .validate()) {
                                       return;
                                     }
                                     logFirebaseEvent('Button_validate_form');
-                                    if (_model.formKey5.currentState == null ||
-                                        !_model.formKey5.currentState!
+                                    if (_model.formKey7.currentState == null ||
+                                        !_model.formKey7.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
+                                    logFirebaseEvent('Button_validate_form');
+                                    if (_model.formKey3.currentState == null ||
+                                        !_model.formKey3.currentState!
                                             .validate()) {
                                       return;
                                     }
@@ -1499,9 +1394,9 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                     }
                                     logFirebaseEvent('Button_backend_call');
 
-                                    await ProjetosRecord.collection
+                                    await PaginasRecord.collection
                                         .doc()
-                                        .set(createProjetosRecordData(
+                                        .set(createPaginasRecordData(
                                           titulo: _model.tituloController.text,
                                           descricao:
                                               _model.descricaoController.text,
@@ -1514,8 +1409,6 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                           iMGPrincipal: _model.uploadedFileUrl1,
                                           img1: _model.uploadedFileUrl2,
                                           img2: _model.uploadedFileUrl3,
-                                          video:
-                                              _model.linkVideoController.text,
                                           creatData: getCurrentTimestamp,
                                           identificacao: 'all',
                                           userIDVendedor: currentUserUid,
@@ -1545,7 +1438,7 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                       },
                                     ).then((value) => setState(() {}));
                                   },
-                                  text: 'Criar Projeto',
+                                  text: 'Criar Página',
                                   options: FFButtonOptions(
                                     height: 59.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(

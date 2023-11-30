@@ -865,7 +865,7 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                                 width: 200.0,
                                                                 height: 200.0,
                                                                 fit: BoxFit
-                                                                    .cover,
+                                                                    .contain,
                                                               ),
                                                             ),
                                                           ),

@@ -573,7 +573,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                   widget
                                                       .detalhesProjects!.valor,
                                                   formatType: FormatType.custom,
-                                                  currency: 'R\$',
+                                                  currency: 'R\$ ',
                                                   format: '0.00',
                                                   locale: 'pt_BR',
                                                 ),
@@ -597,42 +597,6 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                     GradientDirection.ltr,
                                                 gradientType:
                                                     GradientType.linear,
-                                              ),
-                                            ),
-                                            FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
-                                              },
-                                              text: 'Testar Projeto',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                textStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
                                               ),
                                             ),
                                           ],
@@ -918,14 +882,20 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                                     10.0,
                                                                     10.0),
                                                         child: Text(
-                                                          'Requisitos para o bom funcionamento do projeto.\n\n*Banco de dados: Firebase\n*Plano blaze ativado...',
+                                                          valueOrDefault<
+                                                              String>(
+                                                            widget
+                                                                .detalhesProjects
+                                                                ?.requisitos,
+                                                            'requisitos',
+                                                          ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                fontSize: 32.0,
+                                                                fontSize: 25.0,
                                                               ),
                                                         ),
                                                       ),
