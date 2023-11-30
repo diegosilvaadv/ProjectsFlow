@@ -719,8 +719,7 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                         queryBuilder: (pagamentosRecord) =>
                             pagamentosRecord.where(
                           'userID',
-                          isEqualTo:
-                              currentUserUid != '' ? currentUserUid : null,
+                          isEqualTo: currentUserUid,
                         ),
                       ),
                       builder: (context, snapshot) {
@@ -1082,7 +1081,9 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                                           4.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    '2,208',
+                                                                    maxWidthPagamentosRecordList
+                                                                        .length
+                                                                        .toString(),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .displaySmall,
