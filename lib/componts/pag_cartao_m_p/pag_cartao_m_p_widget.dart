@@ -2309,8 +2309,12 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                             return WebViewAware(
                                                 child: AlertDialog(
                                               title: Text('Erro no pagamento!'),
-                                              content:
-                                                  Text('sem mensagem de erro.'),
+                                              content: Text(
+                                                  ApiTokenMpCall.erroMToken(
+                                                (_model.resultadoGerarToken
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ).toString()),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
