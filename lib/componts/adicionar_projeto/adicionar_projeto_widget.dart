@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,7 +16,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'adicionar_projeto_model.dart';
@@ -233,66 +231,17 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                               key: _model.formKey8,
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'ADICIONAR_PROJETO_Image_gaxwh23u_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Image_expand_image');
-                                                  await Navigator.push(
-                                                    context,
-                                                    PageTransition(
-                                                      type: PageTransitionType
-                                                          .fade,
-                                                      child:
-                                                          FlutterFlowExpandedImageView(
-                                                        image: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            _model
-                                                                .uploadedFileUrl1,
-                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                          ),
-                                                          fit: BoxFit.contain,
-                                                        ),
-                                                        allowRotation: false,
-                                                        tag: valueOrDefault<
-                                                            String>(
-                                                          _model
-                                                              .uploadedFileUrl1,
-                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                        ),
-                                                        useHeroAnimation: true,
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Hero(
-                                                  tag: valueOrDefault<String>(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
                                                     _model.uploadedFileUrl1,
                                                     'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
                                                   ),
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    child: Image.network(
-                                                      valueOrDefault<String>(
-                                                        _model.uploadedFileUrl1,
-                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                      ),
-                                                      width: 100.0,
-                                                      height: 100.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
@@ -412,66 +361,17 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'ADICIONAR_PROJETO_Image_65ivbplx_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Image_expand_image');
-                                                  await Navigator.push(
-                                                    context,
-                                                    PageTransition(
-                                                      type: PageTransitionType
-                                                          .fade,
-                                                      child:
-                                                          FlutterFlowExpandedImageView(
-                                                        image: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            _model
-                                                                .uploadedFileUrl2,
-                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                          ),
-                                                          fit: BoxFit.contain,
-                                                        ),
-                                                        allowRotation: false,
-                                                        tag: valueOrDefault<
-                                                            String>(
-                                                          _model
-                                                              .uploadedFileUrl2,
-                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                        ),
-                                                        useHeroAnimation: true,
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Hero(
-                                                  tag: valueOrDefault<String>(
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
                                                     _model.uploadedFileUrl2,
                                                     'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
                                                   ),
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    child: Image.network(
-                                                      valueOrDefault<String>(
-                                                        _model.uploadedFileUrl2,
-                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                      ),
-                                                      width: 100.0,
-                                                      height: 100.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ],
@@ -591,66 +491,17 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'ADICIONAR_PROJETO_Image_s57ra9kl_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Image_expand_image');
-                                                  await Navigator.push(
-                                                    context,
-                                                    PageTransition(
-                                                      type: PageTransitionType
-                                                          .fade,
-                                                      child:
-                                                          FlutterFlowExpandedImageView(
-                                                        image: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            _model
-                                                                .uploadedFileUrl3,
-                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                          ),
-                                                          fit: BoxFit.contain,
-                                                        ),
-                                                        allowRotation: false,
-                                                        tag: valueOrDefault<
-                                                            String>(
-                                                          _model
-                                                              .uploadedFileUrl3,
-                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                        ),
-                                                        useHeroAnimation: true,
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Hero(
-                                                  tag: valueOrDefault<String>(
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
                                                     _model.uploadedFileUrl3,
                                                     'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
                                                   ),
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    child: Image.network(
-                                                      valueOrDefault<String>(
-                                                        _model.uploadedFileUrl3,
-                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                      ),
-                                                      width: 100.0,
-                                                      height: 100.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ],
@@ -770,66 +621,17 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'ADICIONAR_PROJETO_Image_sjyotv9p_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Image_expand_image');
-                                                  await Navigator.push(
-                                                    context,
-                                                    PageTransition(
-                                                      type: PageTransitionType
-                                                          .fade,
-                                                      child:
-                                                          FlutterFlowExpandedImageView(
-                                                        image: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            _model
-                                                                .uploadedFileUrl4,
-                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                          ),
-                                                          fit: BoxFit.contain,
-                                                        ),
-                                                        allowRotation: false,
-                                                        tag: valueOrDefault<
-                                                            String>(
-                                                          _model
-                                                              .uploadedFileUrl4,
-                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                        ),
-                                                        useHeroAnimation: true,
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Hero(
-                                                  tag: valueOrDefault<String>(
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
                                                     _model.uploadedFileUrl4,
                                                     'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
                                                   ),
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    child: Image.network(
-                                                      valueOrDefault<String>(
-                                                        _model.uploadedFileUrl4,
-                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                      ),
-                                                      width: 100.0,
-                                                      height: 100.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ],
