@@ -363,7 +363,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 width: 50.0,
                                                                 height: 50.0,
                                                                 child:
-                                                                    SpinKitPulse(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryText,
@@ -819,7 +819,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 width: 50.0,
                                                                 height: 50.0,
                                                                 child:
-                                                                    SpinKitPulse(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryText,
@@ -1235,7 +1235,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 width: 50.0,
                                                                 height: 50.0,
                                                                 child:
-                                                                    SpinKitPulse(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryText,
@@ -1653,7 +1653,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 width: 50.0,
                                                                 height: 50.0,
                                                                 child:
-                                                                    SpinKitPulse(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryText,

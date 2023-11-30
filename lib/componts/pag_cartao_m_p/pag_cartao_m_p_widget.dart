@@ -107,7 +107,7 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: SpinKitPulse(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).secondaryText,
                   size: 50.0,
                 ),
@@ -344,7 +344,8 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                                           child: SizedBox(
                                                             width: 50.0,
                                                             height: 50.0,
-                                                            child: SpinKitPulse(
+                                                            child:
+                                                                SpinKitRipple(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryText,

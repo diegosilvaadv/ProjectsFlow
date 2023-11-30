@@ -56,15 +56,13 @@ class _CriarcontaWidgetState extends State<CriarcontaWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: MediaQuery.sizeOf(context).width * 0.5,
-                height: MediaQuery.sizeOf(context).height * 0.456,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                   borderRadius: BorderRadius.circular(16.0),
                 ),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                      EdgeInsetsDirectional.fromSTEB(50.0, 50.0, 50.0, 50.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,

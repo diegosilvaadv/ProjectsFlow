@@ -242,7 +242,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                 child: SizedBox(
                                                   width: 50.0,
                                                   height: 50.0,
-                                                  child: SpinKitPulse(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryText,

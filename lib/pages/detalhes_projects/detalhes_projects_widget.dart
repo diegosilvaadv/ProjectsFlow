@@ -314,7 +314,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                               child: SizedBox(
                                                 width: 50.0,
                                                 height: 50.0,
-                                                child: SpinKitPulse(
+                                                child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
