@@ -5,16 +5,17 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'pag_card_com_sucess_model.dart';
-export 'pag_card_com_sucess_model.dart';
+import 'pag_com_sucess_model.dart';
+export 'pag_com_sucess_model.dart';
 
-class PagCardComSucessWidget extends StatefulWidget {
-  const PagCardComSucessWidget({
+class PagComSucessWidget extends StatefulWidget {
+  const PagComSucessWidget({
     Key? key,
     this.detalhesProdutos,
     required this.cartaoFinal,
@@ -26,11 +27,11 @@ class PagCardComSucessWidget extends StatefulWidget {
   final String? transacionID;
 
   @override
-  _PagCardComSucessWidgetState createState() => _PagCardComSucessWidgetState();
+  _PagComSucessWidgetState createState() => _PagComSucessWidgetState();
 }
 
-class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
-  late PagCardComSucessModel _model;
+class _PagComSucessWidgetState extends State<PagComSucessWidget> {
+  late PagComSucessModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -41,7 +42,49 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PagCardComSucessModel());
+    _model = createModel(context, () => PagComSucessModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PAG_COM_SUCESS_pagComSucess_ON_INIT_STAT');
+      logFirebaseEvent('pagComSucess_wait__delay');
+      await Future.delayed(const Duration(milliseconds: 5000));
+      logFirebaseEvent('pagComSucess_backend_call');
+
+      await PagamentosRecord.collection.doc().set(createPagamentosRecordData(
+            produto: widget.detalhesProdutos?.titulo,
+            descricao: widget.detalhesProdutos?.descricao,
+            valor: widget.detalhesProdutos?.valor,
+            linkProjeto: widget.detalhesProdutos?.linkProjeto,
+            statusCompra: true,
+            ultimos4dig: widget.cartaoFinal,
+            transacionID: widget.transacionID,
+            userID: currentUserUid,
+            nomePagante: currentUserDisplayName,
+            email: currentUserEmail,
+            creatData: getCurrentTimestamp,
+            imgPagante: currentUserPhoto,
+            userIDVendedor: widget.detalhesProdutos?.userIDVendedor,
+          ));
+      logFirebaseEvent('pagComSucess_navigate_to');
+
+      context.goNamed(
+        'detalhesProjects',
+        queryParameters: {
+          'detalhesProjects': serializeParam(
+            widget.detalhesProdutos,
+            ParamType.Document,
+          ),
+        }.withoutNulls,
+        extra: <String, dynamic>{
+          'detalhesProjects': widget.detalhesProdutos,
+          kTransitionInfoKey: TransitionInfo(
+            hasTransition: true,
+            transitionType: PageTransitionType.fade,
+          ),
+        },
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -135,7 +178,7 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     logFirebaseEvent(
-                                        'PAG_CARD_COM_SUCESS_Button-Login_ON_TAP');
+                                        'PAG_COM_SUCESS_COMP_Button-Login_ON_TAP');
                                     logFirebaseEvent(
                                         'Button-Login_backend_call');
 

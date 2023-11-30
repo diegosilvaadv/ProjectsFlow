@@ -46,11 +46,6 @@ class ProjetosRecord extends FirestoreRecord {
   String get postadoPor => _postadoPor ?? '';
   bool hasPostadoPor() => _postadoPor != null;
 
-  // "UserID" field.
-  DocumentReference? _userID;
-  DocumentReference? get userID => _userID;
-  bool hasUserID() => _userID != null;
-
   // "IMGPrincipal" field.
   String? _iMGPrincipal;
   String get iMGPrincipal => _iMGPrincipal ?? '';
@@ -86,6 +81,11 @@ class ProjetosRecord extends FirestoreRecord {
   String get identificacao => _identificacao ?? '';
   bool hasIdentificacao() => _identificacao != null;
 
+  // "userIDVendedor" field.
+  String? _userIDVendedor;
+  String get userIDVendedor => _userIDVendedor ?? '';
+  bool hasUserIDVendedor() => _userIDVendedor != null;
+
   void _initializeFields() {
     _titulo = snapshotData['Titulo'] as String?;
     _descricao = snapshotData['Descricao'] as String?;
@@ -93,7 +93,6 @@ class ProjetosRecord extends FirestoreRecord {
     _categoria = snapshotData['Categoria'] as String?;
     _linkProjeto = snapshotData['LinkProjeto'] as String?;
     _postadoPor = snapshotData['PostadoPor'] as String?;
-    _userID = snapshotData['UserID'] as DocumentReference?;
     _iMGPrincipal = snapshotData['IMGPrincipal'] as String?;
     _img1 = snapshotData['IMG1'] as String?;
     _img2 = snapshotData['IMG2'] as String?;
@@ -101,6 +100,7 @@ class ProjetosRecord extends FirestoreRecord {
     _video = snapshotData['Video'] as String?;
     _creatData = snapshotData['creatData'] as DateTime?;
     _identificacao = snapshotData['identificacao'] as String?;
+    _userIDVendedor = snapshotData['userIDVendedor'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -144,7 +144,6 @@ Map<String, dynamic> createProjetosRecordData({
   String? categoria,
   String? linkProjeto,
   String? postadoPor,
-  DocumentReference? userID,
   String? iMGPrincipal,
   String? img1,
   String? img2,
@@ -152,6 +151,7 @@ Map<String, dynamic> createProjetosRecordData({
   String? video,
   DateTime? creatData,
   String? identificacao,
+  String? userIDVendedor,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -161,7 +161,6 @@ Map<String, dynamic> createProjetosRecordData({
       'Categoria': categoria,
       'LinkProjeto': linkProjeto,
       'PostadoPor': postadoPor,
-      'UserID': userID,
       'IMGPrincipal': iMGPrincipal,
       'IMG1': img1,
       'IMG2': img2,
@@ -169,6 +168,7 @@ Map<String, dynamic> createProjetosRecordData({
       'Video': video,
       'creatData': creatData,
       'identificacao': identificacao,
+      'userIDVendedor': userIDVendedor,
     }.withoutNulls,
   );
 
@@ -186,14 +186,14 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e1?.categoria == e2?.categoria &&
         e1?.linkProjeto == e2?.linkProjeto &&
         e1?.postadoPor == e2?.postadoPor &&
-        e1?.userID == e2?.userID &&
         e1?.iMGPrincipal == e2?.iMGPrincipal &&
         e1?.img1 == e2?.img1 &&
         e1?.img2 == e2?.img2 &&
         e1?.img3 == e2?.img3 &&
         e1?.video == e2?.video &&
         e1?.creatData == e2?.creatData &&
-        e1?.identificacao == e2?.identificacao;
+        e1?.identificacao == e2?.identificacao &&
+        e1?.userIDVendedor == e2?.userIDVendedor;
   }
 
   @override
@@ -204,14 +204,14 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e?.categoria,
         e?.linkProjeto,
         e?.postadoPor,
-        e?.userID,
         e?.iMGPrincipal,
         e?.img1,
         e?.img2,
         e?.img3,
         e?.video,
         e?.creatData,
-        e?.identificacao
+        e?.identificacao,
+        e?.userIDVendedor
       ]);
 
   @override

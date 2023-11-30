@@ -76,6 +76,11 @@ class PagamentosRecord extends FirestoreRecord {
   String get imgPagante => _imgPagante ?? '';
   bool hasImgPagante() => _imgPagante != null;
 
+  // "userIDVendedor" field.
+  String? _userIDVendedor;
+  String get userIDVendedor => _userIDVendedor ?? '';
+  bool hasUserIDVendedor() => _userIDVendedor != null;
+
   void _initializeFields() {
     _produto = snapshotData['produto'] as String?;
     _descricao = snapshotData['descricao'] as String?;
@@ -89,6 +94,7 @@ class PagamentosRecord extends FirestoreRecord {
     _email = snapshotData['email'] as String?;
     _creatData = snapshotData['creatData'] as DateTime?;
     _imgPagante = snapshotData['imgPagante'] as String?;
+    _userIDVendedor = snapshotData['userIDVendedor'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -138,6 +144,7 @@ Map<String, dynamic> createPagamentosRecordData({
   String? email,
   DateTime? creatData,
   String? imgPagante,
+  String? userIDVendedor,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -153,6 +160,7 @@ Map<String, dynamic> createPagamentosRecordData({
       'email': email,
       'creatData': creatData,
       'imgPagante': imgPagante,
+      'userIDVendedor': userIDVendedor,
     }.withoutNulls,
   );
 
@@ -175,7 +183,8 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e1?.nomePagante == e2?.nomePagante &&
         e1?.email == e2?.email &&
         e1?.creatData == e2?.creatData &&
-        e1?.imgPagante == e2?.imgPagante;
+        e1?.imgPagante == e2?.imgPagante &&
+        e1?.userIDVendedor == e2?.userIDVendedor;
   }
 
   @override
@@ -191,7 +200,8 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e?.nomePagante,
         e?.email,
         e?.creatData,
-        e?.imgPagante
+        e?.imgPagante,
+        e?.userIDVendedor
       ]);
 
   @override

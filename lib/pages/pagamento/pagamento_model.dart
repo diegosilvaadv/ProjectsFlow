@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/componts/pag_cartao_m_p/pag_cartao_m_p_widget.dart';
+import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/componts/pag_pix/pag_pix_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

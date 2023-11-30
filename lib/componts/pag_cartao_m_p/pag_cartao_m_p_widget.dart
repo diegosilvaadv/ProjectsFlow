@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/componts/pag_card_com_sucess/pag_card_com_sucess_widget.dart';
+import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -2294,8 +2294,7 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child:
-                                                        PagCardComSucessWidget(
+                                                    child: PagComSucessWidget(
                                                       detalhesProdutos: widget
                                                           .detalhesProdutos,
                                                       cartaoFinal:
