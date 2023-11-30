@@ -130,14 +130,14 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
                         width: 150.0,
                         height: 130.0,
                         fit: BoxFit.cover,
-                        repeat: false,
+                        reverse: true,
                         animate: true,
                       ),
                     ],
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 70.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -148,6 +148,7 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
                                 16.0, 4.0, 16.0, 6.0),
                             child: Text(
                               'Pagamento Realizado com sucesso! ',
+                              textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
