@@ -302,7 +302,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                         ?.linkProjeto,
                                                   )
                                                   .where(
-                                                    'userID',
+                                                    'userIDPagante',
                                                     isEqualTo: currentUserUid,
                                                   ),
                                           singleRecord: true,
