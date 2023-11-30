@@ -127,7 +127,7 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
   // State field(s) for precoprojeto widget.
   FocusNode? precoprojetoFocusNode;
   TextEditingController? precoprojetoController;
-  final precoprojetoMask = MaskTextInputFormatter(mask: 'R\$ ##\'#\',##');
+  final precoprojetoMask = MaskTextInputFormatter(mask: 'R\$ ####');
   String? Function(BuildContext, String?)? precoprojetoControllerValidator;
   String? _precoprojetoControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
