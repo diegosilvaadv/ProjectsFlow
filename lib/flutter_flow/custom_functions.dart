@@ -50,3 +50,8 @@ String removercaract(String nome) {
   // remova as caracteres especiais e espaços da string e retorne um argumento somente com os numeros
   return nome.replaceAll(RegExp(r'[^\d]+'), '');
 }
+
+String imgbase64(String codigobase64) {
+  // exibir uma imagem decodificando um codigo com base64
+  return 'data:image/png;base64,$codigobase64';
+}
