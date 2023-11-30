@@ -2166,8 +2166,8 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                       logFirebaseEvent('Button_backend_call');
                                       _model.resultadoGerarToken =
                                           await ApiTokenMpCall.call(
-                                        cardNumber:
-                                            _model.numberCartaoController.text,
+                                        cardNumber: functions.removercaract(
+                                            _model.numberCartaoController.text),
                                         cardholderName:
                                             _model.nomeController.text,
                                         cardExpirationMonth:
@@ -2178,7 +2178,8 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                             _model.cvvCardController.text,
                                         identificationType: 'CPF',
                                         identificationNumber:
-                                            _model.cpfController.text,
+                                            functions.removercaract(
+                                                _model.cpfController.text),
                                         accessToken:
                                             'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
                                         publicKey:
@@ -2206,12 +2207,13 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                           ).toString(),
                                           installments: 1,
                                           firstName: _model.nomeController.text,
-                                          lastName: 'Silva',
                                           email: currentUserEmail,
                                           identificationType: 'CPF',
                                           identificationNumber:
-                                              _model.cpfController.text,
-                                          zipCode: _model.cepController.text,
+                                              functions.removercaract(
+                                                  _model.cpfController.text),
+                                          zipCode: functions.removercaract(
+                                              _model.cepController.text),
                                           streetName: BuscarcepCall.endereco(
                                             (_model.resultadoCEP?.jsonBody ??
                                                 ''),
@@ -2308,7 +2310,8 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                                 child: AlertDialog(
-                                              title: Text('Erro no pagamento!'),
+                                              title: Text(
+                                                  'Erro ao validar cartão!'),
                                               content: Text(
                                                   ApiTokenMpCall.erroMToken(
                                                 (_model.resultadoGerarToken
