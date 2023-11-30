@@ -96,8 +96,8 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
       child: StreamBuilder<List<UserPagRecord>>(
         stream: queryUserPagRecord(
           queryBuilder: (userPagRecord) => userPagRecord.where(
-            'Userid',
-            isEqualTo: currentUserReference,
+            'userID',
+            isEqualTo: currentUserUid,
           ),
           singleRecord: true,
         ),
@@ -196,8 +196,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                               ),
                             ],
                           ),
-                          if (columnUserPagRecord?.userid ==
-                              currentUserReference)
+                          if (columnUserPagRecord?.userID == currentUserUid)
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
@@ -333,9 +332,9 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                           (userPagRecord) =>
                                                               userPagRecord
                                                                   .where(
-                                                        'Userid',
+                                                        'userID',
                                                         isEqualTo:
-                                                            currentUserReference,
+                                                            currentUserUid,
                                                       ),
                                                     ),
                                                     builder:
@@ -442,8 +441,12 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                                           child:
                                                                               FFButtonWidget(
                                                                             onPressed:
-                                                                                () {
-                                                                              print('Button pressed ...');
+                                                                                () async {
+                                                                              logFirebaseEvent('PAG_CARTAO_COMP_SELECIONAR_BTN_ON_TAP');
+                                                                              logFirebaseEvent('Button_update_app_state');
+                                                                              setState(() {
+                                                                                FFAppState().UsarCartaoSalvo = listViewUserPagRecord.idCartao;
+                                                                              });
                                                                             },
                                                                             text:
                                                                                 'Selecionar',
@@ -2266,8 +2269,6 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                     userIDCobreFacil:
                                                         columnUserPagRecord
                                                             ?.userIDCobreFacil,
-                                                    userid: columnUserPagRecord
-                                                        ?.userid,
                                                     idCartao:
                                                         CriarCartaoCobreFacilCall
                                                             .customerID(
@@ -2286,6 +2287,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                     ).toString(),
                                                     creatData:
                                                         getCurrentTimestamp,
+                                                    userID: currentUserUid,
                                                   ));
                                               logFirebaseEvent(
                                                   'Button_wait__delay');
@@ -2559,8 +2561,6 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                     userIDCobreFacil:
                                                         columnUserPagRecord
                                                             ?.userIDCobreFacil,
-                                                    userid: columnUserPagRecord
-                                                        ?.userid,
                                                     idCartao:
                                                         CriarCartaoCobreFacilCall
                                                             .customerID(
@@ -2579,6 +2579,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                     ).toString(),
                                                     creatData:
                                                         getCurrentTimestamp,
+                                                    userID: currentUserUid,
                                                   ));
                                               logFirebaseEvent(
                                                   'Button_wait__delay');
