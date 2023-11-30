@@ -529,11 +529,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                 'Button_backend_call');
                                             _model.gerarPedido =
                                                 await PixMercadoPagoCall.call(
-                                              amount: widget
-                                                  .detalhesProdutos?.valor,
-                                              productTitle: widget
-                                                  .detalhesProdutos?.titulo,
-                                              email: currentUserUid,
+                                              email: currentUserEmail,
                                               chave: random_data.randomString(
                                                 10,
                                                 13,
@@ -543,6 +539,16 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                               ),
                                               token:
                                                   'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                              amount: widget
+                                                  .detalhesProdutos?.valor,
+                                              productTitle:
+                                                  '${widget.detalhesProdutos?.titulo}${random_data.randomString(
+                                                10,
+                                                12,
+                                                true,
+                                                false,
+                                                true,
+                                              )}',
                                             );
                                             if ((_model
                                                     .gerarPedido?.succeeded ??
