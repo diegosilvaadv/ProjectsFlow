@@ -231,7 +231,10 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                                 child: Image.network(
-                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
+                                                  valueOrDefault<String>(
+                                                    _model.uploadedFileUrl1,
+                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
+                                                  ),
                                                   width: 100.0,
                                                   height: 100.0,
                                                   fit: BoxFit.cover,
