@@ -15,3 +15,8 @@ export '/pages/confirmar_email/confirmar_email_widget.dart'
 export '/pages/resetar_senha/resetar_senha_widget.dart' show ResetarSenhaWidget;
 export '/dashboard_clientes/visao_geral/visao_geral_widget.dart'
     show VisaoGeralWidget;
+export '/dashboard_clientes/saques/saques_widget.dart' show SaquesWidget;
+export '/dashboard_clientes/estatsticas/estatsticas_widget.dart'
+    show EstatsticasWidget;
+export '/dashboard_clientes/projetos/projetos_widget.dart' show ProjetosWidget;
+export '/dashboard_clientes/paginas/paginas_widget.dart' show PaginasWidget;

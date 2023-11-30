@@ -101,6 +101,12 @@ class FFAppState extends ChangeNotifier {
   set UsarCartaoSalvo(String _value) {
     _UsarCartaoSalvo = _value;
   }
+
+  String _sideNav = '';
+  String get sideNav => _sideNav;
+  set sideNav(String _value) {
+    _sideNav = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

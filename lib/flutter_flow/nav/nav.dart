@@ -176,6 +176,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'visaoGeral',
           path: '/visaoGeral',
           builder: (context, params) => VisaoGeralWidget(),
+        ),
+        FFRoute(
+          name: 'Saques',
+          path: '/Saques',
+          builder: (context, params) => SaquesWidget(),
+        ),
+        FFRoute(
+          name: 'Estatsticas',
+          path: '/Estatsticas',
+          builder: (context, params) => EstatsticasWidget(),
+        ),
+        FFRoute(
+          name: 'Projetos',
+          path: '/Projetos',
+          builder: (context, params) => ProjetosWidget(),
+        ),
+        FFRoute(
+          name: 'Paginas',
+          path: '/Paginas',
+          builder: (context, params) => PaginasWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

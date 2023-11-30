@@ -1,18 +1,3 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "Pagamentos",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "userID",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "creatData",
-          "order": "ASCENDING"
-        }
-      ]
-    }
-  ]
+  "indexes": []
 }

@@ -16,19 +16,19 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'visao_geral_model.dart';
-export 'visao_geral_model.dart';
+import 'estatsticas_model.dart';
+export 'estatsticas_model.dart';
 
-class VisaoGeralWidget extends StatefulWidget {
-  const VisaoGeralWidget({Key? key}) : super(key: key);
+class EstatsticasWidget extends StatefulWidget {
+  const EstatsticasWidget({Key? key}) : super(key: key);
 
   @override
-  _VisaoGeralWidgetState createState() => _VisaoGeralWidgetState();
+  _EstatsticasWidgetState createState() => _EstatsticasWidgetState();
 }
 
-class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
+class _EstatsticasWidgetState extends State<EstatsticasWidget>
     with TickerProviderStateMixin {
-  late VisaoGeralModel _model;
+  late EstatsticasModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -90,9 +90,9 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => VisaoGeralModel());
+    _model = createModel(context, () => EstatsticasModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'visaoGeral'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Estatsticas'});
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -124,7 +124,7 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
     context.watch<FFAppState>();
 
     return Title(
-        title: 'visaoGeral',
+        title: 'Estatsticas',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

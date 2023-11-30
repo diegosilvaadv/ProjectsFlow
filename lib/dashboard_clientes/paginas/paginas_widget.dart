@@ -16,19 +16,19 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'visao_geral_model.dart';
-export 'visao_geral_model.dart';
+import 'paginas_model.dart';
+export 'paginas_model.dart';
 
-class VisaoGeralWidget extends StatefulWidget {
-  const VisaoGeralWidget({Key? key}) : super(key: key);
+class PaginasWidget extends StatefulWidget {
+  const PaginasWidget({Key? key}) : super(key: key);
 
   @override
-  _VisaoGeralWidgetState createState() => _VisaoGeralWidgetState();
+  _PaginasWidgetState createState() => _PaginasWidgetState();
 }
 
-class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
+class _PaginasWidgetState extends State<PaginasWidget>
     with TickerProviderStateMixin {
-  late VisaoGeralModel _model;
+  late PaginasModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -90,9 +90,9 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => VisaoGeralModel());
+    _model = createModel(context, () => PaginasModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'visaoGeral'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Paginas'});
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -124,7 +124,7 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
     context.watch<FFAppState>();
 
     return Title(
-        title: 'visaoGeral',
+        title: 'Paginas',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

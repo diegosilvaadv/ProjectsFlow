@@ -310,6 +310,12 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                 logFirebaseEvent(
                                                     'PERFIL_ACESSAR_DASH_BOARD_BTN_ON_TAP');
                                                 logFirebaseEvent(
+                                                    'Button_update_app_state');
+                                                setState(() {
+                                                  FFAppState().sideNav =
+                                                      'Visão geral';
+                                                });
+                                                logFirebaseEvent(
                                                     'Button_navigate_to');
 
                                                 context.pushNamed(
