@@ -531,14 +531,8 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                 await PixMercadoPagoCall.call(
                                               amount: widget
                                                   .detalhesProdutos?.valor,
-                                              productTitle:
-                                                  random_data.randomString(
-                                                10,
-                                                13,
-                                                false,
-                                                false,
-                                                true,
-                                              ),
+                                              productTitle: widget
+                                                  .detalhesProdutos?.titulo,
                                               email: currentUserUid,
                                               chave: random_data.randomString(
                                                 10,

@@ -436,6 +436,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                               true,
                                                                           transitionType:
                                                                               PageTransitionType.fade,
+                                                                          duration:
+                                                                              Duration(milliseconds: 10),
                                                                         ),
                                                                       },
                                                                     );

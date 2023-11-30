@@ -135,7 +135,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                             logFirebaseEvent(
                                                 'IconButton_navigate_to');
 
-                                            context.goNamed(
+                                            context.pushNamed(
                                               'HomePage',
                                               extra: <String, dynamic>{
                                                 kTransitionInfoKey:
@@ -143,8 +143,6 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget> {
                                                   hasTransition: true,
                                                   transitionType:
                                                       PageTransitionType.fade,
-                                                  duration:
-                                                      Duration(milliseconds: 0),
                                                 ),
                                               },
                                             );
