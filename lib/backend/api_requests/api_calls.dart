@@ -571,7 +571,7 @@ class CriarPagamentosCartaoMPCall {
   static Future<ApiCallResponse> call({
     String? accessToken = '',
     String? uuid4 = '',
-    int? transactionAmount,
+    double? transactionAmount,
     String? token = '',
     int? installments,
     String? firstName = '',
@@ -676,6 +676,10 @@ class ApiTokenMpCall {
   static dynamic ultimos4dig(dynamic response) => getJsonField(
         response,
         r'''$.last_four_digits''',
+      );
+  static dynamic erroMToken(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
       );
 }
 

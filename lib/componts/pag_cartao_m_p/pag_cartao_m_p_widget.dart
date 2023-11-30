@@ -2195,9 +2195,10 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                           accessToken:
                                               'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
                                           uuid4: functions.gerarUUID4(),
-                                          transactionAmount:
-                                              functions.doubleToInteger(widget
-                                                  .detalhesProdutos!.valor),
+                                          transactionAmount: functions
+                                              .doubleToInteger(widget
+                                                  .detalhesProdutos!.valor)
+                                              .toDouble(),
                                           token: ApiTokenMpCall.tokenCard(
                                             (_model.resultadoGerarToken
                                                     ?.jsonBody ??
