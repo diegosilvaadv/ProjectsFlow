@@ -153,6 +153,8 @@ class _PagCardComSucessWidgetState extends State<PagCardComSucessWidget> {
                                           ultimos4dig: widget.cartaoFinal,
                                           transacionID: widget.transacionID,
                                           userID: currentUserUid,
+                                          nomePagante: currentUserDisplayName,
+                                          email: currentUserEmail,
                                         ));
                                     logFirebaseEvent(
                                         'Button-Login_wait__delay');

@@ -56,6 +56,16 @@ class PagamentosRecord extends FirestoreRecord {
   String get userID => _userID ?? '';
   bool hasUserID() => _userID != null;
 
+  // "nomePagante" field.
+  String? _nomePagante;
+  String get nomePagante => _nomePagante ?? '';
+  bool hasNomePagante() => _nomePagante != null;
+
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
+
   void _initializeFields() {
     _produto = snapshotData['produto'] as String?;
     _descricao = snapshotData['descricao'] as String?;
@@ -65,6 +75,8 @@ class PagamentosRecord extends FirestoreRecord {
     _ultimos4dig = snapshotData['ultimos4dig'] as String?;
     _transacionID = snapshotData['transacionID'] as String?;
     _userID = snapshotData['userID'] as String?;
+    _nomePagante = snapshotData['nomePagante'] as String?;
+    _email = snapshotData['email'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -110,6 +122,8 @@ Map<String, dynamic> createPagamentosRecordData({
   String? ultimos4dig,
   String? transacionID,
   String? userID,
+  String? nomePagante,
+  String? email,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -121,6 +135,8 @@ Map<String, dynamic> createPagamentosRecordData({
       'ultimos4dig': ultimos4dig,
       'transacionID': transacionID,
       'userID': userID,
+      'nomePagante': nomePagante,
+      'email': email,
     }.withoutNulls,
   );
 
@@ -139,7 +155,9 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e1?.statusCompra == e2?.statusCompra &&
         e1?.ultimos4dig == e2?.ultimos4dig &&
         e1?.transacionID == e2?.transacionID &&
-        e1?.userID == e2?.userID;
+        e1?.userID == e2?.userID &&
+        e1?.nomePagante == e2?.nomePagante &&
+        e1?.email == e2?.email;
   }
 
   @override
@@ -151,7 +169,9 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e?.statusCompra,
         e?.ultimos4dig,
         e?.transacionID,
-        e?.userID
+        e?.userID,
+        e?.nomePagante,
+        e?.email
       ]);
 
   @override
