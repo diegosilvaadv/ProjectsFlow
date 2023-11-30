@@ -66,6 +66,16 @@ class PagamentosRecord extends FirestoreRecord {
   String get email => _email ?? '';
   bool hasEmail() => _email != null;
 
+  // "creatData" field.
+  DateTime? _creatData;
+  DateTime? get creatData => _creatData;
+  bool hasCreatData() => _creatData != null;
+
+  // "imgPagante" field.
+  String? _imgPagante;
+  String get imgPagante => _imgPagante ?? '';
+  bool hasImgPagante() => _imgPagante != null;
+
   void _initializeFields() {
     _produto = snapshotData['produto'] as String?;
     _descricao = snapshotData['descricao'] as String?;
@@ -77,6 +87,8 @@ class PagamentosRecord extends FirestoreRecord {
     _userID = snapshotData['userID'] as String?;
     _nomePagante = snapshotData['nomePagante'] as String?;
     _email = snapshotData['email'] as String?;
+    _creatData = snapshotData['creatData'] as DateTime?;
+    _imgPagante = snapshotData['imgPagante'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -124,6 +136,8 @@ Map<String, dynamic> createPagamentosRecordData({
   String? userID,
   String? nomePagante,
   String? email,
+  DateTime? creatData,
+  String? imgPagante,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -137,6 +151,8 @@ Map<String, dynamic> createPagamentosRecordData({
       'userID': userID,
       'nomePagante': nomePagante,
       'email': email,
+      'creatData': creatData,
+      'imgPagante': imgPagante,
     }.withoutNulls,
   );
 
@@ -157,7 +173,9 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e1?.transacionID == e2?.transacionID &&
         e1?.userID == e2?.userID &&
         e1?.nomePagante == e2?.nomePagante &&
-        e1?.email == e2?.email;
+        e1?.email == e2?.email &&
+        e1?.creatData == e2?.creatData &&
+        e1?.imgPagante == e2?.imgPagante;
   }
 
   @override
@@ -171,7 +189,9 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e?.transacionID,
         e?.userID,
         e?.nomePagante,
-        e?.email
+        e?.email,
+        e?.creatData,
+        e?.imgPagante
       ]);
 
   @override

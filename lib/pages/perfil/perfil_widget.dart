@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/app_bar_widget.dart';
-import '/componts/add/add_widget.dart';
+import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/editarnome/editarnome_widget.dart';
 import '/componts/entraremcontato/entraremcontato_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -309,40 +308,24 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             FFButtonWidget(
                                               onPressed: () async {
                                                 logFirebaseEvent(
-                                                    'PERFIL_PAGE_ADCIONAR_PÁGINAS_BTN_ON_TAP');
+                                                    'PERFIL_ACESSAR_DASH_BOARD_BTN_ON_TAP');
                                                 logFirebaseEvent(
-                                                    'Button_bottom_sheet');
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  enableDrag: false,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return WebViewAware(
-                                                        child: GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child: AddWidget(),
-                                                      ),
-                                                    ));
+                                                    'Button_navigate_to');
+
+                                                context.pushNamed(
+                                                  'visaoGeral',
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .bottomToTop,
+                                                    ),
                                                   },
-                                                ).then((value) =>
-                                                    safeSetState(() {}));
+                                                );
                                               },
-                                              text: 'Adcionar Páginas',
+                                              text: 'Acessar DashBoard',
                                               options: FFButtonOptions(
                                                 height: 40.0,
                                                 padding: EdgeInsetsDirectional

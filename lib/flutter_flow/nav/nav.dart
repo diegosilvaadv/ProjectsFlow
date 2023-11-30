@@ -171,6 +171,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ResetarSenha',
           path: '/resetarsenha',
           builder: (context, params) => ResetarSenhaWidget(),
+        ),
+        FFRoute(
+          name: 'visaoGeral',
+          path: '/visaoGeral',
+          builder: (context, params) => VisaoGeralWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

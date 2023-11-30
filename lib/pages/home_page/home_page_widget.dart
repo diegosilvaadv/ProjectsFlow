@@ -1,6 +1,6 @@
 import '/backend/backend.dart';
-import '/components/app_bar_cell_widget.dart';
-import '/components/app_bar_widget.dart';
+import '/componts/app_bar/app_bar_widget.dart';
+import '/componts/app_bar_cell/app_bar_cell_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -519,7 +519,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                             formatNumber(
                                                                                               listViewProjetosRecord.valor,
                                                                                               formatType: FormatType.custom,
-                                                                                              currency: 'R\$',
+                                                                                              currency: 'R\$ ',
                                                                                               format: '0.00',
                                                                                               locale: 'pt_BR',
                                                                                             ),

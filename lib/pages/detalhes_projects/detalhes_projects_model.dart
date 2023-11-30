@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/app_bar_widget.dart';
+import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/criarconta/criarconta_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';

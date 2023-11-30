@@ -1,4 +1,4 @@
-import '/components/app_bar_widget.dart';
+import '/componts/app_bar/app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

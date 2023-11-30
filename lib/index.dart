@@ -13,3 +13,5 @@ export '/pages/pagamento/pagamento_widget.dart' show PagamentoWidget;
 export '/pages/confirmar_email/confirmar_email_widget.dart'
     show ConfirmarEmailWidget;
 export '/pages/resetar_senha/resetar_senha_widget.dart' show ResetarSenhaWidget;
+export '/dashboard_clientes/visao_geral/visao_geral_widget.dart'
+    show VisaoGeralWidget;

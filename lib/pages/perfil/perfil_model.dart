@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/app_bar_widget.dart';
-import '/componts/add/add_widget.dart';
+import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/editarnome/editarnome_widget.dart';
 import '/componts/entraremcontato/entraremcontato_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
