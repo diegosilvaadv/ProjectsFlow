@@ -265,25 +265,30 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Flexible(
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              valueOrDefault<String>(
-                                                widget.detalhesProjects
-                                                    ?.descricao,
-                                                'descricao',
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 300.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  widget.detalhesProjects
+                                                      ?.descricao,
+                                                  'descricao',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Serif',
+                                                          fontSize: 20.0,
+                                                        ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Serif',
-                                                        fontSize: 20.0,
-                                                      ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                       StreamBuilder<List<PagamentosRecord>>(
@@ -733,27 +738,55 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                           padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
+                                                                      70.0,
                                                                       10.0,
-                                                                      10.0,
-                                                                      10.0,
+                                                                      70.0,
                                                                       10.0),
-                                                          child:
-                                                              FlutterFlowYoutubePlayer(
-                                                            url: valueOrDefault<
-                                                                String>(
-                                                              widget
-                                                                  .detalhesProjects
-                                                                  ?.video,
-                                                              'https://www.youtube.com/watch?v=q50mi_9HlHk',
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.0),
                                                             ),
-                                                            autoPlay: false,
-                                                            looping: true,
-                                                            mute: false,
-                                                            showControls: true,
-                                                            showFullScreen:
-                                                                true,
-                                                            strictRelatedVideos:
-                                                                false,
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.00,
+                                                                      0.00),
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                                child:
+                                                                    FlutterFlowYoutubePlayer(
+                                                                  url: valueOrDefault<
+                                                                      String>(
+                                                                    widget
+                                                                        .detalhesProjects
+                                                                        ?.video,
+                                                                    'https://www.youtube.com/watch?v=q50mi_9HlHk',
+                                                                  ),
+                                                                  autoPlay:
+                                                                      false,
+                                                                  looping: true,
+                                                                  mute: false,
+                                                                  showControls:
+                                                                      true,
+                                                                  showFullScreen:
+                                                                      true,
+                                                                  strictRelatedVideos:
+                                                                      false,
+                                                                ),
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -778,7 +811,13 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                                             8.0),
                                                                 child: Image
                                                                     .network(
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    widget
+                                                                        .detalhesProjects
+                                                                        ?.iMGPrincipal,
+                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                  ),
                                                                   width: 300.0,
                                                                   height: 200.0,
                                                                   fit: BoxFit
@@ -792,7 +831,13 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                                             8.0),
                                                                 child: Image
                                                                     .network(
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    widget
+                                                                        .detalhesProjects
+                                                                        ?.img1,
+                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                  ),
                                                                   width: 300.0,
                                                                   height: 200.0,
                                                                   fit: BoxFit
@@ -806,7 +851,13 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                                             8.0),
                                                                 child: Image
                                                                     .network(
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    widget
+                                                                        .detalhesProjects
+                                                                        ?.img2,
+                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                  ),
                                                                   width: 300.0,
                                                                   height: 200.0,
                                                                   fit: BoxFit

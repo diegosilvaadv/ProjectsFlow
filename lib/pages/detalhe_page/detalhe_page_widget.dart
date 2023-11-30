@@ -1,19 +1,16 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/app_bar_widget.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'detalhe_page_model.dart';
 export 'detalhe_page_model.dart';
@@ -30,7 +27,8 @@ class DetalhePageWidget extends StatefulWidget {
   _DetalhePageWidgetState createState() => _DetalhePageWidgetState();
 }
 
-class _DetalhePageWidgetState extends State<DetalhePageWidget> {
+class _DetalhePageWidgetState extends State<DetalhePageWidget>
+    with TickerProviderStateMixin {
   late DetalhePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -41,6 +39,11 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
     _model = createModel(context, () => DetalhePageModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'detalhePage'});
+    _model.tabBarController = TabController(
+      vsync: this,
+      length: 2,
+      initialIndex: 0,
+    )..addListener(() => setState(() {}));
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -369,30 +372,78 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Container(
-                                        width: 786.0,
-                                        height: 500.0,
+                                        width: 982.0,
+                                        height: 564.0,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                         ),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 500.0,
-                                          child: Stack(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 10.0, 10.0, 10.0),
+                                          child: Column(
                                             children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 40.0),
-                                                child: PageView(
-                                                  controller: _model
-                                                          .pageViewController1 ??=
-                                                      PageController(
-                                                          initialPage: 0),
-                                                  scrollDirection:
-                                                      Axis.horizontal,
+                                              Align(
+                                                alignment: Alignment(0.0, 0),
+                                                child: FlutterFlowButtonTabBar(
+                                                  useToggleButtonStyle: false,
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium,
+                                                  unselectedLabelStyle:
+                                                      TextStyle(),
+                                                  labelColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  unselectedLabelColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryText,
+                                                  backgroundColor:
+                                                      Color(0x5139D2C0),
+                                                  unselectedBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                  unselectedBorderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  borderWidth: 2.0,
+                                                  borderRadius: 8.0,
+                                                  elevation: 0.0,
+                                                  buttonMargin:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(8.0, 0.0,
+                                                              8.0, 0.0),
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          4.0, 4.0, 4.0, 4.0),
+                                                  tabs: [
+                                                    Tab(
+                                                      text: 'Imagens ',
+                                                    ),
+                                                    Tab(
+                                                      text: 'Requisitos',
+                                                    ),
+                                                  ],
+                                                  controller:
+                                                      _model.tabBarController,
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: TabBarView(
+                                                  controller:
+                                                      _model.tabBarController,
                                                   children: [
                                                     Padding(
                                                       padding:
@@ -403,302 +454,30 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
                                                                   10.0,
                                                                   10.0),
                                                       child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      10.0,
-                                                                      10.0,
-                                                                      10.0),
-                                                          child:
-                                                              FlutterFlowVideoPlayer(
-                                                            path: widget
-                                                                .paginas!.video,
-                                                            videoType: VideoType
-                                                                .network,
-                                                            width: 1280.0,
-                                                            height: 720.0,
-                                                            autoPlay: false,
-                                                            looping: true,
-                                                            showControls: true,
-                                                            allowFullScreen:
-                                                                true,
-                                                            allowPlaybackSpeedMenu:
-                                                                false,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  90.0,
-                                                                  10.0,
-                                                                  90.0,
-                                                                  10.0),
-                                                      child: Material(
-                                                        color:
-                                                            Colors.transparent,
-                                                        elevation: 5.0,
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      18.0),
-                                                        ),
-                                                        child: Container(
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        18.0),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0),
-                                                            child: InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                logFirebaseEvent(
-                                                                    'DETALHE_PAGE_PAGE_Image_iv3i772c_ON_TAP');
-                                                                logFirebaseEvent(
-                                                                    'Image_expand_image');
-                                                                await Navigator
-                                                                    .push(
-                                                                  context,
-                                                                  PageTransition(
-                                                                    type: PageTransitionType
-                                                                        .fade,
-                                                                    child:
-                                                                        FlutterFlowExpandedImageView(
-                                                                      image: Image
-                                                                          .network(
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/design%20templates%20copypages%20(6).png',
-                                                                        fit: BoxFit
-                                                                            .contain,
-                                                                      ),
-                                                                      allowRotation:
-                                                                          false,
-                                                                      tag:
-                                                                          'imageTag1',
-                                                                      useHeroAnimation:
-                                                                          true,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: Hero(
-                                                                tag:
-                                                                    'imageTag1',
-                                                                transitionOnUserGestures:
-                                                                    true,
-                                                                child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/design%20templates%20copypages%20(6).png',
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
+                                                        width: double.infinity,
+                                                        height: 180.0,
+                                                        child: CarouselSlider(
+                                                          items: [
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  widget.paginas
+                                                                      ?.iMGPrincipal,
+                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                 ),
+                                                                width: 300.0,
+                                                                height: 200.0,
+                                                                fit: BoxFit
+                                                                    .contain,
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.00, 1.00),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 0.0, 0.0, 16.0),
-                                                  child: smooth_page_indicator
-                                                      .SmoothPageIndicator(
-                                                    controller: _model
-                                                            .pageViewController1 ??=
-                                                        PageController(
-                                                            initialPage: 0),
-                                                    count: 2,
-                                                    axisDirection:
-                                                        Axis.horizontal,
-                                                    onDotClicked: (i) async {
-                                                      await _model
-                                                          .pageViewController1!
-                                                          .animateToPage(
-                                                        i,
-                                                        duration: Duration(
-                                                            milliseconds: 500),
-                                                        curve: Curves.ease,
-                                                      );
-                                                    },
-                                                    effect: smooth_page_indicator
-                                                        .ExpandingDotsEffect(
-                                                      expansionFactor: 3.0,
-                                                      spacing: 8.0,
-                                                      radius: 16.0,
-                                                      dotWidth: 16.0,
-                                                      dotHeight: 8.0,
-                                                      dotColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent1,
-                                                      activeDotColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      paintStyle:
-                                                          PaintingStyle.fill,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 10.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Container(
-                                          width: 259.0,
-                                          height: 500.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 500.0,
-                                              child: Stack(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 40.0),
-                                                    child: PageView(
-                                                      controller: _model
-                                                              .pageViewController2 ??=
-                                                          PageController(
-                                                              initialPage: 0),
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      children: [
-                                                        InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'DETALHE_PAGE_PAGE_Image_gsmnszhs_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Image_expand_image');
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                child:
-                                                                    FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      widget
-                                                                          .paginas
-                                                                          ?.img1,
-                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                      false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    widget
-                                                                        .paginas
-                                                                        ?.img1,
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                      true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              widget.paginas
-                                                                  ?.img1,
-                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                            ),
-                                                            transitionOnUserGestures:
-                                                                true,
-                                                            child: ClipRRect(
+                                                            ClipRRect(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -709,7 +488,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
                                                                     String>(
                                                                   widget.paginas
                                                                       ?.img1,
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
+                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                 ),
                                                                 width: 300.0,
                                                                 height: 200.0,
@@ -717,68 +496,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
                                                                     .contain,
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'DETALHE_PAGE_PAGE_Image_2uc5z5qk_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Image_expand_image');
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                child:
-                                                                    FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      widget
-                                                                          .paginas
-                                                                          ?.img2,
-                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                      false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    widget
-                                                                        .paginas
-                                                                        ?.img2,
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                      true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              widget.paginas
-                                                                  ?.img2,
-                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                            ),
-                                                            transitionOnUserGestures:
-                                                                true,
-                                                            child: ClipRRect(
+                                                            ClipRRect(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -789,157 +507,77 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget> {
                                                                     String>(
                                                                   widget.paginas
                                                                       ?.img2,
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
+                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                 ),
                                                                 width: 300.0,
                                                                 height: 200.0,
                                                                 fit: BoxFit
-                                                                    .contain,
+                                                                    .cover,
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'DETALHE_PAGE_PAGE_Image_emqp9142_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Image_expand_image');
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                child:
-                                                                    FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      widget
-                                                                          .paginas
-                                                                          ?.img3,
-                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                      false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    widget
-                                                                        .paginas
-                                                                        ?.img3,
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                      true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              widget.paginas
-                                                                  ?.img3,
-                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                            ),
-                                                            transitionOnUserGestures:
+                                                          ],
+                                                          carouselController: _model
+                                                                  .carouselController ??=
+                                                              CarouselController(),
+                                                          options:
+                                                              CarouselOptions(
+                                                            initialPage: 1,
+                                                            viewportFraction:
+                                                                0.5,
+                                                            disableCenter: true,
+                                                            enlargeCenterPage:
                                                                 true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              child:
-                                                                  Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  widget.paginas
-                                                                      ?.img3,
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/Captura%20de%20tela%202023-11-19%20134259.png',
-                                                                ),
-                                                                width: 300.0,
-                                                                height: 200.0,
-                                                                fit: BoxFit
-                                                                    .contain,
-                                                              ),
-                                                            ),
+                                                            enlargeFactor: 0.25,
+                                                            enableInfiniteScroll:
+                                                                true,
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            autoPlay: true,
+                                                            autoPlayAnimationDuration:
+                                                                Duration(
+                                                                    milliseconds:
+                                                                        800),
+                                                            autoPlayInterval:
+                                                                Duration(
+                                                                    milliseconds:
+                                                                        (800 +
+                                                                            4000)),
+                                                            autoPlayCurve:
+                                                                Curves.linear,
+                                                            pauseAutoPlayInFiniteScroll:
+                                                                true,
+                                                            onPageChanged: (index,
+                                                                    _) =>
+                                                                _model.carouselCurrentIndex =
+                                                                    index,
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            -1.00, 1.00),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  16.0),
-                                                      child: smooth_page_indicator
-                                                          .SmoothPageIndicator(
-                                                        controller: _model
-                                                                .pageViewController2 ??=
-                                                            PageController(
-                                                                initialPage: 0),
-                                                        count: 3,
-                                                        axisDirection:
-                                                            Axis.horizontal,
-                                                        onDotClicked:
-                                                            (i) async {
-                                                          await _model
-                                                              .pageViewController2!
-                                                              .animateToPage(
-                                                            i,
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                            curve: Curves.ease,
-                                                          );
-                                                        },
-                                                        effect: smooth_page_indicator
-                                                            .ExpandingDotsEffect(
-                                                          expansionFactor: 3.0,
-                                                          spacing: 8.0,
-                                                          radius: 16.0,
-                                                          dotWidth: 16.0,
-                                                          dotHeight: 8.0,
-                                                          dotColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .accent1,
-                                                          activeDotColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                          paintStyle:
-                                                              PaintingStyle
-                                                                  .fill,
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  10.0,
+                                                                  10.0,
+                                                                  10.0),
+                                                      child: Text(
+                                                        'Requisitos para o bom funcionamento do projeto.\n\n*Banco de dados: Firebase\n*Plano blaze ativado...',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              fontSize: 32.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ),
                                       ),
