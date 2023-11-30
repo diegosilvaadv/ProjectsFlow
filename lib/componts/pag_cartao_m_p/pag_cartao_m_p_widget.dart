@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -2157,11 +2156,13 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                   onPressed: () async {
                                     logFirebaseEvent(
                                         'PAG_CARTAO_M_P_REALIZAR_PAGAMENTO_BTN_ON');
+                                    var _shouldSetState = false;
                                     logFirebaseEvent('Button_backend_call');
                                     _model.resultadoCEP =
                                         await BuscarcepCall.call(
                                       cep: _model.cepController.text,
                                     );
+                                    _shouldSetState = true;
                                     if ((_model.resultadoCEP?.succeeded ??
                                         true)) {
                                       logFirebaseEvent('Button_backend_call');
@@ -2187,6 +2188,7 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                             'APP_USR-cb9f113b-ad18-4959-812e-b75e7561c351',
                                         uuid4: functions.gerarUUID4(),
                                       );
+                                      _shouldSetState = true;
                                       if ((_model
                                               .resultadoGerarToken?.succeeded ??
                                           true)) {
@@ -2239,13 +2241,14 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                             true,
                                           )}',
                                         );
+                                        _shouldSetState = true;
                                         if ((_model.resultadoCartaoPag
                                                 ?.succeeded ??
                                             true)) {
                                           logFirebaseEvent(
                                               'Button_wait__delay');
                                           await Future.delayed(const Duration(
-                                              milliseconds: 3000));
+                                              milliseconds: 2000));
                                           logFirebaseEvent(
                                               'Button_backend_call');
                                           _model.resultadoStatus =
@@ -2259,102 +2262,98 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                                   ''),
                                             ).toString(),
                                           );
+                                          _shouldSetState = true;
                                           if ((_model
                                                   .resultadoStatus?.succeeded ??
                                               true)) {
                                             logFirebaseEvent(
-                                                'Button_backend_call');
-
-                                            await PagamentosRecord.collection
-                                                .doc()
-                                                .set(createPagamentosRecordData(
-                                                  transacionID:
-                                                      CriarPagamentosCartaoMPCall
-                                                          .transacionID(
-                                                    (_model.resultadoCartaoPag
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
-                                                ));
-                                            logFirebaseEvent(
-                                                'Button_show_snack_bar');
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
+                                                'Button_update_app_state');
+                                            setState(() {
+                                              FFAppState()
+                                                      .statusCartaodeCredito =
                                                   StatusCartaoCall.statusPag(
-                                                    (_model.resultadoStatus
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 40.0,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
+                                                (_model.resultadoStatus
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ).toString();
+                                            });
+                                            if (FFAppState()
+                                                    .statusCartaodeCredito ==
+                                                'Approved') {
+                                              logFirebaseEvent(
+                                                  'Button_bottom_sheet');
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                              ),
-                                            );
-                                            logFirebaseEvent(
-                                                'Button_wait__delay');
-                                            await Future.delayed(const Duration(
-                                                milliseconds: 5000));
-                                            logFirebaseEvent(
-                                                'Button_bottom_sheet');
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return WebViewAware(
-                                                    child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: PagCardComSucessWidget(
-                                                    detalhesProdutos:
-                                                        widget.detalhesProdutos,
-                                                    cartaoFinal: ApiTokenMpCall
-                                                        .ultimos4dig(
-                                                      (_model.resultadoGerarToken
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    ).toString(),
-                                                    transacionID:
-                                                        CriarPagamentosCartaoMPCall
-                                                            .transacionID(
-                                                      (_model.resultadoCartaoPag
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    ).toString(),
-                                                  ),
-                                                ));
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-                                          } else {
-                                            logFirebaseEvent(
-                                                'Button_backend_call');
+                                                    Colors.transparent,
+                                                enableDrag: false,
+                                                context: context,
+                                                builder: (context) {
+                                                  return WebViewAware(
+                                                      child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child:
+                                                        PagCardComSucessWidget(
+                                                      detalhesProdutos: widget
+                                                          .detalhesProdutos,
+                                                      cartaoFinal:
+                                                          ApiTokenMpCall
+                                                              .ultimos4dig(
+                                                        (_model.resultadoGerarToken
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString(),
+                                                      transacionID:
+                                                          CriarPagamentosCartaoMPCall
+                                                              .transacionID(
+                                                        (_model.resultadoCartaoPag
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString(),
+                                                    ),
+                                                  ));
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
 
-                                            await PagamentosRecord.collection
-                                                .doc()
-                                                .set(createPagamentosRecordData(
-                                                  transacionID:
-                                                      CriarPagamentosCartaoMPCall
-                                                          .transacionID(
-                                                    (_model.resultadoCartaoPag
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
-                                                ));
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              logFirebaseEvent(
+                                                  'Button_alert_dialog');
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return WebViewAware(
+                                                      child: AlertDialog(
+                                                    title: Text(
+                                                        'Cartão Recusado!'),
+                                                    content: Text(
+                                                        StatusCartaoCall
+                                                            .statusPag(
+                                                      (_model.resultadoStatus
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString()),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  ));
+                                                },
+                                              );
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
                                             logFirebaseEvent(
                                                 'Button_alert_dialog');
                                             await showDialog(
@@ -2381,6 +2380,9 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                                 ));
                                               },
                                             );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
                                           }
                                         } else {
                                           logFirebaseEvent(
@@ -2410,6 +2412,8 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                               ));
                                             },
                                           );
+                                          if (_shouldSetState) setState(() {});
+                                          return;
                                         }
                                       } else {
                                         logFirebaseEvent('Button_alert_dialog');
@@ -2437,6 +2441,8 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                             ));
                                           },
                                         );
+                                        if (_shouldSetState) setState(() {});
+                                        return;
                                       }
                                     } else {
                                       logFirebaseEvent('Button_alert_dialog');
@@ -2458,9 +2464,11 @@ class _PagCartaoMPWidgetState extends State<PagCartaoMPWidget> {
                                           ));
                                         },
                                       );
+                                      if (_shouldSetState) setState(() {});
+                                      return;
                                     }
 
-                                    setState(() {});
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   text: 'Realizar Pagamento',
                                   options: FFButtonOptions(
