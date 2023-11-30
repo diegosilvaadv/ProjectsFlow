@@ -340,7 +340,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   context)
                                                               .width *
                                                           0.816,
-                                                      height: 270.0,
+                                                      height: 345.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)
@@ -457,9 +457,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     child:
                                                                         Container(
                                                                       width:
-                                                                          262.0,
+                                                                          270.0,
                                                                       height:
-                                                                          200.0,
+                                                                          191.0,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
@@ -483,8 +483,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                                 children: [
                                                                                   Container(
-                                                                                    width: 240.0,
-                                                                                    height: 180.0,
+                                                                                    width: 231.0,
+                                                                                    height: 220.0,
                                                                                     decoration: BoxDecoration(
                                                                                       color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                       borderRadius: BorderRadius.circular(8.0),
@@ -496,10 +496,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                         fadeOutDuration: Duration(milliseconds: 500),
                                                                                         imageUrl: valueOrDefault<String>(
                                                                                           listViewProjetosRecord.iMGPrincipal,
-                                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/design%20templates%20copypages%20(4).png',
+                                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                                         ),
-                                                                                        width: 240.0,
-                                                                                        height: 180.0,
+                                                                                        width: 200.0,
+                                                                                        height: 200.0,
                                                                                         fit: BoxFit.cover,
                                                                                       ),
                                                                                     ),
