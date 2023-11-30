@@ -19,38 +19,26 @@ class PixMercadoPagoCall {
     String? identificationType = '',
     String? numberCpf = '',
     String? chave = '',
+    String? token = '',
   }) async {
-    final ffApiRequestBody = '''
-{
-  "transaction_amount": ${amount},
-  "payment_method_id": "pix",
-  "payer": {
-    "email": "${email}",
-    "first_name": "${firstName}",
-    "last_name": "${lastName}",
-    "identification": {
-      "type": "${identificationType}",
-      "number": "${numberCpf}"
-    }
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'Pix Mercado Pago',
-      apiUrl: 'https://api.mercadopago.com/v1/payments',
-      callType: ApiCallType.POST,
-      headers: {
-        'Authorization':
-            'Bearer APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-        'X-Idempotency-Key': '0d5020ed-1af6-469c-ae06-${chave}',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'PixMercadoPagoCall',
+        'variables': {
+          'amount': amount,
+          'productTitle': productTitle,
+          'email': email,
+          'firstName': firstName,
+          'lastName': lastName,
+          'identificationType': identificationType,
+          'numberCpf': numberCpf,
+          'chave': chave,
+          'token': token,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static dynamic idPedido(dynamic response) => getJsonField(
@@ -64,6 +52,10 @@ class PixMercadoPagoCall {
   static dynamic qRcode(dynamic response) => getJsonField(
         response,
         r'''$.point_of_interaction.transaction_data.qr_code_base64''',
+      );
+  static dynamic erro(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
       );
 }
 

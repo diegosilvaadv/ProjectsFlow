@@ -541,6 +541,8 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                 false,
                                                 true,
                                               ),
+                                              token:
+                                                  'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
                                             );
                                             if ((_model
                                                     .gerarPedido?.succeeded ??
