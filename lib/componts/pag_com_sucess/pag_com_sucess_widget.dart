@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -48,7 +47,7 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('PAG_COM_SUCESS_pagComSucess_ON_INIT_STAT');
       logFirebaseEvent('pagComSucess_wait__delay');
-      await Future.delayed(const Duration(milliseconds: 5000));
+      await Future.delayed(const Duration(milliseconds: 3000));
       logFirebaseEvent('pagComSucess_backend_call');
 
       await PagamentosRecord.collection.doc().set(createPagamentosRecordData(
@@ -66,6 +65,8 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
             imgPagante: currentUserPhoto,
             userIDVendedor: widget.detalhesProdutos?.userIDVendedor,
           ));
+      logFirebaseEvent('pagComSucess_wait__delay');
+      await Future.delayed(const Duration(milliseconds: 2000));
       logFirebaseEvent('pagComSucess_navigate_to');
 
       context.goNamed(
@@ -113,147 +114,79 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: BorderRadius.circular(12.0),
             ),
-            child: Stack(
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
-                  child: Column(
+            child: Align(
+              alignment: AlignmentDirectional(0.00, 0.00),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 20.0, 20.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Lottie.asset(
-                              'assets/lottie_animations/Animation_-_1701201365942.json',
-                              width: 150.0,
-                              height: 130.0,
-                              fit: BoxFit.cover,
-                              animate: true,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 20.0, 20.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 4.0, 16.0, 6.0),
-                                child: Text(
-                                  'Pagamento Realizado com sucesso! ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 30.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 10.0, 20.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 24.0, 0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    logFirebaseEvent(
-                                        'PAG_COM_SUCESS_COMP_Button-Login_ON_TAP');
-                                    logFirebaseEvent(
-                                        'Button-Login_backend_call');
-
-                                    await PagamentosRecord.collection
-                                        .doc()
-                                        .set(createPagamentosRecordData(
-                                          produto:
-                                              widget.detalhesProdutos?.titulo,
-                                          descricao: widget
-                                              .detalhesProdutos?.descricao,
-                                          valor: widget.detalhesProdutos?.valor,
-                                          linkProjeto: widget
-                                              .detalhesProdutos?.linkProjeto,
-                                          statusCompra: true,
-                                          ultimos4dig: widget.cartaoFinal,
-                                          transacionID: widget.transacionID,
-                                          userID: currentUserUid,
-                                          nomePagante: currentUserDisplayName,
-                                          email: currentUserEmail,
-                                        ));
-                                    logFirebaseEvent(
-                                        'Button-Login_wait__delay');
-                                    await Future.delayed(
-                                        const Duration(milliseconds: 3000));
-                                    logFirebaseEvent(
-                                        'Button-Login_navigate_to');
-
-                                    context.goNamed(
-                                      'detalhesProjects',
-                                      queryParameters: {
-                                        'detalhesProjects': serializeParam(
-                                          widget.detalhesProdutos,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'detalhesProjects':
-                                            widget.detalhesProdutos,
-                                      },
-                                    );
-                                  },
-                                  text: 'Acessar Projeto',
-                                  options: FFButtonOptions(
-                                    width: 270.0,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          fontSize: 20.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      Lottie.asset(
+                        'assets/lottie_animations/Animation_-_1701201365942.json',
+                        width: 150.0,
+                        height: 130.0,
+                        fit: BoxFit.cover,
+                        animate: true,
                       ),
                     ],
                   ),
-                ),
-              ],
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 4.0, 16.0, 6.0),
+                            child: Text(
+                              '5',
+                              style: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 70.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 4.0, 16.0, 6.0),
+                            child: Text(
+                              'Pagamento Realizado com sucesso! ',
+                              style: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
