@@ -651,7 +651,11 @@ class _AdicionarProjetoWidgetState extends State<AdicionarProjetoWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 20.0,
+                                          ),
                                       validator: _model
                                           .tituloControllerValidator
                                           .asValidator(context),
