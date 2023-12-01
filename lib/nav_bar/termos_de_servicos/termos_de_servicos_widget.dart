@@ -155,7 +155,7 @@ class _TermosDeServicosWidgetState extends State<TermosDeServicosWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: Text(
-                                          'Termos de Serviço do Projects Flow',
+                                          'Termos de Serviço',
                                           style: FlutterFlowTheme.of(context)
                                               .labelLarge
                                               .override(

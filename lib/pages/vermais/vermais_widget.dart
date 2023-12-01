@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
+import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -204,360 +205,369 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 10.0, 10.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.00, 0.00),
-                                        child: PagedListView<
-                                            DocumentSnapshot<Object?>?,
-                                            PaginasRecord>(
-                                          pagingController:
-                                              _model.setListViewController2(
-                                            PaginasRecord.collection
-                                                .where(
-                                                  'identificacao',
-                                                  isEqualTo: widget.all != ''
-                                                      ? widget.all
-                                                      : null,
-                                                )
-                                                .where(
-                                                  'Categoria',
-                                                  isEqualTo: widget.tag != ''
-                                                      ? widget.tag
-                                                      : null,
-                                                ),
-                                          ),
-                                          padding: EdgeInsets.zero,
-                                          shrinkWrap: true,
-                                          reverse: false,
-                                          scrollDirection: Axis.vertical,
-                                          builderDelegate:
-                                              PagedChildBuilderDelegate<
-                                                  PaginasRecord>(
-                                            // Customize what your widget looks like when it's loading the first page.
-                                            firstPageProgressIndicatorBuilder:
-                                                (_) => Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child: SpinKitRipple(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 50.0,
-                                                ),
-                                              ),
-                                            ),
-                                            // Customize what your widget looks like when it's loading another page.
-                                            newPageProgressIndicatorBuilder:
-                                                (_) => Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child: SpinKitRipple(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 50.0,
-                                                ),
-                                              ),
-                                            ),
-
-                                            itemBuilder:
-                                                (context, _, listViewIndex) {
-                                              final listViewPaginasRecord =
-                                                  _model
-                                                      .listViewPagingController2!
-                                                      .itemList![listViewIndex];
-                                              return Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 10.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    logFirebaseEvent(
-                                                        'VERMAIS_PAGE_Container_hb2d1e78_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Container_navigate_to');
-
-                                                    context.pushNamed(
-                                                      'detalhePage',
-                                                      queryParameters: {
-                                                        'paginas':
-                                                            serializeParam(
-                                                          listViewPaginasRecord,
-                                                          ParamType.Document,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 20.0),
+                              child: ListView(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                children: [
+                                  SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 10.0, 10.0, 10.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.00, 0.00),
+                                                child: PagedListView<
+                                                    DocumentSnapshot<Object?>?,
+                                                    PaginasRecord>(
+                                                  pagingController: _model
+                                                      .setListViewController2(
+                                                    PaginasRecord.collection
+                                                        .where(
+                                                          'identificacao',
+                                                          isEqualTo:
+                                                              widget.all != ''
+                                                                  ? widget.all
+                                                                  : null,
+                                                        )
+                                                        .where(
+                                                          'Categoria',
+                                                          isEqualTo:
+                                                              widget.tag != ''
+                                                                  ? widget.tag
+                                                                  : null,
                                                         ),
-                                                      }.withoutNulls,
-                                                      extra: <String, dynamic>{
-                                                        'paginas':
-                                                            listViewPaginasRecord,
-                                                        kTransitionInfoKey:
-                                                            TransitionInfo(
-                                                          hasTransition: true,
-                                                          transitionType:
-                                                              PageTransitionType
-                                                                  .fade,
+                                                  ),
+                                                  padding: EdgeInsets.zero,
+                                                  shrinkWrap: true,
+                                                  reverse: false,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  builderDelegate:
+                                                      PagedChildBuilderDelegate<
+                                                          PaginasRecord>(
+                                                    // Customize what your widget looks like when it's loading the first page.
+                                                    firstPageProgressIndicatorBuilder:
+                                                        (_) => Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child: SpinKitRipple(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 50.0,
                                                         ),
-                                                      },
-                                                    );
-                                                  },
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.249,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.0),
+                                                      ),
                                                     ),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      20.0,
-                                                                      20.0,
-                                                                      20.0,
-                                                                      20.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    listViewPaginasRecord
-                                                                        .iMGPrincipal,
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/design%20templates%20copypages%20(4).png',
-                                                                  ),
-                                                                  width: 240.0,
-                                                                  height: 180.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
+                                                    // Customize what your widget looks like when it's loading another page.
+                                                    newPageProgressIndicatorBuilder:
+                                                        (_) => Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child: SpinKitRipple(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 50.0,
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    itemBuilder: (context, _,
+                                                        listViewIndex) {
+                                                      final listViewPaginasRecord =
+                                                          _model.listViewPagingController2!
+                                                                  .itemList![
+                                                              listViewIndex];
+                                                      return Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            logFirebaseEvent(
+                                                                'VERMAIS_PAGE_Container_hb2d1e78_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'Container_navigate_to');
+
+                                                            context.pushNamed(
+                                                              'detalhePage',
+                                                              queryParameters: {
+                                                                'paginas':
+                                                                    serializeParam(
+                                                                  listViewPaginasRecord,
+                                                                  ParamType
+                                                                      .Document,
                                                                 ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0.00,
-                                                                          0.00),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            20.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .start,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.center,
-                                                                          children: [
-                                                                            Expanded(
-                                                                              child: Text(
-                                                                                valueOrDefault<String>(
-                                                                                  listViewPaginasRecord.titulo,
-                                                                                  'Titulo',
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 22.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              6.0,
-                                                                              50.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.start,
-                                                                            children: [
-                                                                              Expanded(
-                                                                                child: Text(
-                                                                                  valueOrDefault<String>(
-                                                                                    listViewPaginasRecord.descricao,
-                                                                                    'descricao',
-                                                                                  ),
-                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                        fontFamily: 'Noto Serif',
-                                                                                        fontSize: 20.0,
-                                                                                      ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
+                                                              }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'paginas':
+                                                                    listViewPaginasRecord,
+                                                                kTransitionInfoKey:
+                                                                    TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                ),
+                                                              },
+                                                            );
+                                                          },
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            height: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.249,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryBackground,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.0),
+                                                            ),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          20.0,
+                                                                          20.0,
+                                                                          20.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                        child: Image
+                                                                            .network(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            listViewPaginasRecord.iMGPrincipal,
+                                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/design%20templates%20copypages%20(4).png',
                                                                           ),
+                                                                          width:
+                                                                              240.0,
+                                                                          height:
+                                                                              180.0,
+                                                                          fit: BoxFit
+                                                                              .cover,
                                                                         ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                      ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Align(
+                                                                          alignment: AlignmentDirectional(
+                                                                              0.00,
+                                                                              0.00),
                                                                           child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 50.0, 0.0),
-                                                                                child: Row(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                Row(
                                                                                   mainAxisSize: MainAxisSize.max,
-                                                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                                                  crossAxisAlignment: CrossAxisAlignment.center,
                                                                                   children: [
-                                                                                    FaIcon(
-                                                                                      FontAwesomeIcons.tag,
-                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                      size: 24.0,
-                                                                                    ),
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                    Expanded(
                                                                                       child: Text(
                                                                                         valueOrDefault<String>(
-                                                                                          listViewPaginasRecord.categoria,
-                                                                                          'tag',
+                                                                                          listViewPaginasRecord.titulo,
+                                                                                          'Titulo',
                                                                                         ),
-                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                              fontFamily: 'Noto Serif',
-                                                                                              fontSize: 20.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                              fontStyle: FontStyle.italic,
+                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                              fontFamily: 'Readex Pro',
+                                                                                              fontSize: 22.0,
                                                                                             ),
                                                                                       ),
                                                                                     ),
                                                                                   ],
                                                                                 ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              6.0,
-                                                                              50.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.start,
-                                                                            children: [
-                                                                              Icon(
-                                                                                Icons.person_2,
-                                                                                color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                size: 24.0,
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                                                                                child: Text(
-                                                                                  valueOrDefault<String>(
-                                                                                    listViewPaginasRecord.postadoPor,
-                                                                                    'criador',
-                                                                                  ),
-                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                        fontFamily: 'Noto Serif',
-                                                                                        color: FlutterFlowTheme.of(context).secondary,
-                                                                                        fontSize: 20.0,
-                                                                                        fontWeight: FontWeight.bold,
-                                                                                        fontStyle: FontStyle.italic,
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 50.0, 0.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                                                    children: [
+                                                                                      Expanded(
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            listViewPaginasRecord.descricao,
+                                                                                            'descricao',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                fontFamily: 'Noto Serif',
+                                                                                                fontSize: 20.0,
+                                                                                              ),
+                                                                                        ),
                                                                                       ),
+                                                                                    ],
+                                                                                  ),
                                                                                 ),
-                                                                              ),
-                                                                            ],
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 50.0, 0.0),
+                                                                                        child: Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                          children: [
+                                                                                            FaIcon(
+                                                                                              FontAwesomeIcons.tag,
+                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                              size: 24.0,
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                              child: Text(
+                                                                                                valueOrDefault<String>(
+                                                                                                  listViewPaginasRecord.categoria,
+                                                                                                  'tag',
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: 'Noto Serif',
+                                                                                                      fontSize: 20.0,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                      fontStyle: FontStyle.italic,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 50.0, 0.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                                                    children: [
+                                                                                      Icon(
+                                                                                        Icons.person_2,
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        size: 24.0,
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            listViewPaginasRecord.postadoPor,
+                                                                                            'criador',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                fontFamily: 'Noto Serif',
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                                fontSize: 20.0,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FontStyle.italic,
+                                                                                              ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ],
-                                                                    ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
+                                                      );
+                                                    },
                                                   ),
                                                 ),
-                                              );
-                                            },
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                            Divider(
+                              thickness: 2.0,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 20.0),
+                              child: wrapWithModel(
+                                model: _model.navBarModel,
+                                updateCallback: () => setState(() {}),
+                                child: NavBarWidget(),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

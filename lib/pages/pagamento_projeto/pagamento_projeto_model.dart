@@ -6,6 +6,7 @@ import '/comp_pagamentos/pag_cartao_projeto/pag_cartao_projeto_widget.dart';
 import '/comp_pagamentos/pag_com_sucess_projetos/pag_com_sucess_projetos_widget.dart';
 import '/comp_pagamentos/pag_pix_projetos/pag_pix_projetos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
+import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -28,16 +29,20 @@ class PagamentoProjetoModel extends FlutterFlowModel<PagamentoProjetoWidget> {
   late AppBarModel appBarModel;
   // Stores action output result for [Backend Call - API (Pix Mercado Pago)] action in Button widget.
   ApiCallResponse? gerarPedido;
+  // Model for NavBar component.
+  late NavBarModel navBarModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     appBarModel = createModel(context, () => AppBarModel());
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     appBarModel.dispose();
+    navBarModel.dispose();
   }
 
   /// Action blocks are added here.

@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
+import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -25,10 +26,14 @@ class VermaisModel extends FlutterFlowModel<VermaisWidget> {
   Query? listViewPagingQuery2;
   List<StreamSubscription?> listViewStreamSubscriptions2 = [];
 
+  // Model for NavBar component.
+  late NavBarModel navBarModel;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     appBarModel = createModel(context, () => AppBarModel());
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   void dispose() {
@@ -36,6 +41,8 @@ class VermaisModel extends FlutterFlowModel<VermaisWidget> {
     appBarModel.dispose();
     listViewStreamSubscriptions2.forEach((s) => s?.cancel());
     listViewPagingController2?.dispose();
+
+    navBarModel.dispose();
   }
 
   /// Action blocks are added here.
