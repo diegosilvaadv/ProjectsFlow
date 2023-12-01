@@ -832,6 +832,35 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                                       .cover,
                                                                 ),
                                                               ),
+                                                              Visibility(
+                                                                visible: widget
+                                                                        .detalhesProjects
+                                                                        ?.img3 !=
+                                                                    '',
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      widget
+                                                                          .detalhesProjects
+                                                                          ?.img3,
+                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                    ),
+                                                                    width:
+                                                                        300.0,
+                                                                    height:
+                                                                        200.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ],
                                                             carouselController:
                                                                 _model.carouselController ??=

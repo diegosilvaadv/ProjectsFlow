@@ -1,6 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'projeto_criado_widget.dart' show ProjetoCriadoWidget;
+import 'paginacriada_widget.dart' show PaginacriadaWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-class ProjetoCriadoModel extends FlutterFlowModel<ProjetoCriadoWidget> {
+class PaginacriadaModel extends FlutterFlowModel<PaginacriadaWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

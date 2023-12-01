@@ -7,18 +7,18 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'projeto_criado_model.dart';
-export 'projeto_criado_model.dart';
+import 'paginacriada_model.dart';
+export 'paginacriada_model.dart';
 
-class ProjetoCriadoWidget extends StatefulWidget {
-  const ProjetoCriadoWidget({Key? key}) : super(key: key);
+class PaginacriadaWidget extends StatefulWidget {
+  const PaginacriadaWidget({Key? key}) : super(key: key);
 
   @override
-  _ProjetoCriadoWidgetState createState() => _ProjetoCriadoWidgetState();
+  _PaginacriadaWidgetState createState() => _PaginacriadaWidgetState();
 }
 
-class _ProjetoCriadoWidgetState extends State<ProjetoCriadoWidget> {
-  late ProjetoCriadoModel _model;
+class _PaginacriadaWidgetState extends State<PaginacriadaWidget> {
+  late PaginacriadaModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -29,17 +29,17 @@ class _ProjetoCriadoWidgetState extends State<ProjetoCriadoWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ProjetoCriadoModel());
+    _model = createModel(context, () => PaginacriadaModel());
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('PROJETO_CRIADO_ProjetoCriado_ON_INIT_STA');
-      logFirebaseEvent('ProjetoCriado_wait__delay');
+      logFirebaseEvent('PAGINACRIADA_paginacriada_ON_INIT_STATE');
+      logFirebaseEvent('paginacriada_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));
-      logFirebaseEvent('ProjetoCriado_navigate_to');
+      logFirebaseEvent('paginacriada_navigate_to');
 
       context.goNamed(
-        'Projetos',
+        'Paginas',
         extra: <String, dynamic>{
           kTransitionInfoKey: TransitionInfo(
             hasTransition: true,
@@ -108,7 +108,7 @@ class _ProjetoCriadoWidgetState extends State<ProjetoCriadoWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 6.0),
                             child: Text(
-                              'Projeto Criado com Sucesso!',
+                              'Página Criado com Sucesso!',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium

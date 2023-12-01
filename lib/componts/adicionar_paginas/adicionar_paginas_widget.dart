@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/componts/projeto_criado/projeto_criado_widget.dart';
+import '/componts/paginacriada/paginacriada_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1433,7 +1433,7 @@ class _AdicionarPaginasWidgetState extends State<AdicionarPaginasWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: ProjetoCriadoWidget()),
+                                              child: PaginacriadaWidget()),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
