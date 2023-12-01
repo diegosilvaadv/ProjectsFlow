@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
@@ -25,8 +24,6 @@ class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   ///  State fields for stateful widgets in this component.
 
   Completer<ApiCallResponse>? apiRequestCompleter;
-  // Stores action output result for [Backend Call - API (Status Pix)] action in pagPix widget.
-  ApiCallResponse? resultadoPIX;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
