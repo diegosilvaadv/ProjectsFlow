@@ -61,6 +61,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
           logFirebaseEvent('_refresh_database_request');
           setState(() => _model.apiRequestCompleter = null);
           await _model.waitForApiRequestCompleted();
+          logFirebaseEvent('_timer');
           logFirebaseEvent('_backend_call');
           _model.apiResultqiu = await StatusPixCall.call(
             idPix: widget.idpix,
