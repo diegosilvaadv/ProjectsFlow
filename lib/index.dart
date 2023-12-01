@@ -9,7 +9,6 @@ export '/pages/perfil/perfil_widget.dart' show PerfilWidget;
 export '/pages/vermais/vermais_widget.dart' show VermaisWidget;
 export '/pages/detalhes_projects/detalhes_projects_widget.dart'
     show DetalhesProjectsWidget;
-export '/pages/pagamento/pagamento_widget.dart' show PagamentoWidget;
 export '/pages/confirmar_email/confirmar_email_widget.dart'
     show ConfirmarEmailWidget;
 export '/pages/resetar_senha/resetar_senha_widget.dart' show ResetarSenhaWidget;
@@ -20,3 +19,4 @@ export '/dashboard_clientes/estatsticas/estatsticas_widget.dart'
     show EstatsticasWidget;
 export '/dashboard_clientes/projetos/projetos_widget.dart' show ProjetosWidget;
 export '/dashboard_clientes/paginas/paginas_widget.dart' show PaginasWidget;
+export '/pages/pagamento/pagamento_widget.dart' show PagamentoWidget;

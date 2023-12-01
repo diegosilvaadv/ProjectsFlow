@@ -354,7 +354,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                           context.pushNamed(
                                                             'Pagamento',
                                                             queryParameters: {
-                                                              'detalhesProdutos':
+                                                              'detalhesProjects':
                                                                   serializeParam(
                                                                 widget
                                                                     .detalhesProjects,
@@ -364,7 +364,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                             }.withoutNulls,
                                                             extra: <String,
                                                                 dynamic>{
-                                                              'detalhesProdutos':
+                                                              'detalhesProjects':
                                                                   widget
                                                                       .detalhesProjects,
                                                             },

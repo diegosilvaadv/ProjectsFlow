@@ -151,18 +151,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'Pagamento',
-          path: '/pagamento',
-          asyncParams: {
-            'detalhesProdutos':
-                getDoc(['Projetos'], ProjetosRecord.fromSnapshot),
-          },
-          builder: (context, params) => PagamentoWidget(
-            detalhesProdutos:
-                params.getParam('detalhesProdutos', ParamType.Document),
-          ),
-        ),
-        FFRoute(
           name: 'ConfirmarEmail',
           path: '/confirmarEmail',
           builder: (context, params) => ConfirmarEmailWidget(),
@@ -196,6 +184,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Paginas',
           path: '/Paginas',
           builder: (context, params) => PaginasWidget(),
+        ),
+        FFRoute(
+          name: 'Pagamento',
+          path: '/pagamento',
+          asyncParams: {
+            'detalhesProjects':
+                getDoc(['Projetos'], ProjetosRecord.fromSnapshot),
+          },
+          builder: (context, params) => PagamentoWidget(
+            detalhesProjects:
+                params.getParam('detalhesProjects', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
