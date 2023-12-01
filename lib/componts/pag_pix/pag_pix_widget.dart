@@ -4,10 +4,12 @@ import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -440,7 +442,81 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 10.0, 20.0, 10.0),
+                                      0.0, 6.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Você tem: ',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 25.0,
+                                            ),
+                                      ),
+                                      FlutterFlowTimer(
+                                        initialTime: _model.timerMilliseconds,
+                                        getDisplayTime: (value) =>
+                                            StopWatchTimer.getDisplayTime(
+                                          value,
+                                          hours: false,
+                                          milliSecond: false,
+                                        ),
+                                        controller: _model.timerController,
+                                        updateStateInterval:
+                                            Duration(milliseconds: 300000),
+                                        onChanged:
+                                            (value, displayTime, shouldUpdate) {
+                                          _model.timerMilliseconds = value;
+                                          _model.timerValue = displayTime;
+                                          if (shouldUpdate) setState(() {});
+                                        },
+                                        onEnded: () async {
+                                          logFirebaseEvent(
+                                              'PAG_PIX_COMP_Timer_jcjqmm54_ON_TIMER_END');
+                                          logFirebaseEvent('Timer_navigate_to');
+
+                                          context.goNamed(
+                                            'HomePage',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .bottomToTop,
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              fontSize: 30.0,
+                                            ),
+                                      ),
+                                      Text(
+                                        ' minutos para pagar esse pix.',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 25.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 0.0, 20.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,

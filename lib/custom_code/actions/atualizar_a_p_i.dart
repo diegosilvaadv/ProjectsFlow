@@ -10,11 +10,11 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 Future atualizarAPI(Future<dynamic> Function() reflesh) async {
-  // fazer consulta em uma API a cada 5 segundos
-// This function will call the API every 5 seconds and refresh the data
+  // fazer consulta em uma API a cada 10 segundos
+// This function will call the API every 10 seconds and refresh the data
 
   while (true) {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 10));
     await reflesh();
   }
 }

@@ -4,10 +4,12 @@ import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'pag_pix_widget.dart' show PagPixWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,15 @@ class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for Timer widget.
+  int timerMilliseconds = 300000;
+  String timerValue = StopWatchTimer.getDisplayTime(
+    300000,
+    hours: false,
+    milliSecond: false,
+  );
+  FlutterFlowTimerController timerController =
+      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
   /// Initialization and disposal methods.
 
@@ -38,6 +49,8 @@ class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   void dispose() {
     textFieldFocusNode?.dispose();
     textController?.dispose();
+
+    timerController.dispose();
   }
 
   /// Action blocks are added here.
