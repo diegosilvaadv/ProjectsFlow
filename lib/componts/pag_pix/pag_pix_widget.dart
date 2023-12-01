@@ -296,6 +296,22 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                 _model.timerValue = displayTime;
                                 if (shouldUpdate) setState(() {});
                               },
+                              onEnded: () async {
+                                logFirebaseEvent(
+                                    'PAG_PIX_COMP_Timer_ew6m2h02_ON_TIMER_END');
+                                logFirebaseEvent('Timer_navigate_to');
+
+                                context.goNamed(
+                                  'HomePage',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.bottomToTop,
+                                    ),
+                                  },
+                                );
+                              },
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
