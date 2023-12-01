@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'saques_model.dart';
 export 'saques_model.dart';
@@ -336,12 +337,15 @@ class _SaquesWidgetState extends State<SaquesWidget> {
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            formatNumber(
-                                                                              functions.calcaularlista(containerPagamentosRecordList.map((e) => e.valor).toList()),
-                                                                              formatType: FormatType.custom,
-                                                                              currency: 'R\$ ',
-                                                                              format: '0.00',
-                                                                              locale: 'pt_BR',
+                                                                            valueOrDefault<String>(
+                                                                              formatNumber(
+                                                                                functions.calcaularlista(containerPagamentosRecordList.map((e) => e.valor).toList()),
+                                                                                formatType: FormatType.custom,
+                                                                                currency: 'R\$ ',
+                                                                                format: '0.00',
+                                                                                locale: 'pt_BR',
+                                                                              ),
+                                                                              '0',
                                                                             ),
                                                                             style:
                                                                                 FlutterFlowTheme.of(context).displaySmall,
@@ -452,7 +456,17 @@ class _SaquesWidgetState extends State<SaquesWidget> {
                                                                             0.0),
                                                                         child:
                                                                             Text(
-                                                                          'R\$ 10,00',
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            formatNumber(
+                                                                              functions.calcaularlista(containerPagamentosRecordList.map((e) => e.valor).toList()),
+                                                                              formatType: FormatType.custom,
+                                                                              currency: 'R\$ ',
+                                                                              format: '0.00',
+                                                                              locale: 'pt_BR',
+                                                                            ),
+                                                                            '0',
+                                                                          ),
                                                                           style:
                                                                               FlutterFlowTheme.of(context).displaySmall,
                                                                         ),
@@ -543,7 +557,7 @@ class _SaquesWidgetState extends State<SaquesWidget> {
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                    'Saques Pendentes',
+                                                                    'Saques Pendente',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium,
@@ -561,7 +575,7 @@ class _SaquesWidgetState extends State<SaquesWidget> {
                                                                             0.0),
                                                                         child:
                                                                             Text(
-                                                                          'R\$ 15,00',
+                                                                          'R\$ 0,00',
                                                                           style:
                                                                               FlutterFlowTheme.of(context).displaySmall,
                                                                         ),
@@ -652,7 +666,7 @@ class _SaquesWidgetState extends State<SaquesWidget> {
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                    'Saques realizados',
+                                                                    'Saques realizado',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium,
@@ -670,7 +684,7 @@ class _SaquesWidgetState extends State<SaquesWidget> {
                                                                             0.0),
                                                                         child:
                                                                             Text(
-                                                                          'R\$ 15,00',
+                                                                          'R\$ 0,00',
                                                                           style:
                                                                               FlutterFlowTheme.of(context).displaySmall,
                                                                         ),
@@ -1183,6 +1197,19 @@ class _SaquesWidgetState extends State<SaquesWidget> {
                                 ),
                               );
                             },
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Lottie.asset(
+                                'assets/lottie_animations/Animation_-_1701456378255.json',
+                                width: 500.0,
+                                height: 500.0,
+                                fit: BoxFit.cover,
+                                animate: true,
+                              ),
+                            ],
                           ),
                         ],
                       ),

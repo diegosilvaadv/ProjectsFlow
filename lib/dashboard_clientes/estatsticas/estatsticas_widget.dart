@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'estatsticas_model.dart';
 export 'estatsticas_model.dart';
@@ -98,7 +99,7 @@ class _EstatsticasWidgetState extends State<EstatsticasWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Visão geral',
+                                        'Estatística',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineMedium,
                                       ),
@@ -192,6 +193,16 @@ class _EstatsticasWidgetState extends State<EstatsticasWidget> {
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: Lottie.asset(
+                              'assets/lottie_animations/Animation_-_1701456378255.json',
+                              width: 500.0,
+                              height: 500.0,
+                              fit: BoxFit.cover,
+                              animate: true,
                             ),
                           ),
                         ],

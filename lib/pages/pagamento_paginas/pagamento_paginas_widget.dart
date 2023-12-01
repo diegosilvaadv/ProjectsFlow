@@ -414,7 +414,7 @@ class _PagamentoPaginasWidgetState extends State<PagamentoPaginasWidget> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'Preço do Projeto: ',
+                                                    'Preço da Página: ',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
