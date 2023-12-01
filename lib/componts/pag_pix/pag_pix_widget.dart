@@ -1,7 +1,5 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -10,9 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'dart:async';
 import 'package:aligned_dialog/aligned_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -309,7 +305,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                             fontFamily: 'Readex Pro',
                                             fontSize: 25.0,
                                           ),
-                                      maxLines: 5,
+                                      maxLines: 4,
                                       validator: _model.textControllerValidator
                                           .asValidator(context),
                                     ),
@@ -363,14 +359,11 @@ class _PagPixWidgetState extends State<PagPixWidget>
                       ),
                     ),
                     FutureBuilder<ApiCallResponse>(
-                      future: (_model.apiRequestCompleter ??=
-                              Completer<ApiCallResponse>()
-                                ..complete(StatusPixCall.call(
-                                  idPix: widget.idpix,
-                                  token:
-                                      'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                )))
-                          .future,
+                      future: StatusPixCall.call(
+                        idPix: widget.idpix,
+                        token:
+                            'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                      ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -445,41 +438,6 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                   ],
                                 ),
                               ),
-                            if (StatusPixCall.status(
-                                  columnStatusPixResponse.jsonBody,
-                                ).toString() ==
-                                'approved')
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 10.0, 20.0, 20.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 6.0, 0.0),
-                                      child: Icon(
-                                        Icons.paid,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Pagamento Aprovado com Sucesso!',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            fontSize: 30.0,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 20.0),
@@ -505,30 +463,10 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                                 logFirebaseEvent(
                                                     'PAG_PIX_ATUALIZAR_PAGAMENTO_BTN_ON_TAP');
                                                 logFirebaseEvent(
-                                                    'Button_refresh_database_request');
-                                                setState(() =>
-                                                    _model.apiRequestCompleter =
-                                                        null);
-                                                await _model
-                                                    .waitForApiRequestCompleted();
-                                                logFirebaseEvent(
                                                     'Button_wait__delay');
                                                 await Future.delayed(
                                                     const Duration(
                                                         milliseconds: 3000));
-                                                logFirebaseEvent(
-                                                    'Button_update_app_state');
-                                                setState(() {
-                                                  FFAppState()
-                                                      .updatePagRedStruct(
-                                                    (e) => e
-                                                      ..status =
-                                                          StatusPixCall.status(
-                                                        columnStatusPixResponse
-                                                            .jsonBody,
-                                                      ).toString(),
-                                                  );
-                                                });
                                                 if (StatusPixCall.status(
                                                       columnStatusPixResponse
                                                           .jsonBody,
@@ -630,80 +568,6 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
-                                            ),
-                                          ),
-                                        if (StatusPixCall.status(
-                                              columnStatusPixResponse.jsonBody,
-                                            ).toString() ==
-                                            'approved')
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'PAG_PIX_COMP_ACESSAR_PROJETO_BTN_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Button_backend_call');
-
-                                              await PagamentosRecord.collection
-                                                  .doc()
-                                                  .set(
-                                                      createPagamentosRecordData(
-                                                    produto: widget
-                                                        .detalhesProduto
-                                                        ?.titulo,
-                                                    descricao: widget
-                                                        .detalhesProduto
-                                                        ?.descricao,
-                                                    valor: widget
-                                                        .detalhesProduto?.valor,
-                                                    linkProjeto: widget
-                                                        .detalhesProduto
-                                                        ?.linkProjeto,
-                                                    statusCompra: true,
-                                                    userID: currentUserUid,
-                                                  ));
-                                              logFirebaseEvent(
-                                                  'Button_navigate_to');
-
-                                              context.goNamed(
-                                                'detalhesProjects',
-                                                queryParameters: {
-                                                  'detalhesProjects':
-                                                      serializeParam(
-                                                    widget.detalhesProduto,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'detalhesProjects':
-                                                      widget.detalhesProduto,
-                                                },
-                                              );
-                                            },
-                                            text: 'Acessar Projeto',
-                                            options: FFButtonOptions(
-                                              height: 59.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF10DA26),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color: Colors.white,
-                                                        fontSize: 40.0,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
                                             ),
                                           ),
                                       ],
