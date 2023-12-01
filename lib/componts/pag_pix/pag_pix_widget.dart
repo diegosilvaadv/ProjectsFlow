@@ -475,24 +475,6 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                           _model.timerValue = displayTime;
                                           if (shouldUpdate) setState(() {});
                                         },
-                                        onEnded: () async {
-                                          logFirebaseEvent(
-                                              'PAG_PIX_COMP_Timer_jcjqmm54_ON_TIMER_END');
-                                          logFirebaseEvent('Timer_navigate_to');
-
-                                          context.goNamed(
-                                            'HomePage',
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType
-                                                        .bottomToTop,
-                                              ),
-                                            },
-                                          );
-                                        },
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
@@ -534,14 +516,26 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                           size: 24.0,
                                         ),
                                       ),
-                                      Text(
-                                        'Pagamento ',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 30.0,
-                                            ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'PAG_PIX_COMP_Text_39mm7rqk_ON_TAP');
+                                          logFirebaseEvent('Text_timer');
+                                          _model.timerController.onStartTimer();
+                                        },
+                                        child: Text(
+                                          'Pagamento ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 30.0,
+                                              ),
+                                        ),
                                       ),
                                       Text(
                                         StatusPixCall.status(
