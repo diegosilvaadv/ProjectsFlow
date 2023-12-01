@@ -206,7 +206,7 @@ class _TermosDeServicosWidgetState extends State<TermosDeServicosWidget> {
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 20.0, 20.0, 20.0),
+                                    50.0, 20.0, 50.0, 20.0),
                                 child: MarkdownBody(
                                   data:
                                       '''# **Termos de Serviço do Projects Flow**
@@ -216,7 +216,7 @@ class _TermosDeServicosWidgetState extends State<TermosDeServicosWidget> {
 ### Bem-vindo ao "Projects Flow", um marketplace dedicado à venda e compra de projetos em FlutterFlow, telas de aplicativos e funções específicas para front-end e back-end.
 ###
 ## 2. **Elegibilidade:**
-### Para utilizar o "Projects Flow", é necessário ter pelo menos 18 anos de idade.
+### Para vender projetos no "Projects Flow", é necessário ter pelo menos 18 anos de idade.
 ###
 ## 3. **Cadastro e Conta do Usuário:**
 ### Ao se cadastrar, coletamos informações como nome, e-mail e foto de perfil. Para pagamentos, solicitamos CPF, celular, endereço de cobrança e informações do cartão, sendo este último armazenado apenas no servidor seguro do Mercado Pago.
