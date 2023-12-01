@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -67,6 +68,19 @@ class _PagPixWidgetState extends State<PagPixWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => PagPixModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PAG_PIX_COMP_pagPix_ON_INIT_STATE');
+      logFirebaseEvent('pagPix_custom_action');
+      await actions.atualizarAPI(
+        () async {
+          logFirebaseEvent('_refresh_database_request');
+          setState(() => _model.apiRequestCompleter = null);
+          await _model.waitForApiRequestCompleted();
+        },
+      );
+    });
 
     _model.textController ??=
         TextEditingController(text: FFAppState().PagRed.chavepix);
@@ -387,61 +401,54 @@ class _PagPixWidgetState extends State<PagPixWidget>
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            if (StatusPixCall.status(
-                                  columnStatusPixResponse.jsonBody,
-                                ).toString() !=
-                                'approved')
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 10.0, 20.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 6.0, 0.0),
-                                      child: Icon(
-                                        Icons.paid,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 24.0,
-                                      ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 10.0, 20.0, 10.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 6.0, 0.0),
+                                    child: Icon(
+                                      Icons.paid,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
                                     ),
-                                    Text(
-                                      StatusPixCall.status(
-                                        columnStatusPixResponse.jsonBody,
-                                      ).toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 30.0,
-                                          ),
+                                  ),
+                                  Text(
+                                    'Pagamento ',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 30.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Pagamento Pendente',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 30.0,
+                                        ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    child: Lottie.asset(
+                                      'assets/lottie_animations/Animation_-_1700667862033.json',
+                                      width: 100.0,
+                                      height: 100.0,
+                                      fit: BoxFit.cover,
+                                      animate: true,
                                     ),
-                                    Text(
-                                      FFAppState().PagRed.status,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 30.0,
-                                          ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
-                                      child: Lottie.asset(
-                                        'assets/lottie_animations/Animation_-_1700667862033.json',
-                                        width: 100.0,
-                                        height: 100.0,
-                                        fit: BoxFit.cover,
-                                        animate: true,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
+                            ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 20.0),
