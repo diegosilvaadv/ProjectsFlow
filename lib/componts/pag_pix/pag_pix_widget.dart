@@ -383,13 +383,10 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                             onRefresh: () async {
                               logFirebaseEvent(
                                   'PAG_PIX_Column_cwe2wv5l_ON_PULL_TO_REFRE');
-                              logFirebaseEvent('Column_wait__delay');
-                              await Future.delayed(
-                                  const Duration(milliseconds: 3000));
                               if (StatusPixCall.status(
                                     columnStatusPixResponse.jsonBody,
                                   ).toString() ==
-                                  'Approved') {
+                                  'approved') {
                                 logFirebaseEvent('Column_alert_dialog');
                                 await showAlignedDialog(
                                   context: context,
@@ -412,10 +409,27 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                     );
                                   },
                                 ).then((value) => setState(() {}));
-
-                                return;
                               } else {
-                                return;
+                                logFirebaseEvent('Column_alert_dialog');
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return WebViewAware(
+                                        child: AlertDialog(
+                                      title: Text('ERRO'),
+                                      content: Text(StatusPixCall.status(
+                                        columnStatusPixResponse.jsonBody,
+                                      ).toString()),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    ));
+                                  },
+                                );
                               }
                             },
                             child: SingleChildScrollView(
