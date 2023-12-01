@@ -54,6 +54,8 @@ class _PagPixWidgetState extends State<PagPixWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('PAG_PIX_COMP_pagPix_ON_INIT_STATE');
+      logFirebaseEvent('pagPix_timer');
+      _model.timerController.onStartTimer();
       logFirebaseEvent('pagPix_custom_action');
       await actions.atualizarAPI(
         () async {
@@ -61,7 +63,6 @@ class _PagPixWidgetState extends State<PagPixWidget> {
           logFirebaseEvent('_refresh_database_request');
           setState(() => _model.apiRequestCompleter = null);
           await _model.waitForApiRequestCompleted();
-          logFirebaseEvent('_timer');
           logFirebaseEvent('_backend_call');
           _model.apiResultqiu = await StatusPixCall.call(
             idPix: widget.idpix,
