@@ -1,19 +1,18 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'aceitar_termos_model.dart';
 export 'aceitar_termos_model.dart';
 
@@ -24,26 +23,8 @@ class AceitarTermosWidget extends StatefulWidget {
   _AceitarTermosWidgetState createState() => _AceitarTermosWidgetState();
 }
 
-class _AceitarTermosWidgetState extends State<AceitarTermosWidget>
-    with TickerProviderStateMixin {
+class _AceitarTermosWidgetState extends State<AceitarTermosWidget> {
   late AceitarTermosModel _model;
-
-  final animationsMap = {
-    'checkboxOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        ShakeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 1000.ms,
-          hz: 10,
-          offset: Offset(0.0, 0.0),
-          rotation: 0.087,
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -58,13 +39,6 @@ class _AceitarTermosWidgetState extends State<AceitarTermosWidget>
 
     _model.expandableController1 = ExpandableController(initialExpanded: false);
     _model.expandableController2 = ExpandableController(initialExpanded: false);
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -83,7 +57,6 @@ class _AceitarTermosWidgetState extends State<AceitarTermosWidget>
       alignment: AlignmentDirectional(0.00, 0.00),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.8,
-        height: MediaQuery.sizeOf(context).height * 0.8,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(12.0),
@@ -371,30 +344,22 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                         Form(
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.always,
-                          child: Theme(
-                            data: ThemeData(
-                              checkboxTheme: CheckboxThemeData(
-                                visualDensity: VisualDensity.compact,
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.0),
-                                ),
-                              ),
-                              unselectedWidgetColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
+                          child: ToggleIcon(
+                            onPressed: () async {
+                              setState(() => FFAppState().aceitarTermos =
+                                  !FFAppState().aceitarTermos);
+                            },
+                            value: FFAppState().aceitarTermos,
+                            onIcon: Icon(
+                              Icons.check_box,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 30.0,
                             ),
-                            child: Checkbox(
-                              value: _model.checkboxValue ??= false,
-                              onChanged: (newValue) async {
-                                setState(
-                                    () => _model.checkboxValue = newValue!);
-                              },
-                              activeColor: FlutterFlowTheme.of(context).primary,
-                              checkColor: FlutterFlowTheme.of(context).info,
+                            offIcon: Icon(
+                              Icons.check_box_outline_blank,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 30.0,
                             ),
-                          ).animateOnActionTrigger(
-                            animationsMap['checkboxOnActionTriggerAnimation']!,
                           ),
                         ),
                         Text(
@@ -402,7 +367,7 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
-                                    fontSize: 20.0,
+                                    fontSize: 25.0,
                                   ),
                         ),
                       ],
@@ -419,38 +384,50 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                           onPressed: () async {
                             logFirebaseEvent(
                                 'ACEITAR_TERMOS_COMP_CONTINUAR_BTN_ON_TAP');
-                            logFirebaseEvent('Button_widget_animation');
-                            if (animationsMap[
-                                    'checkboxOnActionTriggerAnimation'] !=
-                                null) {
-                              await animationsMap[
-                                      'checkboxOnActionTriggerAnimation']!
-                                  .controller
-                                  .forward(from: 0.0);
-                            }
-                            logFirebaseEvent('Button_validate_form');
-                            if (_model.formKey.currentState == null ||
-                                !_model.formKey.currentState!.validate()) {
+                            if (FFAppState().aceitarTermos) {
+                              logFirebaseEvent('Button_backend_call');
+
+                              await currentUserReference!
+                                  .update(createUsersRecordData(
+                                aceitarTermos: true,
+                              ));
+                              logFirebaseEvent('Button_navigate_to');
+
+                              context.goNamed(
+                                'HomePage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 1000),
+                                  ),
+                                },
+                              );
+
+                              return;
+                            } else {
+                              logFirebaseEvent('Button_alert_dialog');
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return WebViewAware(
+                                      child: AlertDialog(
+                                    title:
+                                        Text('Confirme os Termos e Política'),
+                                    content: Text(
+                                        'Você precisa aceitar nossos termos de serviço e política de privacidade para continuar.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  ));
+                                },
+                              );
                               return;
                             }
-                            logFirebaseEvent('Button_backend_call');
-
-                            await currentUserReference!
-                                .update(createUsersRecordData(
-                              aceitarTermos: true,
-                            ));
-                            logFirebaseEvent('Button_navigate_to');
-
-                            context.goNamed(
-                              'HomePage',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 1000),
-                                ),
-                              },
-                            );
                           },
                           text: 'Continuar',
                           options: FFButtonOptions(

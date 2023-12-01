@@ -107,6 +107,12 @@ class FFAppState extends ChangeNotifier {
   set sideNav(String _value) {
     _sideNav = _value;
   }
+
+  bool _aceitarTermos = false;
+  bool get aceitarTermos => _aceitarTermos;
+  set aceitarTermos(bool _value) {
+    _aceitarTermos = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
