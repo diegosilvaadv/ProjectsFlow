@@ -1155,12 +1155,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 ParamType
                                                                     .String,
                                                               ),
-                                                              'all':
-                                                                  serializeParam(
-                                                                '',
-                                                                ParamType
-                                                                    .String,
-                                                              ),
                                                             }.withoutNulls,
                                                             extra: <String,
                                                                 dynamic>{
@@ -1283,7 +1277,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .where(
                                                             'Categoria',
                                                             isEqualTo:
-                                                                'Autenticação',
+                                                                'Autenticação+',
                                                           ),
                                                         ),
                                                         builder: (context,
