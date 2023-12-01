@@ -20,7 +20,8 @@ export '/dashboard_clientes/estatsticas/estatsticas_widget.dart'
     show EstatsticasWidget;
 export '/dashboard_clientes/projetos/projetos_widget.dart' show ProjetosWidget;
 export '/dashboard_clientes/paginas/paginas_widget.dart' show PaginasWidget;
-export '/pages/pagamento/pagamento_widget.dart' show PagamentoWidget;
+export '/pages/pagamento_projeto/pagamento_projeto_widget.dart'
+    show PagamentoProjetoWidget;
 export '/nav_bar/termos_de_servicos/termos_de_servicos_widget.dart'
     show TermosDeServicosWidget;
 export '/nav_bar/polticade_privacidade/polticade_privacidade_widget.dart'
@@ -30,3 +31,5 @@ export '/nav_bar/suporte/suporte_widget.dart' show SuporteWidget;
 export '/nav_bar/reclamacoes/reclamacoes_widget.dart' show ReclamacoesWidget;
 export '/nav_bar/chat/chat_widget.dart' show ChatWidget;
 export '/nav_bar/perguntas/perguntas_widget.dart' show PerguntasWidget;
+export '/pages/pagamento_paginas/pagamento_paginas_widget.dart'
+    show PagamentoPaginasWidget;

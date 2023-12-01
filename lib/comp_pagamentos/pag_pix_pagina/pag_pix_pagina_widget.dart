@@ -1,7 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
+import '/comp_pagamentos/pag_com_sucess_paginas/pag_com_sucess_paginas_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,25 +21,25 @@ import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'pag_pix_model.dart';
-export 'pag_pix_model.dart';
+import 'pag_pix_pagina_model.dart';
+export 'pag_pix_pagina_model.dart';
 
-class PagPixWidget extends StatefulWidget {
-  const PagPixWidget({
+class PagPixPaginaWidget extends StatefulWidget {
+  const PagPixPaginaWidget({
     Key? key,
     required this.detalhesProduto,
     this.idpix,
   }) : super(key: key);
 
-  final ProjetosRecord? detalhesProduto;
+  final PaginasRecord? detalhesProduto;
   final int? idpix;
 
   @override
-  _PagPixWidgetState createState() => _PagPixWidgetState();
+  _PagPixPaginaWidgetState createState() => _PagPixPaginaWidgetState();
 }
 
-class _PagPixWidgetState extends State<PagPixWidget> {
-  late PagPixModel _model;
+class _PagPixPaginaWidgetState extends State<PagPixPaginaWidget> {
+  late PagPixPaginaModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -50,14 +50,14 @@ class _PagPixWidgetState extends State<PagPixWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PagPixModel());
+    _model = createModel(context, () => PagPixPaginaModel());
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('PAG_PIX_COMP_pagPix_ON_INIT_STATE');
-      logFirebaseEvent('pagPix_timer');
+      logFirebaseEvent('PAG_PIX_PAGINA_pagPix_pagina_ON_INIT_STA');
+      logFirebaseEvent('pagPix_pagina_timer');
       _model.timerController.onStartTimer();
-      logFirebaseEvent('pagPix_custom_action');
+      logFirebaseEvent('pagPix_pagina_custom_action');
       await actions.atualizarAPI(
         () async {
           var _shouldSetState = false;
@@ -97,9 +97,9 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                 return Material(
                   color: Colors.transparent,
                   child: WebViewAware(
-                      child: PagComSucessWidget(
+                      child: PagComSucessPaginasWidget(
                     detalhesProdutos: widget.detalhesProduto,
-                    cartaoFinal: 'PÍX',
+                    cartaoFinal: 'PIX',
                     transacionID: widget.idpix!.toString(),
                   )),
                 );
@@ -207,7 +207,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                         showLoadingIndicator: true,
                                         onPressed: () async {
                                           logFirebaseEvent(
-                                              'PAG_PIX_COMP_close_ICN_ON_TAP');
+                                              'PAG_PIX_PAGINA_COMP_close_ICN_ON_TAP');
                                           logFirebaseEvent(
                                               'IconButton_alert_dialog');
                                           var confirmDialogResponse =
@@ -246,14 +246,23 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                                 'IconButton_navigate_to');
 
                                             context.goNamed(
-                                              'HomePage',
+                                              'detalhePage',
+                                              queryParameters: {
+                                                'paginas': serializeParam(
+                                                  widget.detalhesProduto,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
                                               extra: <String, dynamic>{
+                                                'paginas':
+                                                    widget.detalhesProduto,
                                                 kTransitionInfoKey:
                                                     TransitionInfo(
                                                   hasTransition: true,
                                                   transitionType:
-                                                      PageTransitionType
-                                                          .bottomToTop,
+                                                      PageTransitionType.fade,
+                                                  duration: Duration(
+                                                      milliseconds: 1000),
                                                 ),
                                               },
                                             );
@@ -364,7 +373,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           logFirebaseEvent(
-                                              'PAG_PIX_COMP_Image_5q8znl4e_ON_TAP');
+                                              'PAG_PIX_PAGINA_Image_qzoyyx52_ON_TAP');
                                           logFirebaseEvent(
                                               'Image_expand_image');
                                           await Navigator.push(
@@ -460,7 +469,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                               },
                               onEnded: () async {
                                 logFirebaseEvent(
-                                    'PAG_PIX_COMP_Timer_ew6m2h02_ON_TIMER_END');
+                                    'PAG_PIX_PAGINA_Timer_9sq51sd0_ON_TIMER_E');
                                 logFirebaseEvent('Timer_navigate_to');
 
                                 context.goNamed(
@@ -611,7 +620,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                     ),
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'PAG_PIX_COMP_content_copy_ICN_ON_TAP');
+                                          'PAG_PIX_PAGINA_content_copy_ICN_ON_TAP');
                                       logFirebaseEvent(
                                           'IconButton_copy_to_clipboard');
                                       await Clipboard.setData(ClipboardData(

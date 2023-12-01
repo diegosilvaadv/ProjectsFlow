@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/criarconta/criarconta_widget.dart';
+import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class DetalhePageModel extends FlutterFlowModel<DetalhePageWidget> {
@@ -34,16 +36,21 @@ class DetalhePageModel extends FlutterFlowModel<DetalhePageWidget> {
 
   int carouselCurrentIndex = 1;
 
+  // Model for NavBar component.
+  late NavBarModel navBarModel;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     appBarModel = createModel(context, () => AppBarModel());
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     appBarModel.dispose();
     tabBarController?.dispose();
+    navBarModel.dispose();
   }
 
   /// Action blocks are added here.

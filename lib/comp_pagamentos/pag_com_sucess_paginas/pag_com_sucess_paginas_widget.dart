@@ -10,27 +10,28 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'pag_com_sucess_model.dart';
-export 'pag_com_sucess_model.dart';
+import 'pag_com_sucess_paginas_model.dart';
+export 'pag_com_sucess_paginas_model.dart';
 
-class PagComSucessWidget extends StatefulWidget {
-  const PagComSucessWidget({
+class PagComSucessPaginasWidget extends StatefulWidget {
+  const PagComSucessPaginasWidget({
     Key? key,
     this.detalhesProdutos,
     required this.cartaoFinal,
     required this.transacionID,
   }) : super(key: key);
 
-  final ProjetosRecord? detalhesProdutos;
+  final PaginasRecord? detalhesProdutos;
   final String? cartaoFinal;
   final String? transacionID;
 
   @override
-  _PagComSucessWidgetState createState() => _PagComSucessWidgetState();
+  _PagComSucessPaginasWidgetState createState() =>
+      _PagComSucessPaginasWidgetState();
 }
 
-class _PagComSucessWidgetState extends State<PagComSucessWidget> {
-  late PagComSucessModel _model;
+class _PagComSucessPaginasWidgetState extends State<PagComSucessPaginasWidget> {
+  late PagComSucessPaginasModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -41,14 +42,14 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PagComSucessModel());
+    _model = createModel(context, () => PagComSucessPaginasModel());
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('PAG_COM_SUCESS_pagComSucess_ON_INIT_STAT');
-      logFirebaseEvent('pagComSucess_wait__delay');
+      logFirebaseEvent('PAG_COM_SUCESS_PAGINAS_pagComSucess_pagi');
+      logFirebaseEvent('pagComSucess_paginas_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));
-      logFirebaseEvent('pagComSucess_backend_call');
+      logFirebaseEvent('pagComSucess_paginas_backend_call');
 
       await PagamentosRecord.collection.doc().set(createPagamentosRecordData(
             produto: widget.detalhesProdutos?.titulo,
@@ -66,20 +67,20 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
             emailVendedor: widget.detalhesProdutos?.emailVendedor,
             userIDPagante: currentUserUid,
           ));
-      logFirebaseEvent('pagComSucess_wait__delay');
+      logFirebaseEvent('pagComSucess_paginas_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
-      logFirebaseEvent('pagComSucess_navigate_to');
+      logFirebaseEvent('pagComSucess_paginas_navigate_to');
 
       context.goNamed(
-        'detalhesProjects',
+        'detalhePage',
         queryParameters: {
-          'detalhesProjects': serializeParam(
+          'paginas': serializeParam(
             widget.detalhesProdutos,
             ParamType.Document,
           ),
         }.withoutNulls,
         extra: <String, dynamic>{
-          'detalhesProjects': widget.detalhesProdutos,
+          'paginas': widget.detalhesProdutos,
           kTransitionInfoKey: TransitionInfo(
             hasTransition: true,
             transitionType: PageTransitionType.fade,

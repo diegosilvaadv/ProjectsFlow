@@ -46,11 +46,6 @@ class PaginasRecord extends FirestoreRecord {
   String get postadoPor => _postadoPor ?? '';
   bool hasPostadoPor() => _postadoPor != null;
 
-  // "UserID" field.
-  DocumentReference? _userID;
-  DocumentReference? get userID => _userID;
-  bool hasUserID() => _userID != null;
-
   // "IMGPrincipal" field.
   String? _iMGPrincipal;
   String get iMGPrincipal => _iMGPrincipal ?? '';
@@ -101,6 +96,11 @@ class PaginasRecord extends FirestoreRecord {
   String get requisitos => _requisitos ?? '';
   bool hasRequisitos() => _requisitos != null;
 
+  // "userIDPagante" field.
+  String? _userIDPagante;
+  String get userIDPagante => _userIDPagante ?? '';
+  bool hasUserIDPagante() => _userIDPagante != null;
+
   void _initializeFields() {
     _titulo = snapshotData['Titulo'] as String?;
     _descricao = snapshotData['Descricao'] as String?;
@@ -108,7 +108,6 @@ class PaginasRecord extends FirestoreRecord {
     _categoria = snapshotData['Categoria'] as String?;
     _linkProjeto = snapshotData['LinkProjeto'] as String?;
     _postadoPor = snapshotData['PostadoPor'] as String?;
-    _userID = snapshotData['UserID'] as DocumentReference?;
     _iMGPrincipal = snapshotData['IMGPrincipal'] as String?;
     _img1 = snapshotData['IMG1'] as String?;
     _img2 = snapshotData['IMG2'] as String?;
@@ -119,6 +118,7 @@ class PaginasRecord extends FirestoreRecord {
     _userIDVendedor = snapshotData['userIDVendedor'] as String?;
     _emailVendedor = snapshotData['emailVendedor'] as String?;
     _requisitos = snapshotData['requisitos'] as String?;
+    _userIDPagante = snapshotData['userIDPagante'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -162,7 +162,6 @@ Map<String, dynamic> createPaginasRecordData({
   String? categoria,
   String? linkProjeto,
   String? postadoPor,
-  DocumentReference? userID,
   String? iMGPrincipal,
   String? img1,
   String? img2,
@@ -173,6 +172,7 @@ Map<String, dynamic> createPaginasRecordData({
   String? userIDVendedor,
   String? emailVendedor,
   String? requisitos,
+  String? userIDPagante,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -182,7 +182,6 @@ Map<String, dynamic> createPaginasRecordData({
       'Categoria': categoria,
       'LinkProjeto': linkProjeto,
       'PostadoPor': postadoPor,
-      'UserID': userID,
       'IMGPrincipal': iMGPrincipal,
       'IMG1': img1,
       'IMG2': img2,
@@ -193,6 +192,7 @@ Map<String, dynamic> createPaginasRecordData({
       'userIDVendedor': userIDVendedor,
       'emailVendedor': emailVendedor,
       'requisitos': requisitos,
+      'userIDPagante': userIDPagante,
     }.withoutNulls,
   );
 
@@ -210,7 +210,6 @@ class PaginasRecordDocumentEquality implements Equality<PaginasRecord> {
         e1?.categoria == e2?.categoria &&
         e1?.linkProjeto == e2?.linkProjeto &&
         e1?.postadoPor == e2?.postadoPor &&
-        e1?.userID == e2?.userID &&
         e1?.iMGPrincipal == e2?.iMGPrincipal &&
         e1?.img1 == e2?.img1 &&
         e1?.img2 == e2?.img2 &&
@@ -220,7 +219,8 @@ class PaginasRecordDocumentEquality implements Equality<PaginasRecord> {
         e1?.identificacao == e2?.identificacao &&
         e1?.userIDVendedor == e2?.userIDVendedor &&
         e1?.emailVendedor == e2?.emailVendedor &&
-        e1?.requisitos == e2?.requisitos;
+        e1?.requisitos == e2?.requisitos &&
+        e1?.userIDPagante == e2?.userIDPagante;
   }
 
   @override
@@ -231,7 +231,6 @@ class PaginasRecordDocumentEquality implements Equality<PaginasRecord> {
         e?.categoria,
         e?.linkProjeto,
         e?.postadoPor,
-        e?.userID,
         e?.iMGPrincipal,
         e?.img1,
         e?.img2,
@@ -241,7 +240,8 @@ class PaginasRecordDocumentEquality implements Equality<PaginasRecord> {
         e?.identificacao,
         e?.userIDVendedor,
         e?.emailVendedor,
-        e?.requisitos
+        e?.requisitos,
+        e?.userIDPagante
       ]);
 
   @override

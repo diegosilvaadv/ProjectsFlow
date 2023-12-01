@@ -672,6 +672,10 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                 );
                               },
                               text: 'CRIAR CONTA',
+                              icon: Icon(
+                                Icons.person_add,
+                                size: 15.0,
+                              ),
                               options: FFButtonOptions(
                                 height: 40.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -725,6 +729,10 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                 );
                               },
                               text: 'Dashboard',
+                              icon: Icon(
+                                Icons.dashboard_sharp,
+                                size: 15.0,
+                              ),
                               options: FFButtonOptions(
                                 height: 40.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(

@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/criarconta/criarconta_widget.dart';
+import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'detalhe_page_model.dart';
 export 'detalhe_page_model.dart';
@@ -272,445 +274,499 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                     ],
                   ),
                   Expanded(
-                    child: Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      elevation: 4.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            100.0, 10.0, 100.0, 50.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        elevation: 0.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 6.0, 50.0, 0.0),
-                                child: Row(
+                                    100.0, 10.0, 100.0, 50.0),
+                                child: Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 300.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            widget.paginas?.descricao,
-                                            'descricao',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelSmall
-                                              .override(
-                                                fontFamily: 'Noto Serif',
-                                                fontSize: 20.0,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                    FFButtonWidget(
-                                      onPressed: () async {
-                                        logFirebaseEvent(
-                                            'DETALHE_COPIAR_PÁGINA_BTN_ON_TAP');
-                                        if (currentUserEmail != '') {
-                                          logFirebaseEvent(
-                                              'Button_launch_u_r_l');
-                                          await launchURL(
-                                              widget.paginas!.linkProjeto);
-                                        } else {
-                                          logFirebaseEvent(
-                                              'Button_bottom_sheet');
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Color(0xBE14181B),
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return WebViewAware(
-                                                  child: GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: CriarcontaWidget(),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 6.0, 50.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 300.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  widget.paginas?.descricao,
+                                                  'descricao',
                                                 ),
-                                              ));
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        }
-                                      },
-                                      text: 'Copiar Página',
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: Color(0xFF09D707),
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color: Colors.black,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w500,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Serif',
+                                                          fontSize: 20.0,
+                                                        ),
+                                              ),
                                             ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 6.0, 50.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.person_2,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          widget.paginas?.postadoPor,
-                                          'criador',
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .override(
-                                              fontFamily: 'Noto Serif',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle: FontStyle.italic,
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 100.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          dateTimeFormat(
-                                              '|   dd/MM/yyyy | kk:mm',
-                                              widget.paginas?.creatData),
-                                          'data',
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 20.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 20.0, 10.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Material(
-                                      color: Colors.transparent,
-                                      elevation: 10.0,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: Container(
-                                        width: 982.0,
-                                        height: 564.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: Column(
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Align(
-                                                alignment: Alignment(0.0, 0),
-                                                child: FlutterFlowButtonTabBar(
-                                                  useToggleButtonStyle: false,
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium,
-                                                  unselectedLabelStyle:
-                                                      TextStyle(),
-                                                  labelColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText,
-                                                  unselectedLabelColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
-                                                  backgroundColor:
-                                                      Color(0x5139D2C0),
-                                                  unselectedBackgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondary,
-                                                  unselectedBorderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderWidth: 2.0,
-                                                  borderRadius: 8.0,
-                                                  elevation: 0.0,
-                                                  buttonMargin:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(8.0, 0.0,
-                                                              8.0, 0.0),
+                                              if (widget
+                                                      .paginas?.userIDPagante ==
+                                                  currentUserUid)
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'DETALHE_COPIAR_PÁGINA_BTN_ON_TAP');
+                                                    if (currentUserEmail !=
+                                                        '') {
+                                                      logFirebaseEvent(
+                                                          'Button_launch_u_r_l');
+                                                      await launchURL(widget
+                                                          .paginas!
+                                                          .linkProjeto);
+                                                    } else {
+                                                      logFirebaseEvent(
+                                                          'Button_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Color(0xBE14181B),
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  CriarcontaWidget(),
+                                                            ),
+                                                          ));
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    }
+                                                  },
+                                                  text: 'Copiar Página',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF39D2C0),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.black,
+                                                          fontSize: 20.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              if (widget
+                                                      .paginas?.userIDPagante !=
+                                                  currentUserUid)
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'DETALHE_COMPRAR_PÁGINA_BTN_ON_TAP');
+                                                    if (currentUserEmail !=
+                                                        '') {
+                                                      logFirebaseEvent(
+                                                          'Button_navigate_to');
+
+                                                      context.pushNamed(
+                                                        'Pagamento_paginas',
+                                                        queryParameters: {
+                                                          'detalhesPaginas':
+                                                              serializeParam(
+                                                            widget.paginas,
+                                                            ParamType.Document,
+                                                          ),
+                                                        }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'detalhesPaginas':
+                                                              widget.paginas,
+                                                          kTransitionInfoKey:
+                                                              TransitionInfo(
+                                                            hasTransition: true,
+                                                            transitionType:
+                                                                PageTransitionType
+                                                                    .fade,
+                                                          ),
+                                                        },
+                                                      );
+                                                    } else {
+                                                      logFirebaseEvent(
+                                                          'Button_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Color(0xBE14181B),
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  CriarcontaWidget(),
+                                                            ),
+                                                          ));
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    }
+                                                  },
+                                                  text: 'Comprar Página',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF09D707),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.black,
+                                                          fontSize: 20.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              if (widget.paginas?.valor != 0.0)
+                                                Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          4.0, 4.0, 4.0, 4.0),
-                                                  tabs: [
-                                                    Tab(
-                                                      text: 'Imagens ',
+                                                          0.0, 10.0, 10.0, 0.0),
+                                                  child: GradientText(
+                                                    valueOrDefault<String>(
+                                                      formatNumber(
+                                                        widget.paginas?.valor,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        currency: 'R\$ ',
+                                                        format: '0.00',
+                                                        locale: 'pt_BR',
+                                                      ),
+                                                      'valor',
                                                     ),
-                                                    Tab(
-                                                      text: 'Requisitos',
-                                                    ),
-                                                  ],
-                                                  controller:
-                                                      _model.tabBarController,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 30.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary
+                                                    ],
+                                                    gradientDirection:
+                                                        GradientDirection.ltr,
+                                                    gradientType:
+                                                        GradientType.linear,
+                                                  ),
                                                 ),
+                                              if (widget.paginas?.valor == 0.0)
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 10.0, 10.0, 0.0),
+                                                  child: GradientText(
+                                                    'Grátis',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 30.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary
+                                                    ],
+                                                    gradientDirection:
+                                                        GradientDirection.ltr,
+                                                    gradientType:
+                                                        GradientType.linear,
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 6.0, 50.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Icon(
+                                            Icons.person_2,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                widget.paginas?.postadoPor,
+                                                'criador',
                                               ),
-                                              Expanded(
-                                                child: TabBarView(
-                                                  controller:
-                                                      _model.tabBarController,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelSmall
+                                                  .override(
+                                                    fontFamily: 'Noto Serif',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondary,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 0.0, 100.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                dateTimeFormat(
+                                                    '|   dd/MM/yyyy | kk:mm',
+                                                    widget.paginas?.creatData),
+                                                'data',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 20.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 20.0, 10.0, 10.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Material(
+                                            color: Colors.transparent,
+                                            elevation: 10.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            child: Container(
+                                              width: 982.0,
+                                              height: 564.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 10.0, 10.0, 10.0),
+                                                child: Column(
                                                   children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  10.0,
-                                                                  10.0,
-                                                                  10.0),
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        height: 180.0,
-                                                        child: CarouselSlider(
-                                                          items: [
-                                                            InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                logFirebaseEvent(
-                                                                    'DETALHE_PAGE_PAGE_Image_2zqfyudg_ON_TAP');
-                                                                logFirebaseEvent(
-                                                                    'Image_expand_image');
-                                                                await Navigator
-                                                                    .push(
-                                                                  context,
-                                                                  PageTransition(
-                                                                    type: PageTransitionType
-                                                                        .fade,
-                                                                    child:
-                                                                        FlutterFlowExpandedImageView(
-                                                                      image: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          widget
-                                                                              .paginas
-                                                                              ?.iMGPrincipal,
-                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                        ),
-                                                                        fit: BoxFit
-                                                                            .contain,
-                                                                      ),
-                                                                      allowRotation:
-                                                                          false,
-                                                                      tag: valueOrDefault<
-                                                                          String>(
-                                                                        widget
-                                                                            .paginas
-                                                                            ?.iMGPrincipal,
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                      ),
-                                                                      useHeroAnimation:
-                                                                          true,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: Hero(
-                                                                tag:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  widget.paginas
-                                                                      ?.iMGPrincipal,
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                ),
-                                                                transitionOnUserGestures:
-                                                                    true,
-                                                                child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      widget
-                                                                          .paginas
-                                                                          ?.iMGPrincipal,
-                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                    ),
-                                                                    width:
-                                                                        300.0,
-                                                                    height:
-                                                                        200.0,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                logFirebaseEvent(
-                                                                    'DETALHE_PAGE_PAGE_Image_cbise5j9_ON_TAP');
-                                                                logFirebaseEvent(
-                                                                    'Image_expand_image');
-                                                                await Navigator
-                                                                    .push(
-                                                                  context,
-                                                                  PageTransition(
-                                                                    type: PageTransitionType
-                                                                        .fade,
-                                                                    child:
-                                                                        FlutterFlowExpandedImageView(
-                                                                      image: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          widget
-                                                                              .paginas
-                                                                              ?.img1,
-                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                        ),
-                                                                        fit: BoxFit
-                                                                            .contain,
-                                                                      ),
-                                                                      allowRotation:
-                                                                          false,
-                                                                      tag: valueOrDefault<
-                                                                          String>(
-                                                                        widget
-                                                                            .paginas
-                                                                            ?.img1,
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                      ),
-                                                                      useHeroAnimation:
-                                                                          true,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: Hero(
-                                                                tag:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  widget.paginas
-                                                                      ?.img1,
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                ),
-                                                                transitionOnUserGestures:
-                                                                    true,
-                                                                child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      widget
-                                                                          .paginas
-                                                                          ?.img1,
-                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                    ),
-                                                                    width:
-                                                                        300.0,
-                                                                    height:
-                                                                        200.0,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Stack(
-                                                              children: [
-                                                                if (widget
-                                                                        .paginas
-                                                                        ?.img2 !=
-                                                                    '')
+                                                    Align(
+                                                      alignment:
+                                                          Alignment(0.0, 0),
+                                                      child:
+                                                          FlutterFlowButtonTabBar(
+                                                        useToggleButtonStyle:
+                                                            false,
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium,
+                                                        unselectedLabelStyle:
+                                                            TextStyle(),
+                                                        labelColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        unselectedLabelColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        backgroundColor:
+                                                            Color(0x5139D2C0),
+                                                        unselectedBackgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        borderColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        unselectedBorderColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        borderWidth: 2.0,
+                                                        borderRadius: 8.0,
+                                                        elevation: 0.0,
+                                                        buttonMargin:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    8.0,
+                                                                    0.0),
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    4.0,
+                                                                    4.0,
+                                                                    4.0,
+                                                                    4.0),
+                                                        tabs: [
+                                                          Tab(
+                                                            text: 'Imagens ',
+                                                          ),
+                                                          Tab(
+                                                            text: 'Requisitos',
+                                                          ),
+                                                        ],
+                                                        controller: _model
+                                                            .tabBarController,
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: TabBarView(
+                                                        controller: _model
+                                                            .tabBarController,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                            child: Container(
+                                                              width: double
+                                                                  .infinity,
+                                                              height: 180.0,
+                                                              child:
+                                                                  CarouselSlider(
+                                                                items: [
                                                                   InkWell(
                                                                     splashColor:
                                                                         Colors
@@ -727,86 +783,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                                                                     onTap:
                                                                         () async {
                                                                       logFirebaseEvent(
-                                                                          'DETALHE_PAGE_PAGE_Image_lob7f590_ON_TAP');
-                                                                      logFirebaseEvent(
-                                                                          'Image_expand_image');
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        PageTransition(
-                                                                          type:
-                                                                              PageTransitionType.fade,
-                                                                          child:
-                                                                              FlutterFlowExpandedImageView(
-                                                                            image:
-                                                                                Image.network(
-                                                                              valueOrDefault<String>(
-                                                                                widget.paginas?.img2,
-                                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                              ),
-                                                                              fit: BoxFit.contain,
-                                                                            ),
-                                                                            allowRotation:
-                                                                                false,
-                                                                            tag:
-                                                                                valueOrDefault<String>(
-                                                                              widget.paginas?.img2,
-                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                            ),
-                                                                            useHeroAnimation:
-                                                                                true,
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    },
-                                                                    child: Hero(
-                                                                      tag: valueOrDefault<
-                                                                          String>(
-                                                                        widget
-                                                                            .paginas
-                                                                            ?.img2,
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                      ),
-                                                                      transitionOnUserGestures:
-                                                                          true,
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            widget.paginas?.img2,
-                                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                          ),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                if (widget
-                                                                        .paginas
-                                                                        ?.img2 ==
-                                                                    '')
-                                                                  InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'DETALHE_PAGE_PAGE_Image_xrf9s72o_ON_TAP');
+                                                                          'DETALHE_PAGE_PAGE_Image_2zqfyudg_ON_TAP');
                                                                       logFirebaseEvent(
                                                                           'Image_expand_image');
                                                                       await Navigator
@@ -859,20 +836,16 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                                                                             widget.paginas?.iMGPrincipal,
                                                                             'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                           ),
+                                                                          width:
+                                                                              300.0,
+                                                                          height:
+                                                                              200.0,
                                                                           fit: BoxFit
-                                                                              .cover,
+                                                                              .contain,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                              ],
-                                                            ),
-                                                            Stack(
-                                                              children: [
-                                                                if (widget
-                                                                        .paginas
-                                                                        ?.img3 !=
-                                                                    '')
                                                                   InkWell(
                                                                     splashColor:
                                                                         Colors
@@ -889,86 +862,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                                                                     onTap:
                                                                         () async {
                                                                       logFirebaseEvent(
-                                                                          'DETALHE_PAGE_PAGE_Image_w373y469_ON_TAP');
-                                                                      logFirebaseEvent(
-                                                                          'Image_expand_image');
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        PageTransition(
-                                                                          type:
-                                                                              PageTransitionType.fade,
-                                                                          child:
-                                                                              FlutterFlowExpandedImageView(
-                                                                            image:
-                                                                                Image.network(
-                                                                              valueOrDefault<String>(
-                                                                                widget.paginas?.img2,
-                                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                              ),
-                                                                              fit: BoxFit.contain,
-                                                                            ),
-                                                                            allowRotation:
-                                                                                false,
-                                                                            tag:
-                                                                                valueOrDefault<String>(
-                                                                              widget.paginas?.img2,
-                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                            ),
-                                                                            useHeroAnimation:
-                                                                                true,
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    },
-                                                                    child: Hero(
-                                                                      tag: valueOrDefault<
-                                                                          String>(
-                                                                        widget
-                                                                            .paginas
-                                                                            ?.img2,
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                      ),
-                                                                      transitionOnUserGestures:
-                                                                          true,
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            widget.paginas?.img2,
-                                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                          ),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                if (widget
-                                                                        .paginas
-                                                                        ?.img2 ==
-                                                                    '')
-                                                                  InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'DETALHE_PAGE_PAGE_Image_rn9k1ilz_ON_TAP');
+                                                                          'DETALHE_PAGE_PAGE_Image_cbise5j9_ON_TAP');
                                                                       logFirebaseEvent(
                                                                           'Image_expand_image');
                                                                       await Navigator
@@ -1021,87 +915,360 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                                                                             widget.paginas?.img1,
                                                                             'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                           ),
+                                                                          width:
+                                                                              300.0,
+                                                                          height:
+                                                                              200.0,
                                                                           fit: BoxFit
-                                                                              .cover,
+                                                                              .contain,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                              ],
+                                                                  Stack(
+                                                                    children: [
+                                                                      if (widget
+                                                                              .paginas
+                                                                              ?.img2 !=
+                                                                          '')
+                                                                        InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            logFirebaseEvent('DETALHE_PAGE_PAGE_Image_lob7f590_ON_TAP');
+                                                                            logFirebaseEvent('Image_expand_image');
+                                                                            await Navigator.push(
+                                                                              context,
+                                                                              PageTransition(
+                                                                                type: PageTransitionType.fade,
+                                                                                child: FlutterFlowExpandedImageView(
+                                                                                  image: Image.network(
+                                                                                    valueOrDefault<String>(
+                                                                                      widget.paginas?.img2,
+                                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                    ),
+                                                                                    fit: BoxFit.contain,
+                                                                                  ),
+                                                                                  allowRotation: false,
+                                                                                  tag: valueOrDefault<String>(
+                                                                                    widget.paginas?.img2,
+                                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                  ),
+                                                                                  useHeroAnimation: true,
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                          child:
+                                                                              Hero(
+                                                                            tag:
+                                                                                valueOrDefault<String>(
+                                                                              widget.paginas?.img2,
+                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                            ),
+                                                                            transitionOnUserGestures:
+                                                                                true,
+                                                                            child:
+                                                                                ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              child: Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  widget.paginas?.img2,
+                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                ),
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      if (widget
+                                                                              .paginas
+                                                                              ?.img2 ==
+                                                                          '')
+                                                                        InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            logFirebaseEvent('DETALHE_PAGE_PAGE_Image_xrf9s72o_ON_TAP');
+                                                                            logFirebaseEvent('Image_expand_image');
+                                                                            await Navigator.push(
+                                                                              context,
+                                                                              PageTransition(
+                                                                                type: PageTransitionType.fade,
+                                                                                child: FlutterFlowExpandedImageView(
+                                                                                  image: Image.network(
+                                                                                    valueOrDefault<String>(
+                                                                                      widget.paginas?.iMGPrincipal,
+                                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                    ),
+                                                                                    fit: BoxFit.contain,
+                                                                                  ),
+                                                                                  allowRotation: false,
+                                                                                  tag: valueOrDefault<String>(
+                                                                                    widget.paginas?.iMGPrincipal,
+                                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                  ),
+                                                                                  useHeroAnimation: true,
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                          child:
+                                                                              Hero(
+                                                                            tag:
+                                                                                valueOrDefault<String>(
+                                                                              widget.paginas?.iMGPrincipal,
+                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                            ),
+                                                                            transitionOnUserGestures:
+                                                                                true,
+                                                                            child:
+                                                                                ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              child: Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  widget.paginas?.iMGPrincipal,
+                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                ),
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                    ],
+                                                                  ),
+                                                                  Stack(
+                                                                    children: [
+                                                                      if (widget
+                                                                              .paginas
+                                                                              ?.img3 !=
+                                                                          '')
+                                                                        InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            logFirebaseEvent('DETALHE_PAGE_PAGE_Image_w373y469_ON_TAP');
+                                                                            logFirebaseEvent('Image_expand_image');
+                                                                            await Navigator.push(
+                                                                              context,
+                                                                              PageTransition(
+                                                                                type: PageTransitionType.fade,
+                                                                                child: FlutterFlowExpandedImageView(
+                                                                                  image: Image.network(
+                                                                                    valueOrDefault<String>(
+                                                                                      widget.paginas?.img2,
+                                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                    ),
+                                                                                    fit: BoxFit.contain,
+                                                                                  ),
+                                                                                  allowRotation: false,
+                                                                                  tag: valueOrDefault<String>(
+                                                                                    widget.paginas?.img2,
+                                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                  ),
+                                                                                  useHeroAnimation: true,
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                          child:
+                                                                              Hero(
+                                                                            tag:
+                                                                                valueOrDefault<String>(
+                                                                              widget.paginas?.img2,
+                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                            ),
+                                                                            transitionOnUserGestures:
+                                                                                true,
+                                                                            child:
+                                                                                ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              child: Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  widget.paginas?.img2,
+                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                ),
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      if (widget
+                                                                              .paginas
+                                                                              ?.img2 ==
+                                                                          '')
+                                                                        InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            logFirebaseEvent('DETALHE_PAGE_PAGE_Image_rn9k1ilz_ON_TAP');
+                                                                            logFirebaseEvent('Image_expand_image');
+                                                                            await Navigator.push(
+                                                                              context,
+                                                                              PageTransition(
+                                                                                type: PageTransitionType.fade,
+                                                                                child: FlutterFlowExpandedImageView(
+                                                                                  image: Image.network(
+                                                                                    valueOrDefault<String>(
+                                                                                      widget.paginas?.img1,
+                                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                    ),
+                                                                                    fit: BoxFit.contain,
+                                                                                  ),
+                                                                                  allowRotation: false,
+                                                                                  tag: valueOrDefault<String>(
+                                                                                    widget.paginas?.img1,
+                                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                  ),
+                                                                                  useHeroAnimation: true,
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                          child:
+                                                                              Hero(
+                                                                            tag:
+                                                                                valueOrDefault<String>(
+                                                                              widget.paginas?.img1,
+                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                            ),
+                                                                            transitionOnUserGestures:
+                                                                                true,
+                                                                            child:
+                                                                                ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              child: Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  widget.paginas?.img1,
+                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                ),
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                                carouselController:
+                                                                    _model.carouselController ??=
+                                                                        CarouselController(),
+                                                                options:
+                                                                    CarouselOptions(
+                                                                  initialPage:
+                                                                      1,
+                                                                  viewportFraction:
+                                                                      0.5,
+                                                                  disableCenter:
+                                                                      true,
+                                                                  enlargeCenterPage:
+                                                                      true,
+                                                                  enlargeFactor:
+                                                                      0.25,
+                                                                  enableInfiniteScroll:
+                                                                      true,
+                                                                  scrollDirection:
+                                                                      Axis.horizontal,
+                                                                  autoPlay:
+                                                                      true,
+                                                                  autoPlayAnimationDuration:
+                                                                      Duration(
+                                                                          milliseconds:
+                                                                              800),
+                                                                  autoPlayInterval: Duration(
+                                                                      milliseconds:
+                                                                          (800 +
+                                                                              4000)),
+                                                                  autoPlayCurve:
+                                                                      Curves
+                                                                          .linear,
+                                                                  pauseAutoPlayInFiniteScroll:
+                                                                      true,
+                                                                  onPageChanged: (index,
+                                                                          _) =>
+                                                                      _model.carouselCurrentIndex =
+                                                                          index,
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ],
-                                                          carouselController: _model
-                                                                  .carouselController ??=
-                                                              CarouselController(),
-                                                          options:
-                                                              CarouselOptions(
-                                                            initialPage: 1,
-                                                            viewportFraction:
-                                                                0.5,
-                                                            disableCenter: true,
-                                                            enlargeCenterPage:
-                                                                true,
-                                                            enlargeFactor: 0.25,
-                                                            enableInfiniteScroll:
-                                                                true,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            autoPlay: true,
-                                                            autoPlayAnimationDuration:
-                                                                Duration(
-                                                                    milliseconds:
-                                                                        800),
-                                                            autoPlayInterval:
-                                                                Duration(
-                                                                    milliseconds:
-                                                                        (800 +
-                                                                            4000)),
-                                                            autoPlayCurve:
-                                                                Curves.linear,
-                                                            pauseAutoPlayInFiniteScroll:
-                                                                true,
-                                                            onPageChanged: (index,
-                                                                    _) =>
-                                                                _model.carouselCurrentIndex =
-                                                                    index,
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  10.0,
-                                                                  10.0,
-                                                                  10.0),
-                                                      child: Text(
-                                                        valueOrDefault<String>(
-                                                          widget.paginas
-                                                              ?.requisitos,
-                                                          'Requisitos',
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 32.0,
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                            child: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                widget.paginas
+                                                                    ?.requisitos,
+                                                                'Requisitos',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        32.0,
+                                                                  ),
                                                             ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                            ],
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
                                     ),
                                   ],
                                 ),
+                              ),
+                              Divider(
+                                thickness: 2.0,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                              ),
+                              wrapWithModel(
+                                model: _model.navBarModel,
+                                updateCallback: () => setState(() {}),
+                                child: NavBarWidget(),
                               ),
                             ],
                           ),
