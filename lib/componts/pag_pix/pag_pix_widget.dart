@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -10,6 +11,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -20,6 +22,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'pag_pix_model.dart';
 export 'pag_pix_model.dart';
 
@@ -363,7 +366,9 @@ class _PagPixWidgetState extends State<PagPixWidget>
                       future: (_model.apiRequestCompleter ??=
                               Completer<ApiCallResponse>()
                                 ..complete(StatusPixCall.call(
-                                  idPix: FFAppState().PagRed.idPedido,
+                                  idPix: widget.idpix,
+                                  token:
+                                      'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
                                 )))
                           .future,
                       builder: (context, snapshot) {
@@ -493,68 +498,138 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                               columnStatusPixResponse.jsonBody,
                                             ).toString() !=
                                             'approved')
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'PAG_PIX_ATUALIZAR_PAGAMENTO_BTN_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Button_backend_call');
-                                              await StatusPixCall.call(
-                                                idPix: widget.idpix,
-                                                token:
-                                                    'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                              );
-                                              logFirebaseEvent(
-                                                  'Button_wait__delay');
-                                              await Future.delayed(
-                                                  const Duration(
-                                                      milliseconds: 3000));
-                                              logFirebaseEvent(
-                                                  'Button_update_app_state');
-                                              setState(() {
-                                                FFAppState().updatePagRedStruct(
-                                                  (e) => e
-                                                    ..status =
-                                                        StatusPixCall.status(
+                                          Builder(
+                                            builder: (context) =>
+                                                FFButtonWidget(
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'PAG_PIX_ATUALIZAR_PAGAMENTO_BTN_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Button_refresh_database_request');
+                                                setState(() =>
+                                                    _model.apiRequestCompleter =
+                                                        null);
+                                                await _model
+                                                    .waitForApiRequestCompleted();
+                                                logFirebaseEvent(
+                                                    'Button_wait__delay');
+                                                await Future.delayed(
+                                                    const Duration(
+                                                        milliseconds: 3000));
+                                                logFirebaseEvent(
+                                                    'Button_update_app_state');
+                                                setState(() {
+                                                  FFAppState()
+                                                      .updatePagRedStruct(
+                                                    (e) => e
+                                                      ..status =
+                                                          StatusPixCall.status(
+                                                        columnStatusPixResponse
+                                                            .jsonBody,
+                                                      ).toString(),
+                                                  );
+                                                });
+                                                if (StatusPixCall.status(
                                                       columnStatusPixResponse
                                                           .jsonBody,
-                                                    ).toString(),
-                                                );
-                                              });
-                                              logFirebaseEvent(
-                                                  'Button_refresh_database_request');
-                                              setState(() => _model
-                                                  .apiRequestCompleter = null);
-                                              await _model
-                                                  .waitForApiRequestCompleted();
-                                            },
-                                            text: 'Atualizar Pagamento',
-                                            options: FFButtonOptions(
-                                              height: 59.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color: Colors.white,
-                                                        fontSize: 40.0,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
+                                                    ).toString() ==
+                                                    'Approved') {
+                                                  logFirebaseEvent(
+                                                      'Button_alert_dialog');
+                                                  await showAlignedDialog(
+                                                    context: context,
+                                                    isGlobal: true,
+                                                    avoidOverflow: false,
+                                                    targetAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: WebViewAware(
+                                                            child:
+                                                                PagComSucessWidget(
+                                                          detalhesProdutos: widget
+                                                              .detalhesProduto,
+                                                          cartaoFinal: 'pix',
+                                                          transacionID: widget
+                                                              .idpix!
+                                                              .toString(),
+                                                        )),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                } else {
+                                                  logFirebaseEvent(
+                                                      'Button_alert_dialog');
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                          child: AlertDialog(
+                                                        title: Text(
+                                                            'Pagamento Ainda não Aprovado!'),
+                                                        content: Text(
+                                                            StatusPixCall
+                                                                .status(
+                                                          columnStatusPixResponse
+                                                              .jsonBody,
+                                                        ).toString()),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ));
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                              text: 'Atualizar Pagamento',
+                                              options: FFButtonOptions(
+                                                height: 59.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.white,
+                                                          fontSize: 40.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
                                             ),
                                           ),
                                         if (StatusPixCall.status(

@@ -21,24 +21,36 @@ class PixMercadoPagoCall {
     String? chave = '',
     String? token = '',
   }) async {
-    final response = await makeCloudCall(
-      _kPrivateApiFunctionName,
-      {
-        'callName': 'PixMercadoPagoCall',
-        'variables': {
-          'amount': amount,
-          'productTitle': productTitle,
-          'email': email,
-          'firstName': firstName,
-          'lastName': lastName,
-          'identificationType': identificationType,
-          'numberCpf': numberCpf,
-          'chave': chave,
-          'token': token,
-        },
+    final ffApiRequestBody = '''
+{
+  "transaction_amount": ${amount},
+  "payment_method_id": "pix",
+  "payer": {
+    "email": "${email}",
+    "first_name": "${firstName}",
+    "last_name": "${lastName}",
+    "identification": {
+      "type": "${identificationType}",
+      "number": "${numberCpf}"
+    }
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Pix Mercado Pago',
+      apiUrl: 'https://api.mercadopago.com/v1/payments',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'X-Idempotency-Key': '0d5020ed-1af6-469c-ae06-${chave}',
       },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
     );
-    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static dynamic idPedido(dynamic response) => getJsonField(
@@ -64,17 +76,19 @@ class StatusPixCall {
     int? idPix,
     String? token = '',
   }) async {
-    final response = await makeCloudCall(
-      _kPrivateApiFunctionName,
-      {
-        'callName': 'StatusPixCall',
-        'variables': {
-          'idPix': idPix,
-          'token': token,
-        },
+    return ApiManager.instance.makeApiCall(
+      callName: 'Status Pix',
+      apiUrl: 'https://api.mercadopago.com/v1/payments/${idPix}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
       },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
     );
-    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static dynamic status(dynamic response) => getJsonField(
