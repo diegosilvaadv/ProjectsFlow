@@ -249,7 +249,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'QrCode',
+                                        labelText: 'Chave Pix',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium,
                                         hintStyle: FlutterFlowTheme.of(context)
@@ -383,7 +383,9 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                             onRefresh: () async {
                               logFirebaseEvent(
                                   'PAG_PIX_Column_cwe2wv5l_ON_PULL_TO_REFRE');
-                              logFirebaseEvent('Column_not_defined');
+                              logFirebaseEvent('Column_wait__delay');
+                              await Future.delayed(
+                                  const Duration(milliseconds: 3000));
                               if (StatusPixCall.status(
                                     columnStatusPixResponse.jsonBody,
                                   ).toString() ==
