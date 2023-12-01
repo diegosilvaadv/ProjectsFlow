@@ -27,11 +27,11 @@ class PagPixWidget extends StatefulWidget {
   const PagPixWidget({
     Key? key,
     required this.detalhesProduto,
-    this.statuspix,
+    this.idpix,
   }) : super(key: key);
 
   final ProjetosRecord? detalhesProduto;
-  final int? statuspix;
+  final int? idpix;
 
   @override
   _PagPixWidgetState createState() => _PagPixWidgetState();
@@ -407,7 +407,18 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                       ),
                                     ),
                                     Text(
-                                      'Pagamento Pendente',
+                                      StatusPixCall.status(
+                                        columnStatusPixResponse.jsonBody,
+                                      ).toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 30.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      FFAppState().PagRed.status,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -489,7 +500,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                               logFirebaseEvent(
                                                   'Button_backend_call');
                                               await StatusPixCall.call(
-                                                idPix: widget.statuspix,
+                                                idPix: widget.idpix,
                                                 token:
                                                     'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
                                               );

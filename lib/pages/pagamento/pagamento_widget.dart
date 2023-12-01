@@ -717,11 +717,10 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                               });
                                               logFirebaseEvent(
                                                   'Button_alert_dialog');
-                                              showAlignedDialog(
-                                                barrierDismissible: false,
+                                              await showAlignedDialog(
                                                 context: context,
-                                                isGlobal: false,
-                                                avoidOverflow: true,
+                                                isGlobal: true,
+                                                avoidOverflow: false,
                                                 targetAnchor:
                                                     AlignmentDirectional(
                                                             0.0, 0.0)
@@ -752,7 +751,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                       child: PagPixWidget(
                                                         detalhesProduto: widget
                                                             .detalhesProdutos!,
-                                                        statuspix:
+                                                        idpix:
                                                             PixMercadoPagoCall
                                                                 .idPedido(
                                                           (_model.gerarPedido
