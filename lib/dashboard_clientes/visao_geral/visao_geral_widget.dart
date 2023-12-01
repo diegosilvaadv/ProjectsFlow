@@ -351,12 +351,15 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              formatNumber(
-                                                                                functions.calcaularlista(cardPagamentosRecordList.map((e) => e.valor).toList()),
-                                                                                formatType: FormatType.custom,
-                                                                                currency: 'R\$ ',
-                                                                                format: '0.00',
-                                                                                locale: 'pt_BR',
+                                                                              valueOrDefault<String>(
+                                                                                formatNumber(
+                                                                                  functions.calcaularlista(cardPagamentosRecordList.map((e) => e.valor).toList()),
+                                                                                  formatType: FormatType.custom,
+                                                                                  currency: 'R\$ ',
+                                                                                  format: '0.00',
+                                                                                  locale: 'pt_BR',
+                                                                                ),
+                                                                                '0',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).displaySmall,
                                                                             ),
@@ -387,8 +390,10 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                 pagamentosRecord
                                                                     .where(
                                                                       'userID',
-                                                                      isEqualTo:
-                                                                          currentUserUid,
+                                                                      isEqualTo: currentUserUid !=
+                                                                              ''
+                                                                          ? currentUserUid
+                                                                          : null,
                                                                     )
                                                                     .where(
                                                                       'identificacao',
@@ -511,11 +516,14 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
                                                                               child: Text(
-                                                                                formatNumber(
-                                                                                  dashboardCard3PagamentosRecordList.length,
-                                                                                  formatType: FormatType.custom,
-                                                                                  format: '',
-                                                                                  locale: '',
+                                                                                valueOrDefault<String>(
+                                                                                  formatNumber(
+                                                                                    dashboardCard3PagamentosRecordList.length,
+                                                                                    formatType: FormatType.custom,
+                                                                                    format: '',
+                                                                                    locale: '',
+                                                                                  ),
+                                                                                  '0',
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).displaySmall,
                                                                               ),
@@ -547,8 +555,10 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                 pagamentosRecord
                                                                     .where(
                                                                       'userID',
-                                                                      isEqualTo:
-                                                                          currentUserUid,
+                                                                      isEqualTo: currentUserUid !=
+                                                                              ''
+                                                                          ? currentUserUid
+                                                                          : null,
                                                                     )
                                                                     .where(
                                                                       'identificacao',
@@ -671,11 +681,14 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
                                                                               child: Text(
-                                                                                formatNumber(
-                                                                                  dashboardCard3PagamentosRecordList.length,
-                                                                                  formatType: FormatType.custom,
-                                                                                  format: '',
-                                                                                  locale: '',
+                                                                                valueOrDefault<String>(
+                                                                                  formatNumber(
+                                                                                    dashboardCard3PagamentosRecordList.length,
+                                                                                    formatType: FormatType.custom,
+                                                                                    format: '',
+                                                                                    locale: '',
+                                                                                  ),
+                                                                                  '0',
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).displaySmall,
                                                                               ),
@@ -790,11 +803,14 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            formatNumber(
-                                                                              cardPagamentosRecordList.length,
-                                                                              formatType: FormatType.custom,
-                                                                              format: '',
-                                                                              locale: '',
+                                                                            valueOrDefault<String>(
+                                                                              formatNumber(
+                                                                                cardPagamentosRecordList.length,
+                                                                                formatType: FormatType.custom,
+                                                                                format: '',
+                                                                                locale: '',
+                                                                              ),
+                                                                              '0',
                                                                             ),
                                                                             style:
                                                                                 FlutterFlowTheme.of(context).displaySmall,
@@ -1641,18 +1657,20 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                         CrossAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      FutureBuilder<
+                                                                      StreamBuilder<
                                                                           List<
                                                                               PagamentosRecord>>(
-                                                                        future:
-                                                                            queryPagamentosRecordOnce(
-                                                                          queryBuilder: (pagamentosRecord) =>
-                                                                              pagamentosRecord.where(
-                                                                            'userID',
-                                                                            isEqualTo: currentUserUid != ''
-                                                                                ? currentUserUid
-                                                                                : null,
-                                                                          ),
+                                                                        stream:
+                                                                            queryPagamentosRecord(
+                                                                          queryBuilder: (pagamentosRecord) => pagamentosRecord
+                                                                              .where(
+                                                                                'userID',
+                                                                                isEqualTo: currentUserUid != '' ? currentUserUid : null,
+                                                                              )
+                                                                              .where(
+                                                                                'transacionID',
+                                                                                isNotEqualTo: 'Gratis',
+                                                                              ),
                                                                           limit:
                                                                               50,
                                                                         ),
