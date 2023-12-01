@@ -195,9 +195,21 @@ class _TermosDeServicosWidgetState extends State<TermosDeServicosWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
-                            child: MarkdownBody(
-                              data: '''# **Termos de Serviço do Projects Flow**
+                                200.0, 10.0, 200.0, 50.0),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 20.0, 20.0, 20.0),
+                                child: MarkdownBody(
+                                  data:
+                                      '''# **Termos de Serviço do Projects Flow**
 ---
 ###
 ## 1. **Introdução:**
@@ -247,11 +259,14 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
 ### 13.6 Severabilidade: Se alguma cláusula for inválida, as demais permanecerão em vigor.
 ### 13.7 Interpretação: Estes Termos serão interpretados de boa fé.
 ###
+###
 ## **Ao utilizar o "Projects Flow", você concorda com estes Termos de Serviço.**
 ## **Caso tenha dúvidas, entre em contato conosco pelos canais de suporte fornecidos no site.**
 ###
 ###''',
-                              selectable: true,
+                                  selectable: false,
+                                ),
+                              ),
                             ),
                           ),
                         ],
