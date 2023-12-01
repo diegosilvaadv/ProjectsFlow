@@ -26,12 +26,12 @@ export 'pag_pix_model.dart';
 class PagPixWidget extends StatefulWidget {
   const PagPixWidget({
     Key? key,
-    required this.status,
     required this.detalhesProduto,
+    this.statuspix,
   }) : super(key: key);
 
-  final dynamic status;
   final ProjetosRecord? detalhesProduto;
+  final int? statuspix;
 
   @override
   _PagPixWidgetState createState() => _PagPixWidgetState();
@@ -487,11 +487,12 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                               logFirebaseEvent(
                                                   'PAG_PIX_ATUALIZAR_PAGAMENTO_BTN_ON_TAP');
                                               logFirebaseEvent(
-                                                  'Button_refresh_database_request');
-                                              setState(() => _model
-                                                  .apiRequestCompleter = null);
-                                              await _model
-                                                  .waitForApiRequestCompleted();
+                                                  'Button_backend_call');
+                                              await StatusPixCall.call(
+                                                idPix: widget.statuspix,
+                                                token:
+                                                    'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                              );
                                               logFirebaseEvent(
                                                   'Button_wait__delay');
                                               await Future.delayed(
@@ -502,10 +503,19 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                               setState(() {
                                                 FFAppState().updatePagRedStruct(
                                                   (e) => e
-                                                    ..status = widget.status
-                                                        ?.toString(),
+                                                    ..status =
+                                                        StatusPixCall.status(
+                                                      columnStatusPixResponse
+                                                          .jsonBody,
+                                                    ).toString(),
                                                 );
                                               });
+                                              logFirebaseEvent(
+                                                  'Button_refresh_database_request');
+                                              setState(() => _model
+                                                  .apiRequestCompleter = null);
+                                              await _model
+                                                  .waitForApiRequestCompleted();
                                             },
                                             text: 'Atualizar Pagamento',
                                             options: FFButtonOptions(
