@@ -1151,7 +1151,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             queryParameters: {
                                                               'tag':
                                                                   serializeParam(
-                                                                'Autenticação+',
+                                                                'Authentication',
                                                                 ParamType
                                                                     .String,
                                                               ),
@@ -1277,7 +1277,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .where(
                                                             'Categoria',
                                                             isEqualTo:
-                                                                'Autenticação+',
+                                                                'Authentication',
                                                           ),
                                                         ),
                                                         builder: (context,
