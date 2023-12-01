@@ -1461,27 +1461,75 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                                                   children: [
-                                                                                    Container(
-                                                                                      width: 240.0,
-                                                                                      height: 180.0,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                        child: CachedNetworkImage(
-                                                                                          fadeInDuration: Duration(milliseconds: 500),
-                                                                                          fadeOutDuration: Duration(milliseconds: 500),
-                                                                                          imageUrl: valueOrDefault<String>(
-                                                                                            listViewPaginasRecord.iMGPrincipal,
-                                                                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/design%20templates%20copypages%20(4).png',
-                                                                                          ),
+                                                                                    Stack(
+                                                                                      children: [
+                                                                                        Container(
                                                                                           width: 240.0,
-                                                                                          height: 180.0,
-                                                                                          fit: BoxFit.cover,
+                                                                                          height: 220.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                            borderRadius: BorderRadius.circular(8.0),
+                                                                                          ),
+                                                                                          child: ClipRRect(
+                                                                                            borderRadius: BorderRadius.circular(8.0),
+                                                                                            child: CachedNetworkImage(
+                                                                                              fadeInDuration: Duration(milliseconds: 500),
+                                                                                              fadeOutDuration: Duration(milliseconds: 500),
+                                                                                              imageUrl: valueOrDefault<String>(
+                                                                                                listViewPaginasRecord.iMGPrincipal,
+                                                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
+                                                                                              ),
+                                                                                              width: 200.0,
+                                                                                              height: 200.0,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                          ),
                                                                                         ),
-                                                                                      ),
+                                                                                        if (listViewPaginasRecord.valor != 0.0)
+                                                                                          Card(
+                                                                                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                                                            color: Color(0xC50BC70A),
+                                                                                            elevation: 4.0,
+                                                                                            shape: RoundedRectangleBorder(
+                                                                                              borderRadius: BorderRadius.circular(6.0),
+                                                                                            ),
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                                                                                              child: Text(
+                                                                                                formatNumber(
+                                                                                                  listViewPaginasRecord.valor,
+                                                                                                  formatType: FormatType.custom,
+                                                                                                  currency: 'R\$ ',
+                                                                                                  format: '0.00',
+                                                                                                  locale: 'pt_BR',
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                      fontFamily: 'Readex Pro',
+                                                                                                      fontSize: 16.0,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        if (listViewPaginasRecord.valor == 0.0)
+                                                                                          Card(
+                                                                                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                                                            color: Color(0xC50BC70A),
+                                                                                            elevation: 4.0,
+                                                                                            shape: RoundedRectangleBorder(
+                                                                                              borderRadius: BorderRadius.circular(6.0),
+                                                                                            ),
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                                                                                              child: Text(
+                                                                                                'Grátis',
+                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                      fontFamily: 'Readex Pro',
+                                                                                                      fontSize: 16.0,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                      ],
                                                                                     ),
                                                                                   ],
                                                                                 ),
