@@ -1264,7 +1264,7 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                 child: Text(
-                                                                                  'Valor pago em até 1 dia util.',
+                                                                                  'Valor pago em até 1 dia útil.',
                                                                                   style: FlutterFlowTheme.of(context).labelMedium,
                                                                                 ),
                                                                               ),
