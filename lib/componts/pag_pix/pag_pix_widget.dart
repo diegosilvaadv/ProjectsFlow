@@ -266,6 +266,60 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                         ),
                       ),
                       Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Você tem ',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 25.0,
+                                  ),
+                            ),
+                            FlutterFlowTimer(
+                              initialTime: _model.timerMilliseconds,
+                              getDisplayTime: (value) =>
+                                  StopWatchTimer.getDisplayTime(
+                                value,
+                                hours: false,
+                                milliSecond: false,
+                              ),
+                              controller: _model.timerController,
+                              updateStateInterval: Duration(milliseconds: 1000),
+                              onChanged: (value, displayTime, shouldUpdate) {
+                                _model.timerMilliseconds = value;
+                                _model.timerValue = displayTime;
+                                if (shouldUpdate) setState(() {});
+                              },
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                            Text(
+                              ' minutos para pagar esse pix.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 25.0,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 10.0, 10.0, 10.0),
                         child: Material(
@@ -444,63 +498,6 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 6.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Você tem ',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 25.0,
-                                            ),
-                                      ),
-                                      FlutterFlowTimer(
-                                        initialTime: _model.timerMilliseconds,
-                                        getDisplayTime: (value) =>
-                                            StopWatchTimer.getDisplayTime(
-                                          value,
-                                          hours: false,
-                                          milliSecond: false,
-                                        ),
-                                        controller: _model.timerController,
-                                        updateStateInterval:
-                                            Duration(milliseconds: 1000),
-                                        onChanged:
-                                            (value, displayTime, shouldUpdate) {
-                                          _model.timerMilliseconds = value;
-                                          _model.timerValue = displayTime;
-                                          if (shouldUpdate) setState(() {});
-                                        },
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                              fontSize: 30.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                      ),
-                                      Text(
-                                        ' minutos para pagar esse pix.',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 25.0,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -516,26 +513,14 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                           size: 24.0,
                                         ),
                                       ),
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          logFirebaseEvent(
-                                              'PAG_PIX_COMP_Text_39mm7rqk_ON_TAP');
-                                          logFirebaseEvent('Text_timer');
-                                          _model.timerController.onStartTimer();
-                                        },
-                                        child: Text(
-                                          'Pagamento ',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 30.0,
-                                              ),
-                                        ),
+                                      Text(
+                                        'Pagamento ',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 30.0,
+                                            ),
                                       ),
                                       Text(
                                         StatusPixCall.status(

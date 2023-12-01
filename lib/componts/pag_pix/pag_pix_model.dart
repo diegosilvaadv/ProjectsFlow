@@ -28,10 +28,6 @@ class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   Completer<ApiCallResponse>? apiRequestCompleter;
   // Stores action output result for [Backend Call - API (Status Pix)] action in pagPix widget.
   ApiCallResponse? apiResultqiu;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
   // State field(s) for Timer widget.
   int timerMilliseconds = 300000;
   String timerValue = StopWatchTimer.getDisplayTime(
@@ -42,15 +38,19 @@ class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   FlutterFlowTimerController timerController =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
+    timerController.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
-
-    timerController.dispose();
   }
 
   /// Action blocks are added here.
