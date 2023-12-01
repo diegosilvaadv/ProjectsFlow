@@ -153,23 +153,159 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 20.0, 0.0, 10.0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Realizar Pagamento Via PIX',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    fontSize: 35.0,
-                                    fontWeight: FontWeight.w500,
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Stack(
+                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Realizar Pagamento Via PIX',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                                fontSize: 35.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(1.00, 0.00),
+                                      child: FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .accent1,
+                                        borderRadius: 30.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 50.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        icon: Icon(
+                                          Icons.close,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 30.0,
+                                        ),
+                                        showLoadingIndicator: true,
+                                        onPressed: () async {
+                                          logFirebaseEvent(
+                                              'PAG_PIX_COMP_close_ICN_ON_TAP');
+                                          logFirebaseEvent(
+                                              'IconButton_alert_dialog');
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                          child: AlertDialog(
+                                                        title: Text(
+                                                            'Cancelar PIX'),
+                                                        content: Text(
+                                                            'Tem certeza que deseja cancelar esse pix?'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child: Text('Não'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text('Sim'),
+                                                          ),
+                                                        ],
+                                                      ));
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            logFirebaseEvent(
+                                                'IconButton_navigate_to');
+
+                                            context.goNamed(
+                                              'HomePage',
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType
+                                                          .bottomToTop,
+                                                ),
+                                              },
+                                            );
+                                          } else {
+                                            logFirebaseEvent(
+                                                'IconButton_dismiss_dialog');
+                                            Navigator.pop(context);
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context).primary,
+                              elevation: 1.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    6.0, 6.0, 6.0, 6.0),
+                                child: Text(
+                                  formatNumber(
+                                    widget.detalhesProduto!.valor,
+                                    formatType: FormatType.custom,
+                                    currency: 'R\$ ',
+                                    format: '0.00',
+                                    locale: 'pt_BR',
                                   ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize: 25.0,
+                                      ),
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -184,6 +320,8 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Container(
+                            width: 350.0,
+                            height: 370.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
@@ -236,30 +374,44 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                               child:
                                                   FlutterFlowExpandedImageView(
                                                 image: Image.network(
+                                                  valueOrDefault<String>(
+                                                    functions.imgbase64(
+                                                        FFAppState()
+                                                            .PagRed
+                                                            .qRcode),
+                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/transferir.png',
+                                                  ),
+                                                  fit: BoxFit.contain,
+                                                ),
+                                                allowRotation: false,
+                                                tag: valueOrDefault<String>(
                                                   functions.imgbase64(
                                                       FFAppState()
                                                           .PagRed
                                                           .qRcode),
-                                                  fit: BoxFit.contain,
+                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/transferir.png',
                                                 ),
-                                                allowRotation: false,
-                                                tag: functions.imgbase64(
-                                                    FFAppState().PagRed.qRcode),
                                                 useHeroAnimation: true,
                                               ),
                                             ),
                                           );
                                         },
                                         child: Hero(
-                                          tag: functions.imgbase64(
-                                              FFAppState().PagRed.qRcode),
+                                          tag: valueOrDefault<String>(
+                                            functions.imgbase64(
+                                                FFAppState().PagRed.qRcode),
+                                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/transferir.png',
+                                          ),
                                           transitionOnUserGestures: true,
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.network(
-                                              functions.imgbase64(
-                                                  FFAppState().PagRed.qRcode),
+                                              valueOrDefault<String>(
+                                                functions.imgbase64(
+                                                    FFAppState().PagRed.qRcode),
+                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/transferir.png',
+                                              ),
                                               width: 300.0,
                                               height: 300.0,
                                               fit: BoxFit.contain,
@@ -436,7 +588,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                               fontFamily: 'Readex Pro',
                                               fontSize: 25.0,
                                             ),
-                                        maxLines: 4,
+                                        maxLines: 3,
                                         validator: _model
                                             .textControllerValidator
                                             .asValidator(context),
