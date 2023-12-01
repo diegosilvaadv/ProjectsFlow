@@ -104,6 +104,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_INIT_STATE');
+      logFirebaseEvent('HomePage_wait__delay');
+      await Future.delayed(const Duration(milliseconds: 3000));
       if (valueOrDefault<bool>(currentUserDocument?.aceitarTermos, false)) {
         return;
       }
