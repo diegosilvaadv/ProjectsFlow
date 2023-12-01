@@ -361,10 +361,6 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                                               List<PagamentosRecord>
                                                   columnPagamentosRecordList =
                                                   snapshot.data!;
-                                              // Return an empty Container when the item does not exist.
-                                              if (snapshot.data!.isEmpty) {
-                                                return Container();
-                                              }
                                               final columnPagamentosRecord =
                                                   columnPagamentosRecordList
                                                           .isNotEmpty
