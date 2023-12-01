@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -70,6 +71,15 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                 'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
           );
           _shouldSetState = true;
+          logFirebaseEvent('_update_app_state');
+          setState(() {
+            FFAppState().updatePagRedStruct(
+              (e) => e
+                ..status = StatusPixCall.status(
+                  (_model.apiResultqiu?.jsonBody ?? ''),
+                ).toString(),
+            );
+          });
           if (StatusPixCall.status(
                 (_model.apiResultqiu?.jsonBody ?? ''),
               ).toString() ==
@@ -538,17 +548,32 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                               fontSize: 30.0,
                                             ),
                                       ),
-                                      Text(
-                                        StatusPixCall.status(
-                                          columnStatusPixResponse.jsonBody,
-                                        ).toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 30.0,
-                                            ),
-                                      ),
+                                      if (StatusPixCall.status(
+                                            columnStatusPixResponse.jsonBody,
+                                          ).toString() ==
+                                          'pending')
+                                        Text(
+                                          'Pendente!',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 30.0,
+                                              ),
+                                        ),
+                                      if (StatusPixCall.status(
+                                            columnStatusPixResponse.jsonBody,
+                                          ).toString() ==
+                                          'approved')
+                                        Text(
+                                          'Aprovado!',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 30.0,
+                                              ),
+                                        ),
                                       Align(
                                         alignment:
                                             AlignmentDirectional(0.00, 0.00),
