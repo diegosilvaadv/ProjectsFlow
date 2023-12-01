@@ -151,8 +151,8 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     fontSize: 35.0,
                                     fontWeight: FontWeight.w500,
                                   ),
