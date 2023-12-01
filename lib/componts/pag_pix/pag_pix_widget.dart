@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/componts/pag_com_sucess/pag_com_sucess_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -14,7 +13,6 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -38,25 +36,8 @@ class PagPixWidget extends StatefulWidget {
   _PagPixWidgetState createState() => _PagPixWidgetState();
 }
 
-class _PagPixWidgetState extends State<PagPixWidget>
-    with TickerProviderStateMixin {
+class _PagPixWidgetState extends State<PagPixWidget> {
   late PagPixModel _model;
-
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShakeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 1000.ms,
-          hz: 7,
-          offset: Offset(-13.0, 0.0),
-          rotation: 0.087,
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -80,7 +61,16 @@ class _PagPixWidgetState extends State<PagPixWidget>
           await _model.waitForApiRequestCompleted();
         },
       );
-      if (FFAppState().PagRed.status == 'Approved') {
+      logFirebaseEvent('pagPix_backend_call');
+      _model.resultadoPIX = await StatusPixCall.call(
+        idPix: widget.idpix,
+        token:
+            'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+      );
+      if (StatusPixCall.status(
+            (_model.resultadoPIX?.jsonBody ?? ''),
+          ).toString() ==
+          'Approved') {
         logFirebaseEvent('pagPix_alert_dialog');
         await showAlignedDialog(
           context: context,
@@ -646,8 +636,7 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                 ),
                               ),
                             ],
-                          ).animateOnPageLoad(
-                              animationsMap['columnOnPageLoadAnimation']!);
+                          );
                         },
                       ),
                     ],
