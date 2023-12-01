@@ -1,35 +1,31 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/componts/side_nav/side_nav_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/componts/app_bar/app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
-import 'saques_widget.dart' show SaquesWidget;
-import 'package:cached_network_image/cached_network_image.dart';
+import 'tutorial_widget.dart' show TutorialWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-class SaquesModel extends FlutterFlowModel<SaquesWidget> {
+class TutorialModel extends FlutterFlowModel<TutorialWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for sideNav component.
-  late SideNavModel sideNavModel;
+  // Model for AppBar component.
+  late AppBarModel appBarModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    sideNavModel = createModel(context, () => SideNavModel());
+    appBarModel = createModel(context, () => AppBarModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
-    sideNavModel.dispose();
+    appBarModel.dispose();
   }
 
   /// Action blocks are added here.

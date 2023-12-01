@@ -196,6 +196,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             detalhesProjects:
                 params.getParam('detalhesProjects', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'TermosDeServicos',
+          path: '/termosDeServicos',
+          builder: (context, params) => TermosDeServicosWidget(),
+        ),
+        FFRoute(
+          name: 'PolticadePrivacidade',
+          path: '/polticadePrivacidade',
+          builder: (context, params) => PolticadePrivacidadeWidget(),
+        ),
+        FFRoute(
+          name: 'Quemsomos',
+          path: '/quemsomos',
+          builder: (context, params) => QuemsomosWidget(),
+        ),
+        FFRoute(
+          name: 'Suporte',
+          path: '/suporte',
+          builder: (context, params) => SuporteWidget(),
+        ),
+        FFRoute(
+          name: 'Reclamacoes',
+          path: '/reclamacoes',
+          builder: (context, params) => ReclamacoesWidget(),
+        ),
+        FFRoute(
+          name: 'Chat',
+          path: '/chat',
+          builder: (context, params) => ChatWidget(),
+        ),
+        FFRoute(
+          name: 'Perguntas',
+          path: '/perguntas',
+          builder: (context, params) => PerguntasWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

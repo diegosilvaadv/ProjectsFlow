@@ -1,38 +1,32 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/componts/adicionar_paginas/adicionar_paginas_widget.dart';
-import '/componts/side_nav/side_nav_widget.dart';
+import '/componts/app_bar/app_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'paginas_widget.dart' show PaginasWidget;
-import 'package:cached_network_image/cached_network_image.dart';
+import 'termos_de_servicos_widget.dart' show TermosDeServicosWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
-class PaginasModel extends FlutterFlowModel<PaginasWidget> {
+class TermosDeServicosModel extends FlutterFlowModel<TermosDeServicosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for sideNav component.
-  late SideNavModel sideNavModel;
+  // Model for AppBar component.
+  late AppBarModel appBarModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    sideNavModel = createModel(context, () => SideNavModel());
+    appBarModel = createModel(context, () => AppBarModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
-    sideNavModel.dispose();
+    appBarModel.dispose();
   }
 
   /// Action blocks are added here.

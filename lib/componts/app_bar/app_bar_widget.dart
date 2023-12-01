@@ -134,16 +134,16 @@ class _AppBarWidgetState extends State<AppBarWidget>
         ),
       ],
     ),
-    'containerOnActionTriggerAnimation': AnimationInfo(
+    'buttonOnActionTriggerAnimation6': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
       effects: [
-        MoveEffect(
+        RotateEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 300.ms,
-          begin: Offset(-40.0, 0.0),
-          end: Offset(0.0, 0.0),
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
         ),
       ],
     ),
@@ -195,7 +195,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
         child: Align(
           alignment: AlignmentDirectional(0.00, 0.00),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(50.0, 20.0, 50.0, 20.0),
+            padding: EdgeInsetsDirectional.fromSTEB(100.0, 20.0, 100.0, 20.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -706,128 +706,58 @@ class _AppBarWidgetState extends State<AppBarWidget>
                             ).animateOnActionTrigger(
                               animationsMap['buttonOnActionTriggerAnimation5']!,
                             ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 12.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
+                          if (currentUserEmail != '')
+                            FFButtonWidget(
+                              onPressed: () async {
                                 logFirebaseEvent(
-                                    'APP_BAR_COMP_lightDark_small_ON_TAP');
-                                if ((Theme.of(context).brightness ==
-                                        Brightness.light) ==
-                                    true) {
-                                  logFirebaseEvent(
-                                      'lightDark_small_set_dark_mode_settings');
-                                  setDarkModeSetting(context, ThemeMode.dark);
-                                  logFirebaseEvent(
-                                      'lightDark_small_widget_animation');
-                                  if (animationsMap[
-                                          'containerOnActionTriggerAnimation'] !=
-                                      null) {
-                                    animationsMap[
-                                            'containerOnActionTriggerAnimation']!
-                                        .controller
-                                        .forward(from: 0.0);
-                                  }
-                                } else {
-                                  logFirebaseEvent(
-                                      'lightDark_small_set_dark_mode_settings');
-                                  setDarkModeSetting(context, ThemeMode.light);
-                                  logFirebaseEvent(
-                                      'lightDark_small_widget_animation');
-                                  if (animationsMap[
-                                          'containerOnActionTriggerAnimation'] !=
-                                      null) {
-                                    animationsMap[
-                                            'containerOnActionTriggerAnimation']!
-                                        .controller
-                                        .reverse();
-                                  }
-                                }
+                                    'APP_BAR_COMP_DASHBOARD_BTN_ON_TAP');
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(
+                                  'visaoGeral',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.topToBottom,
+                                    ),
+                                  },
+                                );
                               },
-                              child: Container(
-                                width: 80.0,
+                              text: 'Dashboard',
+                              options: FFButtonOptions(
                                 height: 40.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    width: 1.0,
-                                  ),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Rubik',
+                                      color: Color(0xFFDFDFDF),
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 0.0,
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2.0, 2.0, 2.0, 2.0),
-                                  child: Stack(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.90, 0.00),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  6.0, 0.0, 0.0, 0.0),
-                                          child: Icon(
-                                            Icons.wb_sunny_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(1.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 6.0, 0.0),
-                                          child: Icon(
-                                            Icons.mode_night_rounded,
-                                            color: Color(0xFF57636C),
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(1.00, 0.00),
-                                        child: Container(
-                                          width: 36.0,
-                                          height: 36.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 4.0,
-                                                color: Color(0x430B0D0F),
-                                                offset: Offset(0.0, 2.0),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(30.0),
-                                            shape: BoxShape.rectangle,
-                                          ),
-                                        ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation']!,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                borderRadius: BorderRadius.circular(8.0),
+                                hoverColor: Color(0x00F1F4F8),
+                                hoverBorderSide: BorderSide(
+                                  color: Color(0x00F1F4F8),
+                                  width: 0.0,
                                 ),
+                                hoverTextColor:
+                                    FlutterFlowTheme.of(context).secondary,
                               ),
+                              showLoadingIndicator: false,
+                            ).animateOnActionTrigger(
+                              animationsMap['buttonOnActionTriggerAnimation6']!,
                             ),
-                          ),
                         ],
                       ),
                     ),
