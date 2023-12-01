@@ -158,29 +158,65 @@ class _PagamentoPaginasWidgetState extends State<PagamentoPaginasWidget> {
                                         size: 20.0,
                                       ),
                                     ),
-                                    Container(
-                                      height: 100.0,
-                                      decoration: BoxDecoration(),
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            widget.detalhesPaginas?.categoria,
-                                            'tag',
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'PAGAMENTO_PAGINAS_Container_foure39j_ON_');
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+
+                                        context.pushNamed(
+                                          'vermais',
+                                          queryParameters: {
+                                            'tag': serializeParam(
+                                              widget.detalhesPaginas?.categoria,
+                                              ParamType.String,
+                                            ),
+                                            'all': serializeParam(
+                                              '',
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 1000),
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        height: 100.0,
+                                        decoration: BoxDecoration(),
+                                        alignment:
+                                            AlignmentDirectional(0.00, 0.00),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              widget.detalhesPaginas?.categoria,
+                                              'tag',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelLarge
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
                                       ),
                                     ),
@@ -257,23 +293,58 @@ class _PagamentoPaginasWidgetState extends State<PagamentoPaginasWidget> {
                                         decoration: BoxDecoration(),
                                         alignment:
                                             AlignmentDirectional(0.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Text(
-                                            'Formas de Pagamento',
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleSmall
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: FlutterFlowTheme.of(
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            if (widget.detalhesPaginas?.valor !=
+                                                0.0)
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                child: Text(
+                                                  'Formas de Pagamento',
+                                                  style: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.w300,
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
                                                 ),
-                                          ),
+                                              ),
+                                            if (widget.detalhesPaginas?.valor ==
+                                                0.0)
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                child: Text(
+                                                  'Página Grátis',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                ),
+                                              ),
+                                          ],
                                         ),
                                       ),
                                     ),
