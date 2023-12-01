@@ -416,7 +416,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           hasTransition:
                                                                               true,
                                                                           transitionType:
-                                                                              PageTransitionType.fade,
+                                                                              PageTransitionType.rightToLeft,
                                                                           duration:
                                                                               Duration(milliseconds: 10),
                                                                         ),
@@ -879,7 +879,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           hasTransition:
                                                                               true,
                                                                           transitionType:
-                                                                              PageTransitionType.fade,
+                                                                              PageTransitionType.rightToLeft,
                                                                         ),
                                                                       },
                                                                     );
@@ -1258,7 +1258,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   context)
                                                               .width *
                                                           0.815,
-                                                      height: 270.0,
+                                                      height: 326.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)
@@ -1362,7 +1362,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           hasTransition:
                                                                               true,
                                                                           transitionType:
-                                                                              PageTransitionType.fade,
+                                                                              PageTransitionType.rightToLeft,
                                                                         ),
                                                                       },
                                                                     );
@@ -1443,23 +1443,26 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                 Column(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
-                                                                                Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  children: [
-                                                                                    Expanded(
-                                                                                      child: Text(
-                                                                                        listViewPaginasRecord.titulo,
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Readex Pro',
-                                                                                              fontSize: 15.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: [
+                                                                                      Expanded(
+                                                                                        child: Text(
+                                                                                          listViewPaginasRecord.titulo,
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Readex Pro',
+                                                                                                fontSize: 15.0,
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                              ),
+                                                                                        ),
                                                                                       ),
-                                                                                    ),
-                                                                                  ],
+                                                                                    ],
+                                                                                  ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 8.0, 4.0, 0.0),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
@@ -1479,7 +1482,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 5.0, 4.0, 0.0),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
