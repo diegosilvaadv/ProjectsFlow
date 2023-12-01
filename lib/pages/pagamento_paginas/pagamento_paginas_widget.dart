@@ -405,6 +405,8 @@ class _PagamentoPaginasWidgetState extends State<PagamentoPaginasWidget> {
                                                   10.0, 20.0, 10.0, 20.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1345,9 +1347,9 @@ class _PagamentoPaginasWidgetState extends State<PagamentoPaginasWidget> {
                                                                         widget
                                                                             .detalhesPaginas,
                                                                     cartaoFinal:
-                                                                        'Grátis',
+                                                                        'Gratis',
                                                                     transacionID:
-                                                                        'Página Grátis',
+                                                                        'Gratis',
                                                                   ),
                                                                 ),
                                                               ));

@@ -201,10 +201,15 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                             child: StreamBuilder<List<PagamentosRecord>>(
                               stream: queryPagamentosRecord(
                                 queryBuilder: (pagamentosRecord) =>
-                                    pagamentosRecord.where(
-                                  'userID',
-                                  isEqualTo: currentUserUid,
-                                ),
+                                    pagamentosRecord
+                                        .where(
+                                          'userID',
+                                          isEqualTo: currentUserUid,
+                                        )
+                                        .where(
+                                          'transacionID',
+                                          isNotEqualTo: 'Gratis',
+                                        ),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -389,6 +394,11 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                       'identificacao',
                                                                       isEqualTo:
                                                                           'projeto',
+                                                                    )
+                                                                    .where(
+                                                                      'transacionID',
+                                                                      isNotEqualTo:
+                                                                          'Gratis',
                                                                     ),
                                                       ),
                                                       builder:
@@ -544,6 +554,11 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                       'identificacao',
                                                                       isEqualTo:
                                                                           'pagina',
+                                                                    )
+                                                                    .where(
+                                                                      'transacionID',
+                                                                      isNotEqualTo:
+                                                                          'Gratis',
                                                                     ),
                                                       ),
                                                       builder:
