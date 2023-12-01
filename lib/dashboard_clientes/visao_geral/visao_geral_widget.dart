@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'visao_geral_model.dart';
 export 'visao_geral_model.dart';
@@ -1263,7 +1264,7 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                 child: Text(
-                                                                                  'Não existe valor minimo para solicitar saque.',
+                                                                                  'Valor pago em até 1 dia util.',
                                                                                   style: FlutterFlowTheme.of(context).labelMedium,
                                                                                 ),
                                                                               ),
@@ -1657,228 +1658,239 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                                                         CrossAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      StreamBuilder<
-                                                                          List<
-                                                                              PagamentosRecord>>(
-                                                                        stream:
-                                                                            queryPagamentosRecord(
-                                                                          queryBuilder: (pagamentosRecord) => pagamentosRecord
-                                                                              .where(
-                                                                                'userID',
-                                                                                isEqualTo: currentUserUid != '' ? currentUserUid : null,
-                                                                              )
-                                                                              .where(
-                                                                                'transacionID',
-                                                                                isNotEqualTo: 'Gratis',
-                                                                              ),
-                                                                          limit:
-                                                                              50,
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                child: SpinKitRipple(
-                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                  size: 50.0,
+                                                                      if (cardPagamentosRecordList
+                                                                              .length >=
+                                                                          1)
+                                                                        StreamBuilder<
+                                                                            List<PagamentosRecord>>(
+                                                                          stream:
+                                                                              queryPagamentosRecord(
+                                                                            queryBuilder: (pagamentosRecord) => pagamentosRecord
+                                                                                .where(
+                                                                                  'userID',
+                                                                                  isEqualTo: currentUserUid != '' ? currentUserUid : null,
+                                                                                )
+                                                                                .where(
+                                                                                  'transacionID',
+                                                                                  isNotEqualTo: 'Gratis',
                                                                                 ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<PagamentosRecord>
-                                                                              listViewPagamentosRecordList =
-                                                                              snapshot.data!;
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            primary:
-                                                                                false,
-                                                                            shrinkWrap:
-                                                                                true,
-                                                                            scrollDirection:
-                                                                                Axis.vertical,
-                                                                            itemCount:
-                                                                                listViewPagamentosRecordList.length,
-                                                                            itemBuilder:
-                                                                                (context, listViewIndex) {
-                                                                              final listViewPagamentosRecord = listViewPagamentosRecordList[listViewIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                child: Container(
-                                                                                  width: 100.0,
-                                                                                  decoration: BoxDecoration(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                    boxShadow: [
-                                                                                      BoxShadow(
-                                                                                        blurRadius: 0.0,
-                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                        offset: Offset(0.0, 1.0),
-                                                                                      )
-                                                                                    ],
+                                                                            limit:
+                                                                                50,
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50.0,
+                                                                                  height: 50.0,
+                                                                                  child: SpinKitRipple(
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    size: 50.0,
                                                                                   ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                                    child: Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      children: [
-                                                                                        if (responsiveVisibility(
-                                                                                          context: context,
-                                                                                          phone: false,
-                                                                                          tablet: false,
-                                                                                        ))
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                            List<PagamentosRecord>
+                                                                                listViewPagamentosRecordList =
+                                                                                snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              primary: false,
+                                                                              shrinkWrap: true,
+                                                                              scrollDirection: Axis.vertical,
+                                                                              itemCount: listViewPagamentosRecordList.length,
+                                                                              itemBuilder: (context, listViewIndex) {
+                                                                                final listViewPagamentosRecord = listViewPagamentosRecordList[listViewIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                  child: Container(
+                                                                                    width: 100.0,
+                                                                                    decoration: BoxDecoration(
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      boxShadow: [
+                                                                                        BoxShadow(
+                                                                                          blurRadius: 0.0,
+                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                          offset: Offset(0.0, 1.0),
+                                                                                        )
+                                                                                      ],
+                                                                                    ),
+                                                                                    child: Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                                      child: Row(
+                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                        children: [
+                                                                                          if (responsiveVisibility(
+                                                                                            context: context,
+                                                                                            phone: false,
+                                                                                            tablet: false,
+                                                                                          ))
+                                                                                            Expanded(
+                                                                                              flex: 2,
+                                                                                              child: Text(
+                                                                                                listViewPagamentosRecord.produto,
+                                                                                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                              ),
+                                                                                            ),
                                                                                           Expanded(
-                                                                                            flex: 2,
-                                                                                            child: Text(
-                                                                                              listViewPagamentosRecord.produto,
-                                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                            flex: 4,
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                    child: ClipRRect(
+                                                                                                      borderRadius: BorderRadius.circular(40.0),
+                                                                                                      child: Image.network(
+                                                                                                        valueOrDefault<String>(
+                                                                                                          listViewPagamentosRecord.imgPagante,
+                                                                                                          'https://cdn-icons-png.flaticon.com/512/6596/6596121.png',
+                                                                                                        ),
+                                                                                                        width: 32.0,
+                                                                                                        height: 32.0,
+                                                                                                        fit: BoxFit.cover,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  Expanded(
+                                                                                                    child: Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                                                      child: Column(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            valueOrDefault<String>(
+                                                                                                              listViewPagamentosRecord.nomePagante,
+                                                                                                              'NomePagante',
+                                                                                                            ),
+                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                  fontFamily: 'Readex Pro',
+                                                                                                                  fontWeight: FontWeight.bold,
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                          Padding(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                            child: Text(
+                                                                                                              valueOrDefault<String>(
+                                                                                                                dateTimeFormat('dd/MM/yyyy | kk:mm', listViewPagamentosRecord.creatData),
+                                                                                                                'data',
+                                                                                                              ),
+                                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                    fontFamily: 'Readex Pro',
+                                                                                                                    color: FlutterFlowTheme.of(context).tertiary,
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
                                                                                             ),
                                                                                           ),
-                                                                                        Expanded(
-                                                                                          flex: 4,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+                                                                                          if (responsiveVisibility(
+                                                                                            context: context,
+                                                                                            phone: false,
+                                                                                          ))
+                                                                                            Expanded(
+                                                                                              flex: 2,
+                                                                                              child: Text(
+                                                                                                valueOrDefault<String>(
+                                                                                                  formatNumber(
+                                                                                                    listViewPagamentosRecord.valor,
+                                                                                                    formatType: FormatType.custom,
+                                                                                                    currency: 'R\$ ',
+                                                                                                    format: '0.00',
+                                                                                                    locale: 'pt_BR',
+                                                                                                  ),
+                                                                                                  'valor',
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).titleLarge,
+                                                                                              ),
+                                                                                            ),
+                                                                                          Expanded(
+                                                                                            flex: 2,
                                                                                             child: Row(
                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                               children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                                                                                  child: ClipRRect(
+                                                                                                Container(
+                                                                                                  height: 32.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: FlutterFlowTheme.of(context).accent2,
                                                                                                     borderRadius: BorderRadius.circular(40.0),
-                                                                                                    child: Image.network(
-                                                                                                      valueOrDefault<String>(
-                                                                                                        listViewPagamentosRecord.imgPagante,
-                                                                                                        'https://cdn-icons-png.flaticon.com/512/6596/6596121.png',
-                                                                                                      ),
-                                                                                                      width: 32.0,
-                                                                                                      height: 32.0,
-                                                                                                      fit: BoxFit.cover,
+                                                                                                    border: Border.all(
+                                                                                                      color: FlutterFlowTheme.of(context).secondary,
                                                                                                     ),
                                                                                                   ),
-                                                                                                ),
-                                                                                                Expanded(
+                                                                                                  alignment: AlignmentDirectional(0.00, 0.00),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                                                    child: Column(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                      children: [
-                                                                                                        Text(
-                                                                                                          valueOrDefault<String>(
-                                                                                                            listViewPagamentosRecord.nomePagante,
-                                                                                                            'NomePagante',
-                                                                                                          ),
-                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                fontFamily: 'Readex Pro',
-                                                                                                                fontWeight: FontWeight.bold,
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                                                                                          child: Text(
-                                                                                                            valueOrDefault<String>(
-                                                                                                              dateTimeFormat('dd/MM/yyyy | kk:mm', listViewPagamentosRecord.creatData),
-                                                                                                              'data',
-                                                                                                            ),
-                                                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                  fontFamily: 'Readex Pro',
-                                                                                                                  color: FlutterFlowTheme.of(context).tertiary,
-                                                                                                                ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ],
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      'Pago',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
                                                                                               ],
                                                                                             ),
                                                                                           ),
-                                                                                        ),
-                                                                                        if (responsiveVisibility(
-                                                                                          context: context,
-                                                                                          phone: false,
-                                                                                        ))
                                                                                           Expanded(
-                                                                                            flex: 2,
-                                                                                            child: Text(
-                                                                                              valueOrDefault<String>(
-                                                                                                formatNumber(
-                                                                                                  listViewPagamentosRecord.valor,
-                                                                                                  formatType: FormatType.custom,
-                                                                                                  currency: 'R\$ ',
-                                                                                                  format: '0.00',
-                                                                                                  locale: 'pt_BR',
+                                                                                            flex: 1,
+                                                                                            child: Row(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.end,
+                                                                                              children: [
+                                                                                                FlutterFlowIconButton(
+                                                                                                  borderColor: Colors.transparent,
+                                                                                                  borderRadius: 30.0,
+                                                                                                  borderWidth: 1.0,
+                                                                                                  buttonSize: 44.0,
+                                                                                                  icon: Icon(
+                                                                                                    Icons.more_vert,
+                                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                    size: 20.0,
+                                                                                                  ),
+                                                                                                  onPressed: () {
+                                                                                                    print('IconButton pressed ...');
+                                                                                                  },
                                                                                                 ),
-                                                                                                'valor',
-                                                                                              ),
-                                                                                              style: FlutterFlowTheme.of(context).titleLarge,
+                                                                                              ],
                                                                                             ),
                                                                                           ),
-                                                                                        Expanded(
-                                                                                          flex: 2,
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            children: [
-                                                                                              Container(
-                                                                                                height: 32.0,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  color: FlutterFlowTheme.of(context).accent2,
-                                                                                                  borderRadius: BorderRadius.circular(40.0),
-                                                                                                  border: Border.all(
-                                                                                                    color: FlutterFlowTheme.of(context).secondary,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                alignment: AlignmentDirectional(0.00, 0.00),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                                                                                                  child: Text(
-                                                                                                    'Pago',
-                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                        Expanded(
-                                                                                          flex: 1,
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            mainAxisAlignment: MainAxisAlignment.end,
-                                                                                            children: [
-                                                                                              FlutterFlowIconButton(
-                                                                                                borderColor: Colors.transparent,
-                                                                                                borderRadius: 30.0,
-                                                                                                borderWidth: 1.0,
-                                                                                                buttonSize: 44.0,
-                                                                                                icon: Icon(
-                                                                                                  Icons.more_vert,
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                  size: 20.0,
-                                                                                                ),
-                                                                                                onPressed: () {
-                                                                                                  print('IconButton pressed ...');
-                                                                                                },
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
+                                                                                        ],
+                                                                                      ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      if (cardPagamentosRecordList
+                                                                              .length ==
+                                                                          0)
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            Lottie.asset(
+                                                                              'assets/lottie_animations/Animation_-_1701456378255.json',
+                                                                              width: 200.0,
+                                                                              height: 200.0,
+                                                                              fit: BoxFit.cover,
+                                                                              animate: true,
+                                                                            ),
+                                                                          ],
+                                                                        ),
                                                                     ],
                                                                   ),
                                                                 ),
