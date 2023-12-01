@@ -163,26 +163,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'visaoGeral',
           path: '/visaoGeral',
+          requireAuth: true,
           builder: (context, params) => VisaoGeralWidget(),
         ),
         FFRoute(
           name: 'Saques',
           path: '/Saques',
+          requireAuth: true,
           builder: (context, params) => SaquesWidget(),
         ),
         FFRoute(
           name: 'Estatsticas',
           path: '/Estatsticas',
+          requireAuth: true,
           builder: (context, params) => EstatsticasWidget(),
         ),
         FFRoute(
           name: 'Projetos',
           path: '/Projetos',
+          requireAuth: true,
           builder: (context, params) => ProjetosWidget(),
         ),
         FFRoute(
           name: 'Paginas',
           path: '/Paginas',
+          requireAuth: true,
           builder: (context, params) => PaginasWidget(),
         ),
         FFRoute(

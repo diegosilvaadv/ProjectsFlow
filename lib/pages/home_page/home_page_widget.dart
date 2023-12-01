@@ -106,7 +106,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
       logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_INIT_STATE');
       logFirebaseEvent('HomePage_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));
-      if (currentUserEmail != '') {
+      if (currentUserEmail == '') {
         return;
       }
 
