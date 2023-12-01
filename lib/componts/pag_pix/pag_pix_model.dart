@@ -24,7 +24,7 @@ class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   ///  State fields for stateful widgets in this component.
 
   Completer<ApiCallResponse>? apiRequestCompleter;
-  // Stores action output result for [Backend Call - API (Status Pix)] action in Row widget.
+  // Stores action output result for [Backend Call - API (Status Pix)] action in pagPix widget.
   ApiCallResponse? apiResultqiu;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
