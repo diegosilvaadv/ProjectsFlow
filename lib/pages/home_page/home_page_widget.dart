@@ -1151,7 +1151,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             queryParameters: {
                                                               'tag':
                                                                   serializeParam(
-                                                                'Autenticação',
+                                                                'Autenticação+',
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'all':
+                                                                  serializeParam(
+                                                                '',
                                                                 ParamType
                                                                     .String,
                                                               ),
