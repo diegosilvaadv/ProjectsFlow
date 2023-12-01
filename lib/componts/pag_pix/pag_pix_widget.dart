@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -359,11 +360,14 @@ class _PagPixWidgetState extends State<PagPixWidget>
                       ),
                     ),
                     FutureBuilder<ApiCallResponse>(
-                      future: StatusPixCall.call(
-                        idPix: widget.idpix,
-                        token:
-                            'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                      ),
+                      future: (_model.apiRequestCompleter ??=
+                              Completer<ApiCallResponse>()
+                                ..complete(StatusPixCall.call(
+                                  idPix: widget.idpix,
+                                  token:
+                                      'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                )))
+                          .future,
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -462,6 +466,13 @@ class _PagPixWidgetState extends State<PagPixWidget>
                                               onPressed: () async {
                                                 logFirebaseEvent(
                                                     'PAG_PIX_ATUALIZAR_PAGAMENTO_BTN_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Button_refresh_database_request');
+                                                setState(() =>
+                                                    _model.apiRequestCompleter =
+                                                        null);
+                                                await _model
+                                                    .waitForApiRequestCompleted();
                                                 logFirebaseEvent(
                                                     'Button_wait__delay');
                                                 await Future.delayed(

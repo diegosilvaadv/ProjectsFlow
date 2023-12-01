@@ -10,7 +10,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -655,147 +654,70 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Builder(
-                                      builder: (context) => FFButtonWidget(
-                                        onPressed: () async {
+                                    FFButtonWidget(
+                                      onPressed: () async {
+                                        logFirebaseEvent(
+                                            'PAGAMENTO_IR_PARA_PAGAMENTO_BTN_ON_TAP');
+                                        if (FFAppState().FormadePag == 'pix') {
                                           logFirebaseEvent(
-                                              'PAGAMENTO_IR_PARA_PAGAMENTO_BTN_ON_TAP');
-                                          if (FFAppState().FormadePag ==
-                                              'pix') {
+                                              'Button_backend_call');
+                                          _model.gerarPedido =
+                                              await PixMercadoPagoCall.call(
+                                            email: currentUserEmail,
+                                            chave: random_data.randomString(
+                                              10,
+                                              13,
+                                              false,
+                                              false,
+                                              true,
+                                            ),
+                                            token:
+                                                'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                            amount:
+                                                widget.detalhesProdutos?.valor,
+                                            productTitle:
+                                                '${widget.detalhesProdutos?.titulo}${random_data.randomString(
+                                              10,
+                                              12,
+                                              true,
+                                              false,
+                                              true,
+                                            )}',
+                                          );
+                                          if ((_model.gerarPedido?.succeeded ??
+                                              true)) {
                                             logFirebaseEvent(
-                                                'Button_backend_call');
-                                            _model.gerarPedido =
-                                                await PixMercadoPagoCall.call(
-                                              email: currentUserEmail,
-                                              chave: random_data.randomString(
-                                                10,
-                                                13,
-                                                false,
-                                                false,
-                                                true,
-                                              ),
-                                              token:
-                                                  'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                              amount: widget
-                                                  .detalhesProdutos?.valor,
-                                              productTitle:
-                                                  '${widget.detalhesProdutos?.titulo}${random_data.randomString(
-                                                10,
-                                                12,
-                                                true,
-                                                false,
-                                                true,
-                                              )}',
-                                            );
-                                            if ((_model
-                                                    .gerarPedido?.succeeded ??
-                                                true)) {
-                                              logFirebaseEvent(
-                                                  'Button_update_app_state');
-                                              setState(() {
-                                                FFAppState().PagRed =
-                                                    PagamentosStruct(
-                                                  chavepix: PixMercadoPagoCall
-                                                      .chavePix(
-                                                    (_model.gerarPedido
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
-                                                  qRcode:
-                                                      PixMercadoPagoCall.qRcode(
-                                                    (_model.gerarPedido
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ).toString(),
-                                                  idPedido: PixMercadoPagoCall
-                                                      .idPedido(
-                                                    (_model.gerarPedido
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ),
-                                                );
-                                              });
-                                              logFirebaseEvent(
-                                                  'Button_alert_dialog');
-                                              await showAlignedDialog(
-                                                context: context,
-                                                isGlobal: true,
-                                                avoidOverflow: false,
-                                                targetAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
-                                                followerAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
-                                                builder: (dialogContext) {
-                                                  return Material(
-                                                    color: Colors.transparent,
-                                                    child: WebViewAware(
-                                                        child: GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child: PagPixWidget(
-                                                        detalhesProduto: widget
-                                                            .detalhesProdutos!,
-                                                        idpix:
-                                                            PixMercadoPagoCall
-                                                                .idPedido(
-                                                          (_model.gerarPedido
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        ),
-                                                      ),
-                                                    )),
-                                                  );
-                                                },
-                                              ).then(
-                                                  (value) => setState(() {}));
-                                            } else {
-                                              logFirebaseEvent(
-                                                  'Button_show_snack_bar');
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'ERRRROO',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondary,
+                                                'Button_update_app_state');
+                                            setState(() {
+                                              FFAppState().PagRed =
+                                                  PagamentosStruct(
+                                                chavepix:
+                                                    PixMercadoPagoCall.chavePix(
+                                                  (_model.gerarPedido
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                ).toString(),
+                                                qRcode:
+                                                    PixMercadoPagoCall.qRcode(
+                                                  (_model.gerarPedido
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                ).toString(),
+                                                idPedido:
+                                                    PixMercadoPagoCall.idPedido(
+                                                  (_model.gerarPedido
+                                                          ?.jsonBody ??
+                                                      ''),
                                                 ),
                                               );
-                                            }
-                                          } else if (FFAppState().FormadePag ==
-                                              'cartao') {
+                                            });
                                             logFirebaseEvent(
                                                 'Button_bottom_sheet');
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
-                                                  Colors.transparent,
+                                                  Color(0xA2000000),
+                                              isDismissible: false,
                                               enableDrag: false,
                                               context: context,
                                               builder: (context) {
@@ -813,9 +735,15 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: PagCartaoMPWidget(
-                                                      detalhesProdutos: widget
+                                                    child: PagPixWidget(
+                                                      detalhesProduto: widget
                                                           .detalhesProdutos!,
+                                                      idpix: PixMercadoPagoCall
+                                                          .idPedido(
+                                                        (_model.gerarPedido
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ),
                                                     ),
                                                   ),
                                                 ));
@@ -829,7 +757,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                 .showSnackBar(
                                               SnackBar(
                                                 content: Text(
-                                                  'Adicione forma de pagamento!',
+                                                  'ERRRROO',
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -844,36 +772,87 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                               ),
                                             );
                                           }
-
-                                          setState(() {});
-                                        },
-                                        text: 'Ir Para Pagamento',
-                                        options: FFButtonOptions(
-                                          height: 60.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
-                                                    fontSize: 30.0,
+                                        } else if (FFAppState().FormadePag ==
+                                            'cartao') {
+                                          logFirebaseEvent(
+                                              'Button_bottom_sheet');
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return WebViewAware(
+                                                  child: GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: PagCartaoMPWidget(
+                                                    detalhesProdutos: widget
+                                                        .detalhesProdutos!,
                                                   ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
+                                                ),
+                                              ));
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+                                        } else {
+                                          logFirebaseEvent(
+                                              'Button_show_snack_bar');
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Adicione forma de pagamento!',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+
+                                        setState(() {});
+                                      },
+                                      text: 'Ir Para Pagamento',
+                                      options: FFButtonOptions(
+                                        height: 60.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color: Colors.white,
+                                              fontSize: 30.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
                                         ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
                                     ),
                                   ],
