@@ -448,7 +448,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Você tem: ',
+                                        'Você tem ',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -466,7 +466,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                         ),
                                         controller: _model.timerController,
                                         updateStateInterval:
-                                            Duration(milliseconds: 300000),
+                                            Duration(milliseconds: 1000),
                                         onChanged:
                                             (value, displayTime, shouldUpdate) {
                                           _model.timerMilliseconds = value;
@@ -500,6 +500,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .secondary,
                                               fontSize: 30.0,
+                                              fontWeight: FontWeight.w600,
                                             ),
                                       ),
                                       Text(
