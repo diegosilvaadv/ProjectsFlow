@@ -66,6 +66,7 @@ class _PagComSucessPaginasWidgetState extends State<PagComSucessPaginasWidget> {
             imgPagante: currentUserPhoto,
             emailVendedor: widget.detalhesProdutos?.emailVendedor,
             userIDPagante: currentUserUid,
+            identificacao: 'pagina',
           ));
       logFirebaseEvent('pagComSucess_paginas_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));

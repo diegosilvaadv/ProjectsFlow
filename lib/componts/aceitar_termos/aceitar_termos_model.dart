@@ -18,7 +18,6 @@ import 'package:webviewx_plus/webviewx_plus.dart';
 class AceitarTermosModel extends FlutterFlowModel<AceitarTermosWidget> {
   ///  State fields for stateful widgets in this component.
 
-  final formKey = GlobalKey<FormState>();
   // State field(s) for Expandable widget.
   late ExpandableController expandableController1;
 

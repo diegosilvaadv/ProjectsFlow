@@ -67,6 +67,7 @@ class _PagComSucessProjetosWidgetState
             imgPagante: currentUserPhoto,
             emailVendedor: widget.detalhesProdutos?.emailVendedor,
             userIDPagante: currentUserUid,
+            identificacao: 'projeto',
           ));
       logFirebaseEvent('pagComSucess_projetos_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));

@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/side_nav/side_nav_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,12 +8,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'visao_geral_model.dart';
 export 'visao_geral_model.dart';
@@ -26,66 +22,10 @@ class VisaoGeralWidget extends StatefulWidget {
   _VisaoGeralWidgetState createState() => _VisaoGeralWidgetState();
 }
 
-class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
-    with TickerProviderStateMixin {
+class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
   late VisaoGeralModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'progressBarOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(-50.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.7, 0.7),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'progressBarOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(-50.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.7, 0.7),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -93,13 +33,6 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
     _model = createModel(context, () => VisaoGeralModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'visaoGeral'});
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -440,112 +373,154 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 12.0),
-                                                    child: Material(
-                                                      color: Colors.transparent,
-                                                      elevation: 5.0,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                    child: StreamBuilder<
+                                                        List<PagamentosRecord>>(
+                                                      stream:
+                                                          queryPagamentosRecord(
+                                                        queryBuilder:
+                                                            (pagamentosRecord) =>
+                                                                pagamentosRecord
+                                                                    .where(
+                                                                      'userID',
+                                                                      isEqualTo:
+                                                                          currentUserUid,
+                                                                    )
+                                                                    .where(
+                                                                      'identificacao',
+                                                                      isEqualTo:
+                                                                          'projeto',
+                                                                    ),
                                                       ),
-                                                      child: Container(
-                                                        height: 120.0,
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 270.0,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                            width: 1.0,
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  SpinKitRipple(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 50.0,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<PagamentosRecord>
+                                                            dashboardCard3PagamentosRecordList =
+                                                            snapshot.data!;
+                                                        return Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          elevation: 5.0,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      16.0,
-                                                                      0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
+                                                          child: Container(
+                                                            height: 120.0,
+                                                            constraints:
+                                                                BoxConstraints(
+                                                              maxWidth: 270.0,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                                width: 1.0,
+                                                              ),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             16.0,
                                                                             0.0),
-                                                                child: Icon(
-                                                                  Icons
-                                                                      .trending_up_rounded,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary,
-                                                                  size: 32.0,
-                                                                ),
-                                                              ),
-                                                              Flexible(
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      'Projetos vendidos',
-                                                                      style: FlutterFlowTheme.of(
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .trending_up_rounded,
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .labelMedium,
+                                                                          .secondary,
+                                                                      size:
+                                                                          32.0,
                                                                     ),
-                                                                    Row(
+                                                                  ),
+                                                                  Flexible(
+                                                                    child:
+                                                                        Column(
                                                                       mainAxisSize:
                                                                           MainAxisSize
                                                                               .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              4.0,
-                                                                              4.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            cardPagamentosRecordList.length.toString(),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).displaySmall,
-                                                                          ),
+                                                                        Text(
+                                                                          'Projetos vendidos',
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).labelMedium,
+                                                                        ),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
+                                                                              child: Text(
+                                                                                formatNumber(
+                                                                                  dashboardCard3PagamentosRecordList.length,
+                                                                                  formatType: FormatType.custom,
+                                                                                  format: '',
+                                                                                  locale: '',
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).displaySmall,
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ),
+                                                        );
+                                                      },
                                                     ),
                                                   ),
                                                   Padding(
@@ -553,112 +528,154 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 12.0),
-                                                    child: Material(
-                                                      color: Colors.transparent,
-                                                      elevation: 5.0,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                    child: StreamBuilder<
+                                                        List<PagamentosRecord>>(
+                                                      stream:
+                                                          queryPagamentosRecord(
+                                                        queryBuilder:
+                                                            (pagamentosRecord) =>
+                                                                pagamentosRecord
+                                                                    .where(
+                                                                      'userID',
+                                                                      isEqualTo:
+                                                                          currentUserUid,
+                                                                    )
+                                                                    .where(
+                                                                      'identificacao',
+                                                                      isEqualTo:
+                                                                          'pagina',
+                                                                    ),
                                                       ),
-                                                      child: Container(
-                                                        height: 120.0,
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 270.0,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                            width: 1.0,
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  SpinKitRipple(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 50.0,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<PagamentosRecord>
+                                                            dashboardCard3PagamentosRecordList =
+                                                            snapshot.data!;
+                                                        return Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          elevation: 5.0,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      16.0,
-                                                                      0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
+                                                          child: Container(
+                                                            height: 120.0,
+                                                            constraints:
+                                                                BoxConstraints(
+                                                              maxWidth: 270.0,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                                width: 1.0,
+                                                              ),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             16.0,
                                                                             0.0),
-                                                                child: Icon(
-                                                                  Icons
-                                                                      .trending_up_rounded,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary,
-                                                                  size: 32.0,
-                                                                ),
-                                                              ),
-                                                              Flexible(
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      'Páginas vendidas',
-                                                                      style: FlutterFlowTheme.of(
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .trending_up_rounded,
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .labelMedium,
+                                                                          .secondary,
+                                                                      size:
+                                                                          32.0,
                                                                     ),
-                                                                    Row(
+                                                                  ),
+                                                                  Flexible(
+                                                                    child:
+                                                                        Column(
                                                                       mainAxisSize:
                                                                           MainAxisSize
                                                                               .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              4.0,
-                                                                              4.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            '2,208',
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).displaySmall,
-                                                                          ),
+                                                                        Text(
+                                                                          'Páginas vendidas',
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).labelMedium,
+                                                                        ),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
+                                                                              child: Text(
+                                                                                formatNumber(
+                                                                                  dashboardCard3PagamentosRecordList.length,
+                                                                                  formatType: FormatType.custom,
+                                                                                  format: '',
+                                                                                  locale: '',
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).displaySmall,
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ),
+                                                        );
+                                                      },
                                                     ),
                                                   ),
                                                   Padding(
@@ -758,7 +775,12 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            '2,208',
+                                                                            formatNumber(
+                                                                              cardPagamentosRecordList.length,
+                                                                              formatType: FormatType.custom,
+                                                                              format: '',
+                                                                              locale: '',
+                                                                            ),
                                                                             style:
                                                                                 FlutterFlowTheme.of(context).displaySmall,
                                                                           ),
@@ -906,7 +928,17 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                                             0.0),
                                                                         child:
                                                                             Text(
-                                                                          '\$529,204',
+                                                                          formatNumber(
+                                                                            functions.calcaularlista(cardPagamentosRecordList.map((e) => e.valor).toList()),
+                                                                            formatType:
+                                                                                FormatType.custom,
+                                                                            currency:
+                                                                                'R\$ ',
+                                                                            format:
+                                                                                '0.00',
+                                                                            locale:
+                                                                                'pt_BR',
+                                                                          ),
                                                                           style:
                                                                               FlutterFlowTheme.of(context).displaySmall,
                                                                         ),
@@ -916,35 +948,6 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                                 ],
                                                               ),
                                                             ),
-                                                            if (responsiveVisibility(
-                                                              context: context,
-                                                              tabletLandscape:
-                                                                  false,
-                                                            ))
-                                                              CircularPercentIndicator(
-                                                                percent: 0.55,
-                                                                radius: 45.0,
-                                                                lineWidth: 8.0,
-                                                                animation: true,
-                                                                animateFromLastPercent:
-                                                                    true,
-                                                                progressColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                backgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent1,
-                                                                center: Text(
-                                                                  '55%',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium,
-                                                                ),
-                                                              ).animateOnPageLoad(
-                                                                  animationsMap[
-                                                                      'progressBarOnPageLoadAnimation1']!),
                                                           ],
                                                         ),
                                                       ),
@@ -1052,7 +1055,7 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                                           0.0),
                                                                       child:
                                                                           Text(
-                                                                        '\$529,204',
+                                                                        'R\$ 0,00',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .displaySmall,
                                                                       ),
@@ -1062,35 +1065,6 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                               ],
                                                             ),
                                                           ),
-                                                          if (responsiveVisibility(
-                                                            context: context,
-                                                            tabletLandscape:
-                                                                false,
-                                                          ))
-                                                            CircularPercentIndicator(
-                                                              percent: 0.55,
-                                                              radius: 45.0,
-                                                              lineWidth: 8.0,
-                                                              animation: true,
-                                                              animateFromLastPercent:
-                                                                  true,
-                                                              progressColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent1,
-                                                              center: Text(
-                                                                '55%',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium,
-                                                              ),
-                                                            ).animateOnPageLoad(
-                                                                animationsMap[
-                                                                    'progressBarOnPageLoadAnimation2']!),
                                                         ],
                                                       ),
                                                     ),
@@ -1276,9 +1250,9 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget>
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0,
+                                                                        20.0,
+                                                                        20.0,
+                                                                        20.0,
                                                                         0.0),
                                                             child: Row(
                                                               mainAxisSize:

@@ -57,6 +57,7 @@ class _AceitarTermosWidgetState extends State<AceitarTermosWidget> {
       alignment: AlignmentDirectional(0.00, 0.00),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.8,
+        height: MediaQuery.sizeOf(context).height * 0.8,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(12.0),
@@ -341,25 +342,21 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Form(
-                          key: _model.formKey,
-                          autovalidateMode: AutovalidateMode.always,
-                          child: ToggleIcon(
-                            onPressed: () async {
-                              setState(() => FFAppState().aceitarTermos =
-                                  !FFAppState().aceitarTermos);
-                            },
-                            value: FFAppState().aceitarTermos,
-                            onIcon: Icon(
-                              Icons.check_box,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 30.0,
-                            ),
-                            offIcon: Icon(
-                              Icons.check_box_outline_blank,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 30.0,
-                            ),
+                        ToggleIcon(
+                          onPressed: () async {
+                            setState(() => FFAppState().aceitarTermos =
+                                !FFAppState().aceitarTermos);
+                          },
+                          value: FFAppState().aceitarTermos,
+                          onIcon: Icon(
+                            Icons.check_box,
+                            color: FlutterFlowTheme.of(context).secondary,
+                            size: 30.0,
+                          ),
+                          offIcon: Icon(
+                            Icons.check_box_outline_blank,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 30.0,
                           ),
                         ),
                         Text(
