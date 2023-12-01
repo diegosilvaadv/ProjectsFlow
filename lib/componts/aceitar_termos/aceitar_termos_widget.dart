@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -367,6 +366,7 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                         EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 50.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Form(
                           key: _model.formKey,
@@ -434,14 +434,11 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                               return;
                             }
                             logFirebaseEvent('Button_backend_call');
-                            unawaited(
-                              () async {
-                                await currentUserReference!
-                                    .update(createUsersRecordData(
-                                  aceitarTermos: true,
-                                ));
-                              }(),
-                            );
+
+                            await currentUserReference!
+                                .update(createUsersRecordData(
+                              aceitarTermos: true,
+                            ));
                             logFirebaseEvent('Button_navigate_to');
 
                             context.goNamed(
