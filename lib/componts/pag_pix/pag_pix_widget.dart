@@ -111,8 +111,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   fontSize: 35.0,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -146,7 +145,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Escanear QRCODE',
+                                      'Escanear QR Code',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -158,58 +157,123 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 20.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'PAG_PIX_COMP_Image_5q8znl4e_ON_TAP');
-                                        logFirebaseEvent('Image_expand_image');
-                                        await Navigator.push(
-                                          context,
-                                          PageTransition(
-                                            type: PageTransitionType.fade,
-                                            child: FlutterFlowExpandedImageView(
-                                              image: Image.network(
+                              Builder(
+                                builder: (context) => Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 0.0, 20.0, 20.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'PAG_PIX_COMP_Row_lfppjhy0_ON_TAP');
+                                      var _shouldSetState = false;
+                                      logFirebaseEvent('Row_backend_call');
+                                      _model.apiResultqiu =
+                                          await StatusPixCall.call();
+                                      _shouldSetState = true;
+                                      if (StatusPixCall.status(
+                                            (_model.apiResultqiu?.jsonBody ??
+                                                ''),
+                                          ).toString() ==
+                                          'approved') {
+                                        logFirebaseEvent('Row_alert_dialog');
+                                        await showAlignedDialog(
+                                          context: context,
+                                          isGlobal: true,
+                                          avoidOverflow: false,
+                                          targetAnchor: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          followerAnchor: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          builder: (dialogContext) {
+                                            return Material(
+                                              color: Colors.transparent,
+                                              child: WebViewAware(
+                                                  child: PagComSucessWidget(
+                                                detalhesProdutos:
+                                                    widget.detalhesProduto,
+                                                cartaoFinal: 'PÍX',
+                                                transacionID:
+                                                    widget.idpix!.toString(),
+                                              )),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      } else {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            logFirebaseEvent(
+                                                'PAG_PIX_COMP_Image_5q8znl4e_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Image_expand_image');
+                                            await Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child:
+                                                    FlutterFlowExpandedImageView(
+                                                  image: Image.network(
+                                                    functions.imgbase64(
+                                                        FFAppState()
+                                                            .PagRed
+                                                            .qRcode),
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                  allowRotation: false,
+                                                  tag: functions.imgbase64(
+                                                      FFAppState()
+                                                          .PagRed
+                                                          .qRcode),
+                                                  useHeroAnimation: true,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Hero(
+                                            tag: functions.imgbase64(
+                                                FFAppState().PagRed.qRcode),
+                                            transitionOnUserGestures: true,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
                                                 functions.imgbase64(
                                                     FFAppState().PagRed.qRcode),
+                                                width: 300.0,
+                                                height: 300.0,
                                                 fit: BoxFit.contain,
                                               ),
-                                              allowRotation: false,
-                                              tag: functions.imgbase64(
-                                                  FFAppState().PagRed.qRcode),
-                                              useHeroAnimation: true,
                                             ),
                                           ),
-                                        );
-                                      },
-                                      child: Hero(
-                                        tag: functions.imgbase64(
-                                            FFAppState().PagRed.qRcode),
-                                        transitionOnUserGestures: true,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            functions.imgbase64(
-                                                FFAppState().PagRed.qRcode),
-                                            width: 300.0,
-                                            height: 300.0,
-                                            fit: BoxFit.contain,
-                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -353,149 +417,141 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                         ),
                       ),
                     ),
-                    Builder(
-                      builder: (context) => FutureBuilder<ApiCallResponse>(
-                        future: (_model.apiRequestCompleter ??=
-                                Completer<ApiCallResponse>()
-                                  ..complete(StatusPixCall.call(
-                                    idPix: widget.idpix,
-                                    token:
-                                        'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                  )))
-                            .future,
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: SpinKitRipple(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 50.0,
-                                ),
-                              ),
-                            );
-                          }
-                          final columnStatusPixResponse = snapshot.data!;
-                          return RefreshIndicator(
-                            onRefresh: () async {
-                              logFirebaseEvent(
-                                  'PAG_PIX_Column_cwe2wv5l_ON_PULL_TO_REFRE');
-                              if (StatusPixCall.status(
-                                    columnStatusPixResponse.jsonBody,
-                                  ).toString() ==
-                                  'approved') {
-                                logFirebaseEvent('Column_alert_dialog');
-                                await showAlignedDialog(
-                                  context: context,
-                                  isGlobal: true,
-                                  avoidOverflow: false,
-                                  targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  builder: (dialogContext) {
-                                    return Material(
-                                      color: Colors.transparent,
-                                      child: WebViewAware(
-                                          child: PagComSucessWidget(
-                                        detalhesProdutos:
-                                            widget.detalhesProduto,
-                                        cartaoFinal: 'PÍX',
-                                        transacionID: widget.idpix!.toString(),
-                                      )),
-                                    );
-                                  },
-                                ).then((value) => setState(() {}));
-                              } else {
-                                logFirebaseEvent('Column_alert_dialog');
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return WebViewAware(
-                                        child: AlertDialog(
-                                      title: Text('ERRO'),
-                                      content: Text(StatusPixCall.status(
-                                        columnStatusPixResponse.jsonBody,
-                                      ).toString()),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    ));
-                                  },
-                                );
-                              }
-                            },
-                            child: SingleChildScrollView(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 10.0, 20.0, 10.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 6.0, 0.0),
-                                          child: Icon(
-                                            Icons.paid,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Pagamento ',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 30.0,
-                                              ),
-                                        ),
-                                        Text(
-                                          StatusPixCall.status(
-                                            columnStatusPixResponse.jsonBody,
-                                          ).toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 30.0,
-                                              ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.00, 0.00),
-                                          child: Lottie.asset(
-                                            'assets/lottie_animations/Animation_-_1700667862033.json',
-                                            width: 100.0,
-                                            height: 100.0,
-                                            fit: BoxFit.cover,
-                                            animate: true,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                    FutureBuilder<ApiCallResponse>(
+                      future: (_model.apiRequestCompleter ??=
+                              Completer<ApiCallResponse>()
+                                ..complete(StatusPixCall.call(
+                                  idPix: widget.idpix,
+                                  token:
+                                      'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                )))
+                          .future,
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitRipple(
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 50.0,
                               ),
                             ),
                           );
-                        },
-                      ),
+                        }
+                        final columnStatusPixResponse = snapshot.data!;
+                        return RefreshIndicator(
+                          onRefresh: () async {
+                            logFirebaseEvent(
+                                'PAG_PIX_Column_cwe2wv5l_ON_PULL_TO_REFRE');
+                            if (StatusPixCall.status(
+                                  columnStatusPixResponse.jsonBody,
+                                ).toString() ==
+                                'approved') {
+                              logFirebaseEvent('Column_alert_dialog');
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return WebViewAware(
+                                      child: AlertDialog(
+                                    title: Text('ok'),
+                                    content: Text('ok'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  ));
+                                },
+                              );
+                            } else {
+                              logFirebaseEvent('Column_alert_dialog');
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return WebViewAware(
+                                      child: AlertDialog(
+                                    title: Text('erro'),
+                                    content: Text(StatusPixCall.status(
+                                      columnStatusPixResponse.jsonBody,
+                                    ).toString()),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  ));
+                                },
+                              );
+                            }
+                          },
+                          child: SingleChildScrollView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 10.0, 20.0, 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 6.0, 0.0),
+                                        child: Icon(
+                                          Icons.paid,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Pagamento ',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 30.0,
+                                            ),
+                                      ),
+                                      Text(
+                                        StatusPixCall.status(
+                                          columnStatusPixResponse.jsonBody,
+                                        ).toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 30.0,
+                                            ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.00, 0.00),
+                                        child: Lottie.asset(
+                                          'assets/lottie_animations/Animation_-_1700667862033.json',
+                                          width: 100.0,
+                                          height: 100.0,
+                                          fit: BoxFit.cover,
+                                          animate: true,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
