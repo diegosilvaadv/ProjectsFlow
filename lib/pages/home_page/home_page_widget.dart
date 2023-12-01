@@ -674,6 +674,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 ParamType
                                                                     .String,
                                                               ),
+                                                              'tag':
+                                                                  serializeParam(
+                                                                '',
+                                                                ParamType
+                                                                    .String,
+                                                              ),
                                                             }.withoutNulls,
                                                             extra: <String,
                                                                 dynamic>{
@@ -683,7 +689,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     true,
                                                                 transitionType:
                                                                     PageTransitionType
-                                                                        .fade,
+                                                                        .rightToLeft,
                                                               ),
                                                             },
                                                           );
@@ -1145,11 +1151,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             queryParameters: {
                                                               'tag':
                                                                   serializeParam(
-                                                                'Authentication',
+                                                                'Autenticação',
                                                                 ParamType
                                                                     .String,
                                                               ),
                                                             }.withoutNulls,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              kTransitionInfoKey:
+                                                                  TransitionInfo(
+                                                                hasTransition:
+                                                                    true,
+                                                                transitionType:
+                                                                    PageTransitionType
+                                                                        .rightToLeft,
+                                                              ),
+                                                            },
                                                           );
                                                         },
                                                         text: 'VER MAIS',
@@ -1253,7 +1270,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       child: StreamBuilder<
                                                           List<PaginasRecord>>(
                                                         stream:
-                                                            queryPaginasRecord(),
+                                                            queryPaginasRecord(
+                                                          queryBuilder:
+                                                              (paginasRecord) =>
+                                                                  paginasRecord
+                                                                      .where(
+                                                            'Categoria',
+                                                            isEqualTo:
+                                                                'Autenticação',
+                                                          ),
+                                                        ),
                                                         builder: (context,
                                                             snapshot) {
                                                           // Customize what your widget looks like when it's loading.

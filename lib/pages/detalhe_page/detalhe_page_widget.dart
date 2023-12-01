@@ -176,6 +176,12 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
 
                                         context.goNamed(
                                           'vermais',
+                                          queryParameters: {
+                                            'tag': serializeParam(
+                                              widget.paginas?.categoria,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,

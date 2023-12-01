@@ -707,7 +707,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                         text: 'Imagens',
                                                       ),
                                                       Tab(
-                                                        text: 'Requesitos',
+                                                        text: 'Requisitos',
                                                       ),
                                                     ],
                                                     controller:

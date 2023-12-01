@@ -644,6 +644,12 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   logFirebaseEvent(
                                                       'LOGIN_PAGE_ENTRAR_BTN_ON_TAP');
                                                   logFirebaseEvent(
+                                                      'Button_update_app_state');
+                                                  setState(() {
+                                                    FFAppState().AppBar =
+                                                        'home';
+                                                  });
+                                                  logFirebaseEvent(
                                                       'Button_auth');
                                                   GoRouter.of(context)
                                                       .prepareAuthEvent();
@@ -661,9 +667,22 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     return;
                                                   }
 
+                                                  logFirebaseEvent(
+                                                      'Button_navigate_to');
+
                                                   context.goNamedAuth(
-                                                      'HomePage',
-                                                      context.mounted);
+                                                    'HomePage',
+                                                    context.mounted,
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .bottomToTop,
+                                                      ),
+                                                    },
+                                                  );
                                                 },
                                                 text: 'Entrar',
                                                 options: FFButtonOptions(
