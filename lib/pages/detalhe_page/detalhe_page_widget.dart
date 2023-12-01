@@ -374,7 +374,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                                               return Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  if (widget.paginas
+                                                  if (columnPagamentosRecord
                                                           ?.userIDPagante ==
                                                       currentUserUid)
                                                     FFButtonWidget(
@@ -472,7 +472,7 @@ class _DetalhePageWidgetState extends State<DetalhePageWidget>
                                                                 .circular(8.0),
                                                       ),
                                                     ),
-                                                  if (widget.paginas
+                                                  if (columnPagamentosRecord
                                                           ?.userIDPagante !=
                                                       currentUserUid)
                                                     FFButtonWidget(
