@@ -464,7 +464,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                             transitionType:
                                                                                 PageTransitionType.rightToLeft,
                                                                             duration:
-                                                                                Duration(milliseconds: 10),
+                                                                                Duration(milliseconds: 500),
                                                                           ),
                                                                         },
                                                                       );

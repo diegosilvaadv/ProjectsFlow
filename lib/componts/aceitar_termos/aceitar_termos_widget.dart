@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -433,13 +434,26 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                               return;
                             }
                             logFirebaseEvent('Button_backend_call');
+                            unawaited(
+                              () async {
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  aceitarTermos: true,
+                                ));
+                              }(),
+                            );
+                            logFirebaseEvent('Button_navigate_to');
 
-                            await currentUserReference!
-                                .update(createUsersRecordData(
-                              aceitarTermos: true,
-                            ));
-                            logFirebaseEvent('Button_dismiss_dialog');
-                            Navigator.pop(context);
+                            context.goNamed(
+                              'HomePage',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 1000),
+                                ),
+                              },
+                            );
                           },
                           text: 'Continuar',
                           options: FFButtonOptions(
