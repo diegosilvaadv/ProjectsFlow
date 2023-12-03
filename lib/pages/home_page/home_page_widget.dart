@@ -1076,6 +1076,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 ParamType
                                                                     .double,
                                                               ),
+                                                              'gratis':
+                                                                  serializeParam(
+                                                                0.0,
+                                                                ParamType
+                                                                    .double,
+                                                              ),
                                                             }.withoutNulls,
                                                             extra: <String,
                                                                 dynamic>{

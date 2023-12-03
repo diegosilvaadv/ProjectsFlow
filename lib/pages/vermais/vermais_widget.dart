@@ -257,11 +257,17 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                 child: StreamBuilder<List<ProjetosRecord>>(
                                   stream: queryProjetosRecord(
                                     queryBuilder: (projetosRecord) =>
-                                        projetosRecord.where(
-                                      'Valor',
-                                      isGreaterThan: widget.pagos,
-                                      isNull: (widget.pagos) == null,
-                                    ),
+                                        projetosRecord
+                                            .where(
+                                              'Valor',
+                                              isGreaterThan: widget.pagos,
+                                              isNull: (widget.pagos) == null,
+                                            )
+                                            .where(
+                                              'Valor',
+                                              isEqualTo: widget.gratis,
+                                              isNull: (widget.gratis) == null,
+                                            ),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
