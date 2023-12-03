@@ -113,6 +113,12 @@ class FFAppState extends ChangeNotifier {
   set aceitarTermos(bool _value) {
     _aceitarTermos = _value;
   }
+
+  bool _isOptionsExpanded = false;
+  bool get isOptionsExpanded => _isOptionsExpanded;
+  set isOptionsExpanded(bool _value) {
+    _isOptionsExpanded = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
