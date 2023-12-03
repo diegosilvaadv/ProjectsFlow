@@ -51,21 +51,6 @@ class ProjetosRecord extends FirestoreRecord {
   String get iMGPrincipal => _iMGPrincipal ?? '';
   bool hasIMGPrincipal() => _iMGPrincipal != null;
 
-  // "IMG1" field.
-  String? _img1;
-  String get img1 => _img1 ?? '';
-  bool hasImg1() => _img1 != null;
-
-  // "IMG2" field.
-  String? _img2;
-  String get img2 => _img2 ?? '';
-  bool hasImg2() => _img2 != null;
-
-  // "IMG3" field.
-  String? _img3;
-  String get img3 => _img3 ?? '';
-  bool hasImg3() => _img3 != null;
-
   // "creatData" field.
   DateTime? _creatData;
   DateTime? get creatData => _creatData;
@@ -101,6 +86,11 @@ class ProjetosRecord extends FirestoreRecord {
   bool get eprojeto => _eprojeto ?? false;
   bool hasEprojeto() => _eprojeto != null;
 
+  // "descriVenda" field.
+  String? _descriVenda;
+  String get descriVenda => _descriVenda ?? '';
+  bool hasDescriVenda() => _descriVenda != null;
+
   void _initializeFields() {
     _titulo = snapshotData['Titulo'] as String?;
     _descricao = snapshotData['Descricao'] as String?;
@@ -109,9 +99,6 @@ class ProjetosRecord extends FirestoreRecord {
     _linkProjeto = snapshotData['LinkProjeto'] as String?;
     _postadoPor = snapshotData['PostadoPor'] as String?;
     _iMGPrincipal = snapshotData['IMGPrincipal'] as String?;
-    _img1 = snapshotData['IMG1'] as String?;
-    _img2 = snapshotData['IMG2'] as String?;
-    _img3 = snapshotData['IMG3'] as String?;
     _creatData = snapshotData['creatData'] as DateTime?;
     _identificacao = snapshotData['identificacao'] as String?;
     _userIDVendedor = snapshotData['userIDVendedor'] as String?;
@@ -119,6 +106,7 @@ class ProjetosRecord extends FirestoreRecord {
     _requisitos = snapshotData['requisitos'] as String?;
     _subtitulo = snapshotData['subtitulo'] as String?;
     _eprojeto = snapshotData['Eprojeto'] as bool?;
+    _descriVenda = snapshotData['descriVenda'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -163,9 +151,6 @@ Map<String, dynamic> createProjetosRecordData({
   String? linkProjeto,
   String? postadoPor,
   String? iMGPrincipal,
-  String? img1,
-  String? img2,
-  String? img3,
   DateTime? creatData,
   String? identificacao,
   String? userIDVendedor,
@@ -173,6 +158,7 @@ Map<String, dynamic> createProjetosRecordData({
   String? requisitos,
   String? subtitulo,
   bool? eprojeto,
+  String? descriVenda,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -183,9 +169,6 @@ Map<String, dynamic> createProjetosRecordData({
       'LinkProjeto': linkProjeto,
       'PostadoPor': postadoPor,
       'IMGPrincipal': iMGPrincipal,
-      'IMG1': img1,
-      'IMG2': img2,
-      'IMG3': img3,
       'creatData': creatData,
       'identificacao': identificacao,
       'userIDVendedor': userIDVendedor,
@@ -193,6 +176,7 @@ Map<String, dynamic> createProjetosRecordData({
       'requisitos': requisitos,
       'subtitulo': subtitulo,
       'Eprojeto': eprojeto,
+      'descriVenda': descriVenda,
     }.withoutNulls,
   );
 
@@ -211,16 +195,14 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e1?.linkProjeto == e2?.linkProjeto &&
         e1?.postadoPor == e2?.postadoPor &&
         e1?.iMGPrincipal == e2?.iMGPrincipal &&
-        e1?.img1 == e2?.img1 &&
-        e1?.img2 == e2?.img2 &&
-        e1?.img3 == e2?.img3 &&
         e1?.creatData == e2?.creatData &&
         e1?.identificacao == e2?.identificacao &&
         e1?.userIDVendedor == e2?.userIDVendedor &&
         e1?.emailVendedor == e2?.emailVendedor &&
         e1?.requisitos == e2?.requisitos &&
         e1?.subtitulo == e2?.subtitulo &&
-        e1?.eprojeto == e2?.eprojeto;
+        e1?.eprojeto == e2?.eprojeto &&
+        e1?.descriVenda == e2?.descriVenda;
   }
 
   @override
@@ -232,16 +214,14 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e?.linkProjeto,
         e?.postadoPor,
         e?.iMGPrincipal,
-        e?.img1,
-        e?.img2,
-        e?.img3,
         e?.creatData,
         e?.identificacao,
         e?.userIDVendedor,
         e?.emailVendedor,
         e?.requisitos,
         e?.subtitulo,
-        e?.eprojeto
+        e?.eprojeto,
+        e?.descriVenda
       ]);
 
   @override
