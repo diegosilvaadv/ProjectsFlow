@@ -873,7 +873,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                      if (listViewProjetosRecord.valor == 0.0)
+                                                                                      if (listViewProjetosRecord.valor >= 1.0)
                                                                                         Card(
                                                                                           clipBehavior: Clip.antiAliasWithSaveLayer,
                                                                                           color: Color(0xC50BC70A),
@@ -1274,15 +1274,28 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
                                                                     context
                                                                         .pushNamed(
-                                                                      'Projetos',
+                                                                      'detalhes',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'detalhesProjects':
+                                                                            serializeParam(
+                                                                          listViewProjetosRecord,
+                                                                          ParamType
+                                                                              .Document,
+                                                                        ),
+                                                                      }.withoutNulls,
                                                                       extra: <String,
                                                                           dynamic>{
+                                                                        'detalhesProjects':
+                                                                            listViewProjetosRecord,
                                                                         kTransitionInfoKey:
                                                                             TransitionInfo(
                                                                           hasTransition:
                                                                               true,
                                                                           transitionType:
                                                                               PageTransitionType.rightToLeft,
+                                                                          duration:
+                                                                              Duration(milliseconds: 500),
                                                                         ),
                                                                       },
                                                                     );
@@ -1731,15 +1744,28 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
                                                                     context
                                                                         .pushNamed(
-                                                                      'Projetos',
+                                                                      'detalhes',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'detalhesProjects':
+                                                                            serializeParam(
+                                                                          listViewProjetosRecord,
+                                                                          ParamType
+                                                                              .Document,
+                                                                        ),
+                                                                      }.withoutNulls,
                                                                       extra: <String,
                                                                           dynamic>{
+                                                                        'detalhesProjects':
+                                                                            listViewProjetosRecord,
                                                                         kTransitionInfoKey:
                                                                             TransitionInfo(
                                                                           hasTransition:
                                                                               true,
                                                                           transitionType:
                                                                               PageTransitionType.rightToLeft,
+                                                                          duration:
+                                                                              Duration(milliseconds: 500),
                                                                         ),
                                                                       },
                                                                     );
