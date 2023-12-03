@@ -129,13 +129,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'detalhesProjects',
-          path: '/detalhesProjects',
+          name: 'detalhes',
+          path: '/detalhes',
           asyncParams: {
             'detalhesProjects':
                 getDoc(['Projetos'], ProjetosRecord.fromSnapshot),
           },
-          builder: (context, params) => DetalhesProjectsWidget(
+          builder: (context, params) => DetalhesWidget(
             detalhesProjects:
                 params.getParam('detalhesProjects', ParamType.Document),
           ),

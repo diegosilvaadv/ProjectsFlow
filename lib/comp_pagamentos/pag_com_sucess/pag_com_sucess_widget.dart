@@ -72,7 +72,7 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
       logFirebaseEvent('pagComSucess_navigate_to');
 
       context.goNamed(
-        'detalhesProjects',
+        'detalhes',
         queryParameters: {
           'detalhesProjects': serializeParam(
             widget.detalhesProdutos,

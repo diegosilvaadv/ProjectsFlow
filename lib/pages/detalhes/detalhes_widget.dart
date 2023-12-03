@@ -17,11 +17,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'detalhes_projects_model.dart';
-export 'detalhes_projects_model.dart';
+import 'detalhes_model.dart';
+export 'detalhes_model.dart';
 
-class DetalhesProjectsWidget extends StatefulWidget {
-  const DetalhesProjectsWidget({
+class DetalhesWidget extends StatefulWidget {
+  const DetalhesWidget({
     Key? key,
     required this.detalhesProjects,
   }) : super(key: key);
@@ -29,22 +29,21 @@ class DetalhesProjectsWidget extends StatefulWidget {
   final ProjetosRecord? detalhesProjects;
 
   @override
-  _DetalhesProjectsWidgetState createState() => _DetalhesProjectsWidgetState();
+  _DetalhesWidgetState createState() => _DetalhesWidgetState();
 }
 
-class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
+class _DetalhesWidgetState extends State<DetalhesWidget>
     with TickerProviderStateMixin {
-  late DetalhesProjectsModel _model;
+  late DetalhesModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DetalhesProjectsModel());
+    _model = createModel(context, () => DetalhesModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'detalhesProjects'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'detalhes'});
     _model.tabBarController = TabController(
       vsync: this,
       length: 3,
@@ -75,7 +74,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
 
     return YoutubeFullScreenWrapper(
       child: Title(
-          title: 'detalhesProjects',
+          title: 'detalhes',
           color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
           child: GestureDetector(
             onTap: () => _model.unfocusNode.canRequestFocus
@@ -136,7 +135,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                           ),
                                           onPressed: () async {
                                             logFirebaseEvent(
-                                                'DETALHES_PROJECTS_home_rounded_ICN_ON_TA');
+                                                'DETALHES_PAGE_home_rounded_ICN_ON_TAP');
                                             logFirebaseEvent(
                                                 'IconButton_navigate_to');
 
@@ -364,7 +363,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                             onPressed:
                                                                 () async {
                                                               logFirebaseEvent(
-                                                                  'DETALHES_PROJECTS_COMPRAR_PROJETO_BTN_ON');
+                                                                  'DETALHES_PAGE_COMPRAR_PROJETO_BTN_ON_TAP');
                                                               if (currentUserEmail !=
                                                                   '') {
                                                                 logFirebaseEvent(
@@ -490,7 +489,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                             onPressed:
                                                                 () async {
                                                               logFirebaseEvent(
-                                                                  'DETALHES_PROJECTS_ACESSAR_PROJETO_BTN_ON');
+                                                                  'DETALHES_PAGE_ACESSAR_PROJETO_BTN_ON_TAP');
                                                               logFirebaseEvent(
                                                                   'Button_launch_u_r_l');
                                                               await launchURL(widget

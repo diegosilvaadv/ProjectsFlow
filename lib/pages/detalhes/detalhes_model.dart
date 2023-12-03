@@ -9,7 +9,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/flutter_flow_youtube_player.dart';
-import 'detalhes_projects_widget.dart' show DetalhesProjectsWidget;
+import 'detalhes_widget.dart' show DetalhesWidget;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class DetalhesProjectsModel extends FlutterFlowModel<DetalhesProjectsWidget> {
+class DetalhesModel extends FlutterFlowModel<DetalhesWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

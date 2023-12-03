@@ -6,8 +6,7 @@ export '/dash_board/dash_board/dash_board_widget.dart' show DashBoardWidget;
 export '/usuario/login/login_widget.dart' show LoginWidget;
 export '/usuario/perfil/perfil_widget.dart' show PerfilWidget;
 export '/pages/vermais/vermais_widget.dart' show VermaisWidget;
-export '/pages/detalhes_projects/detalhes_projects_widget.dart'
-    show DetalhesProjectsWidget;
+export '/pages/detalhes/detalhes_widget.dart' show DetalhesWidget;
 export '/usuario/confirmar_email/confirmar_email_widget.dart'
     show ConfirmarEmailWidget;
 export '/usuario/resetar_senha/resetar_senha_widget.dart'

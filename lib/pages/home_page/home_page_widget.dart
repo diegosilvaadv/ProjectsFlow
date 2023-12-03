@@ -19,6 +19,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -234,92 +235,115 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
+                                      child: Stack(
                                         children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 30.0, 0.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                  child: BackdropFilter(
-                                                    filter: ImageFilter.blur(
-                                                      sigmaX: 10.0,
-                                                      sigmaY: 10.0,
-                                                    ),
-                                                    child: Text(
-                                                      'Trabalhar com FlutterFlow',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .displayMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Outfit',
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Row(
+                                          Column(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                'Transforme seus projetos em dinheiro',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall,
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 30.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: BackdropFilter(
+                                                        filter:
+                                                            ImageFilter.blur(
+                                                          sigmaX: 10.0,
+                                                          sigmaY: 10.0,
+                                                        ),
+                                                        child: SelectionArea(
+                                                            child: GradientText(
+                                                          'Trabalhar com FlutterFlow',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .displayMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                          colors: [
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary
+                                                          ],
+                                                          gradientDirection:
+                                                              GradientDirection
+                                                                  .ltr,
+                                                          gradientType:
+                                                              GradientType
+                                                                  .linear,
+                                                        )),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    300.0, 20.0, 300.0, 20.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Expanded(
-                                                  child: Stack(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        child: TextFormField(
-                                                          controller: _model
-                                                              .textController,
-                                                          focusNode: _model
-                                                              .textFieldFocusNode,
-                                                          obscureText: false,
-                                                          decoration:
-                                                              InputDecoration(
-                                                            labelText:
-                                                                'Buscar por Projetos',
-                                                            labelStyle:
-                                                                FlutterFlowTheme.of(
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  SelectionArea(
+                                                      child: Text(
+                                                    'Transforme seus projetos em dinheiro',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineSmall,
+                                                  )),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(300.0, 20.0,
+                                                        300.0, 20.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Stack(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        8.0,
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0),
+                                                            child:
+                                                                TextFormField(
+                                                              controller: _model
+                                                                  .textController,
+                                                              focusNode: _model
+                                                                  .textFieldFocusNode,
+                                                              obscureText:
+                                                                  false,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                labelText:
+                                                                    'Buscar por Projetos',
+                                                                labelStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
@@ -328,129 +352,127 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       fontSize:
                                                                           20.0,
                                                                     ),
-                                                            hintStyle:
-                                                                FlutterFlowTheme.of(
+                                                                hintStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium,
-                                                            enabledBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
+                                                                enabledBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                                focusedBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                                errorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                                focusedErrorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                                filled: true,
+                                                                fillColor: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondary,
-                                                                width: 2.0,
+                                                                    .primaryBackground,
                                                               ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        20.0,
+                                                                  ),
+                                                              cursorColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                              validator: _model
+                                                                  .textControllerValidator
+                                                                  .asValidator(
+                                                                      context),
                                                             ),
-                                                            focusedBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            errorBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            focusedErrorBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            filled: true,
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryBackground,
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 20.0,
-                                                              ),
-                                                          cursorColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondary,
-                                                          validator: _model
-                                                              .textControllerValidator
-                                                              .asValidator(
-                                                                  context),
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                1.00, 0.00),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0),
-                                                          child: FFButtonWidget(
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
-                                                            },
-                                                            text: 'Buscar',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              height: 40.0,
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    1.00, 0.00),
+                                                            child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          20.0,
+                                                                          0.0),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed: () {
+                                                                  print(
+                                                                      'Button pressed ...');
+                                                                },
+                                                                text: 'Buscar',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 40.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  iconPadding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  textStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
                                                                       .override(
@@ -459,45 +481,49 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         color: Colors
                                                                             .white,
                                                                       ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
+                                                                  elevation:
+                                                                      3.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  hoverColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent1,
+                                                                  hoverBorderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  hoverTextColor:
+                                                                      Color(
+                                                                          0xFFE5E5E5),
+                                                                ),
                                                               ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              hoverColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent1,
-                                                              hoverBorderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                width: 1.0,
-                                                              ),
-                                                              hoverTextColor:
-                                                                  Color(
-                                                                      0xFFE5E5E5),
                                                             ),
                                                           ),
-                                                        ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                          Divider(
-                                            thickness: 1.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                              ),
+                                              Divider(
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -526,7 +552,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Text(
+                                                  SelectionArea(
+                                                      child: Text(
                                                     'Aplicativos Completo',
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -537,7 +564,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
-                                                  ),
+                                                  )),
                                                   Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -616,7 +643,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Text(
+                                                    SelectionArea(
+                                                        child: Text(
                                                       'Copie todo um projeto e use como quiser.',
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -627,7 +655,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     'Readex Pro',
                                                                 fontSize: 20.0,
                                                               ),
-                                                    ),
+                                                    )),
                                                   ],
                                                 ),
                                               ),
@@ -721,7 +749,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
                                                                     context
                                                                         .pushNamed(
-                                                                      'detalhesProjects',
+                                                                      'detalhes',
                                                                       queryParameters:
                                                                           {
                                                                         'detalhesProjects':
@@ -963,7 +991,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Text(
+                                                  SelectionArea(
+                                                      child: Text(
                                                     'Todas as Páginas',
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -974,7 +1003,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
-                                                  ),
+                                                  )),
                                                   Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1084,7 +1113,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Text(
+                                                    SelectionArea(
+                                                        child: Text(
                                                       'Basta copiar as telas e usar em seu projeto.',
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -1095,7 +1125,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     'Readex Pro',
                                                                 fontSize: 20.0,
                                                               ),
-                                                    ),
+                                                    )),
                                                   ],
                                                 ),
                                               ),
@@ -1437,7 +1467,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Text(
+                                                  SelectionArea(
+                                                      child: Text(
                                                     'Authentication | Tela de Login',
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1448,7 +1479,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
-                                                  ),
+                                                  )),
                                                   Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1552,7 +1583,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Text(
+                                                    SelectionArea(
+                                                        child: Text(
                                                       'Copie telas de login para usar como quiser.',
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -1563,7 +1595,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     'Readex Pro',
                                                                 fontSize: 20.0,
                                                               ),
-                                                    ),
+                                                    )),
                                                   ],
                                                 ),
                                               ),
