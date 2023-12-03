@@ -1143,6 +1143,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                       fontSize:
                                                                           20.0,
                                                                     ),
+                                                            hintText:
+                                                                'P/ Grátis deixe 0',
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -2180,6 +2182,77 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                               onPressed: () async {
                                 logFirebaseEvent(
                                     'ADD_PROJETOS_CRIAR_PROJETO_BTN_ON_TAP');
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey8.currentState == null ||
+                                    !_model.formKey8.currentState!.validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey7.currentState == null ||
+                                    !_model.formKey7.currentState!.validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey6.currentState == null ||
+                                    !_model.formKey6.currentState!.validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey10.currentState == null ||
+                                    !_model.formKey10.currentState!
+                                        .validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey4.currentState == null ||
+                                    !_model.formKey4.currentState!.validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey3.currentState == null ||
+                                    !_model.formKey3.currentState!.validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey5.currentState == null ||
+                                    !_model.formKey5.currentState!.validate()) {
+                                  return;
+                                }
+                                if (_model.dropDownValue == null) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Categoria é Obrigatória'),
+                                        content:
+                                            Text('Selecione uma categoria.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey2.currentState == null ||
+                                    !_model.formKey2.currentState!.validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey9.currentState == null ||
+                                    !_model.formKey9.currentState!.validate()) {
+                                  return;
+                                }
+                                logFirebaseEvent('Button_validate_form');
+                                if (_model.formKey1.currentState == null ||
+                                    !_model.formKey1.currentState!.validate()) {
+                                  return;
+                                }
                                 logFirebaseEvent('Button_backend_call');
 
                                 await ProjetosRecord.collection
