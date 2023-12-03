@@ -45,20 +45,6 @@
           "order": "ASCENDING"
         }
       ]
-    },
-    {
-      "collectionGroup": "Pagamentos",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "userIDPagante",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "transacionID",
-          "order": "ASCENDING"
-        }
-      ]
     }
   ]
 }
