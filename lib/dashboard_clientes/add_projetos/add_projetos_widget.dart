@@ -415,7 +415,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                   child: Form(
                                                     key: _model.formKey7,
                                                     autovalidateMode:
-                                                        AutovalidateMode.always,
+                                                        AutovalidateMode
+                                                            .disabled,
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -2008,12 +2009,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                             12.0),
                                                                 child: Image
                                                                     .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    _model
-                                                                        .uploadedFileUrl2,
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
-                                                                  ),
+                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
                                                                   width: 100.0,
                                                                   height: 100.0,
                                                                   fit: BoxFit
@@ -2048,6 +2044,10 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                 _model
                                                                     .uploadedFileUrl2,
                                                                 'Link da URL aparecerá aqui.',
+                                                              ).maybeHandleOverflow(
+                                                                maxChars: 50,
+                                                                replacement:
+                                                                    '…',
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
