@@ -1046,317 +1046,126 @@ class _ComprasWidgetState extends State<ComprasWidget>
                                                                                                 )
                                                                                               ],
                                                                                             ),
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  if (responsiveVisibility(
-                                                                                                    context: context,
-                                                                                                    phone: false,
-                                                                                                    tablet: false,
-                                                                                                  ))
-                                                                                                    Expanded(
-                                                                                                      flex: 2,
-                                                                                                      child: Text(
-                                                                                                        listViewPagamentosRecord.produto,
-                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  Expanded(
-                                                                                                    flex: 4,
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
-                                                                                                      child: Row(
-                                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                                        children: [
-                                                                                                          Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                                                                                            child: ClipRRect(
-                                                                                                              borderRadius: BorderRadius.circular(40.0),
-                                                                                                              child: Image.network(
-                                                                                                                valueOrDefault<String>(
-                                                                                                                  listViewPagamentosRecord.imgPagante,
-                                                                                                                  'https://cdn-icons-png.flaticon.com/512/6596/6596121.png',
-                                                                                                                ),
-                                                                                                                width: 32.0,
-                                                                                                                height: 32.0,
-                                                                                                                fit: BoxFit.cover,
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                          Expanded(
-                                                                                                            child: Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                                                              child: Column(
-                                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                                children: [
-                                                                                                                  Text(
-                                                                                                                    valueOrDefault<String>(
-                                                                                                                      listViewPagamentosRecord.nomeVendedor,
-                                                                                                                      'NomeVendedor',
-                                                                                                                    ),
-                                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                          fontFamily: 'Readex Pro',
-                                                                                                                          fontWeight: FontWeight.bold,
-                                                                                                                        ),
-                                                                                                                  ),
-                                                                                                                  Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                                                                                                    child: Text(
-                                                                                                                      valueOrDefault<String>(
-                                                                                                                        dateTimeFormat('dd/MM/yyyy | kk:mm', listViewPagamentosRecord.creatData),
-                                                                                                                        'data',
-                                                                                                                      ),
-                                                                                                                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                            fontFamily: 'Readex Pro',
-                                                                                                                            color: FlutterFlowTheme.of(context).tertiary,
-                                                                                                                          ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ],
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  if (responsiveVisibility(
-                                                                                                    context: context,
-                                                                                                    phone: false,
-                                                                                                  ))
-                                                                                                    Expanded(
-                                                                                                      flex: 2,
-                                                                                                      child: Text(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          formatNumber(
-                                                                                                            listViewPagamentosRecord.valor,
-                                                                                                            formatType: FormatType.custom,
-                                                                                                            currency: 'R\$ ',
-                                                                                                            format: '0.00',
-                                                                                                            locale: 'pt_BR',
-                                                                                                          ),
-                                                                                                          'valor',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).titleLarge,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  Expanded(
-                                                                                                    flex: 2,
-                                                                                                    child: Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      children: [
-                                                                                                        Container(
-                                                                                                          height: 32.0,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            color: FlutterFlowTheme.of(context).accent2,
-                                                                                                            borderRadius: BorderRadius.circular(40.0),
-                                                                                                            border: Border.all(
-                                                                                                              color: FlutterFlowTheme.of(context).secondary,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                          alignment: AlignmentDirectional(0.00, 0.00),
-                                                                                                          child: Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                                                                                                            child: Text(
-                                                                                                              'Pago',
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  Row(
+                                                                                            child: Stack(
+                                                                                              children: [
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                                                  child: Row(
                                                                                                     mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.end,
                                                                                                     children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
-                                                                                                        child: Column(
-                                                                                                          mainAxisSize: MainAxisSize.min,
-                                                                                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                                                                                          children: [
-                                                                                                            ClipRRect(
-                                                                                                              borderRadius: BorderRadius.circular(10.0),
-                                                                                                              child: Container(
-                                                                                                                width: 200.0,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                  borderRadius: BorderRadius.circular(10.0),
+                                                                                                      if (responsiveVisibility(
+                                                                                                        context: context,
+                                                                                                        phone: false,
+                                                                                                        tablet: false,
+                                                                                                      ))
+                                                                                                        Expanded(
+                                                                                                          flex: 2,
+                                                                                                          child: Text(
+                                                                                                            listViewPagamentosRecord.produto,
+                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      Expanded(
+                                                                                                        flex: 4,
+                                                                                                        child: Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+                                                                                                          child: Row(
+                                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                                            children: [
+                                                                                                              Padding(
+                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                                child: ClipRRect(
+                                                                                                                  borderRadius: BorderRadius.circular(40.0),
+                                                                                                                  child: Image.network(
+                                                                                                                    valueOrDefault<String>(
+                                                                                                                      listViewPagamentosRecord.imgPagante,
+                                                                                                                      'https://cdn-icons-png.flaticon.com/512/6596/6596121.png',
+                                                                                                                    ),
+                                                                                                                    width: 32.0,
+                                                                                                                    height: 32.0,
+                                                                                                                    fit: BoxFit.cover,
+                                                                                                                  ),
                                                                                                                 ),
+                                                                                                              ),
+                                                                                                              Expanded(
                                                                                                                 child: Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                                                   child: Column(
                                                                                                                     mainAxisSize: MainAxisSize.max,
+                                                                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                                     children: [
-                                                                                                                      Container(
-                                                                                                                        width: double.infinity,
-                                                                                                                        height: 50.0,
-                                                                                                                        decoration: BoxDecoration(
-                                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                                      Text(
+                                                                                                                        valueOrDefault<String>(
+                                                                                                                          listViewPagamentosRecord.nomeVendedor,
+                                                                                                                          'NomeVendedor',
                                                                                                                         ),
-                                                                                                                        child: Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                                                                                                                          child: Row(
-                                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                                            children: [
-                                                                                                                              Icon(
-                                                                                                                                Icons.report_outlined,
-                                                                                                                                color: Colors.white,
-                                                                                                                                size: 26.0,
-                                                                                                                              ),
-                                                                                                                              Padding(
-                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                                                                                                                                child: Text(
-                                                                                                                                  'Reportar',
-                                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                                                                ),
-                                                                                                                              ),
-                                                                                                                            ],
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                      ).animateOnActionTrigger(
-                                                                                                                        animationsMap['containerOnActionTriggerAnimation2']!,
+                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                              fontFamily: 'Readex Pro',
+                                                                                                                              fontWeight: FontWeight.bold,
+                                                                                                                            ),
                                                                                                                       ),
-                                                                                                                      Container(
-                                                                                                                        width: double.infinity,
-                                                                                                                        height: 50.0,
-                                                                                                                        decoration: BoxDecoration(
-                                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                        ),
-                                                                                                                        child: Padding(
-                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                                                                                                                          child: Row(
-                                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                                            children: [
-                                                                                                                              Icon(
-                                                                                                                                Icons.info_outline,
-                                                                                                                                color: Colors.white,
-                                                                                                                                size: 26.0,
-                                                                                                                              ),
-                                                                                                                              Padding(
-                                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                                                                                                                                child: Text(
-                                                                                                                                  'Detalhes',
-                                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                                                                ),
-                                                                                                                              ),
-                                                                                                                            ],
+                                                                                                                      Padding(
+                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                                                        child: Text(
+                                                                                                                          valueOrDefault<String>(
+                                                                                                                            dateTimeFormat('dd/MM/yyyy | kk:mm', listViewPagamentosRecord.creatData),
+                                                                                                                            'data',
                                                                                                                           ),
+                                                                                                                          style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                                fontFamily: 'Readex Pro',
+                                                                                                                                color: FlutterFlowTheme.of(context).tertiary,
+                                                                                                                              ),
                                                                                                                         ),
-                                                                                                                      ).animateOnActionTrigger(
-                                                                                                                        animationsMap['containerOnActionTriggerAnimation3']!,
                                                                                                                       ),
                                                                                                                     ],
                                                                                                                   ),
                                                                                                                 ),
                                                                                                               ),
-                                                                                                            ).animateOnActionTrigger(
-                                                                                                              animationsMap['containerOnActionTriggerAnimation1']!,
+                                                                                                            ],
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      if (responsiveVisibility(
+                                                                                                        context: context,
+                                                                                                        phone: false,
+                                                                                                      ))
+                                                                                                        Expanded(
+                                                                                                          flex: 2,
+                                                                                                          child: Text(
+                                                                                                            valueOrDefault<String>(
+                                                                                                              formatNumber(
+                                                                                                                listViewPagamentosRecord.valor,
+                                                                                                                formatType: FormatType.custom,
+                                                                                                                currency: 'R\$ ',
+                                                                                                                format: '0.00',
+                                                                                                                locale: 'pt_BR',
+                                                                                                              ),
+                                                                                                              'valor',
                                                                                                             ),
-                                                                                                            Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                                                                                              child: InkWell(
-                                                                                                                splashColor: Colors.transparent,
-                                                                                                                focusColor: Colors.transparent,
-                                                                                                                hoverColor: Colors.transparent,
-                                                                                                                highlightColor: Colors.transparent,
-                                                                                                                onTap: () async {
-                                                                                                                  logFirebaseEvent('COMPRAS_PAGE_ExpandableFAB_ON_TAP');
-                                                                                                                  if (FFAppState().isOptionsExpanded) {
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['containerOnActionTriggerAnimation1'] != null) {
-                                                                                                                      animationsMap['containerOnActionTriggerAnimation1']!.controller.reverse();
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['containerOnActionTriggerAnimation2'] != null) {
-                                                                                                                      animationsMap['containerOnActionTriggerAnimation2']!.controller.reverse();
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['containerOnActionTriggerAnimation3'] != null) {
-                                                                                                                      animationsMap['containerOnActionTriggerAnimation3']!.controller.reverse();
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['transformOnActionTriggerAnimation'] != null) {
-                                                                                                                      animationsMap['transformOnActionTriggerAnimation']!.controller.reverse();
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['iconOnActionTriggerAnimation'] != null) {
-                                                                                                                      animationsMap['iconOnActionTriggerAnimation']!.controller.reverse();
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_update_app_state');
-                                                                                                                    FFAppState().isOptionsExpanded = false;
-                                                                                                                  } else {
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['containerOnActionTriggerAnimation1'] != null) {
-                                                                                                                      animationsMap['containerOnActionTriggerAnimation1']!.controller.forward(from: 0.0);
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['containerOnActionTriggerAnimation2'] != null) {
-                                                                                                                      animationsMap['containerOnActionTriggerAnimation2']!.controller.forward(from: 0.0);
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['containerOnActionTriggerAnimation3'] != null) {
-                                                                                                                      animationsMap['containerOnActionTriggerAnimation3']!.controller.forward(from: 0.0);
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['transformOnActionTriggerAnimation'] != null) {
-                                                                                                                      animationsMap['transformOnActionTriggerAnimation']!.controller.forward(from: 0.0);
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_widget_animation');
-                                                                                                                    if (animationsMap['iconOnActionTriggerAnimation'] != null) {
-                                                                                                                      animationsMap['iconOnActionTriggerAnimation']!.controller.forward(from: 0.0);
-                                                                                                                    }
-                                                                                                                    logFirebaseEvent('ExpandableFAB_update_app_state');
-                                                                                                                    FFAppState().isOptionsExpanded = true;
-                                                                                                                  }
-                                                                                                                },
-                                                                                                                child: ClipOval(
-                                                                                                                  child: Container(
-                                                                                                                    width: 50.0,
-                                                                                                                    height: 50.0,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      gradient: LinearGradient(
-                                                                                                                        colors: [
-                                                                                                                          FlutterFlowTheme.of(context).primary,
-                                                                                                                          FlutterFlowTheme.of(context).tertiary
-                                                                                                                        ],
-                                                                                                                        stops: [0.0, 1.0],
-                                                                                                                        begin: AlignmentDirectional(0.87, -1.0),
-                                                                                                                        end: AlignmentDirectional(-0.87, 1.0),
-                                                                                                                      ),
-                                                                                                                      shape: BoxShape.circle,
-                                                                                                                    ),
-                                                                                                                    child: Stack(
-                                                                                                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                                                      children: [
-                                                                                                                        Transform.rotate(
-                                                                                                                          angle: -0.7854,
-                                                                                                                          child: Padding(
-                                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                                                            child: Icon(
-                                                                                                                              Icons.more_vert,
-                                                                                                                              color: Colors.white,
-                                                                                                                              size: 24.0,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ).animateOnActionTrigger(
-                                                                                                                          animationsMap['transformOnActionTriggerAnimation']!,
-                                                                                                                        ),
-                                                                                                                        Icon(
-                                                                                                                          Icons.keyboard_control_sharp,
-                                                                                                                          color: Colors.white,
-                                                                                                                          size: 24.0,
-                                                                                                                        ).animateOnActionTrigger(
-                                                                                                                          animationsMap['iconOnActionTriggerAnimation']!,
-                                                                                                                        ),
-                                                                                                                      ],
-                                                                                                                    ),
-                                                                                                                  ),
+                                                                                                            style: FlutterFlowTheme.of(context).titleLarge,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      Expanded(
+                                                                                                        flex: 2,
+                                                                                                        child: Row(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          children: [
+                                                                                                            Container(
+                                                                                                              height: 32.0,
+                                                                                                              decoration: BoxDecoration(
+                                                                                                                color: FlutterFlowTheme.of(context).accent2,
+                                                                                                                borderRadius: BorderRadius.circular(40.0),
+                                                                                                                border: Border.all(
+                                                                                                                  color: FlutterFlowTheme.of(context).secondary,
+                                                                                                                ),
+                                                                                                              ),
+                                                                                                              alignment: AlignmentDirectional(0.00, 0.00),
+                                                                                                              child: Padding(
+                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                                                child: Text(
+                                                                                                                  'Pago',
+                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                                                 ),
                                                                                                               ),
                                                                                                             ),
@@ -1365,8 +1174,203 @@ class _ComprasWidgetState extends State<ComprasWidget>
                                                                                                       ),
                                                                                                     ],
                                                                                                   ),
-                                                                                                ],
-                                                                                              ),
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
+                                                                                                      child: Column(
+                                                                                                        mainAxisSize: MainAxisSize.min,
+                                                                                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                                                                                        children: [
+                                                                                                          ClipRRect(
+                                                                                                            borderRadius: BorderRadius.circular(10.0),
+                                                                                                            child: Container(
+                                                                                                              width: 200.0,
+                                                                                                              decoration: BoxDecoration(
+                                                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                                borderRadius: BorderRadius.circular(10.0),
+                                                                                                              ),
+                                                                                                              child: Padding(
+                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                                                                                                                child: Column(
+                                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                                  children: [
+                                                                                                                    Container(
+                                                                                                                      width: double.infinity,
+                                                                                                                      height: 50.0,
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                                      ),
+                                                                                                                      child: Padding(
+                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                                                        child: Row(
+                                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                                          children: [
+                                                                                                                            Icon(
+                                                                                                                              Icons.report_outlined,
+                                                                                                                              color: Colors.white,
+                                                                                                                              size: 26.0,
+                                                                                                                            ),
+                                                                                                                            Padding(
+                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                                                              child: Text(
+                                                                                                                                'Reportar',
+                                                                                                                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          ],
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ).animateOnActionTrigger(
+                                                                                                                      animationsMap['containerOnActionTriggerAnimation2']!,
+                                                                                                                    ),
+                                                                                                                    Container(
+                                                                                                                      width: double.infinity,
+                                                                                                                      height: 50.0,
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                                      ),
+                                                                                                                      child: Padding(
+                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                                                        child: Row(
+                                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                                          children: [
+                                                                                                                            Icon(
+                                                                                                                              Icons.info_outline,
+                                                                                                                              color: Colors.white,
+                                                                                                                              size: 26.0,
+                                                                                                                            ),
+                                                                                                                            Padding(
+                                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                                                              child: Text(
+                                                                                                                                'Detalhes',
+                                                                                                                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          ],
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ).animateOnActionTrigger(
+                                                                                                                      animationsMap['containerOnActionTriggerAnimation3']!,
+                                                                                                                    ),
+                                                                                                                  ],
+                                                                                                                ),
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ).animateOnActionTrigger(
+                                                                                                            animationsMap['containerOnActionTriggerAnimation1']!,
+                                                                                                          ),
+                                                                                                          Padding(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                                            child: InkWell(
+                                                                                                              splashColor: Colors.transparent,
+                                                                                                              focusColor: Colors.transparent,
+                                                                                                              hoverColor: Colors.transparent,
+                                                                                                              highlightColor: Colors.transparent,
+                                                                                                              onTap: () async {
+                                                                                                                logFirebaseEvent('COMPRAS_PAGE_ExpandableFAB_ON_TAP');
+                                                                                                                if (FFAppState().isOptionsExpanded) {
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['containerOnActionTriggerAnimation1'] != null) {
+                                                                                                                    animationsMap['containerOnActionTriggerAnimation1']!.controller.reverse();
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['containerOnActionTriggerAnimation2'] != null) {
+                                                                                                                    animationsMap['containerOnActionTriggerAnimation2']!.controller.reverse();
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['containerOnActionTriggerAnimation3'] != null) {
+                                                                                                                    animationsMap['containerOnActionTriggerAnimation3']!.controller.reverse();
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['transformOnActionTriggerAnimation'] != null) {
+                                                                                                                    animationsMap['transformOnActionTriggerAnimation']!.controller.reverse();
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['iconOnActionTriggerAnimation'] != null) {
+                                                                                                                    animationsMap['iconOnActionTriggerAnimation']!.controller.reverse();
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_update_app_state');
+                                                                                                                  FFAppState().isOptionsExpanded = false;
+                                                                                                                } else {
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['containerOnActionTriggerAnimation1'] != null) {
+                                                                                                                    animationsMap['containerOnActionTriggerAnimation1']!.controller.forward(from: 0.0);
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['containerOnActionTriggerAnimation2'] != null) {
+                                                                                                                    animationsMap['containerOnActionTriggerAnimation2']!.controller.forward(from: 0.0);
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['containerOnActionTriggerAnimation3'] != null) {
+                                                                                                                    animationsMap['containerOnActionTriggerAnimation3']!.controller.forward(from: 0.0);
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['transformOnActionTriggerAnimation'] != null) {
+                                                                                                                    animationsMap['transformOnActionTriggerAnimation']!.controller.forward(from: 0.0);
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_widget_animation');
+                                                                                                                  if (animationsMap['iconOnActionTriggerAnimation'] != null) {
+                                                                                                                    animationsMap['iconOnActionTriggerAnimation']!.controller.forward(from: 0.0);
+                                                                                                                  }
+                                                                                                                  logFirebaseEvent('ExpandableFAB_update_app_state');
+                                                                                                                  FFAppState().isOptionsExpanded = true;
+                                                                                                                }
+                                                                                                              },
+                                                                                                              child: ClipOval(
+                                                                                                                child: Container(
+                                                                                                                  width: 50.0,
+                                                                                                                  height: 50.0,
+                                                                                                                  decoration: BoxDecoration(
+                                                                                                                    gradient: LinearGradient(
+                                                                                                                      colors: [
+                                                                                                                        FlutterFlowTheme.of(context).primary,
+                                                                                                                        FlutterFlowTheme.of(context).tertiary
+                                                                                                                      ],
+                                                                                                                      stops: [0.0, 1.0],
+                                                                                                                      begin: AlignmentDirectional(0.87, -1.0),
+                                                                                                                      end: AlignmentDirectional(-0.87, 1.0),
+                                                                                                                    ),
+                                                                                                                    shape: BoxShape.circle,
+                                                                                                                  ),
+                                                                                                                  child: Stack(
+                                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                                    children: [
+                                                                                                                      Transform.rotate(
+                                                                                                                        angle: -0.7854,
+                                                                                                                        child: Padding(
+                                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                                                          child: Icon(
+                                                                                                                            Icons.more_vert,
+                                                                                                                            color: Colors.white,
+                                                                                                                            size: 24.0,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      ).animateOnActionTrigger(
+                                                                                                                        animationsMap['transformOnActionTriggerAnimation']!,
+                                                                                                                      ),
+                                                                                                                      Icon(
+                                                                                                                        Icons.keyboard_control_sharp,
+                                                                                                                        color: Colors.white,
+                                                                                                                        size: 24.0,
+                                                                                                                      ).animateOnActionTrigger(
+                                                                                                                        animationsMap['iconOnActionTriggerAnimation']!,
+                                                                                                                      ),
+                                                                                                                    ],
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
                                                                                             ),
                                                                                           ),
                                                                                         );
