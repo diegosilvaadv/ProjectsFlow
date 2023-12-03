@@ -506,7 +506,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               icon: Icon(
                                 Icons.shopping_bag,
                                 color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'tutorial'
+                                  FFAppState().AppBar == 'compras'
                                       ? Colors.white
                                       : FlutterFlowTheme.of(context)
                                           .primaryText,
