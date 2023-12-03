@@ -185,7 +185,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                               .secondaryText,
                                                       fontSize: 20.0,
                                                       fontWeight:
-                                                          FontWeight.normal,
+                                                          FontWeight.bold,
                                                     ),
                                               ),
                                             ),
@@ -261,12 +261,10 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                             .where(
                                               'Valor',
                                               isGreaterThan: widget.pagos,
-                                              isNull: (widget.pagos) == null,
                                             )
                                             .where(
                                               'Valor',
                                               isEqualTo: widget.gratis,
-                                              isNull: (widget.gratis) == null,
                                             ),
                                   ),
                                   builder: (context, snapshot) {
