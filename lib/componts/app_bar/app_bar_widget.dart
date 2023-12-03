@@ -487,12 +487,12 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     'APP_BAR_COMP_COMPRAS_BTN_ON_TAP');
                                 logFirebaseEvent('Button_update_app_state');
                                 setState(() {
-                                  FFAppState().AppBar = 'tutorial';
+                                  FFAppState().AppBar = 'compras';
                                 });
                                 logFirebaseEvent('Button_navigate_to');
 
                                 context.goNamed(
-                                  'Tutorial',
+                                  'compras',
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
@@ -521,7 +521,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: valueOrDefault<Color>(
-                                  FFAppState().AppBar == 'tutorial'
+                                  FFAppState().AppBar == 'compras'
                                       ? FlutterFlowTheme.of(context).primary
                                       : FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -533,7 +533,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     .override(
                                       fontFamily: 'Rubik',
                                       color: valueOrDefault<Color>(
-                                        FFAppState().AppBar == 'tutorial'
+                                        FFAppState().AppBar == 'compras'
                                             ? Colors.white
                                             : FlutterFlowTheme.of(context)
                                                 .primaryText,
