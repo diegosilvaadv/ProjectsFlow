@@ -3,16 +3,16 @@ import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/criarconta/criarconta_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
-import '/flutter_flow/flutter_flow_button_tabbar.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'detalhes_model.dart';
@@ -30,8 +30,7 @@ class DetalhesWidget extends StatefulWidget {
   _DetalhesWidgetState createState() => _DetalhesWidgetState();
 }
 
-class _DetalhesWidgetState extends State<DetalhesWidget>
-    with TickerProviderStateMixin {
+class _DetalhesWidgetState extends State<DetalhesWidget> {
   late DetalhesModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -42,11 +41,6 @@ class _DetalhesWidgetState extends State<DetalhesWidget>
     _model = createModel(context, () => DetalhesModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'detalhes'});
-    _model.tabBarController = TabController(
-      vsync: this,
-      length: 2,
-      initialIndex: 0,
-    )..addListener(() => setState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -273,22 +267,142 @@ class _DetalhesWidgetState extends State<DetalhesWidget>
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        widget.detalhesProjects
-                                                            ?.subtitulo,
-                                                        'Subtitulo',
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    elevation: 5.0,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Serif',
-                                                                fontSize: 20.0,
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    10.0,
+                                                                    10.0,
+                                                                    10.0),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            logFirebaseEvent(
+                                                                'DETALHES_PAGE_Image_tr2dizzj_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'Image_expand_image');
+                                                            await Navigator
+                                                                .push(
+                                                              context,
+                                                              PageTransition(
+                                                                type:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                child:
+                                                                    FlutterFlowExpandedImageView(
+                                                                  image: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      widget
+                                                                          .detalhesProjects
+                                                                          ?.iMGPrincipal,
+                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                                    ),
+                                                                    fit: BoxFit
+                                                                        .contain,
+                                                                  ),
+                                                                  allowRotation:
+                                                                      false,
+                                                                  tag: valueOrDefault<
+                                                                      String>(
+                                                                    widget
+                                                                        .detalhesProjects
+                                                                        ?.iMGPrincipal,
+                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                                  ),
+                                                                  useHeroAnimation:
+                                                                      true,
+                                                                ),
                                                               ),
+                                                            );
+                                                          },
+                                                          child: Hero(
+                                                            tag: valueOrDefault<
+                                                                String>(
+                                                              widget
+                                                                  .detalhesProjects
+                                                                  ?.iMGPrincipal,
+                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                            ),
+                                                            transitionOnUserGestures:
+                                                                true,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  widget
+                                                                      .detalhesProjects
+                                                                      ?.iMGPrincipal,
+                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                                ),
+                                                                width: 300.0,
+                                                                height: 200.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          widget
+                                                              .detalhesProjects
+                                                              ?.subtitulo,
+                                                          'Subtitulo',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Noto Serif',
+                                                              fontSize: 20.0,
+                                                            ),
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -712,308 +826,10 @@ class _DetalhesWidgetState extends State<DetalhesWidget>
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Material(
-                                            color: Colors.transparent,
-                                            elevation: 10.0,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                            ),
-                                            child: Container(
-                                              width: 982.0,
-                                              height: 564.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 10.0, 10.0, 10.0),
-                                                child: Column(
-                                                  children: [
-                                                    Align(
-                                                      alignment:
-                                                          Alignment(0.0, 0),
-                                                      child:
-                                                          FlutterFlowButtonTabBar(
-                                                        useToggleButtonStyle:
-                                                            false,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium,
-                                                        unselectedLabelStyle:
-                                                            TextStyle(),
-                                                        labelColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        unselectedLabelColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        backgroundColor:
-                                                            Color(0x5139D2C0),
-                                                        unselectedBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                        borderColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                        unselectedBorderColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                        borderWidth: 2.0,
-                                                        borderRadius: 8.0,
-                                                        elevation: 0.0,
-                                                        buttonMargin:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    4.0,
-                                                                    4.0,
-                                                                    4.0,
-                                                                    4.0),
-                                                        tabs: [
-                                                          Tab(
-                                                            text: 'Imagens',
-                                                          ),
-                                                          Tab(
-                                                            text: 'Requisitos',
-                                                          ),
-                                                        ],
-                                                        controller: _model
-                                                            .tabBarController,
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: TabBarView(
-                                                        controller: _model
-                                                            .tabBarController,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0),
-                                                            child: Container(
-                                                              width: double
-                                                                  .infinity,
-                                                              height: 180.0,
-                                                              child:
-                                                                  CarouselSlider(
-                                                                items: [
-                                                                  ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        widget
-                                                                            .detalhesProjects
-                                                                            ?.iMGPrincipal,
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                      ),
-                                                                      width:
-                                                                          300.0,
-                                                                      height:
-                                                                          200.0,
-                                                                      fit: BoxFit
-                                                                          .contain,
-                                                                    ),
-                                                                  ),
-                                                                  ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        widget
-                                                                            .detalhesProjects
-                                                                            ?.img1,
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                      ),
-                                                                      width:
-                                                                          300.0,
-                                                                      height:
-                                                                          200.0,
-                                                                      fit: BoxFit
-                                                                          .contain,
-                                                                    ),
-                                                                  ),
-                                                                  Stack(
-                                                                    children: [
-                                                                      if (widget
-                                                                              .detalhesProjects
-                                                                              ?.img2 !=
-                                                                          '')
-                                                                        ClipRRect(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                          child:
-                                                                              Image.network(
-                                                                            valueOrDefault<String>(
-                                                                              widget.detalhesProjects?.img2,
-                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                            ),
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                          ),
-                                                                        ),
-                                                                      if (widget
-                                                                              .detalhesProjects
-                                                                              ?.img2 ==
-                                                                          '')
-                                                                        ClipRRect(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                          child:
-                                                                              Image.network(
-                                                                            valueOrDefault<String>(
-                                                                              widget.detalhesProjects?.iMGPrincipal,
-                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                            ),
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                          ),
-                                                                        ),
-                                                                    ],
-                                                                  ),
-                                                                  Stack(
-                                                                    children: [
-                                                                      if (widget
-                                                                              .detalhesProjects
-                                                                              ?.img3 !=
-                                                                          '')
-                                                                        ClipRRect(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                          child:
-                                                                              Image.network(
-                                                                            valueOrDefault<String>(
-                                                                              widget.detalhesProjects?.img3,
-                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                            ),
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                          ),
-                                                                        ),
-                                                                      if (widget
-                                                                              .detalhesProjects
-                                                                              ?.img3 ==
-                                                                          '')
-                                                                        ClipRRect(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                          child:
-                                                                              Image.network(
-                                                                            valueOrDefault<String>(
-                                                                              widget.detalhesProjects?.img1,
-                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                            ),
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                          ),
-                                                                        ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                                carouselController:
-                                                                    _model.carouselController ??=
-                                                                        CarouselController(),
-                                                                options:
-                                                                    CarouselOptions(
-                                                                  initialPage:
-                                                                      1,
-                                                                  viewportFraction:
-                                                                      0.5,
-                                                                  disableCenter:
-                                                                      true,
-                                                                  enlargeCenterPage:
-                                                                      true,
-                                                                  enlargeFactor:
-                                                                      0.25,
-                                                                  enableInfiniteScroll:
-                                                                      true,
-                                                                  scrollDirection:
-                                                                      Axis.horizontal,
-                                                                  autoPlay:
-                                                                      true,
-                                                                  autoPlayAnimationDuration:
-                                                                      Duration(
-                                                                          milliseconds:
-                                                                              800),
-                                                                  autoPlayInterval: Duration(
-                                                                      milliseconds:
-                                                                          (800 +
-                                                                              4000)),
-                                                                  autoPlayCurve:
-                                                                      Curves
-                                                                          .linear,
-                                                                  pauseAutoPlayInFiniteScroll:
-                                                                      true,
-                                                                  onPageChanged: (index,
-                                                                          _) =>
-                                                                      _model.carouselCurrentIndex =
-                                                                          index,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0),
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                widget
-                                                                    .detalhesProjects
-                                                                    ?.requisitos,
-                                                                'requisitos',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    fontSize:
-                                                                        25.0,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
+                                          Text(
+                                            'Descrição',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
                                           ),
                                         ],
                                       ),
