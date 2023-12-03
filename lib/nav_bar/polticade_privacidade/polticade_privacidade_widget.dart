@@ -1,4 +1,5 @@
 import '/componts/app_bar/app_bar_widget.dart';
+import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -191,27 +192,38 @@ class _PolticadePrivacidadeWidgetState
                     ],
                   ),
                   Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                200.0, 10.0, 200.0, 50.0),
-                            child: Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              elevation: 4.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    50.0, 20.0, 50.0, 20.0),
-                                child: MarkdownBody(
-                                  data:
-                                      '''# **Política de Privacidade do Projects Flow**
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 4.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 20.0, 20.0, 20.0),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            50.0, 20.0, 50.0, 20.0),
+                                        child: MarkdownBody(
+                                          data:
+                                              '''# **Política de Privacidade do Projects Flow**
 ---
 ###
 ## **1. Coleta de Informações:**
@@ -248,12 +260,29 @@ class _PolticadePrivacidadeWidgetState
 ### **Para esclarecimentos adicionais sobre nossa Política de Privacidade,** 
 ### **entre em contato conosco pelos canais de suporte disponíveis no site.**
 ''',
-                                  selectable: false,
+                                          selectable: false,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            Divider(
+                              thickness: 2.0,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 20.0),
+                              child: wrapWithModel(
+                                model: _model.navBarModel,
+                                updateCallback: () => setState(() {}),
+                                child: NavBarWidget(),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

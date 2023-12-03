@@ -29,6 +29,10 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   late AppBarModel appBarModel;
   // Model for AppBarCell component.
   late AppBarCellModel appBarCellModel;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
   // Model for NavBar component.
   late NavBarModel navBarModel;
 
@@ -44,6 +48,9 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
     unfocusNode.dispose();
     appBarModel.dispose();
     appBarCellModel.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
+
     navBarModel.dispose();
   }
 

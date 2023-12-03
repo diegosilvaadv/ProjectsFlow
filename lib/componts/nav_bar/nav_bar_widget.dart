@@ -496,7 +496,15 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                   'NAV_BAR_COMP_Text_zac5o3ba_ON_TAP');
                               logFirebaseEvent('Text_navigate_to');
 
-                              context.pushNamed('Suporte');
+                              context.pushNamed(
+                                'Suporte',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                  ),
+                                },
+                              );
                             },
                             child: Text(
                               'Suporte',
@@ -679,7 +687,15 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                   'NAV_BAR_COMP_Text_xb99oxc0_ON_TAP');
                               logFirebaseEvent('Text_navigate_to');
 
-                              context.pushNamed('Chat');
+                              context.pushNamed(
+                                'Chat',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                  ),
+                                },
+                              );
                             },
                             child: Text(
                               'Chat',
@@ -724,7 +740,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               );
                             },
                             child: Text(
-                              'Perguntas',
+                              'Perguntas - FAQ',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

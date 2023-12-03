@@ -334,6 +334,8 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                   10.0, 20.0, 10.0, 20.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,

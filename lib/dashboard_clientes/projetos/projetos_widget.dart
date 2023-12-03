@@ -9,7 +9,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -749,23 +748,26 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                             );
                                           }
                                           List<ProjetosRecord>
-                                              staggeredViewProjetosRecordList =
+                                              gridViewProjetosRecordList =
                                               snapshot.data!;
-                                          return MasonryGridView.builder(
+                                          return GridView.builder(
+                                            padding: EdgeInsets.zero,
                                             gridDelegate:
-                                                SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                                SliverGridDelegateWithFixedCrossAxisCount(
                                               crossAxisCount: 4,
+                                              crossAxisSpacing: 10.0,
+                                              mainAxisSpacing: 10.0,
+                                              childAspectRatio: 1.0,
                                             ),
-                                            crossAxisSpacing: 10.0,
-                                            mainAxisSpacing: 10.0,
+                                            scrollDirection: Axis.vertical,
                                             itemCount:
-                                                staggeredViewProjetosRecordList
+                                                gridViewProjetosRecordList
                                                     .length,
                                             itemBuilder:
-                                                (context, staggeredViewIndex) {
-                                              final staggeredViewProjetosRecord =
-                                                  staggeredViewProjetosRecordList[
-                                                      staggeredViewIndex];
+                                                (context, gridViewIndex) {
+                                              final gridViewProjetosRecord =
+                                                  gridViewProjetosRecordList[
+                                                      gridViewIndex];
                                               return Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -779,7 +781,7 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                             8.0),
                                                   ),
                                                   child: Container(
-                                                    width: 270.0,
+                                                    width: 253.0,
                                                     height: 289.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
@@ -816,8 +818,6 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                                 Stack(
                                                                   children: [
                                                                     Container(
-                                                                      width:
-                                                                          240.0,
                                                                       height:
                                                                           220.0,
                                                                       decoration:
@@ -839,7 +839,7 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                                               Duration(milliseconds: 500),
                                                                           imageUrl:
                                                                               valueOrDefault<String>(
-                                                                            staggeredViewProjetosRecord.iMGPrincipal,
+                                                                            gridViewProjetosRecord.iMGPrincipal,
                                                                             'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                           ),
                                                                           width:
@@ -847,7 +847,7 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                                           height:
                                                                               200.0,
                                                                           fit: BoxFit
-                                                                              .contain,
+                                                                              .cover,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -873,7 +873,7 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            staggeredViewProjetosRecord.valor,
+                                                                            gridViewProjetosRecord.valor,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:
@@ -918,7 +918,7 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                                 children: [
                                                                   Expanded(
                                                                     child: Text(
-                                                                      staggeredViewProjetosRecord
+                                                                      gridViewProjetosRecord
                                                                           .titulo,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -965,7 +965,7 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      staggeredViewProjetosRecord
+                                                                      gridViewProjetosRecord
                                                                           .categoria,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)

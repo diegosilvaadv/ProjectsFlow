@@ -9,7 +9,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -719,6 +718,18 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                               decoration: BoxDecoration(),
                               child: Stack(
                                 children: [
+                                  if (containerPaginasRecordList.length == 0)
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
+                                      child: Lottie.asset(
+                                        'assets/lottie_animations/Animation_-_1701456378255.json',
+                                        width: 500.0,
+                                        height: 500.0,
+                                        fit: BoxFit.cover,
+                                        animate: true,
+                                      ),
+                                    ),
                                   if (containerPaginasRecordList.length >= 1)
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -748,23 +759,25 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                             );
                                           }
                                           List<PaginasRecord>
-                                              staggeredViewPaginasRecordList =
+                                              gridViewPaginasRecordList =
                                               snapshot.data!;
-                                          return MasonryGridView.builder(
+                                          return GridView.builder(
+                                            padding: EdgeInsets.zero,
                                             gridDelegate:
-                                                SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                                SliverGridDelegateWithFixedCrossAxisCount(
                                               crossAxisCount: 4,
+                                              crossAxisSpacing: 10.0,
+                                              mainAxisSpacing: 10.0,
+                                              childAspectRatio: 1.0,
                                             ),
-                                            crossAxisSpacing: 10.0,
-                                            mainAxisSpacing: 10.0,
-                                            itemCount:
-                                                staggeredViewPaginasRecordList
-                                                    .length,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: gridViewPaginasRecordList
+                                                .length,
                                             itemBuilder:
-                                                (context, staggeredViewIndex) {
-                                              final staggeredViewPaginasRecord =
-                                                  staggeredViewPaginasRecordList[
-                                                      staggeredViewIndex];
+                                                (context, gridViewIndex) {
+                                              final gridViewPaginasRecord =
+                                                  gridViewPaginasRecordList[
+                                                      gridViewIndex];
                                               return Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -778,7 +791,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                             8.0),
                                                   ),
                                                   child: Container(
-                                                    width: 270.0,
+                                                    width: 253.0,
                                                     height: 289.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
@@ -815,8 +828,6 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                 Stack(
                                                                   children: [
                                                                     Container(
-                                                                      width:
-                                                                          240.0,
                                                                       height:
                                                                           220.0,
                                                                       decoration:
@@ -838,7 +849,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                               Duration(milliseconds: 500),
                                                                           imageUrl:
                                                                               valueOrDefault<String>(
-                                                                            staggeredViewPaginasRecord.iMGPrincipal,
+                                                                            gridViewPaginasRecord.iMGPrincipal,
                                                                             'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                           ),
                                                                           width:
@@ -850,47 +861,76 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    Card(
-                                                                      clipBehavior:
-                                                                          Clip.antiAliasWithSaveLayer,
-                                                                      color: Color(
-                                                                          0xC50BC70A),
-                                                                      elevation:
-                                                                          4.0,
-                                                                      shape:
-                                                                          RoundedRectangleBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(6.0),
-                                                                      ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            6.0,
-                                                                            6.0,
-                                                                            6.0,
-                                                                            6.0),
+                                                                    if (gridViewPaginasRecord
+                                                                            .valor !=
+                                                                        0.0)
+                                                                      Card(
+                                                                        clipBehavior:
+                                                                            Clip.antiAliasWithSaveLayer,
+                                                                        color: Color(
+                                                                            0xC50BC70A),
+                                                                        elevation:
+                                                                            4.0,
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(6.0),
+                                                                        ),
                                                                         child:
-                                                                            Text(
-                                                                          formatNumber(
-                                                                            staggeredViewPaginasRecord.valor,
-                                                                            formatType:
-                                                                                FormatType.custom,
-                                                                            currency:
-                                                                                'R\$ ',
-                                                                            format:
-                                                                                '0.00',
-                                                                            locale:
-                                                                                'pt_BR',
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              6.0,
+                                                                              6.0,
+                                                                              6.0,
+                                                                              6.0),
+                                                                          child:
+                                                                              Text(
+                                                                            formatNumber(
+                                                                              gridViewPaginasRecord.valor,
+                                                                              formatType: FormatType.custom,
+                                                                              currency: 'R\$ ',
+                                                                              format: '0.00',
+                                                                              locale: 'pt_BR',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 16.0,
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Readex Pro',
-                                                                                fontSize: 16.0,
-                                                                              ),
                                                                         ),
                                                                       ),
-                                                                    ),
+                                                                    if (gridViewPaginasRecord
+                                                                            .valor ==
+                                                                        0.0)
+                                                                      Card(
+                                                                        clipBehavior:
+                                                                            Clip.antiAliasWithSaveLayer,
+                                                                        color: Color(
+                                                                            0xC50BC70A),
+                                                                        elevation:
+                                                                            4.0,
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(6.0),
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              6.0,
+                                                                              6.0,
+                                                                              6.0,
+                                                                              6.0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Grátis',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 16.0,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
                                                                   ],
                                                                 ),
                                                               ],
@@ -917,7 +957,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                 children: [
                                                                   Expanded(
                                                                     child: Text(
-                                                                      staggeredViewPaginasRecord
+                                                                      gridViewPaginasRecord
                                                                           .titulo,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -964,7 +1004,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      staggeredViewPaginasRecord
+                                                                      gridViewPaginasRecord
                                                                           .categoria,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -984,18 +1024,6 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                             },
                                           );
                                         },
-                                      ),
-                                    ),
-                                  if (containerPaginasRecordList.length == 0)
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
-                                      child: Lottie.asset(
-                                        'assets/lottie_animations/Animation_-_1701456378255.json',
-                                        width: 500.0,
-                                        height: 500.0,
-                                        fit: BoxFit.cover,
-                                        animate: true,
                                       ),
                                     ),
                                 ],

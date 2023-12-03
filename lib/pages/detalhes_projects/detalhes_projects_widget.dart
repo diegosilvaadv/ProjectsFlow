@@ -388,6 +388,14 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
                                                                     'detalhesProjects':
                                                                         widget
                                                                             .detalhesProjects,
+                                                                    kTransitionInfoKey:
+                                                                        TransitionInfo(
+                                                                      hasTransition:
+                                                                          true,
+                                                                      transitionType:
+                                                                          PageTransitionType
+                                                                              .fade,
+                                                                    ),
                                                                   },
                                                                 );
                                                               } else {
