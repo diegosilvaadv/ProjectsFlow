@@ -233,6 +233,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'addProjetos',
           path: '/addProjetos',
           builder: (context, params) => AddProjetosWidget(),
+        ),
+        FFRoute(
+          name: 'compras',
+          path: '/compras',
+          requireAuth: true,
+          builder: (context, params) => ComprasWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

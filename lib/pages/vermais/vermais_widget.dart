@@ -185,7 +185,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                               .secondaryText,
                                                       fontSize: 20.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                     ),
                                               ),
                                             ),
@@ -207,7 +207,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                               .secondaryText,
                                                       fontSize: 20.0,
                                                       fontWeight:
-                                                          FontWeight.normal,
+                                                          FontWeight.w600,
                                                     ),
                                               ),
                                             ),
