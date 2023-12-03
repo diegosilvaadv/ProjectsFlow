@@ -277,8 +277,8 @@ class _DetalhesWidgetState extends State<DetalhesWidget>
                                                     child: Text(
                                                       valueOrDefault<String>(
                                                         widget.detalhesProjects
-                                                            ?.descricao,
-                                                        'descricao',
+                                                            ?.subtitulo,
+                                                        'Subtitulo',
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(

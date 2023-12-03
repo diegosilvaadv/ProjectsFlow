@@ -256,9 +256,8 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                   stream: queryProjetosRecord(
                                     queryBuilder: (projetosRecord) =>
                                         projetosRecord.where(
-                                      'Eprojeto',
-                                      isEqualTo: widget.eProjeto,
-                                      isNull: (widget.eProjeto) == null,
+                                      'Valor',
+                                      isGreaterThan: widget.pagos,
                                     ),
                                   ),
                                   builder: (context, snapshot) {
