@@ -554,7 +554,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 children: [
                                                   SelectionArea(
                                                       child: Text(
-                                                    'Projetos Completo',
+                                                    'Projetos Completos',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -715,8 +715,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               (projetosRecord) =>
                                                                   projetosRecord
                                                                       .where(
-                                                            'Valor',
-                                                            isGreaterThan: 1.0,
+                                                            'Eprojeto',
+                                                            isEqualTo: true,
                                                           ),
                                                           limit: 10,
                                                         ),
@@ -1047,7 +1047,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 children: [
                                                   SelectionArea(
                                                       child: Text(
-                                                    'Projetos Pago',
+                                                    'Projetos Pagos',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -1201,7 +1201,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       child: StreamBuilder<
                                                           List<ProjetosRecord>>(
                                                         stream:
-                                                            queryProjetosRecord(),
+                                                            queryProjetosRecord(
+                                                          queryBuilder:
+                                                              (projetosRecord) =>
+                                                                  projetosRecord
+                                                                      .where(
+                                                            'Valor',
+                                                            isGreaterThan: 1.0,
+                                                          ),
+                                                        ),
                                                         builder: (context,
                                                             snapshot) {
                                                           // Customize what your widget looks like when it's loading.
@@ -1656,9 +1664,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               (projetosRecord) =>
                                                                   projetosRecord
                                                                       .where(
-                                                            'Categoria',
-                                                            isEqualTo:
-                                                                'Authentication',
+                                                            'Valor',
+                                                            isEqualTo: 0.0,
                                                           ),
                                                         ),
                                                         builder: (context,
