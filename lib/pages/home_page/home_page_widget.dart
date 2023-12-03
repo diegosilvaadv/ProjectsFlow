@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -179,7 +180,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
               onWillPop: () async => false,
               child: Scaffold(
                 key: scaffoldKey,
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                backgroundColor:
+                    FlutterFlowTheme.of(context).secondaryBackground,
                 body: SafeArea(
                   top: true,
                   child: Column(
@@ -216,7 +218,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(0.0),
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -256,16 +258,28 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Text(
-                                                  'Trabalhar com FlutterFlow',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .displayMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: BackdropFilter(
+                                                    filter: ImageFilter.blur(
+                                                      sigmaX: 10.0,
+                                                      sigmaY: 10.0,
+                                                    ),
+                                                    child: Text(
+                                                      'Trabalhar com FlutterFlow',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .displayMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Outfit',
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -468,6 +482,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   BorderRadius
                                                                       .circular(
                                                                           8.0),
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                              hoverBorderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                width: 1.0,
+                                                              ),
+                                                              hoverTextColor:
+                                                                  Color(
+                                                                      0xFFE5E5E5),
                                                             ),
                                                           ),
                                                         ),
@@ -546,7 +574,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       0.0),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryBackground,
+                                                              .secondaryBackground,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -577,11 +605,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           hoverColor:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .primary,
+                                                                  .primaryBackground,
                                                           hoverTextColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .alternate,
+                                                              Color(0xFFF0F0F0),
                                                           hoverElevation: 5.0,
                                                         ),
                                                       ),
@@ -1011,7 +1037,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       0.0),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondary,
+                                                              .secondaryBackground,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1021,12 +1047,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         'Readex Pro',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryBackground,
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         18.0,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .bold,
+                                                                            .w500,
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
@@ -1039,6 +1065,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               BorderRadius
                                                                   .circular(
                                                                       8.0),
+                                                          hoverColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryBackground,
+                                                          hoverTextColor:
+                                                              Color(0xFFF0F0F0),
+                                                          hoverElevation: 5.0,
                                                         ),
                                                       ),
                                                     ],
@@ -1390,7 +1423,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          100.0, 20.0, 100.0, 20.0),
+                                          150.0, 20.0, 150.0, 20.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -1478,7 +1511,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       0.0),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondary,
+                                                              .secondaryBackground,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1488,12 +1521,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         'Readex Pro',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryBackground,
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         18.0,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .bold,
+                                                                            .w500,
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
@@ -1506,6 +1539,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               BorderRadius
                                                                   .circular(
                                                                       8.0),
+                                                          hoverColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryBackground,
+                                                          hoverTextColor:
+                                                              Color(0xFFF0F0F0),
+                                                          hoverElevation: 5.0,
                                                         ),
                                                       ),
                                                     ],
