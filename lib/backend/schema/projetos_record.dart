@@ -66,11 +66,6 @@ class ProjetosRecord extends FirestoreRecord {
   String get img3 => _img3 ?? '';
   bool hasImg3() => _img3 != null;
 
-  // "Video" field.
-  String? _video;
-  String get video => _video ?? '';
-  bool hasVideo() => _video != null;
-
   // "creatData" field.
   DateTime? _creatData;
   DateTime? get creatData => _creatData;
@@ -117,7 +112,6 @@ class ProjetosRecord extends FirestoreRecord {
     _img1 = snapshotData['IMG1'] as String?;
     _img2 = snapshotData['IMG2'] as String?;
     _img3 = snapshotData['IMG3'] as String?;
-    _video = snapshotData['Video'] as String?;
     _creatData = snapshotData['creatData'] as DateTime?;
     _identificacao = snapshotData['identificacao'] as String?;
     _userIDVendedor = snapshotData['userIDVendedor'] as String?;
@@ -172,7 +166,6 @@ Map<String, dynamic> createProjetosRecordData({
   String? img1,
   String? img2,
   String? img3,
-  String? video,
   DateTime? creatData,
   String? identificacao,
   String? userIDVendedor,
@@ -193,7 +186,6 @@ Map<String, dynamic> createProjetosRecordData({
       'IMG1': img1,
       'IMG2': img2,
       'IMG3': img3,
-      'Video': video,
       'creatData': creatData,
       'identificacao': identificacao,
       'userIDVendedor': userIDVendedor,
@@ -222,7 +214,6 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e1?.img1 == e2?.img1 &&
         e1?.img2 == e2?.img2 &&
         e1?.img3 == e2?.img3 &&
-        e1?.video == e2?.video &&
         e1?.creatData == e2?.creatData &&
         e1?.identificacao == e2?.identificacao &&
         e1?.userIDVendedor == e2?.userIDVendedor &&
@@ -244,7 +235,6 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e?.img1,
         e?.img2,
         e?.img3,
-        e?.video,
         e?.creatData,
         e?.identificacao,
         e?.userIDVendedor,

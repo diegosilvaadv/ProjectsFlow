@@ -15,7 +15,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'pag_cartao_model.dart';
 export 'pag_cartao_model.dart';
 
@@ -2290,8 +2289,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                 enableDrag: false,
                                                 context: context,
                                                 builder: (context) {
-                                                  return WebViewAware(
-                                                      child: Padding(
+                                                  return Padding(
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
@@ -2313,7 +2311,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                             ''),
                                                       ).toString(),
                                                     ),
-                                                  ));
+                                                  );
                                                 },
                                               ).then((value) =>
                                                   safeSetState(() {}));
@@ -2327,8 +2325,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                               await showDialog(
                                                 context: context,
                                                 builder: (alertDialogContext) {
-                                                  return WebViewAware(
-                                                      child: AlertDialog(
+                                                  return AlertDialog(
                                                     title: Text(
                                                         'Cartão Recusado!'),
                                                     content: Text(
@@ -2346,7 +2343,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                         child: Text('Ok'),
                                                       ),
                                                     ],
-                                                  ));
+                                                  );
                                                 },
                                               );
                                               if (_shouldSetState)
@@ -2359,8 +2356,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                             await showDialog(
                                               context: context,
                                               builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                    child: AlertDialog(
+                                                return AlertDialog(
                                                   title:
                                                       Text('Cartão Recusado!'),
                                                   content: Text(StatusCartaoCall
@@ -2377,7 +2373,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                       child: Text('Ok'),
                                                     ),
                                                   ],
-                                                ));
+                                                );
                                               },
                                             );
                                             if (_shouldSetState)
@@ -2390,8 +2386,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
-                                              return WebViewAware(
-                                                  child: AlertDialog(
+                                              return AlertDialog(
                                                 title: Text(
                                                     'Erro ao processar pagamento!'),
                                                 content: Text(
@@ -2409,7 +2404,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                     child: Text('Ok'),
                                                   ),
                                                 ],
-                                              ));
+                                              );
                                             },
                                           );
                                           if (_shouldSetState) setState(() {});
@@ -2420,8 +2415,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                                child: AlertDialog(
+                                            return AlertDialog(
                                               title: Text(
                                                   'Erro ao validar cartão!'),
                                               content: Text(
@@ -2438,7 +2432,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                   child: Text('Ok'),
                                                 ),
                                               ],
-                                            ));
+                                            );
                                           },
                                         );
                                         if (_shouldSetState) setState(() {});
@@ -2449,8 +2443,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
-                                          return WebViewAware(
-                                              child: AlertDialog(
+                                          return AlertDialog(
                                             title: Text('Cep Inválido!'),
                                             content:
                                                 Text('Preencha um cep Válido!'),
@@ -2461,7 +2454,7 @@ class _PagCartaoWidgetState extends State<PagCartaoWidget> {
                                                 child: Text('Ok'),
                                               ),
                                             ],
-                                          ));
+                                          );
                                         },
                                       );
                                       if (_shouldSetState) setState(() {});

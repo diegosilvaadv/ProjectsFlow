@@ -1,4 +1,3 @@
-import '/componts/adicionar_projeto/adicionar_projeto_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'side_nav_model.dart';
 export 'side_nav_model.dart';
 
@@ -497,77 +495,19 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SIDE_NAV_ADICIONAR_PROJETO_BTN_ON_TAP');
-                              logFirebaseEvent('Button_bottom_sheet');
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Color(0x9F000000),
-                                enableDrag: false,
-                                context: context,
-                                builder: (context) {
-                                  return WebViewAware(
-                                      child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: AdicionarProjetoWidget(),
-                                  ));
+                              logFirebaseEvent('Button_navigate_to');
+
+                              context.pushNamed(
+                                'addProjetos',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                  ),
                                 },
-                              ).then((value) => safeSetState(() {}));
+                              );
                             },
                             text: 'Adicionar Projeto',
-                            icon: Icon(
-                              Icons.add,
-                              size: 15.0,
-                            ),
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'SIDE_NAV_ADICIONAR_PÁGINA_BTN_ON_TAP');
-                              logFirebaseEvent('Button_bottom_sheet');
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Color(0x9F000000),
-                                enableDrag: false,
-                                context: context,
-                                builder: (context) {
-                                  return WebViewAware(
-                                      child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: AdicionarProjetoWidget(),
-                                  ));
-                                },
-                              ).then((value) => safeSetState(() {}));
-                            },
-                            text: 'Adicionar Página',
                             icon: Icon(
                               Icons.add,
                               size: 15.0,

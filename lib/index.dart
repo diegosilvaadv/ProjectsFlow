@@ -28,3 +28,5 @@ export '/nav_bar/suporte/suporte_widget.dart' show SuporteWidget;
 export '/nav_bar/reclamacoes/reclamacoes_widget.dart' show ReclamacoesWidget;
 export '/nav_bar/chat/chat_widget.dart' show ChatWidget;
 export '/nav_bar/perguntas/perguntas_widget.dart' show PerguntasWidget;
+export '/dashboard_clientes/add_projetos/add_projetos_widget.dart'
+    show AddProjetosWidget;

@@ -227,9 +227,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Perguntas',
           path: '/perguntas',
           builder: (context, params) => PerguntasWidget(),
+        ),
+        FFRoute(
+          name: 'addProjetos',
+          path: '/addProjetos',
+          builder: (context, params) => AddProjetosWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
-      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {

@@ -12,7 +12,6 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'aceitar_termos_model.dart';
 export 'aceitar_termos_model.dart';
 
@@ -407,8 +406,7 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                               await showDialog(
                                 context: context,
                                 builder: (alertDialogContext) {
-                                  return WebViewAware(
-                                      child: AlertDialog(
+                                  return AlertDialog(
                                     title:
                                         Text('Confirme os Termos e Política'),
                                     content: Text(
@@ -420,7 +418,7 @@ Os usuários são livres para publicar conteúdo sem restrições de idade.
                                         child: Text('Ok'),
                                       ),
                                     ],
-                                  ));
+                                  );
                                 },
                               );
                               return;

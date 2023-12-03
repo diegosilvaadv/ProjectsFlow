@@ -9,29 +9,27 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import 'adicionar_projeto_widget.dart' show AdicionarProjetoWidget;
+import 'add_projetos_widget.dart' show AddProjetosWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
-class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
-  ///  State fields for stateful widgets in this component.
+class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
+  ///  State fields for stateful widgets in this page.
 
-  final formKey8 = GlobalKey<FormState>();
+  final unfocusNode = FocusNode();
+  final formKey6 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
   final formKey7 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
-  final formKey4 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
-  final formKey6 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
-  final formKey5 = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -68,11 +66,11 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
     return null;
   }
 
-  // State field(s) for descricao widget.
-  FocusNode? descricaoFocusNode;
-  TextEditingController? descricaoController;
-  String? Function(BuildContext, String?)? descricaoControllerValidator;
-  String? _descricaoControllerValidator(BuildContext context, String? val) {
+  // State field(s) for subtitulo widget.
+  FocusNode? subtituloFocusNode;
+  TextEditingController? subtituloController;
+  String? Function(BuildContext, String?)? subtituloControllerValidator;
+  String? _subtituloControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Obrigatório';
     }
@@ -100,26 +98,11 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
     return null;
   }
 
-  // State field(s) for linkprojeto widget.
-  FocusNode? linkprojetoFocusNode;
-  TextEditingController? linkprojetoController;
-  String? Function(BuildContext, String?)? linkprojetoControllerValidator;
-  String? _linkprojetoControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Obrigatório';
-    }
-
-    if (!RegExp(kTextValidatorWebsiteRegex).hasMatch(val)) {
-      return 'Link Inválido';
-    }
-    return null;
-  }
-
-  // State field(s) for linkVideo widget.
-  FocusNode? linkVideoFocusNode;
-  TextEditingController? linkVideoController;
-  String? Function(BuildContext, String?)? linkVideoControllerValidator;
-  String? _linkVideoControllerValidator(BuildContext context, String? val) {
+  // State field(s) for linkProjeto widget.
+  FocusNode? linkProjetoFocusNode;
+  TextEditingController? linkProjetoController;
+  String? Function(BuildContext, String?)? linkProjetoControllerValidator;
+  String? _linkProjetoControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Obrigatório';
     }
@@ -151,28 +134,25 @@ class AdicionarProjetoModel extends FlutterFlowModel<AdicionarProjetoWidget> {
 
   void initState(BuildContext context) {
     tituloControllerValidator = _tituloControllerValidator;
-    descricaoControllerValidator = _descricaoControllerValidator;
+    subtituloControllerValidator = _subtituloControllerValidator;
     requisitosControllerValidator = _requisitosControllerValidator;
-    linkprojetoControllerValidator = _linkprojetoControllerValidator;
-    linkVideoControllerValidator = _linkVideoControllerValidator;
+    linkProjetoControllerValidator = _linkProjetoControllerValidator;
     precoprojetoControllerValidator = _precoprojetoControllerValidator;
   }
 
   void dispose() {
+    unfocusNode.dispose();
     tituloFocusNode?.dispose();
     tituloController?.dispose();
 
-    descricaoFocusNode?.dispose();
-    descricaoController?.dispose();
+    subtituloFocusNode?.dispose();
+    subtituloController?.dispose();
 
     requisitosFocusNode?.dispose();
     requisitosController?.dispose();
 
-    linkprojetoFocusNode?.dispose();
-    linkprojetoController?.dispose();
-
-    linkVideoFocusNode?.dispose();
-    linkVideoController?.dispose();
+    linkProjetoFocusNode?.dispose();
+    linkProjetoController?.dispose();
 
     precoprojetoFocusNode?.dispose();
     precoprojetoController?.dispose();
