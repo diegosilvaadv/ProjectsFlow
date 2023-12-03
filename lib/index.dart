@@ -1,6 +1,5 @@
 // Export pages
 export '/pages/home_page/home_page_widget.dart' show HomePageWidget;
-export '/pages/detalhe_page/detalhe_page_widget.dart' show DetalhePageWidget;
 export '/nav_bar/tutorial/tutorial_widget.dart' show TutorialWidget;
 export '/nav_bar/contato/contato_widget.dart' show ContatoWidget;
 export '/dash_board/dash_board/dash_board_widget.dart' show DashBoardWidget;
@@ -20,8 +19,7 @@ export '/dashboard_clientes/estatsticas/estatsticas_widget.dart'
     show EstatsticasWidget;
 export '/dashboard_clientes/projetos/projetos_widget.dart' show ProjetosWidget;
 export '/dashboard_clientes/paginas/paginas_widget.dart' show PaginasWidget;
-export '/pages/pagamento_projeto/pagamento_projeto_widget.dart'
-    show PagamentoProjetoWidget;
+export '/pages/pagamentos/pagamentos_widget.dart' show PagamentosWidget;
 export '/nav_bar/termos_de_servicos/termos_de_servicos_widget.dart'
     show TermosDeServicosWidget;
 export '/nav_bar/polticade_privacidade/polticade_privacidade_widget.dart'
@@ -31,5 +29,3 @@ export '/nav_bar/suporte/suporte_widget.dart' show SuporteWidget;
 export '/nav_bar/reclamacoes/reclamacoes_widget.dart' show ReclamacoesWidget;
 export '/nav_bar/chat/chat_widget.dart' show ChatWidget;
 export '/nav_bar/perguntas/perguntas_widget.dart' show PerguntasWidget;
-export '/pages/pagamento_paginas/pagamento_paginas_widget.dart'
-    show PagamentoPaginasWidget;

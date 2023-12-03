@@ -22,7 +22,8 @@ class VermaisModel extends FlutterFlowModel<VermaisWidget> {
   late AppBarModel appBarModel;
   // State field(s) for ListView widget.
 
-  PagingController<DocumentSnapshot?, PaginasRecord>? listViewPagingController2;
+  PagingController<DocumentSnapshot?, ProjetosRecord>?
+      listViewPagingController2;
   Query? listViewPagingQuery2;
   List<StreamSubscription?> listViewStreamSubscriptions2 = [];
 
@@ -49,7 +50,7 @@ class VermaisModel extends FlutterFlowModel<VermaisWidget> {
 
   /// Additional helper methods are added here.
 
-  PagingController<DocumentSnapshot?, PaginasRecord> setListViewController2(
+  PagingController<DocumentSnapshot?, ProjetosRecord> setListViewController2(
     Query query, {
     DocumentReference<Object?>? parent,
   }) {
@@ -61,15 +62,16 @@ class VermaisModel extends FlutterFlowModel<VermaisWidget> {
     return listViewPagingController2!;
   }
 
-  PagingController<DocumentSnapshot?, PaginasRecord> _createListViewController2(
+  PagingController<DocumentSnapshot?, ProjetosRecord>
+      _createListViewController2(
     Query query,
     DocumentReference<Object?>? parent,
   ) {
     final controller =
-        PagingController<DocumentSnapshot?, PaginasRecord>(firstPageKey: null);
+        PagingController<DocumentSnapshot?, ProjetosRecord>(firstPageKey: null);
     return controller
       ..addPageRequestListener(
-        (nextPageMarker) => queryPaginasRecordPage(
+        (nextPageMarker) => queryProjetosRecordPage(
           queryBuilder: (_) => listViewPagingQuery2 ??= query,
           nextPageMarker: nextPageMarker,
           streamSubscriptions: listViewStreamSubscriptions2,

@@ -2,9 +2,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/comp_pagamentos/pag_cartao_projeto/pag_cartao_projeto_widget.dart';
-import '/comp_pagamentos/pag_com_sucess_projetos/pag_com_sucess_projetos_widget.dart';
-import '/comp_pagamentos/pag_pix_projetos/pag_pix_projetos_widget.dart';
+import '/comp_pagamentos/pag_cartao/pag_cartao_widget.dart';
+import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
+import '/comp_pagamentos/pag_pix/pag_pix_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -19,11 +19,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'pagamento_projeto_model.dart';
-export 'pagamento_projeto_model.dart';
+import 'pagamentos_model.dart';
+export 'pagamentos_model.dart';
 
-class PagamentoProjetoWidget extends StatefulWidget {
-  const PagamentoProjetoWidget({
+class PagamentosWidget extends StatefulWidget {
+  const PagamentosWidget({
     Key? key,
     required this.detalhesProjects,
   }) : super(key: key);
@@ -31,21 +31,20 @@ class PagamentoProjetoWidget extends StatefulWidget {
   final ProjetosRecord? detalhesProjects;
 
   @override
-  _PagamentoProjetoWidgetState createState() => _PagamentoProjetoWidgetState();
+  _PagamentosWidgetState createState() => _PagamentosWidgetState();
 }
 
-class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
-  late PagamentoProjetoModel _model;
+class _PagamentosWidgetState extends State<PagamentosWidget> {
+  late PagamentosModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PagamentoProjetoModel());
+    _model = createModel(context, () => PagamentosModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'Pagamento_projeto'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Pagamentos'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -70,7 +69,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'Pagamento_projeto',
+        title: 'Pagamento',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -131,7 +130,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                         ),
                                         onPressed: () async {
                                           logFirebaseEvent(
-                                              'PAGAMENTO_PROJETO_home_rounded_ICN_ON_TA');
+                                              'PAGAMENTOS_PAGE_home_rounded_ICN_ON_TAP');
                                           logFirebaseEvent(
                                               'IconButton_navigate_to');
 
@@ -205,7 +204,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           logFirebaseEvent(
-                                              'PAGAMENTO_PROJETO_Container_lfh45l7z_ON_');
+                                              'PAGAMENTOS_Container_lfh45l7z_ON_TAP');
                                           logFirebaseEvent(
                                               'Container_navigate_back');
                                           context.safePop();
@@ -447,7 +446,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                               .transparent,
                                                           onTap: () async {
                                                             logFirebaseEvent(
-                                                                'PAGAMENTO_PROJETO_Row_jtzeof0q_ON_TAP');
+                                                                'PAGAMENTOS_PAGE_Row_jtzeof0q_ON_TAP');
                                                             logFirebaseEvent(
                                                                 'Row_update_app_state');
                                                             setState(() {
@@ -608,7 +607,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                               .transparent,
                                                           onTap: () async {
                                                             logFirebaseEvent(
-                                                                'PAGAMENTO_PROJETO_Row_dwovlq4u_ON_TAP');
+                                                                'PAGAMENTOS_PAGE_Row_dwovlq4u_ON_TAP');
                                                             logFirebaseEvent(
                                                                 'Row_update_app_state');
                                                             setState(() {
@@ -783,7 +782,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                                       .transparent,
                                                               onTap: () async {
                                                                 logFirebaseEvent(
-                                                                    'PAGAMENTO_PROJETO_Row_9j8a01r6_ON_TAP');
+                                                                    'PAGAMENTOS_PAGE_Row_9j8a01r6_ON_TAP');
                                                                 logFirebaseEvent(
                                                                     'Row_bottom_sheet');
                                                                 await showModalBottomSheet(
@@ -813,7 +812,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                                         padding:
                                                                             MediaQuery.viewInsetsOf(context),
                                                                         child:
-                                                                            PagComSucessProjetosWidget(
+                                                                            PagComSucessWidget(
                                                                           detalhesProdutos:
                                                                               widget.detalhesProjects,
                                                                           cartaoFinal:
@@ -929,7 +928,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         logFirebaseEvent(
-                                                            'PAGAMENTO_PROJETO_IR_PARA_PAGAMENTO_BTN_');
+                                                            'PAGAMENTOS_IR_PARA_PAGAMENTO_BTN_ON_TAP');
                                                         if (FFAppState()
                                                                 .FormadePag ==
                                                             'pix') {
@@ -1028,7 +1027,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                                         .viewInsetsOf(
                                                                             context),
                                                                     child:
-                                                                        PagPixProjetosWidget(
+                                                                        PagPixWidget(
                                                                       detalhesProduto:
                                                                           widget
                                                                               .detalhesProjects!,
@@ -1102,7 +1101,7 @@ class _PagamentoProjetoWidgetState extends State<PagamentoProjetoWidget> {
                                                                       .viewInsetsOf(
                                                                           context),
                                                                   child:
-                                                                      PagCartaoProjetoWidget(
+                                                                      PagCartaoWidget(
                                                                     detalhesProdutos:
                                                                         widget
                                                                             .detalhesProjects!,

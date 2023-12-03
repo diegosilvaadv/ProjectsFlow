@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/comp_pagamentos/pag_com_sucess_projetos/pag_com_sucess_projetos_widget.dart';
+import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -16,11 +16,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'pag_cartao_projeto_model.dart';
-export 'pag_cartao_projeto_model.dart';
+import 'pag_cartao_model.dart';
+export 'pag_cartao_model.dart';
 
-class PagCartaoProjetoWidget extends StatefulWidget {
-  const PagCartaoProjetoWidget({
+class PagCartaoWidget extends StatefulWidget {
+  const PagCartaoWidget({
     Key? key,
     required this.detalhesProdutos,
   }) : super(key: key);
@@ -28,11 +28,11 @@ class PagCartaoProjetoWidget extends StatefulWidget {
   final ProjetosRecord? detalhesProdutos;
 
   @override
-  _PagCartaoProjetoWidgetState createState() => _PagCartaoProjetoWidgetState();
+  _PagCartaoWidgetState createState() => _PagCartaoWidgetState();
 }
 
-class _PagCartaoProjetoWidgetState extends State<PagCartaoProjetoWidget> {
-  late PagCartaoProjetoModel _model;
+class _PagCartaoWidgetState extends State<PagCartaoWidget> {
+  late PagCartaoModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -43,7 +43,7 @@ class _PagCartaoProjetoWidgetState extends State<PagCartaoProjetoWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PagCartaoProjetoModel());
+    _model = createModel(context, () => PagCartaoModel());
 
     _model.expandableController = ExpandableController(initialExpanded: false);
     _model.nomeController ??= TextEditingController();
@@ -167,7 +167,7 @@ class _PagCartaoProjetoWidgetState extends State<PagCartaoProjetoWidget> {
                                     showLoadingIndicator: true,
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'PAG_CARTAO_PROJETO_COMP_close_ICN_ON_TAP');
+                                          'PAG_CARTAO_COMP_close_ICN_ON_TAP');
                                       logFirebaseEvent(
                                           'IconButton_bottom_sheet');
                                       Navigator.pop(context);
@@ -442,7 +442,7 @@ class _PagCartaoProjetoWidgetState extends State<PagCartaoProjetoWidget> {
                                                                               FFButtonWidget(
                                                                             onPressed:
                                                                                 () async {
-                                                                              logFirebaseEvent('PAG_CARTAO_PROJETO_SELECIONAR_BTN_ON_TAP');
+                                                                              logFirebaseEvent('PAG_CARTAO_COMP_SELECIONAR_BTN_ON_TAP');
                                                                               logFirebaseEvent('Button_update_app_state');
                                                                               setState(() {
                                                                                 FFAppState().UsarCartaoSalvo = listViewUserPagRecord.idCartao;
@@ -554,7 +554,7 @@ class _PagCartaoProjetoWidgetState extends State<PagCartaoProjetoWidget> {
                                   FFButtonWidget(
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'PAG_CARTAO_PROJETO_ADICIONAR_NOVO_CARTÃO');
+                                          'PAG_CARTAO_ADICIONAR_NOVO_CARTÃO_DE_CRÉD');
                                       logFirebaseEvent(
                                           'Button_update_app_state');
                                       setState(() {
@@ -2156,7 +2156,7 @@ class _PagCartaoProjetoWidgetState extends State<PagCartaoProjetoWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     logFirebaseEvent(
-                                        'PAG_CARTAO_PROJETO_REALIZAR_PAGAMENTO_BT');
+                                        'PAG_CARTAO_REALIZAR_PAGAMENTO_BTN_ON_TAP');
                                     var _shouldSetState = false;
                                     logFirebaseEvent('Button_backend_call');
                                     _model.resultadoCEP =
@@ -2295,8 +2295,7 @@ class _PagCartaoProjetoWidgetState extends State<PagCartaoProjetoWidget> {
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child:
-                                                        PagComSucessProjetosWidget(
+                                                    child: PagComSucessWidget(
                                                       detalhesProdutos: widget
                                                           .detalhesProdutos,
                                                       cartaoFinal:

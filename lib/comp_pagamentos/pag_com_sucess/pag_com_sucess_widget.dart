@@ -10,11 +10,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'pag_com_sucess_projetos_model.dart';
-export 'pag_com_sucess_projetos_model.dart';
+import 'pag_com_sucess_model.dart';
+export 'pag_com_sucess_model.dart';
 
-class PagComSucessProjetosWidget extends StatefulWidget {
-  const PagComSucessProjetosWidget({
+class PagComSucessWidget extends StatefulWidget {
+  const PagComSucessWidget({
     Key? key,
     this.detalhesProdutos,
     required this.cartaoFinal,
@@ -26,13 +26,11 @@ class PagComSucessProjetosWidget extends StatefulWidget {
   final String? transacionID;
 
   @override
-  _PagComSucessProjetosWidgetState createState() =>
-      _PagComSucessProjetosWidgetState();
+  _PagComSucessWidgetState createState() => _PagComSucessWidgetState();
 }
 
-class _PagComSucessProjetosWidgetState
-    extends State<PagComSucessProjetosWidget> {
-  late PagComSucessProjetosModel _model;
+class _PagComSucessWidgetState extends State<PagComSucessWidget> {
+  late PagComSucessModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -43,14 +41,14 @@ class _PagComSucessProjetosWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PagComSucessProjetosModel());
+    _model = createModel(context, () => PagComSucessModel());
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('PAG_COM_SUCESS_PROJETOS_pagComSucess_pro');
-      logFirebaseEvent('pagComSucess_projetos_wait__delay');
+      logFirebaseEvent('PAG_COM_SUCESS_pagComSucess_ON_INIT_STAT');
+      logFirebaseEvent('pagComSucess_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));
-      logFirebaseEvent('pagComSucess_projetos_backend_call');
+      logFirebaseEvent('pagComSucess_backend_call');
 
       await PagamentosRecord.collection.doc().set(createPagamentosRecordData(
             produto: widget.detalhesProdutos?.titulo,
@@ -69,9 +67,9 @@ class _PagComSucessProjetosWidgetState
             userIDPagante: currentUserUid,
             identificacao: 'projeto',
           ));
-      logFirebaseEvent('pagComSucess_projetos_wait__delay');
+      logFirebaseEvent('pagComSucess_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
-      logFirebaseEvent('pagComSucess_projetos_navigate_to');
+      logFirebaseEvent('pagComSucess_navigate_to');
 
       context.goNamed(
         'detalhesProjects',

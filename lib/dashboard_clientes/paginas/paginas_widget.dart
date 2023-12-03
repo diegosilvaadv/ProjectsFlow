@@ -689,10 +689,10 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                         ),
                       ),
                       Expanded(
-                        child: StreamBuilder<List<PaginasRecord>>(
-                          stream: queryPaginasRecord(
-                            queryBuilder: (paginasRecord) =>
-                                paginasRecord.where(
+                        child: StreamBuilder<List<ProjetosRecord>>(
+                          stream: queryProjetosRecord(
+                            queryBuilder: (projetosRecord) =>
+                                projetosRecord.where(
                               'userIDVendedor',
                               isEqualTo: currentUserUid,
                             ),
@@ -712,13 +712,13 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                 ),
                               );
                             }
-                            List<PaginasRecord> containerPaginasRecordList =
+                            List<ProjetosRecord> containerProjetosRecordList =
                                 snapshot.data!;
                             return Container(
                               decoration: BoxDecoration(),
                               child: Stack(
                                 children: [
-                                  if (containerPaginasRecordList.length == 0)
+                                  if (containerProjetosRecordList.length == 0)
                                     Align(
                                       alignment:
                                           AlignmentDirectional(0.00, 0.00),
@@ -730,14 +730,15 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                         animate: true,
                                       ),
                                     ),
-                                  if (containerPaginasRecordList.length >= 1)
+                                  if (containerProjetosRecordList.length >= 1)
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 20.0, 20.0, 20.0),
-                                      child: StreamBuilder<List<PaginasRecord>>(
-                                        stream: queryPaginasRecord(
-                                          queryBuilder: (paginasRecord) =>
-                                              paginasRecord.where(
+                                      child:
+                                          StreamBuilder<List<ProjetosRecord>>(
+                                        stream: queryProjetosRecord(
+                                          queryBuilder: (projetosRecord) =>
+                                              projetosRecord.where(
                                             'userIDVendedor',
                                             isEqualTo: currentUserUid,
                                           ),
@@ -758,8 +759,8 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                               ),
                                             );
                                           }
-                                          List<PaginasRecord>
-                                              gridViewPaginasRecordList =
+                                          List<ProjetosRecord>
+                                              gridViewProjetosRecordList =
                                               snapshot.data!;
                                           return GridView.builder(
                                             padding: EdgeInsets.zero,
@@ -771,12 +772,13 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                               childAspectRatio: 1.0,
                                             ),
                                             scrollDirection: Axis.vertical,
-                                            itemCount: gridViewPaginasRecordList
-                                                .length,
+                                            itemCount:
+                                                gridViewProjetosRecordList
+                                                    .length,
                                             itemBuilder:
                                                 (context, gridViewIndex) {
-                                              final gridViewPaginasRecord =
-                                                  gridViewPaginasRecordList[
+                                              final gridViewProjetosRecord =
+                                                  gridViewProjetosRecordList[
                                                       gridViewIndex];
                                               return Padding(
                                                 padding: EdgeInsetsDirectional
@@ -849,7 +851,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                               Duration(milliseconds: 500),
                                                                           imageUrl:
                                                                               valueOrDefault<String>(
-                                                                            gridViewPaginasRecord.iMGPrincipal,
+                                                                            gridViewProjetosRecord.iMGPrincipal,
                                                                             'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                           ),
                                                                           width:
@@ -861,7 +863,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    if (gridViewPaginasRecord
+                                                                    if (gridViewProjetosRecord
                                                                             .valor !=
                                                                         0.0)
                                                                       Card(
@@ -886,7 +888,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                           child:
                                                                               Text(
                                                                             formatNumber(
-                                                                              gridViewPaginasRecord.valor,
+                                                                              gridViewProjetosRecord.valor,
                                                                               formatType: FormatType.custom,
                                                                               currency: 'R\$ ',
                                                                               format: '0.00',
@@ -899,7 +901,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    if (gridViewPaginasRecord
+                                                                    if (gridViewProjetosRecord
                                                                             .valor ==
                                                                         0.0)
                                                                       Card(
@@ -957,7 +959,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                 children: [
                                                                   Expanded(
                                                                     child: Text(
-                                                                      gridViewPaginasRecord
+                                                                      gridViewProjetosRecord
                                                                           .titulo,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1004,7 +1006,7 @@ class _PaginasWidgetState extends State<PaginasWidget> {
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      gridViewPaginasRecord
+                                                                      gridViewProjetosRecord
                                                                           .categoria,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)

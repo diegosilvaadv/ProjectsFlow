@@ -233,10 +233,10 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                     0.00, 0.00),
                                                 child: PagedListView<
                                                     DocumentSnapshot<Object?>?,
-                                                    PaginasRecord>(
+                                                    ProjetosRecord>(
                                                   pagingController: _model
                                                       .setListViewController2(
-                                                    PaginasRecord.collection
+                                                    ProjetosRecord.collection
                                                         .where(
                                                           'identificacao',
                                                           isEqualTo:
@@ -259,7 +259,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                       Axis.vertical,
                                                   builderDelegate:
                                                       PagedChildBuilderDelegate<
-                                                          PaginasRecord>(
+                                                          ProjetosRecord>(
                                                     // Customize what your widget looks like when it's loading the first page.
                                                     firstPageProgressIndicatorBuilder:
                                                         (_) => Center(
@@ -291,7 +291,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
 
                                                     itemBuilder: (context, _,
                                                         listViewIndex) {
-                                                      final listViewPaginasRecord =
+                                                      final listViewProjetosRecord =
                                                           _model.listViewPagingController2!
                                                                   .itemList![
                                                               listViewIndex];
@@ -319,19 +319,9 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                                 'Container_navigate_to');
 
                                                             context.pushNamed(
-                                                              'detalhePage',
-                                                              queryParameters: {
-                                                                'paginas':
-                                                                    serializeParam(
-                                                                  listViewPaginasRecord,
-                                                                  ParamType
-                                                                      .Document,
-                                                                ),
-                                                              }.withoutNulls,
+                                                              'Projetos',
                                                               extra: <String,
                                                                   dynamic>{
-                                                                'paginas':
-                                                                    listViewPaginasRecord,
                                                                 kTransitionInfoKey:
                                                                     TransitionInfo(
                                                                   hasTransition:
@@ -391,7 +381,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                                             .network(
                                                                           valueOrDefault<
                                                                               String>(
-                                                                            listViewPaginasRecord.iMGPrincipal,
+                                                                            listViewProjetosRecord.iMGPrincipal,
                                                                             'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/fotos/design%20templates%20copypages%20(4).png',
                                                                           ),
                                                                           width:
@@ -428,7 +418,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                                                     Expanded(
                                                                                       child: Text(
                                                                                         valueOrDefault<String>(
-                                                                                          listViewPaginasRecord.titulo,
+                                                                                          listViewProjetosRecord.titulo,
                                                                                           'Titulo',
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -448,7 +438,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                                                       Expanded(
                                                                                         child: Text(
                                                                                           valueOrDefault<String>(
-                                                                                            listViewPaginasRecord.descricao,
+                                                                                            listViewProjetosRecord.descricao,
                                                                                             'descricao',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -480,7 +470,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                               child: Text(
                                                                                                 valueOrDefault<String>(
-                                                                                                  listViewPaginasRecord.categoria,
+                                                                                                  listViewProjetosRecord.categoria,
                                                                                                   'tag',
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -512,7 +502,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           valueOrDefault<String>(
-                                                                                            listViewPaginasRecord.postadoPor,
+                                                                                            listViewProjetosRecord.postadoPor,
                                                                                             'criador',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).labelSmall.override(

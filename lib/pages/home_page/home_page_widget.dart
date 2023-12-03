@@ -231,20 +231,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       width: MediaQuery.sizeOf(context).width *
                                           1.0,
                                       decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            FlutterFlowTheme.of(context)
-                                                .alternate
-                                          ],
-                                          stops: [0.0, 1.0, 1.0],
-                                          begin:
-                                              AlignmentDirectional(0.07, -1.0),
-                                          end: AlignmentDirectional(-0.07, 1.0),
-                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                       ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -350,7 +338,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .alternate,
+                                                                    .secondary,
                                                                 width: 2.0,
                                                               ),
                                                               borderRadius:
@@ -505,6 +493,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 ),
                                               ],
                                             ),
+                                          ),
+                                          Divider(
+                                            thickness: 1.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
                                           ),
                                         ],
                                       ),
@@ -941,6 +934,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ).animateOnPageLoad(animationsMap[
                                           'containerOnPageLoadAnimation1']!),
                                     ),
+                                    Divider(
+                                      thickness: 1.0,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
+                                    ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           150.0, 25.0, 150.0, 0.0),
@@ -1123,9 +1121,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .circular(16.0),
                                                       ),
                                                       child: StreamBuilder<
-                                                          List<PaginasRecord>>(
+                                                          List<ProjetosRecord>>(
                                                         stream:
-                                                            queryPaginasRecord(),
+                                                            queryProjetosRecord(),
                                                         builder: (context,
                                                             snapshot) {
                                                           // Customize what your widget looks like when it's loading.
@@ -1145,8 +1143,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               ),
                                                             );
                                                           }
-                                                          List<PaginasRecord>
-                                                              listViewPaginasRecordList =
+                                                          List<ProjetosRecord>
+                                                              listViewProjetosRecordList =
                                                               snapshot.data!;
                                                           return ListView
                                                               .builder(
@@ -1156,12 +1154,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             scrollDirection:
                                                                 Axis.horizontal,
                                                             itemCount:
-                                                                listViewPaginasRecordList
+                                                                listViewProjetosRecordList
                                                                     .length,
                                                             itemBuilder: (context,
                                                                 listViewIndex) {
-                                                              final listViewPaginasRecord =
-                                                                  listViewPaginasRecordList[
+                                                              final listViewProjetosRecord =
+                                                                  listViewProjetosRecordList[
                                                                       listViewIndex];
                                                               return Padding(
                                                                 padding: EdgeInsetsDirectional
@@ -1190,20 +1188,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
                                                                     context
                                                                         .pushNamed(
-                                                                      'detalhePage',
-                                                                      queryParameters:
-                                                                          {
-                                                                        'paginas':
-                                                                            serializeParam(
-                                                                          listViewPaginasRecord,
-                                                                          ParamType
-                                                                              .Document,
-                                                                        ),
-                                                                      }.withoutNulls,
+                                                                      'Projetos',
                                                                       extra: <String,
                                                                           dynamic>{
-                                                                        'paginas':
-                                                                            listViewPaginasRecord,
                                                                         kTransitionInfoKey:
                                                                             TransitionInfo(
                                                                           hasTransition:
@@ -1269,7 +1256,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                             fadeInDuration: Duration(milliseconds: 500),
                                                                                             fadeOutDuration: Duration(milliseconds: 500),
                                                                                             imageUrl: valueOrDefault<String>(
-                                                                                              listViewPaginasRecord.iMGPrincipal,
+                                                                                              listViewProjetosRecord.iMGPrincipal,
                                                                                               'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                                             ),
                                                                                             width: 200.0,
@@ -1278,7 +1265,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                      if (listViewPaginasRecord.valor != 0.0)
+                                                                                      if (listViewProjetosRecord.valor != 0.0)
                                                                                         Card(
                                                                                           clipBehavior: Clip.antiAliasWithSaveLayer,
                                                                                           color: Color(0xC50BC70A),
@@ -1290,7 +1277,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                                                                                             child: Text(
                                                                                               formatNumber(
-                                                                                                listViewPaginasRecord.valor,
+                                                                                                listViewProjetosRecord.valor,
                                                                                                 formatType: FormatType.custom,
                                                                                                 currency: 'R\$ ',
                                                                                                 format: '0.00',
@@ -1303,7 +1290,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                             ),
                                                                                           ),
                                                                                         ),
-                                                                                      if (listViewPaginasRecord.valor == 0.0)
+                                                                                      if (listViewProjetosRecord.valor == 0.0)
                                                                                         Card(
                                                                                           clipBehavior: Clip.antiAliasWithSaveLayer,
                                                                                           color: Color(0xC50BC70A),
@@ -1343,7 +1330,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                   children: [
                                                                                     Expanded(
                                                                                       child: Text(
-                                                                                        listViewPaginasRecord.titulo,
+                                                                                        listViewProjetosRecord.titulo,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Readex Pro',
                                                                                               fontSize: 15.0,
@@ -1367,7 +1354,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                         ),
                                                                                       ),
                                                                                       Text(
-                                                                                        listViewPaginasRecord.categoria,
+                                                                                        listViewProjetosRecord.categoria,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                       ),
                                                                                     ],
@@ -1388,7 +1375,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                       ),
                                                                                       Expanded(
                                                                                         child: Text(
-                                                                                          listViewPaginasRecord.postadoPor,
+                                                                                          listViewProjetosRecord.postadoPor,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Readex Pro',
                                                                                                 color: FlutterFlowTheme.of(context).secondary,
@@ -1420,6 +1407,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         ),
                                       ).animateOnPageLoad(animationsMap[
                                           'containerOnPageLoadAnimation2']!),
+                                    ),
+                                    Divider(
+                                      thickness: 1.0,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -1597,12 +1589,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 .circular(8.0),
                                                       ),
                                                       child: StreamBuilder<
-                                                          List<PaginasRecord>>(
+                                                          List<ProjetosRecord>>(
                                                         stream:
-                                                            queryPaginasRecord(
+                                                            queryProjetosRecord(
                                                           queryBuilder:
-                                                              (paginasRecord) =>
-                                                                  paginasRecord
+                                                              (projetosRecord) =>
+                                                                  projetosRecord
                                                                       .where(
                                                             'Categoria',
                                                             isEqualTo:
@@ -1628,8 +1620,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               ),
                                                             );
                                                           }
-                                                          List<PaginasRecord>
-                                                              listViewPaginasRecordList =
+                                                          List<ProjetosRecord>
+                                                              listViewProjetosRecordList =
                                                               snapshot.data!;
                                                           return ListView
                                                               .builder(
@@ -1638,12 +1630,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             scrollDirection:
                                                                 Axis.horizontal,
                                                             itemCount:
-                                                                listViewPaginasRecordList
+                                                                listViewProjetosRecordList
                                                                     .length,
                                                             itemBuilder: (context,
                                                                 listViewIndex) {
-                                                              final listViewPaginasRecord =
-                                                                  listViewPaginasRecordList[
+                                                              final listViewProjetosRecord =
+                                                                  listViewProjetosRecordList[
                                                                       listViewIndex];
                                                               return Padding(
                                                                 padding: EdgeInsetsDirectional
@@ -1672,20 +1664,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
                                                                     context
                                                                         .pushNamed(
-                                                                      'detalhePage',
-                                                                      queryParameters:
-                                                                          {
-                                                                        'paginas':
-                                                                            serializeParam(
-                                                                          listViewPaginasRecord,
-                                                                          ParamType
-                                                                              .Document,
-                                                                        ),
-                                                                      }.withoutNulls,
+                                                                      'Projetos',
                                                                       extra: <String,
                                                                           dynamic>{
-                                                                        'paginas':
-                                                                            listViewPaginasRecord,
                                                                         kTransitionInfoKey:
                                                                             TransitionInfo(
                                                                           hasTransition:
@@ -1751,7 +1732,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                             fadeInDuration: Duration(milliseconds: 500),
                                                                                             fadeOutDuration: Duration(milliseconds: 500),
                                                                                             imageUrl: valueOrDefault<String>(
-                                                                                              listViewPaginasRecord.iMGPrincipal,
+                                                                                              listViewProjetosRecord.iMGPrincipal,
                                                                                               'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
                                                                                             ),
                                                                                             width: 200.0,
@@ -1760,7 +1741,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                      if (listViewPaginasRecord.valor != 0.0)
+                                                                                      if (listViewProjetosRecord.valor != 0.0)
                                                                                         Card(
                                                                                           clipBehavior: Clip.antiAliasWithSaveLayer,
                                                                                           color: Color(0xC50BC70A),
@@ -1772,7 +1753,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                                                                                             child: Text(
                                                                                               formatNumber(
-                                                                                                listViewPaginasRecord.valor,
+                                                                                                listViewProjetosRecord.valor,
                                                                                                 formatType: FormatType.custom,
                                                                                                 currency: 'R\$ ',
                                                                                                 format: '0.00',
@@ -1785,7 +1766,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                             ),
                                                                                           ),
                                                                                         ),
-                                                                                      if (listViewPaginasRecord.valor == 0.0)
+                                                                                      if (listViewProjetosRecord.valor == 0.0)
                                                                                         Card(
                                                                                           clipBehavior: Clip.antiAliasWithSaveLayer,
                                                                                           color: Color(0xC50BC70A),
@@ -1827,7 +1808,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                     children: [
                                                                                       Expanded(
                                                                                         child: Text(
-                                                                                          listViewPaginasRecord.titulo,
+                                                                                          listViewProjetosRecord.titulo,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Readex Pro',
                                                                                                 fontSize: 15.0,
@@ -1852,7 +1833,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                         ),
                                                                                       ),
                                                                                       Text(
-                                                                                        listViewPaginasRecord.categoria,
+                                                                                        listViewProjetosRecord.categoria,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                       ),
                                                                                     ],
@@ -1875,7 +1856,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                         child: Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                           child: Text(
-                                                                                            listViewPaginasRecord.postadoPor,
+                                                                                            listViewProjetosRecord.postadoPor,
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: FlutterFlowTheme.of(context).secondary,

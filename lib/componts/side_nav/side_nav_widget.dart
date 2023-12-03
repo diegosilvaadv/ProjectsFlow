@@ -1,4 +1,3 @@
-import '/componts/adicionar_paginas/adicionar_paginas_widget.dart';
 import '/componts/adicionar_projeto/adicionar_projeto_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -563,7 +562,7 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                                   return WebViewAware(
                                       child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
-                                    child: AdicionarPaginasWidget(),
+                                    child: AdicionarProjetoWidget(),
                                   ));
                                 },
                               ).then((value) => safeSetState(() {}));

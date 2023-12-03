@@ -1,7 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/comp_pagamentos/pag_com_sucess_paginas/pag_com_sucess_paginas_widget.dart';
+import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,7 +11,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
-import 'pag_pix_pagina_widget.dart' show PagPixPaginaWidget;
+import 'pag_pix_widget.dart' show PagPixWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -23,11 +23,11 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class PagPixPaginaModel extends FlutterFlowModel<PagPixPaginaWidget> {
+class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   ///  State fields for stateful widgets in this component.
 
   Completer<ApiCallResponse>? apiRequestCompleter;
-  // Stores action output result for [Backend Call - API (Status Pix)] action in pagPix_pagina widget.
+  // Stores action output result for [Backend Call - API (Status Pix)] action in pagPix widget.
   ApiCallResponse? apiResultqiu;
   // State field(s) for Timer widget.
   int timerMilliseconds = 300000;

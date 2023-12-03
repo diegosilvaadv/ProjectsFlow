@@ -95,16 +95,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
-          name: 'detalhePage',
-          path: '/detalhePage',
-          asyncParams: {
-            'paginas': getDoc(['Paginas'], PaginasRecord.fromSnapshot),
-          },
-          builder: (context, params) => DetalhePageWidget(
-            paginas: params.getParam('paginas', ParamType.Document),
-          ),
-        ),
-        FFRoute(
           name: 'Tutorial',
           path: '/tutorial',
           builder: (context, params) => TutorialWidget(),
@@ -191,13 +181,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => PaginasWidget(),
         ),
         FFRoute(
-          name: 'Pagamento_projeto',
-          path: '/Pagamento_projetos',
+          name: 'Pagamentos',
+          path: '/Pagamento',
           asyncParams: {
             'detalhesProjects':
                 getDoc(['Projetos'], ProjetosRecord.fromSnapshot),
           },
-          builder: (context, params) => PagamentoProjetoWidget(
+          builder: (context, params) => PagamentosWidget(
             detalhesProjects:
                 params.getParam('detalhesProjects', ParamType.Document),
           ),
@@ -236,17 +226,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Perguntas',
           path: '/perguntas',
           builder: (context, params) => PerguntasWidget(),
-        ),
-        FFRoute(
-          name: 'Pagamento_paginas',
-          path: '/Pagamento_paginas',
-          asyncParams: {
-            'detalhesPaginas': getDoc(['Paginas'], PaginasRecord.fromSnapshot),
-          },
-          builder: (context, params) => PagamentoPaginasWidget(
-            detalhesPaginas:
-                params.getParam('detalhesPaginas', ParamType.Document),
-          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

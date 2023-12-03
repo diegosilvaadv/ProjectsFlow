@@ -372,7 +372,7 @@ class _DetalhesProjectsWidgetState extends State<DetalhesProjectsWidget>
 
                                                                 context
                                                                     .pushNamed(
-                                                                  'Pagamento_projeto',
+                                                                  'Pagamentos',
                                                                   queryParameters:
                                                                       {
                                                                     'detalhesProjects':
