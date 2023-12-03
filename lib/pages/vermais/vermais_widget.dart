@@ -165,7 +165,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          if (widget.pagos! > 1.0)
+                                          if (widget.pagos == 1.0)
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -255,10 +255,15 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                 child: StreamBuilder<List<ProjetosRecord>>(
                                   stream: queryProjetosRecord(
                                     queryBuilder: (projetosRecord) =>
-                                        projetosRecord.where(
-                                      'Valor',
-                                      isGreaterThan: widget.pagos,
-                                    ),
+                                        projetosRecord
+                                            .where(
+                                              'Valor',
+                                              isGreaterThan: widget.pagos,
+                                            )
+                                            .where(
+                                              'Valor',
+                                              isEqualTo: widget.pagos,
+                                            ),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
