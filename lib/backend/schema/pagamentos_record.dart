@@ -96,6 +96,21 @@ class PagamentosRecord extends FirestoreRecord {
   String get nomeVendedor => _nomeVendedor ?? '';
   bool hasNomeVendedor() => _nomeVendedor != null;
 
+  // "subTitulo" field.
+  String? _subTitulo;
+  String get subTitulo => _subTitulo ?? '';
+  bool hasSubTitulo() => _subTitulo != null;
+
+  // "IMGPrincipal" field.
+  String? _iMGPrincipal;
+  String get iMGPrincipal => _iMGPrincipal ?? '';
+  bool hasIMGPrincipal() => _iMGPrincipal != null;
+
+  // "DescricaoCompras" field.
+  String? _descricaoCompras;
+  String get descricaoCompras => _descricaoCompras ?? '';
+  bool hasDescricaoCompras() => _descricaoCompras != null;
+
   void _initializeFields() {
     _produto = snapshotData['produto'] as String?;
     _descricao = snapshotData['descricao'] as String?;
@@ -113,6 +128,9 @@ class PagamentosRecord extends FirestoreRecord {
     _userIDPagante = snapshotData['userIDPagante'] as String?;
     _identificacao = snapshotData['identificacao'] as String?;
     _nomeVendedor = snapshotData['nomeVendedor'] as String?;
+    _subTitulo = snapshotData['subTitulo'] as String?;
+    _iMGPrincipal = snapshotData['IMGPrincipal'] as String?;
+    _descricaoCompras = snapshotData['DescricaoCompras'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -166,6 +184,9 @@ Map<String, dynamic> createPagamentosRecordData({
   String? userIDPagante,
   String? identificacao,
   String? nomeVendedor,
+  String? subTitulo,
+  String? iMGPrincipal,
+  String? descricaoCompras,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -185,6 +206,9 @@ Map<String, dynamic> createPagamentosRecordData({
       'userIDPagante': userIDPagante,
       'identificacao': identificacao,
       'nomeVendedor': nomeVendedor,
+      'subTitulo': subTitulo,
+      'IMGPrincipal': iMGPrincipal,
+      'DescricaoCompras': descricaoCompras,
     }.withoutNulls,
   );
 
@@ -211,7 +235,10 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e1?.emailVendedor == e2?.emailVendedor &&
         e1?.userIDPagante == e2?.userIDPagante &&
         e1?.identificacao == e2?.identificacao &&
-        e1?.nomeVendedor == e2?.nomeVendedor;
+        e1?.nomeVendedor == e2?.nomeVendedor &&
+        e1?.subTitulo == e2?.subTitulo &&
+        e1?.iMGPrincipal == e2?.iMGPrincipal &&
+        e1?.descricaoCompras == e2?.descricaoCompras;
   }
 
   @override
@@ -231,7 +258,10 @@ class PagamentosRecordDocumentEquality implements Equality<PagamentosRecord> {
         e?.emailVendedor,
         e?.userIDPagante,
         e?.identificacao,
-        e?.nomeVendedor
+        e?.nomeVendedor,
+        e?.subTitulo,
+        e?.iMGPrincipal,
+        e?.descricaoCompras
       ]);
 
   @override

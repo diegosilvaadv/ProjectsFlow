@@ -239,6 +239,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/compras',
           requireAuth: true,
           builder: (context, params) => ComprasWidget(),
+        ),
+        FFRoute(
+          name: 'detalhesVendas',
+          path: '/detalhesVendas',
+          asyncParams: {
+            'detalhesProjects':
+                getDoc(['Pagamentos'], PagamentosRecord.fromSnapshot),
+          },
+          builder: (context, params) => DetalhesVendasWidget(
+            detalhesProjects:
+                params.getParam('detalhesProjects', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

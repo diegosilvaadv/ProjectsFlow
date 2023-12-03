@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
@@ -6,17 +5,15 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
-import 'compras_widget.dart' show ComprasWidget;
-import 'package:cached_network_image/cached_network_image.dart';
+import 'detalhes_vendas_widget.dart' show DetalhesVendasWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-class ComprasModel extends FlutterFlowModel<ComprasWidget> {
+class DetalhesVendasModel extends FlutterFlowModel<DetalhesVendasWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -31,3 +31,5 @@ export '/nav_bar/perguntas/perguntas_widget.dart' show PerguntasWidget;
 export '/dashboard_clientes/add_projetos/add_projetos_widget.dart'
     show AddProjetosWidget;
 export '/pages/compras/compras_widget.dart' show ComprasWidget;
+export '/pages/detalhes_vendas/detalhes_vendas_widget.dart'
+    show DetalhesVendasWidget;
