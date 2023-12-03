@@ -309,8 +309,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(400.0, 20.0,
-                                                        400.0, 20.0),
+                                                    .fromSTEB(500.0, 20.0,
+                                                        500.0, 20.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -554,7 +554,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 children: [
                                                   SelectionArea(
                                                       child: Text(
-                                                    'Aplicativos Completo',
+                                                    'Projetos Completo',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -570,9 +570,36 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         MainAxisSize.max,
                                                     children: [
                                                       FFButtonWidget(
-                                                        onPressed: () {
-                                                          print(
-                                                              'Button pressed ...');
+                                                        onPressed: () async {
+                                                          logFirebaseEvent(
+                                                              'HOME_PAGE_PAGE_VER_MAIS_BTN_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Button_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'vermais',
+                                                            queryParameters: {
+                                                              'eProjeto':
+                                                                  serializeParam(
+                                                                true,
+                                                                ParamType.bool,
+                                                              ),
+                                                            }.withoutNulls,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              kTransitionInfoKey:
+                                                                  TransitionInfo(
+                                                                hasTransition:
+                                                                    true,
+                                                                transitionType:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        0),
+                                                              ),
+                                                            },
+                                                          );
                                                         },
                                                         text: 'VER MAIS',
                                                         options:
@@ -684,6 +711,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           List<ProjetosRecord>>(
                                                         stream:
                                                             queryProjetosRecord(
+                                                          queryBuilder:
+                                                              (projetosRecord) =>
+                                                                  projetosRecord
+                                                                      .where(
+                                                            'Valor',
+                                                            isGreaterThan: 1.0,
+                                                          ),
                                                           limit: 10,
                                                         ),
                                                         builder: (context,
@@ -839,30 +873,50 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                      Card(
-                                                                                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                                                        color: Color(0xC50BC70A),
-                                                                                        elevation: 4.0,
-                                                                                        shape: RoundedRectangleBorder(
-                                                                                          borderRadius: BorderRadius.circular(6.0),
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
-                                                                                          child: Text(
-                                                                                            formatNumber(
-                                                                                              listViewProjetosRecord.valor,
-                                                                                              formatType: FormatType.custom,
-                                                                                              currency: 'R\$ ',
-                                                                                              format: '0.00',
-                                                                                              locale: 'pt_BR',
+                                                                                      if (listViewProjetosRecord.valor == 0.0)
+                                                                                        Card(
+                                                                                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                                                          color: Color(0xC50BC70A),
+                                                                                          elevation: 4.0,
+                                                                                          shape: RoundedRectangleBorder(
+                                                                                            borderRadius: BorderRadius.circular(6.0),
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                                                                                            child: Text(
+                                                                                              formatNumber(
+                                                                                                listViewProjetosRecord.valor,
+                                                                                                formatType: FormatType.custom,
+                                                                                                currency: 'R\$ ',
+                                                                                                format: '0.00',
+                                                                                                locale: 'pt_BR',
+                                                                                              ),
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    fontFamily: 'Readex Pro',
+                                                                                                    fontSize: 16.0,
+                                                                                                  ),
                                                                                             ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Readex Pro',
-                                                                                                  fontSize: 16.0,
-                                                                                                ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
+                                                                                      if (listViewProjetosRecord.valor == 0.0)
+                                                                                        Card(
+                                                                                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                                                          color: Color(0xC50BC70A),
+                                                                                          elevation: 4.0,
+                                                                                          shape: RoundedRectangleBorder(
+                                                                                            borderRadius: BorderRadius.circular(6.0),
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                                                                                            child: Text(
+                                                                                              'Grátis',
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    fontFamily: 'Readex Pro',
+                                                                                                    fontSize: 16.0,
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
                                                                                     ],
                                                                                   ),
                                                                                 ],
@@ -993,7 +1047,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 children: [
                                                   SelectionArea(
                                                       child: Text(
-                                                    'Todas as Páginas',
+                                                    'Projetos Pago',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -1018,17 +1072,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           context.pushNamed(
                                                             'vermais',
                                                             queryParameters: {
-                                                              'all':
+                                                              'pagos':
                                                                   serializeParam(
-                                                                'all',
+                                                                1.0,
                                                                 ParamType
-                                                                    .String,
-                                                              ),
-                                                              'tag':
-                                                                  serializeParam(
-                                                                '',
-                                                                ParamType
-                                                                    .String,
+                                                                    .double,
                                                               ),
                                                             }.withoutNulls,
                                                             extra: <String,
@@ -1115,7 +1163,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   children: [
                                                     SelectionArea(
                                                         child: Text(
-                                                      'Basta copiar as telas e usar em seu projeto.',
+                                                      'Os projetos pagos mais vendidos.',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1295,50 +1343,30 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                      if (listViewProjetosRecord.valor != 0.0)
-                                                                                        Card(
-                                                                                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                                                          color: Color(0xC50BC70A),
-                                                                                          elevation: 4.0,
-                                                                                          shape: RoundedRectangleBorder(
-                                                                                            borderRadius: BorderRadius.circular(6.0),
-                                                                                          ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
-                                                                                            child: Text(
-                                                                                              formatNumber(
-                                                                                                listViewProjetosRecord.valor,
-                                                                                                formatType: FormatType.custom,
-                                                                                                currency: 'R\$ ',
-                                                                                                format: '0.00',
-                                                                                                locale: 'pt_BR',
-                                                                                              ),
-                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Readex Pro',
-                                                                                                    fontSize: 16.0,
-                                                                                                  ),
+                                                                                      Card(
+                                                                                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                                                        color: Color(0xC50BC70A),
+                                                                                        elevation: 4.0,
+                                                                                        shape: RoundedRectangleBorder(
+                                                                                          borderRadius: BorderRadius.circular(6.0),
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                                                                                          child: Text(
+                                                                                            formatNumber(
+                                                                                              listViewProjetosRecord.valor,
+                                                                                              formatType: FormatType.custom,
+                                                                                              currency: 'R\$ ',
+                                                                                              format: '0.00',
+                                                                                              locale: 'pt_BR',
                                                                                             ),
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                  fontFamily: 'Readex Pro',
+                                                                                                  fontSize: 16.0,
+                                                                                                ),
                                                                                           ),
                                                                                         ),
-                                                                                      if (listViewProjetosRecord.valor == 0.0)
-                                                                                        Card(
-                                                                                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                                                          color: Color(0xC50BC70A),
-                                                                                          elevation: 4.0,
-                                                                                          shape: RoundedRectangleBorder(
-                                                                                            borderRadius: BorderRadius.circular(6.0),
-                                                                                          ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
-                                                                                            child: Text(
-                                                                                              'Grátis',
-                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Readex Pro',
-                                                                                                    fontSize: 16.0,
-                                                                                                  ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
+                                                                                      ),
                                                                                     ],
                                                                                   ),
                                                                                 ],
@@ -1469,7 +1497,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 children: [
                                                   SelectionArea(
                                                       child: Text(
-                                                    'Authentication | Tela de Login',
+                                                    'Projetos Grátis',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -1494,11 +1522,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           context.pushNamed(
                                                             'vermais',
                                                             queryParameters: {
-                                                              'tag':
+                                                              'pagos':
                                                                   serializeParam(
-                                                                'Authentication',
+                                                                0.0,
                                                                 ParamType
-                                                                    .String,
+                                                                    .double,
                                                               ),
                                                             }.withoutNulls,
                                                             extra: <String,
@@ -1585,7 +1613,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   children: [
                                                     SelectionArea(
                                                         child: Text(
-                                                      'Copie telas de login para usar como quiser.',
+                                                      'Projetos Grátis mais acessados.',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)

@@ -10,8 +10,6 @@ import 'schema/users_record.dart';
 import 'schema/categorias_record.dart';
 import 'schema/pagamentos_record.dart';
 import 'schema/user_pag_record.dart';
-import 'dart:async';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -61,47 +59,6 @@ Future<List<ProjetosRecord>> queryProjetosRecordOnce({
       limit: limit,
       singleRecord: singleRecord,
     );
-Future<FFFirestorePage<ProjetosRecord>> queryProjetosRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-  required PagingController<DocumentSnapshot?, ProjetosRecord> controller,
-  List<StreamSubscription?>? streamSubscriptions,
-}) =>
-    queryCollectionPage(
-      ProjetosRecord.collection,
-      ProjetosRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    ).then((page) {
-      controller.appendPage(
-        page.data,
-        page.nextPageMarker,
-      );
-      if (isStream) {
-        final streamSubscription =
-            (page.dataStream)?.listen((List<ProjetosRecord> data) {
-          data.forEach((item) {
-            final itemIndexes = controller.itemList!
-                .asMap()
-                .map((k, v) => MapEntry(v.reference.id, k));
-            final index = itemIndexes[item.reference.id];
-            final items = controller.itemList!;
-            if (index != null) {
-              items.replaceRange(index, index + 1, [item]);
-              controller.itemList = {
-                for (var item in items) item.reference: item
-              }.values.toList();
-            }
-          });
-        });
-        streamSubscriptions?.add(streamSubscription);
-      }
-      return page;
-    });
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -139,47 +96,6 @@ Future<List<UsersRecord>> queryUsersRecordOnce({
       limit: limit,
       singleRecord: singleRecord,
     );
-Future<FFFirestorePage<UsersRecord>> queryUsersRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-  required PagingController<DocumentSnapshot?, UsersRecord> controller,
-  List<StreamSubscription?>? streamSubscriptions,
-}) =>
-    queryCollectionPage(
-      UsersRecord.collection,
-      UsersRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    ).then((page) {
-      controller.appendPage(
-        page.data,
-        page.nextPageMarker,
-      );
-      if (isStream) {
-        final streamSubscription =
-            (page.dataStream)?.listen((List<UsersRecord> data) {
-          data.forEach((item) {
-            final itemIndexes = controller.itemList!
-                .asMap()
-                .map((k, v) => MapEntry(v.reference.id, k));
-            final index = itemIndexes[item.reference.id];
-            final items = controller.itemList!;
-            if (index != null) {
-              items.replaceRange(index, index + 1, [item]);
-              controller.itemList = {
-                for (var item in items) item.reference: item
-              }.values.toList();
-            }
-          });
-        });
-        streamSubscriptions?.add(streamSubscription);
-      }
-      return page;
-    });
 
 /// Functions to query CategoriasRecords (as a Stream and as a Future).
 Future<int> queryCategoriasRecordCount({
@@ -217,47 +133,6 @@ Future<List<CategoriasRecord>> queryCategoriasRecordOnce({
       limit: limit,
       singleRecord: singleRecord,
     );
-Future<FFFirestorePage<CategoriasRecord>> queryCategoriasRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-  required PagingController<DocumentSnapshot?, CategoriasRecord> controller,
-  List<StreamSubscription?>? streamSubscriptions,
-}) =>
-    queryCollectionPage(
-      CategoriasRecord.collection,
-      CategoriasRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    ).then((page) {
-      controller.appendPage(
-        page.data,
-        page.nextPageMarker,
-      );
-      if (isStream) {
-        final streamSubscription =
-            (page.dataStream)?.listen((List<CategoriasRecord> data) {
-          data.forEach((item) {
-            final itemIndexes = controller.itemList!
-                .asMap()
-                .map((k, v) => MapEntry(v.reference.id, k));
-            final index = itemIndexes[item.reference.id];
-            final items = controller.itemList!;
-            if (index != null) {
-              items.replaceRange(index, index + 1, [item]);
-              controller.itemList = {
-                for (var item in items) item.reference: item
-              }.values.toList();
-            }
-          });
-        });
-        streamSubscriptions?.add(streamSubscription);
-      }
-      return page;
-    });
 
 /// Functions to query PagamentosRecords (as a Stream and as a Future).
 Future<int> queryPagamentosRecordCount({
@@ -295,47 +170,6 @@ Future<List<PagamentosRecord>> queryPagamentosRecordOnce({
       limit: limit,
       singleRecord: singleRecord,
     );
-Future<FFFirestorePage<PagamentosRecord>> queryPagamentosRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-  required PagingController<DocumentSnapshot?, PagamentosRecord> controller,
-  List<StreamSubscription?>? streamSubscriptions,
-}) =>
-    queryCollectionPage(
-      PagamentosRecord.collection,
-      PagamentosRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    ).then((page) {
-      controller.appendPage(
-        page.data,
-        page.nextPageMarker,
-      );
-      if (isStream) {
-        final streamSubscription =
-            (page.dataStream)?.listen((List<PagamentosRecord> data) {
-          data.forEach((item) {
-            final itemIndexes = controller.itemList!
-                .asMap()
-                .map((k, v) => MapEntry(v.reference.id, k));
-            final index = itemIndexes[item.reference.id];
-            final items = controller.itemList!;
-            if (index != null) {
-              items.replaceRange(index, index + 1, [item]);
-              controller.itemList = {
-                for (var item in items) item.reference: item
-              }.values.toList();
-            }
-          });
-        });
-        streamSubscriptions?.add(streamSubscription);
-      }
-      return page;
-    });
 
 /// Functions to query UserPagRecords (as a Stream and as a Future).
 Future<int> queryUserPagRecordCount({
@@ -373,47 +207,6 @@ Future<List<UserPagRecord>> queryUserPagRecordOnce({
       limit: limit,
       singleRecord: singleRecord,
     );
-Future<FFFirestorePage<UserPagRecord>> queryUserPagRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-  required PagingController<DocumentSnapshot?, UserPagRecord> controller,
-  List<StreamSubscription?>? streamSubscriptions,
-}) =>
-    queryCollectionPage(
-      UserPagRecord.collection,
-      UserPagRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    ).then((page) {
-      controller.appendPage(
-        page.data,
-        page.nextPageMarker,
-      );
-      if (isStream) {
-        final streamSubscription =
-            (page.dataStream)?.listen((List<UserPagRecord> data) {
-          data.forEach((item) {
-            final itemIndexes = controller.itemList!
-                .asMap()
-                .map((k, v) => MapEntry(v.reference.id, k));
-            final index = itemIndexes[item.reference.id];
-            final items = controller.itemList!;
-            if (index != null) {
-              items.replaceRange(index, index + 1, [item]);
-              controller.itemList = {
-                for (var item in items) item.reference: item
-              }.values.toList();
-            }
-          });
-        });
-        streamSubscriptions?.add(streamSubscription);
-      }
-      return page;
-    });
 
 Future<int> queryCollectionCount(
   Query collection, {

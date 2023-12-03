@@ -1,6 +1,24 @@
 {
   "indexes": [
     {
+      "collectionGroup": "Projetos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Categoria",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Eprojeto",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Valor",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Pagamentos",
       "queryScope": "COLLECTION",
       "fields": [

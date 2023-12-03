@@ -125,7 +125,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/vermais',
           builder: (context, params) => VermaisWidget(
             tag: params.getParam('tag', ParamType.String),
-            all: params.getParam('all', ParamType.String),
+            eProjeto: params.getParam('eProjeto', ParamType.bool),
+            pagos: params.getParam('pagos', ParamType.double),
           ),
         ),
         FFRoute(

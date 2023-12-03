@@ -96,6 +96,16 @@ class ProjetosRecord extends FirestoreRecord {
   String get requisitos => _requisitos ?? '';
   bool hasRequisitos() => _requisitos != null;
 
+  // "subtitulo" field.
+  String? _subtitulo;
+  String get subtitulo => _subtitulo ?? '';
+  bool hasSubtitulo() => _subtitulo != null;
+
+  // "Eprojeto" field.
+  bool? _eprojeto;
+  bool get eprojeto => _eprojeto ?? false;
+  bool hasEprojeto() => _eprojeto != null;
+
   void _initializeFields() {
     _titulo = snapshotData['Titulo'] as String?;
     _descricao = snapshotData['Descricao'] as String?;
@@ -113,6 +123,8 @@ class ProjetosRecord extends FirestoreRecord {
     _userIDVendedor = snapshotData['userIDVendedor'] as String?;
     _emailVendedor = snapshotData['emailVendedor'] as String?;
     _requisitos = snapshotData['requisitos'] as String?;
+    _subtitulo = snapshotData['subtitulo'] as String?;
+    _eprojeto = snapshotData['Eprojeto'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -166,6 +178,8 @@ Map<String, dynamic> createProjetosRecordData({
   String? userIDVendedor,
   String? emailVendedor,
   String? requisitos,
+  String? subtitulo,
+  bool? eprojeto,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -185,6 +199,8 @@ Map<String, dynamic> createProjetosRecordData({
       'userIDVendedor': userIDVendedor,
       'emailVendedor': emailVendedor,
       'requisitos': requisitos,
+      'subtitulo': subtitulo,
+      'Eprojeto': eprojeto,
     }.withoutNulls,
   );
 
@@ -211,7 +227,9 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e1?.identificacao == e2?.identificacao &&
         e1?.userIDVendedor == e2?.userIDVendedor &&
         e1?.emailVendedor == e2?.emailVendedor &&
-        e1?.requisitos == e2?.requisitos;
+        e1?.requisitos == e2?.requisitos &&
+        e1?.subtitulo == e2?.subtitulo &&
+        e1?.eprojeto == e2?.eprojeto;
   }
 
   @override
@@ -231,7 +249,9 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e?.identificacao,
         e?.userIDVendedor,
         e?.emailVendedor,
-        e?.requisitos
+        e?.requisitos,
+        e?.subtitulo,
+        e?.eprojeto
       ]);
 
   @override
