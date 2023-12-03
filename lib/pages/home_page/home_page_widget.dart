@@ -1541,7 +1541,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           context.pushNamed(
                                                             'vermais',
                                                             queryParameters: {
-                                                              'pagos':
+                                                              'gratis':
                                                                   serializeParam(
                                                                 0.0,
                                                                 ParamType

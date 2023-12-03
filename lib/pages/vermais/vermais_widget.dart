@@ -21,11 +21,13 @@ class VermaisWidget extends StatefulWidget {
     this.tag,
     this.eProjeto,
     this.pagos,
+    this.gratis,
   }) : super(key: key);
 
   final String? tag;
   final bool? eProjeto;
   final double? pagos;
+  final double? gratis;
 
   @override
   _VermaisWidgetState createState() => _VermaisWidgetState();
@@ -259,10 +261,12 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                             .where(
                                               'Valor',
                                               isGreaterThan: widget.pagos,
+                                              isNull: (widget.pagos) == null,
                                             )
                                             .where(
                                               'Valor',
-                                              isEqualTo: widget.pagos,
+                                              isEqualTo: widget.gratis,
+                                              isNull: (widget.gratis) == null,
                                             ),
                                   ),
                                   builder: (context, snapshot) {

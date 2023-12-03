@@ -127,6 +127,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             tag: params.getParam('tag', ParamType.String),
             eProjeto: params.getParam('eProjeto', ParamType.bool),
             pagos: params.getParam('pagos', ParamType.double),
+            gratis: params.getParam('gratis', ParamType.double),
           ),
         ),
         FFRoute(
