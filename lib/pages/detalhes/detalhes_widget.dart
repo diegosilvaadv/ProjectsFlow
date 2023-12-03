@@ -527,53 +527,100 @@ class _DetalhesWidgetState extends State<DetalhesWidget>
                                                                         8.0),
                                                           ),
                                                         ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child: GradientText(
-                                                          formatNumber(
-                                                            widget
-                                                                .detalhesProjects!
-                                                                .valor,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            currency: 'R\$ ',
-                                                            format: '0.00',
-                                                            locale: 'pt_BR',
+                                                      if (widget
+                                                              .detalhesProjects
+                                                              ?.valor !=
+                                                          0.0)
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child: GradientText(
+                                                            formatNumber(
+                                                              widget
+                                                                  .detalhesProjects!
+                                                                  .valor,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              currency: 'R\$ ',
+                                                              format: '0.00',
+                                                              locale: 'pt_BR',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      30.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                            colors: [
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondary
+                                                            ],
+                                                            gradientDirection:
+                                                                GradientDirection
+                                                                    .ltr,
+                                                            gradientType:
+                                                                GradientType
+                                                                    .linear,
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 30.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                          colors: [
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary
-                                                          ],
-                                                          gradientDirection:
-                                                              GradientDirection
-                                                                  .ltr,
-                                                          gradientType:
-                                                              GradientType
-                                                                  .linear,
                                                         ),
-                                                      ),
+                                                      if (widget
+                                                              .detalhesProjects
+                                                              ?.valor ==
+                                                          0.0)
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child: GradientText(
+                                                            'Grátis',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      30.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                            colors: [
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondary
+                                                            ],
+                                                            gradientDirection:
+                                                                GradientDirection
+                                                                    .ltr,
+                                                            gradientType:
+                                                                GradientType
+                                                                    .linear,
+                                                          ),
+                                                        ),
                                                     ],
                                                   ),
                                                 ],
