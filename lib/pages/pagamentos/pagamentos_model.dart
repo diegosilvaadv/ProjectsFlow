@@ -26,6 +26,8 @@ class PagamentosModel extends FlutterFlowModel<PagamentosWidget> {
   final unfocusNode = FocusNode();
   // Model for AppBar component.
   late AppBarModel appBarModel;
+  // State field(s) for MouseRegion widget.
+  bool mouseRegionHovered = false;
   // Stores action output result for [Backend Call - API (Pix Mercado Pago)] action in Button widget.
   ApiCallResponse? gerarPedido;
   // Model for NavBar component.
