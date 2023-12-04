@@ -1399,6 +1399,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                         fontFamily:
                                                             'Readex Pro',
                                                         fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                       ),
                                                 ),
                                                 Theme(
