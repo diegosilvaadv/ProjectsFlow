@@ -37,7 +37,7 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
     _model = createModel(context, () => PesquisaModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Pesquisa'});
-    _model.textController ??= TextEditingController();
+    _model.textController ??= TextEditingController(text: widget.pesquisar);
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -150,7 +150,9 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                                       return Autocomplete<
                                                           String>(
                                                         initialValue:
-                                                            TextEditingValue(),
+                                                            TextEditingValue(
+                                                                text: widget
+                                                                    .pesquisar!),
                                                         optionsBuilder:
                                                             (textEditingValue) {
                                                           if (textEditingValue
@@ -513,7 +515,6 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                                     ),
                                                     child: Container(
                                                       width: 253.0,
-                                                      height: 289.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)

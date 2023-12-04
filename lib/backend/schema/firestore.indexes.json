@@ -11,6 +11,10 @@
         {
           "fieldPath": "Categoria",
           "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Eprojeto",
+          "order": "ASCENDING"
         }
       ]
     },

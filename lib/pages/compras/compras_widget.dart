@@ -1585,7 +1585,7 @@ class _ComprasWidgetState extends State<ComprasWidget> {
                                                                                         );
                                                                                       },
                                                                                     ),
-                                                                                  if (cardPagamentosRecordList.length == 0)
+                                                                                  if (cardTable6PagamentosRecordList.length == 0)
                                                                                     Row(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       mainAxisAlignment: MainAxisAlignment.center,

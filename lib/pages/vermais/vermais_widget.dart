@@ -20,13 +20,14 @@ class VermaisWidget extends StatefulWidget {
     this.tag,
     this.pagos,
     this.gratis,
-    this.eProjeto,
-  }) : super(key: key);
+    bool? eprojeto,
+  })  : this.eprojeto = eprojeto ?? true,
+        super(key: key);
 
   final String? tag;
   final double? pagos;
   final double? gratis;
-  final String? eProjeto;
+  final bool eprojeto;
 
   @override
   _VermaisWidgetState createState() => _VermaisWidgetState();
@@ -292,6 +293,10 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                 isEqualTo: widget.tag != ''
                                                     ? widget.tag
                                                     : null,
+                                              )
+                                              .where(
+                                                'Eprojeto',
+                                                isEqualTo: widget.eprojeto,
                                               ),
                                     ),
                                     builder: (context, snapshot) {
@@ -378,10 +383,6 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                           8.0),
                                                 ),
                                                 child: Container(
-                                                  height:
-                                                      MediaQuery.sizeOf(context)
-                                                              .height *
-                                                          0.533,
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
