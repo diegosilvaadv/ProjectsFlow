@@ -267,146 +267,155 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Container(
-                              width: MediaQuery.sizeOf(context).width * 0.8,
-                              height: MediaQuery.sizeOf(context).height * 0.37,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 20.0, 20.0, 20.0),
-                                child: StreamBuilder<List<ProjetosRecord>>(
-                                  stream: queryProjetosRecord(
-                                    queryBuilder: (projetosRecord) =>
-                                        projetosRecord
-                                            .where(
-                                              'Valor',
-                                              isGreaterThan: widget.pagos,
-                                            )
-                                            .where(
-                                              'Valor',
-                                              isEqualTo: widget.gratis,
-                                            )
-                                            .where(
-                                              'Eprojeto',
-                                              isEqualTo: widget.eProjeto,
-                                            ),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: SpinKitRipple(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 50.0,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<ProjetosRecord>
-                                        gridViewProjetosRecordList =
-                                        snapshot.data!;
-                                    return GridView.builder(
-                                      padding: EdgeInsets.zero,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 4,
-                                        crossAxisSpacing: 10.0,
-                                        mainAxisSpacing: 10.0,
-                                        childAspectRatio: 1.0,
-                                      ),
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount:
-                                          gridViewProjetosRecordList.length,
-                                      itemBuilder: (context, gridViewIndex) {
-                                        final gridViewProjetosRecord =
-                                            gridViewProjetosRecordList[
-                                                gridViewIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'VERMAIS_PAGE_Container_jcpw2gow_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Container_navigate_to');
-
-                                              context.pushNamed(
-                                                'detalhes',
-                                                queryParameters: {
-                                                  'detalhesProjects':
-                                                      serializeParam(
-                                                    gridViewProjetosRecord,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'detalhesProjects':
-                                                      gridViewProjetosRecord,
-                                                  kTransitionInfoKey:
-                                                      TransitionInfo(
-                                                    hasTransition: true,
-                                                    transitionType:
-                                                        PageTransitionType.fade,
-                                                  ),
-                                                },
-                                              );
-                                            },
-                                            child: Material(
-                                              color: Colors.transparent,
-                                              elevation: 8.0,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 150.0),
+                              child: Container(
+                                width: MediaQuery.sizeOf(context).width * 0.8,
+                                height:
+                                    MediaQuery.sizeOf(context).height * 0.37,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 20.0, 20.0, 20.0),
+                                  child: StreamBuilder<List<ProjetosRecord>>(
+                                    stream: queryProjetosRecord(
+                                      queryBuilder: (projetosRecord) =>
+                                          projetosRecord
+                                              .where(
+                                                'Valor',
+                                                isGreaterThan: widget.pagos,
+                                              )
+                                              .where(
+                                                'Valor',
+                                                isEqualTo: widget.gratis,
+                                              )
+                                              .where(
+                                                'Eprojeto',
+                                                isEqualTo: widget.eProjeto,
                                               ),
-                                              child: Container(
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        0.533,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: SpinKitRipple(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 50.0,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<ProjetosRecord>
+                                          gridViewProjetosRecordList =
+                                          snapshot.data!;
+                                      return GridView.builder(
+                                        padding: EdgeInsets.zero,
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 4,
+                                          crossAxisSpacing: 10.0,
+                                          mainAxisSpacing: 10.0,
+                                          childAspectRatio: 1.0,
+                                        ),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount:
+                                            gridViewProjetosRecordList.length,
+                                        itemBuilder: (context, gridViewIndex) {
+                                          final gridViewProjetosRecord =
+                                              gridViewProjetosRecordList[
+                                                  gridViewIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 10.0, 10.0, 10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'VERMAIS_PAGE_Container_jcpw2gow_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Container_navigate_to');
+
+                                                context.pushNamed(
+                                                  'detalhes',
+                                                  queryParameters: {
+                                                    'detalhesProjects':
+                                                        serializeParam(
+                                                      gridViewProjetosRecord,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'detalhesProjects':
+                                                        gridViewProjetosRecord,
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 8.0,
+                                                shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                 ),
-                                                child: Hero(
-                                                  tag: 'teste',
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: Material(
-                                                    color: Colors.transparent,
-                                                    child: ProdutosWidget(
-                                                      key: Key(
-                                                          'Keyd7s_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
-                                                      detlahes:
-                                                          gridViewProjetosRecord,
+                                                child: Container(
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.533,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Hero(
+                                                    tag: 'teste',
+                                                    transitionOnUserGestures:
+                                                        true,
+                                                    child: Material(
+                                                      color: Colors.transparent,
+                                                      child: ProdutosWidget(
+                                                        key: Key(
+                                                            'Keyd7s_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
+                                                        detlahes:
+                                                            gridViewProjetosRecord,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
