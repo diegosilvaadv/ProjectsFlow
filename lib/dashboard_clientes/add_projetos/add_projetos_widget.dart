@@ -1377,14 +1377,18 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  formatNumber(
-                                                    functions
-                                                        .removercaractdouble(
-                                                            _model.precoValue!),
-                                                    formatType:
-                                                        FormatType.custom,
-                                                    format: '',
-                                                    locale: '',
+                                                  valueOrDefault<String>(
+                                                    formatNumber(
+                                                      functions
+                                                          .removercaractdouble(
+                                                              _model
+                                                                  .precoValue!),
+                                                      formatType:
+                                                          FormatType.custom,
+                                                      format: '',
+                                                      locale: '',
+                                                    ),
+                                                    '0',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
