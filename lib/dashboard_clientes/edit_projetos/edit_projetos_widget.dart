@@ -4,7 +4,6 @@ import '/backend/supabase/supabase.dart';
 import '/components/markdown_link_widget.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -18,7 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'edit_projetos_model.dart';
 export 'edit_projetos_model.dart';
@@ -352,153 +350,45 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                         .always,
                                                                 child: Stack(
                                                                   children: [
-                                                                    InkWell(
-                                                                      splashColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      focusColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      hoverColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      highlightColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      onTap:
-                                                                          () async {
-                                                                        logFirebaseEvent(
-                                                                            'EDIT_PROJETOS_PAGE_Image_53yp16qy_ON_TAP');
-                                                                        logFirebaseEvent(
-                                                                            'Image_expand_image');
-                                                                        await Navigator
-                                                                            .push(
-                                                                          context,
-                                                                          PageTransition(
-                                                                            type:
-                                                                                PageTransitionType.fade,
-                                                                            child:
-                                                                                FlutterFlowExpandedImageView(
-                                                                              image: Image.network(
-                                                                                valueOrDefault<String>(
-                                                                                  _model.uploadedFileUrl1,
-                                                                                  'img',
-                                                                                ),
-                                                                                fit: BoxFit.contain,
-                                                                              ),
-                                                                              allowRotation: false,
-                                                                              tag: valueOrDefault<String>(
-                                                                                _model.uploadedFileUrl1,
-                                                                                'img',
-                                                                              ),
-                                                                              useHeroAnimation: true,
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                      child:
-                                                                          Hero(
-                                                                        tag: valueOrDefault<
+                                                                    ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              12.0),
+                                                                      child: Image
+                                                                          .network(
+                                                                        valueOrDefault<
                                                                             String>(
                                                                           _model
                                                                               .uploadedFileUrl1,
                                                                           'img',
                                                                         ),
-                                                                        transitionOnUserGestures:
-                                                                            true,
-                                                                        child:
-                                                                            ClipRRect(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(12.0),
-                                                                          child:
-                                                                              Image.network(
-                                                                            valueOrDefault<String>(
-                                                                              _model.uploadedFileUrl1,
-                                                                              'img',
-                                                                            ),
-                                                                            width:
-                                                                                150.0,
-                                                                            height:
-                                                                                100.0,
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                          ),
-                                                                        ),
+                                                                        width:
+                                                                            150.0,
+                                                                        height:
+                                                                            100.0,
+                                                                        fit: BoxFit
+                                                                            .cover,
                                                                       ),
                                                                     ),
-                                                                    InkWell(
-                                                                      splashColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      focusColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      hoverColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      highlightColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      onTap:
-                                                                          () async {
-                                                                        logFirebaseEvent(
-                                                                            'EDIT_PROJETOS_PAGE_Image_ysl5mbdq_ON_TAP');
-                                                                        logFirebaseEvent(
-                                                                            'Image_expand_image');
-                                                                        await Navigator
-                                                                            .push(
-                                                                          context,
-                                                                          PageTransition(
-                                                                            type:
-                                                                                PageTransitionType.fade,
-                                                                            child:
-                                                                                FlutterFlowExpandedImageView(
-                                                                              image: Image.network(
-                                                                                valueOrDefault<String>(
-                                                                                  widget.detalhesEdit?.iMGPrincipal,
-                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
-                                                                                ),
-                                                                                fit: BoxFit.contain,
-                                                                              ),
-                                                                              allowRotation: false,
-                                                                              tag: valueOrDefault<String>(
-                                                                                widget.detalhesEdit?.iMGPrincipal,
-                                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
-                                                                              ),
-                                                                              useHeroAnimation: true,
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                      child:
-                                                                          Hero(
-                                                                        tag: valueOrDefault<
+                                                                    ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              12.0),
+                                                                      child: Image
+                                                                          .network(
+                                                                        valueOrDefault<
                                                                             String>(
                                                                           widget
                                                                               .detalhesEdit
                                                                               ?.iMGPrincipal,
                                                                           'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                         ),
-                                                                        transitionOnUserGestures:
-                                                                            true,
-                                                                        child:
-                                                                            ClipRRect(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(12.0),
-                                                                          child:
-                                                                              Image.network(
-                                                                            valueOrDefault<String>(
-                                                                              widget.detalhesEdit?.iMGPrincipal,
-                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
-                                                                            ),
-                                                                            width:
-                                                                                150.0,
-                                                                            height:
-                                                                                100.0,
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                          ),
-                                                                        ),
+                                                                        width:
+                                                                            150.0,
+                                                                        height:
+                                                                            100.0,
+                                                                        fit: BoxFit
+                                                                            .cover,
                                                                       ),
                                                                     ),
                                                                   ],

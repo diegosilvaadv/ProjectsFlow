@@ -4,6 +4,7 @@ import '/backend/supabase/supabase.dart';
 import '/components/markdown_link_widget.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
+import '/componts/view_i_m_g/view_i_m_g_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
