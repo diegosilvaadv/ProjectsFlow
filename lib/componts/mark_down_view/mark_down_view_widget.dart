@@ -110,16 +110,9 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.7,
-                        decoration: BoxDecoration(),
-                        child: Container(
-                          height: 200.0,
-                          child: MarkdownBody(
-                            data: widget.markdown!,
-                            selectable: true,
-                          ),
-                        ),
+                      child: MarkdownBody(
+                        data: widget.markdown!,
+                        selectable: true,
                       ),
                     ),
                   ),
