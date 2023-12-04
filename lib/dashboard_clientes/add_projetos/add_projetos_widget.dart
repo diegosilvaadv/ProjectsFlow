@@ -2087,7 +2087,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                           child:
                                                                               MarkDownViewWidget(
                                                                             markdown:
-                                                                                _model.requisitosController.text,
+                                                                                _model.descriVendaController.text,
                                                                           ),
                                                                         ),
                                                                       );
@@ -2390,7 +2390,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                           child:
                                                                               MarkDownViewWidget(
                                                                             markdown:
-                                                                                _model.requisitosController.text,
+                                                                                _model.descriCompraController.text,
                                                                           ),
                                                                         ),
                                                                       );

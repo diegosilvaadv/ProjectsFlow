@@ -2637,7 +2637,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                   FFButtonWidget(
                                                     onPressed: () async {
                                                       logFirebaseEvent(
-                                                          'EDIT_PROJETOS_CRIAR_PROJETO_BTN_ON_TAP');
+                                                          'EDIT_PROJETOS_ATUALIZAR_PROJETO_BTN_ON_T');
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
                                                       if (_model.formKey7
@@ -2802,9 +2802,9 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                           'Button_navigate_back');
                                                       context.safePop();
                                                     },
-                                                    text: 'Criar Projeto',
+                                                    text: 'Atualizar Projeto',
                                                     options: FFButtonOptions(
-                                                      height: 40.0,
+                                                      height: 44.0,
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(

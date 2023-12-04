@@ -139,8 +139,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
       return 'Obrigatório';
     }
 
-    if (val.length < 500) {
-      return 'Mínimo de 500 caracteres';
+    if (val.length < 100) {
+      return 'Mínimo de 100 caracteres';
     }
     if (val.length > 2000) {
       return 'Máximo de 2000 caracteres';
@@ -160,8 +160,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
       return 'Obrigatório';
     }
 
-    if (val.length < 500) {
-      return 'Mínimo de 500 caracteres';
+    if (val.length < 100) {
+      return 'Mínimo de 100 caracteres';
     }
     if (val.length > 2000) {
       return 'Máximo de 2000 caracteres';

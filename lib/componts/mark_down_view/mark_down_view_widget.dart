@@ -96,7 +96,7 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
                 alignment: AlignmentDirectional(0.00, 0.00),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 50.0, 50.0),
+                      EdgeInsetsDirectional.fromSTEB(100.0, 0.0, 100.0, 50.0),
                   child: Material(
                     color: Colors.transparent,
                     elevation: 5.0,
@@ -112,9 +112,13 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
                       alignment: AlignmentDirectional(0.00, 0.00),
                       child: Align(
                         alignment: AlignmentDirectional(0.00, 0.00),
-                        child: MarkdownBody(
-                          data: widget.markdown!,
-                          selectable: true,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 30.0, 30.0, 30.0),
+                          child: MarkdownBody(
+                            data: widget.markdown!,
+                            selectable: true,
+                          ),
                         ),
                       ),
                     ),
