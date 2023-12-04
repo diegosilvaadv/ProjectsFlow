@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/produtos_widget.dart';
 import '/componts/aceitar_termos/aceitar_termos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/app_bar_cell/app_bar_cell_widget.dart';
