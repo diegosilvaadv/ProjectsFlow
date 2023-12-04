@@ -754,10 +754,10 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                             padding: EdgeInsets.zero,
                                             gridDelegate:
                                                 SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 3,
+                                              crossAxisCount: 4,
                                               crossAxisSpacing: 10.0,
                                               mainAxisSpacing: 10.0,
-                                              childAspectRatio: 1.0,
+                                              childAspectRatio: 0.9,
                                             ),
                                             scrollDirection: Axis.vertical,
                                             itemCount:

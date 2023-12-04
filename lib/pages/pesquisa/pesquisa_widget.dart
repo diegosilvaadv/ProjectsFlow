@@ -1,14 +1,13 @@
 import '/backend/backend.dart';
+import '/components/produtos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'pesquisa_model.dart';
@@ -289,312 +288,94 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.8,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 20.0),
-                                    child: StreamBuilder<List<ProjetosRecord>>(
-                                      stream: queryProjetosRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitRipple(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ProjetosRecord>
-                                            gridViewProjetosRecordList =
-                                            snapshot.data!;
-                                        return GridView.builder(
-                                          padding: EdgeInsets.zero,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 4,
-                                            crossAxisSpacing: 10.0,
-                                            mainAxisSpacing: 10.0,
-                                            childAspectRatio: 1.0,
-                                          ),
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              gridViewProjetosRecordList.length,
-                                          itemBuilder:
-                                              (context, gridViewIndex) {
-                                            final gridViewProjetosRecord =
-                                                gridViewProjetosRecordList[
-                                                    gridViewIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 10.0, 10.0, 10.0),
-                                              child: Material(
-                                                color: Colors.transparent,
-                                                elevation: 8.0,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                Flexible(
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.8,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 20.0, 20.0, 20.0),
+                                      child:
+                                          StreamBuilder<List<ProjetosRecord>>(
+                                        stream: queryProjetosRecord(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitRipple(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 50.0,
                                                 ),
-                                                child: Container(
-                                                  width: 253.0,
-                                                  height: 289.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
+                                              ),
+                                            );
+                                          }
+                                          List<ProjetosRecord>
+                                              gridViewProjetosRecordList =
+                                              snapshot.data!;
+                                          return GridView.builder(
+                                            padding: EdgeInsets.zero,
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 4,
+                                              crossAxisSpacing: 10.0,
+                                              mainAxisSpacing: 10.0,
+                                              childAspectRatio: 0.9,
+                                            ),
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                gridViewProjetosRecordList
+                                                    .length,
+                                            itemBuilder:
+                                                (context, gridViewIndex) {
+                                              final gridViewProjetosRecord =
+                                                  gridViewProjetosRecordList[
+                                                      gridViewIndex];
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 10.0, 10.0, 10.0),
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 8.0,
+                                                  shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      Flexible(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      8.0,
-                                                                      8.0,
-                                                                      8.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Stack(
-                                                                children: [
-                                                                  Container(
-                                                                    height:
-                                                                        220.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryBackground,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                      child:
-                                                                          CachedNetworkImage(
-                                                                        fadeInDuration:
-                                                                            Duration(milliseconds: 500),
-                                                                        fadeOutDuration:
-                                                                            Duration(milliseconds: 500),
-                                                                        imageUrl:
-                                                                            valueOrDefault<String>(
-                                                                          gridViewProjetosRecord
-                                                                              .iMGPrincipal,
-                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/App%20Pizzaria%20principal.png',
-                                                                        ),
-                                                                        width:
-                                                                            200.0,
-                                                                        height:
-                                                                            200.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  if (gridViewProjetosRecord
-                                                                          .valor !=
-                                                                      0.0)
-                                                                    Card(
-                                                                      clipBehavior:
-                                                                          Clip.antiAliasWithSaveLayer,
-                                                                      color: Color(
-                                                                          0xC50BC70A),
-                                                                      elevation:
-                                                                          4.0,
-                                                                      shape:
-                                                                          RoundedRectangleBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(6.0),
-                                                                      ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            6.0,
-                                                                            6.0,
-                                                                            6.0,
-                                                                            6.0),
-                                                                        child:
-                                                                            Text(
-                                                                          formatNumber(
-                                                                            gridViewProjetosRecord.valor,
-                                                                            formatType:
-                                                                                FormatType.custom,
-                                                                            currency:
-                                                                                'R\$ ',
-                                                                            format:
-                                                                                '0.00',
-                                                                            locale:
-                                                                                'pt_BR',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Readex Pro',
-                                                                                fontSize: 16.0,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  if (gridViewProjetosRecord
-                                                                          .valor ==
-                                                                      0.0)
-                                                                    Card(
-                                                                      clipBehavior:
-                                                                          Clip.antiAliasWithSaveLayer,
-                                                                      color: Color(
-                                                                          0xC50BC70A),
-                                                                      elevation:
-                                                                          4.0,
-                                                                      shape:
-                                                                          RoundedRectangleBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(6.0),
-                                                                      ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            6.0,
-                                                                            6.0,
-                                                                            6.0,
-                                                                            6.0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Grátis',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Readex Pro',
-                                                                                fontSize: 16.0,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    8.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    gridViewProjetosRecord
-                                                                        .titulo,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
-                                                                          fontSize:
-                                                                              15.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          8.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .tag,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      size:
-                                                                          24.0,
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    gridViewProjetosRecord
-                                                                        .categoria,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium,
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
+                                                  child: Container(
+                                                    width: 253.0,
+                                                    height: 289.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: ProdutosWidget(
+                                                      key: Key(
+                                                          'Keywy8_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
+                                                      detlahes:
+                                                          gridViewProjetosRecord,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),

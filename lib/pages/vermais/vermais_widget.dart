@@ -324,7 +324,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                           crossAxisCount: 4,
                                           crossAxisSpacing: 10.0,
                                           mainAxisSpacing: 10.0,
-                                          childAspectRatio: 1.0,
+                                          childAspectRatio: 0.9,
                                         ),
                                         primary: false,
                                         shrinkWrap: true,

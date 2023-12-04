@@ -349,7 +349,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                       widget
                                                                           .detalhesProjects
                                                                           ?.iMGPrincipal,
-                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                     ),
                                                                     fit: BoxFit
                                                                         .contain,
@@ -361,7 +361,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                     widget
                                                                         .detalhesProjects
                                                                         ?.iMGPrincipal,
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                   ),
                                                                   useHeroAnimation:
                                                                       true,
@@ -375,7 +375,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                               widget
                                                                   .detalhesProjects
                                                                   ?.iMGPrincipal,
-                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                             ),
                                                             transitionOnUserGestures:
                                                                 true,
@@ -391,7 +391,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                   widget
                                                                       .detalhesProjects
                                                                       ?.iMGPrincipal,
-                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                 ),
                                                                 width: 300.0,
                                                                 height: 200.0,
