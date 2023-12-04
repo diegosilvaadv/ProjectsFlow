@@ -83,33 +83,7 @@ String permitirApenasPreco() {
   return controller.text;
 }
 
-String visualizarMarkDown() {
+String visualizarMarkDown(String markdown) {
   // crie um visualizador de markdown
-  return '''
-import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-
-class MarkdownViewer extends StatelessWidget {
-  const MarkdownViewer({Key? key, required this.markdownData}) : super(key: key);
-
-  final String markdownData;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Markdown Viewer'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: MarkdownBody(
-            data: markdownData,
-          ),
-        ),
-      ),
-    );
-  }
-}
-''';
+  return markdown; // Placeholder code, replace with actual implementation
 }
