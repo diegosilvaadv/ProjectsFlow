@@ -33,3 +33,4 @@ export '/dashboard_clientes/add_projetos/add_projetos_widget.dart'
 export '/pages/compras/compras_widget.dart' show ComprasWidget;
 export '/pages/detalhes_vendas/detalhes_vendas_widget.dart'
     show DetalhesVendasWidget;
+export '/pages/pesquisa/pesquisa_widget.dart' show PesquisaWidget;

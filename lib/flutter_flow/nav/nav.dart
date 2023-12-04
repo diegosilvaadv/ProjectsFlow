@@ -251,6 +251,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             detalhesProjects:
                 params.getParam('detalhesProjects', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'Pesquisa',
+          path: '/pesquisa',
+          builder: (context, params) => PesquisaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
