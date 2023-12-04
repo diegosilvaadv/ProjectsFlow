@@ -138,11 +138,11 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
       return 'Obrigatório';
     }
 
-    if (val.length < 500) {
-      return 'Mínimo de 500 caracteres';
+    if (val.length < 100) {
+      return 'Mínimo de 100 caracteres';
     }
-    if (val.length > 2000) {
-      return 'Máximo de 2000 caracteres';
+    if (val.length > 5000) {
+      return 'Máximo de 5000 caracteres';
     }
 
     return null;
@@ -159,11 +159,11 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
       return 'Obrigatório';
     }
 
-    if (val.length < 500) {
-      return 'Mínimo de 500 caracteres';
+    if (val.length < 100) {
+      return 'Mínimo de 100 caracteres';
     }
-    if (val.length > 2000) {
-      return 'Máximo de 2000 caracteres';
+    if (val.length > 5000) {
+      return 'Máximo de 5000 caracteres';
     }
 
     return null;
