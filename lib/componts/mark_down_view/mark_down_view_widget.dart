@@ -92,11 +92,29 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-                child: MarkdownBody(
-                  data: widget.markdown!,
-                  selectable: true,
+              Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 5.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          20.0, 20.0, 20.0, 20.0),
+                      child: MarkdownBody(
+                        data: widget.markdown!,
+                        selectable: true,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
