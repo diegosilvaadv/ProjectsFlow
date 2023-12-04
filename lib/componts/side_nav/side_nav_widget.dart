@@ -332,7 +332,7 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(16.0, 50.0, 0.0, 0.0),
                       child: Text(
-                        'Gestão Projetos e Páginas',
+                        'Gestão de  Projetos Criados',
                         style: FlutterFlowTheme.of(context).labelMedium,
                       ),
                     ),
@@ -396,80 +396,6 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Projetos',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 20.0,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          logFirebaseEvent('SIDE_NAV_COMP_Pginas_ON_TAP');
-                          logFirebaseEvent('Pginas_update_app_state');
-                          setState(() {
-                            FFAppState().sideNav = 'Páginas';
-                          });
-                          logFirebaseEvent('Pginas_navigate_to');
-
-                          context.goNamed(
-                            'Paginas',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.fade,
-                                duration: Duration(milliseconds: 0),
-                              ),
-                            },
-                          );
-                        },
-                        child: AnimatedContainer(
-                          duration: Duration(milliseconds: 200),
-                          curve: Curves.easeInOut,
-                          width: double.infinity,
-                          height: 44.0,
-                          decoration: BoxDecoration(
-                            color: valueOrDefault<Color>(
-                              FFAppState().sideNav == 'Páginas'
-                                  ? Color(0x7639D2C0)
-                                  : FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                              FlutterFlowTheme.of(context).primaryBackground,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                            shape: BoxShape.rectangle,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                8.0, 0.0, 6.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Icon(
-                                  Icons.web_sharp,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 24.0,
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Páginas',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(

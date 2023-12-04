@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -271,7 +272,7 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                               widget
                                                                   .detalhesProjects
                                                                   ?.iMGPrincipal,
-                                                              'https://picsum.photos/seed/979/600',
+                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                             ),
                                                             width: 300.0,
                                                             height: 200.0,
@@ -543,18 +544,15 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            valueOrDefault<String>(
-                                              widget.detalhesProjects
-                                                  ?.descricaoCompras,
-                                              'descricao',
+                                          Expanded(
+                                            child: MarkdownBody(
+                                              data: valueOrDefault<String>(
+                                                widget.detalhesProjects
+                                                    ?.descricaoCompras,
+                                                'DESCRICAO',
+                                              ),
+                                              selectable: true,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  fontSize: 20.0,
-                                                ),
                                           ),
                                         ],
                                       ),

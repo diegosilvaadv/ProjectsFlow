@@ -17,7 +17,6 @@ export '/dashboard_clientes/saques/saques_widget.dart' show SaquesWidget;
 export '/dashboard_clientes/estatsticas/estatsticas_widget.dart'
     show EstatsticasWidget;
 export '/dashboard_clientes/projetos/projetos_widget.dart' show ProjetosWidget;
-export '/dashboard_clientes/paginas/paginas_widget.dart' show PaginasWidget;
 export '/pages/pagamentos/pagamentos_widget.dart' show PagamentosWidget;
 export '/nav_bar/termos_de_servicos/termos_de_servicos_widget.dart'
     show TermosDeServicosWidget;
@@ -34,3 +33,5 @@ export '/pages/compras/compras_widget.dart' show ComprasWidget;
 export '/pages/detalhes_vendas/detalhes_vendas_widget.dart'
     show DetalhesVendasWidget;
 export '/pages/pesquisa/pesquisa_widget.dart' show PesquisaWidget;
+export '/dashboard_clientes/edit_projetos/edit_projetos_widget.dart'
+    show EditProjetosWidget;

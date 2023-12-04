@@ -178,12 +178,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ProjetosWidget(),
         ),
         FFRoute(
-          name: 'Paginas',
-          path: '/Paginas',
-          requireAuth: true,
-          builder: (context, params) => PaginasWidget(),
-        ),
-        FFRoute(
           name: 'Pagamentos',
           path: '/Pagamento',
           asyncParams: {
@@ -257,6 +251,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Pesquisa',
           path: '/pesquisa',
           builder: (context, params) => PesquisaWidget(),
+        ),
+        FFRoute(
+          name: 'EditProjetos',
+          path: '/EditProjetos',
+          asyncParams: {
+            'detalhesEdit': getDoc(['Projetos'], ProjetosRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditProjetosWidget(
+            detalhesEdit: params.getParam('detalhesEdit', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
