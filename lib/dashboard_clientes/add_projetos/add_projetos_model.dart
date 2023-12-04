@@ -11,6 +11,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'add_projetos_widget.dart' show AddProjetosWidget;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,9 +30,9 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   final formKey4 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey5 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
   final formKey9 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -126,6 +127,11 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   FormFieldController<String>? dropDownValueController;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl2 = '';
+
   // State field(s) for descriVenda widget.
   FocusNode? descriVendaFocusNode;
   TextEditingController? descriVendaController;
@@ -163,11 +169,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
 
     return null;
   }
-
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
 
   /// Initialization and disposal methods.
 
