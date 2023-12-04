@@ -2,8 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/comp_pagamentos/pag_cartao/pag_cartao_widget.dart';
 import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
+import '/comp_pagamentos/pag_pix/pag_pix_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -1289,38 +1289,48 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                 );
                                                               });
                                                               logFirebaseEvent(
-                                                                  'Button_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'CartaoPag',
-                                                                queryParameters:
-                                                                    {
-                                                                  'detalhesProjects':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .detalhesProjects,
-                                                                    ParamType
-                                                                        .Document,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                                extra: <String,
-                                                                    dynamic>{
-                                                                  'detalhesProjects':
-                                                                      widget
-                                                                          .detalhesProjects,
-                                                                  kTransitionInfoKey:
-                                                                      TransitionInfo(
-                                                                    hasTransition:
-                                                                        true,
-                                                                    transitionType:
-                                                                        PageTransitionType
-                                                                            .fade,
-                                                                    duration: Duration(
-                                                                        milliseconds:
-                                                                            0),
-                                                                  ),
+                                                                  'Button_bottom_sheet');
+                                                              await showModalBottomSheet(
+                                                                isScrollControlled:
+                                                                    true,
+                                                                backgroundColor:
+                                                                    Color(
+                                                                        0x5A000000),
+                                                                enableDrag:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return GestureDetector(
+                                                                    onTap: () => _model
+                                                                            .unfocusNode
+                                                                            .canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model
+                                                                            .unfocusNode)
+                                                                        : FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          PagPixWidget(
+                                                                        detalhesProduto:
+                                                                            widget.detalhesProjects!,
+                                                                        idpix: PixMercadoPagoCall
+                                                                            .idPedido(
+                                                                          (_model.gerarPedido?.jsonBody ??
+                                                                              ''),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
                                                                 },
-                                                              );
+                                                              ).then((value) =>
+                                                                  safeSetState(
+                                                                      () {}));
                                                             } else {
                                                               logFirebaseEvent(
                                                                   'Button_show_snack_bar');
@@ -1351,45 +1361,37 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                   .FormadePag ==
                                                               'cartao') {
                                                             logFirebaseEvent(
-                                                                'Button_bottom_sheet');
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                      ? FocusScope.of(
-                                                                              context)
-                                                                          .requestFocus(_model
-                                                                              .unfocusNode)
-                                                                      : FocusScope.of(
-                                                                              context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
-                                                                    child:
-                                                                        PagCartaoWidget(
-                                                                      detalhesProdutos:
-                                                                          widget
-                                                                              .detalhesProjects!,
-                                                                    ),
-                                                                  ),
-                                                                );
+                                                                'Button_navigate_to');
+
+                                                            context.pushNamed(
+                                                              'CartaoPag',
+                                                              queryParameters: {
+                                                                'detalhesProjects':
+                                                                    serializeParam(
+                                                                  widget
+                                                                      .detalhesProjects,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
+                                                              }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'detalhesProjects':
+                                                                    widget
+                                                                        .detalhesProjects,
+                                                                kTransitionInfoKey:
+                                                                    TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          0),
+                                                                ),
                                                               },
-                                                            ).then((value) =>
-                                                                safeSetState(
-                                                                    () {}));
+                                                            );
                                                           } else {
                                                             logFirebaseEvent(
                                                                 'Button_show_snack_bar');
