@@ -211,28 +211,25 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                     ),
                                               ),
                                             ),
-                                          if (widget.eprojeto == true)
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              child: Text(
-                                                'Projetos Complestos',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .labelLarge
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 20.0,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                              ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Text(
+                                              'Projetos Complestos',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                             ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -296,10 +293,6 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                 isEqualTo: widget.tag != ''
                                                     ? widget.tag
                                                     : null,
-                                              )
-                                              .where(
-                                                'Eprojeto',
-                                                isEqualTo: widget.eprojeto,
                                               ),
                                     ),
                                     builder: (context, snapshot) {
