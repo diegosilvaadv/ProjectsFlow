@@ -200,7 +200,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                           context)
                                                       .secondaryText,
                                                   fontSize: 20.0,
-                                                  fontWeight: FontWeight.normal,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
                                           ),
                                         ),

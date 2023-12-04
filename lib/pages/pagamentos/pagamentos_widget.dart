@@ -165,21 +165,45 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            widget.detalhesProjects?.categoria,
-                                            'tag',
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            logFirebaseEvent(
+                                                'PAGAMENTOS_PAGE_Text_pxxipfl6_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Text_navigate_to');
+
+                                            context.pushNamed(
+                                              'vermais',
+                                              queryParameters: {
+                                                'tag': serializeParam(
+                                                  widget.detalhesProjects
+                                                      ?.categoria,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              widget
+                                                  .detalhesProjects?.categoria,
+                                              'tag',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelLarge
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
                                       ),
                                     ),
@@ -231,7 +255,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                             context)
                                                         .secondaryText,
                                                     fontSize: 20.0,
-                                                    fontWeight: FontWeight.w300,
+                                                    fontWeight: FontWeight.w600,
                                                   ),
                                             ),
                                           ),
