@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/logo_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'app_bar_model.dart';
 export 'app_bar_model.dart';
 
@@ -27,49 +27,6 @@ class _AppBarWidgetState extends State<AppBarWidget>
   late AppBarModel _model;
 
   final animationsMap = {
-    'rowOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 490.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 820.ms,
-          begin: Offset(0.0, -32.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 230.ms,
-          duration: 600.ms,
-          begin: Offset(-51.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
@@ -186,7 +143,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
       color: Colors.transparent,
       elevation: 3.0,
       child: Container(
-        height: MediaQuery.sizeOf(context).height * 0.1,
+        height: MediaQuery.sizeOf(context).height * 0.111,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           border: Border.all(
@@ -201,66 +158,11 @@ class _AppBarWidgetState extends State<AppBarWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (responsiveVisibility(
-                  context: context,
-                  phone: false,
-                ))
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent('APP_BAR_COMP_Row_jt0q4hzp_ON_TAP');
-                      logFirebaseEvent('Row_update_app_state');
-                      setState(() {
-                        FFAppState().AppBar = 'home';
-                      });
-                      logFirebaseEvent('Row_navigate_to');
-
-                      context.goNamed(
-                        'HomePage',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                          ),
-                        },
-                      );
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.asset(
-                            'assets/images/ff_logo_small_(1).png',
-                            width: 50.0,
-                            height: 50.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ).animateOnPageLoad(
-                            animationsMap['imageOnPageLoadAnimation']!),
-                        GradientText(
-                          'Projects Flow',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                          colors: [
-                            FlutterFlowTheme.of(context).primary,
-                            FlutterFlowTheme.of(context).secondary
-                          ],
-                          gradientDirection: GradientDirection.ltr,
-                          gradientType: GradientType.linear,
-                        ).animateOnPageLoad(
-                            animationsMap['textOnPageLoadAnimation']!),
-                      ],
-                    ),
-                  ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
+                wrapWithModel(
+                  model: _model.logoModel,
+                  updateCallback: () => setState(() {}),
+                  child: LogoWidget(),
+                ),
                 if (FFAppState().AppBar == 'home')
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -419,7 +321,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 1.0,
                                 ),
                                 hoverTextColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                                    FlutterFlowTheme.of(context).primaryText,
                               ),
                               showLoadingIndicator: false,
                             ).animateOnActionTrigger(
@@ -506,7 +408,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 1.0,
                                 ),
                                 hoverTextColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                                    FlutterFlowTheme.of(context).primaryText,
                               ),
                               showLoadingIndicator: false,
                             ).animateOnActionTrigger(
@@ -594,7 +496,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     width: 1.0,
                                   ),
                                   hoverTextColor:
-                                      FlutterFlowTheme.of(context).secondary,
+                                      FlutterFlowTheme.of(context).primaryText,
                                 ),
                                 showLoadingIndicator: false,
                               ).animateOnActionTrigger(
@@ -683,7 +585,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     width: 1.0,
                                   ),
                                   hoverTextColor:
-                                      FlutterFlowTheme.of(context).secondary,
+                                      FlutterFlowTheme.of(context).primaryText,
                                 ),
                                 showLoadingIndicator: false,
                               ).animateOnActionTrigger(
@@ -743,7 +645,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 0.0,
                                 ),
                                 hoverTextColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                                    FlutterFlowTheme.of(context).primaryText,
                               ),
                               showLoadingIndicator: false,
                             ).animateOnActionTrigger(
@@ -801,7 +703,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 0.0,
                                 ),
                                 hoverTextColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                                    FlutterFlowTheme.of(context).primaryText,
                               ),
                               showLoadingIndicator: false,
                             ).animateOnActionTrigger(
