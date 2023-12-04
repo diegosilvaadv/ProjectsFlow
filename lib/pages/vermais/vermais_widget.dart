@@ -268,9 +268,11 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 150.0),
+                                  0.0, 0.0, 0.0, 100.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.8,
+                                height:
+                                    MediaQuery.sizeOf(context).height * 0.35,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -292,9 +294,8 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                               )
                                               .where(
                                                 'Eprojeto',
-                                                isEqualTo:
-                                                    widget.eProjeto != null &&
-                                                        widget.eProjeto != '',
+                                                isEqualTo: widget.eProjeto ==
+                                                    widget.eProjeto,
                                               ),
                                     ),
                                     builder: (context, snapshot) {
