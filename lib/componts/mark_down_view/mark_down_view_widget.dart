@@ -93,9 +93,7 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
               child: MarkdownBody(
-                data: '''# Markdown
-
-**Hello** World!''',
+                data: widget.markdown!,
                 selectable: true,
               ),
             ),

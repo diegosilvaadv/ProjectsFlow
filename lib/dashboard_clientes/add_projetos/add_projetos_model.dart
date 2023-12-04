@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/mark_down_view_widget.dart';
+import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
