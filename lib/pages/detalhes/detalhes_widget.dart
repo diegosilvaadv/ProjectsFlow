@@ -582,8 +582,9 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                            color: Color(
-                                                                0xFF09D707),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -591,8 +592,10 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Readex Pro',
-                                                                      color: Colors
-                                                                          .black,
+                                                                      color: Color(
+                                                                          0xFFECECEC),
+                                                                      fontSize:
+                                                                          20.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -608,6 +611,21 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         8.0),
+                                                            hoverColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent1,
+                                                            hoverBorderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              width: 1.0,
+                                                            ),
+                                                            hoverTextColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                           ),
                                                         ),
                                                       if (rowPagamentosRecord
@@ -653,6 +671,8 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                           'Readex Pro',
                                                                       color: Color(
                                                                           0xFF131313),
+                                                                      fontSize:
+                                                                          20.0,
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
@@ -665,6 +685,21 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         8.0),
+                                                            hoverColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent1,
+                                                            hoverBorderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent2,
+                                                              width: 1.0,
+                                                            ),
+                                                            hoverTextColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                           ),
                                                         ),
                                                       if (widget
