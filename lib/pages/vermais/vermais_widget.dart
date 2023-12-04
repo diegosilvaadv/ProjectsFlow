@@ -18,15 +18,15 @@ class VermaisWidget extends StatefulWidget {
   const VermaisWidget({
     Key? key,
     this.tag,
-    this.eProjeto,
     this.pagos,
     this.gratis,
+    this.eProjeto,
   }) : super(key: key);
 
   final String? tag;
-  final bool? eProjeto;
   final double? pagos;
   final double? gratis;
+  final String? eProjeto;
 
   @override
   _VermaisWidgetState createState() => _VermaisWidgetState();
@@ -210,8 +210,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                     ),
                                               ),
                                             ),
-                                          if (widget.eProjeto ==
-                                              widget.eProjeto)
+                                          if (widget.eProjeto == 'true')
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -293,7 +292,9 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                               )
                                               .where(
                                                 'Eprojeto',
-                                                isEqualTo: widget.eProjeto,
+                                                isEqualTo:
+                                                    widget.eProjeto != null &&
+                                                        widget.eProjeto != '',
                                               ),
                                     ),
                                     builder: (context, snapshot) {

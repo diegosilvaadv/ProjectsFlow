@@ -2677,7 +2677,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                     },
                                                     text: 'Criar Projeto',
                                                     options: FFButtonOptions(
-                                                      height: 40.0,
+                                                      height: 48.0,
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
