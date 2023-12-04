@@ -768,12 +768,13 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     10.0, 0.0, 10.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: FlutterFlowTheme.of(context).accent1,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Rubik',
-                                      color: Color(0xFFDFDFDF),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.w500,
                                     ),

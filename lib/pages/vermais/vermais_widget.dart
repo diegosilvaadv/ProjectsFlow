@@ -246,7 +246,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.8,
-                              height: MediaQuery.sizeOf(context).height * 0.391,
+                              height: MediaQuery.sizeOf(context).height * 0.37,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -294,6 +294,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                         mainAxisSpacing: 10.0,
                                         childAspectRatio: 1.0,
                                       ),
+                                      primary: false,
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount:
