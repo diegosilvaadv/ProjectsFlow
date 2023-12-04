@@ -83,7 +83,11 @@ String permitirApenasPreco() {
   return controller.text;
 }
 
-String visualizarMarkDown(String markdown) {
-  // crie um visualizador de markdown
-  return markdown; // Placeholder code, replace with actual implementation
+String visualizarFinalTexto36(String texto) {
+  // crie uma função para visualizar apenas as ultimas 36 caracteres
+  if (texto.length <= 36) {
+    return texto;
+  } else {
+    return texto.substring(texto.length - 36);
+  }
 }

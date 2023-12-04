@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/markdown_link_widget.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -10,6 +11,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'add_projetos_widget.dart' show AddProjetosWidget;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -77,6 +79,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     return null;
   }
 
+  // Model for MarkdownLink component.
+  late MarkdownLinkModel markdownLinkModel1;
   // State field(s) for requisitos widget.
   FocusNode? requisitosFocusNode;
   TextEditingController? requisitosController;
@@ -124,6 +128,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl2 = '';
 
+  // Model for MarkdownLink component.
+  late MarkdownLinkModel markdownLinkModel2;
   // State field(s) for descriVenda widget.
   FocusNode? descriVendaFocusNode;
   TextEditingController? descriVendaController;
@@ -143,6 +149,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     return null;
   }
 
+  // Model for MarkdownLink component.
+  late MarkdownLinkModel markdownLinkModel3;
   // State field(s) for descriCompra widget.
   FocusNode? descriCompraFocusNode;
   TextEditingController? descriCompraController;
@@ -167,9 +175,12 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   void initState(BuildContext context) {
     tituloControllerValidator = _tituloControllerValidator;
     subtituloControllerValidator = _subtituloControllerValidator;
+    markdownLinkModel1 = createModel(context, () => MarkdownLinkModel());
     requisitosControllerValidator = _requisitosControllerValidator;
     linkProjetoControllerValidator = _linkProjetoControllerValidator;
+    markdownLinkModel2 = createModel(context, () => MarkdownLinkModel());
     descriVendaControllerValidator = _descriVendaControllerValidator;
+    markdownLinkModel3 = createModel(context, () => MarkdownLinkModel());
     descriCompraControllerValidator = _descriCompraControllerValidator;
   }
 
@@ -181,15 +192,18 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     subtituloFocusNode?.dispose();
     subtituloController?.dispose();
 
+    markdownLinkModel1.dispose();
     requisitosFocusNode?.dispose();
     requisitosController?.dispose();
 
     linkProjetoFocusNode?.dispose();
     linkProjetoController?.dispose();
 
+    markdownLinkModel2.dispose();
     descriVendaFocusNode?.dispose();
     descriVendaController?.dispose();
 
+    markdownLinkModel3.dispose();
     descriCompraFocusNode?.dispose();
     descriCompraController?.dispose();
   }
