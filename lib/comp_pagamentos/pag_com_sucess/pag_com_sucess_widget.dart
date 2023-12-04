@@ -68,6 +68,9 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
         userIDPagante: currentUserUid,
         identificacao: 'projeto',
         nomeVendedor: widget.detalhesProdutos?.postadoPor,
+        subTitulo: widget.detalhesProdutos?.subtitulo,
+        iMGPrincipal: widget.detalhesProdutos?.iMGPrincipal,
+        descricaoCompras: widget.detalhesProdutos?.descriVenda,
       ));
       _model.resultadoBackend = PagamentosRecord.getDocumentFromData(
           createPagamentosRecordData(
@@ -87,6 +90,9 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
             userIDPagante: currentUserUid,
             identificacao: 'projeto',
             nomeVendedor: widget.detalhesProdutos?.postadoPor,
+            subTitulo: widget.detalhesProdutos?.subtitulo,
+            iMGPrincipal: widget.detalhesProdutos?.iMGPrincipal,
+            descricaoCompras: widget.detalhesProdutos?.descriVenda,
           ),
           pagamentosRecordReference);
       logFirebaseEvent('pagComSucess_wait__delay');

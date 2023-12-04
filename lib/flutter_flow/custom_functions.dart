@@ -67,3 +67,18 @@ double? calcaularlista(List<double>? numeros) {
   }
   return soma;
 }
+
+String permitirApenasPreco() {
+  // crie uma funçao para que o usuario só consiga digitar o preço com ","
+  TextEditingController controller = TextEditingController();
+
+  void formatPrice(String text) {
+    String formattedText = text.replaceAll(',', '.');
+    controller.value = TextEditingValue(
+      text: formattedText,
+      selection: TextSelection.collapsed(offset: formattedText.length),
+    );
+  }
+
+  return controller.text;
+}
