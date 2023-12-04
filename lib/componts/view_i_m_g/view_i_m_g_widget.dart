@@ -123,23 +123,23 @@ class _ViewIMGWidgetState extends State<ViewIMGWidget> {
                                 type: PageTransitionType.fade,
                                 child: FlutterFlowExpandedImageView(
                                   image: Image.network(
-                                    'https://picsum.photos/seed/627/600',
+                                    widget.img!,
                                     fit: BoxFit.contain,
                                   ),
                                   allowRotation: false,
-                                  tag: 'imageTag',
+                                  tag: widget.img!,
                                   useHeroAnimation: true,
                                 ),
                               ),
                             );
                           },
                           child: Hero(
-                            tag: 'imageTag',
+                            tag: widget.img!,
                             transitionOnUserGestures: true,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.network(
-                                'https://picsum.photos/seed/627/600',
+                                widget.img!,
                                 width: 700.0,
                                 height: 400.0,
                                 fit: BoxFit.cover,
