@@ -166,7 +166,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          if (widget.pagos != 0.0)
+                                          if (widget.pagos! > 0.0)
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -188,7 +188,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                     ),
                                               ),
                                             ),
-                                          if (widget.pagos == 0.0)
+                                          if (widget.gratis == 0.0)
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -286,7 +286,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                           projetosRecord
                                               .where(
                                                 'Valor',
-                                                isNotEqualTo: widget.pagos,
+                                                isGreaterThan: widget.pagos,
                                               )
                                               .where(
                                                 'Valor',
