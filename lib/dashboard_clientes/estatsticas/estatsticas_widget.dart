@@ -198,7 +198,7 @@ class _EstatsticasWidgetState extends State<EstatsticasWidget> {
                           Align(
                             alignment: AlignmentDirectional(0.00, 0.00),
                             child: Lottie.asset(
-                              'assets/lottie_animations/Animation_-_1701456378255.json',
+                              'assets/lottie_animations/Animation_-_1701442930104.json',
                               width: 500.0,
                               height: 500.0,
                               fit: BoxFit.cover,

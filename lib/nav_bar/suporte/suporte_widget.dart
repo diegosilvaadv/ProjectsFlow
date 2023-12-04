@@ -62,7 +62,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             body: SafeArea(
               top: true,
               child: Column(
@@ -77,9 +77,9 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      elevation: 4.0,
+                      elevation: 0.0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(0.0),
                       ),
                       child: SingleChildScrollView(
                         child: Column(

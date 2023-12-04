@@ -644,7 +644,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 thickness: 1.0,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .accent4,
+                                                        .secondaryText,
                                               ),
                                             ],
                                           ),
@@ -952,6 +952,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryBackground,
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            blurRadius:
+                                                                                4.0,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).accent1,
+                                                                            offset:
+                                                                                Offset(0.0, 2.0),
+                                                                          )
+                                                                        ],
                                                                         borderRadius:
                                                                             BorderRadius.circular(8.0),
                                                                       ),
@@ -1286,6 +1296,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryBackground,
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            blurRadius:
+                                                                                4.0,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).accent1,
+                                                                            offset:
+                                                                                Offset(0.0, 2.0),
+                                                                          )
+                                                                        ],
                                                                         borderRadius:
                                                                             BorderRadius.circular(8.0),
                                                                       ),
@@ -1619,6 +1639,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryBackground,
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            blurRadius:
+                                                                                4.0,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).accent1,
+                                                                            offset:
+                                                                                Offset(0.0, 2.0),
+                                                                          )
+                                                                        ],
                                                                         borderRadius:
                                                                             BorderRadius.circular(8.0),
                                                                       ),
