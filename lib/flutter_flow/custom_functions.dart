@@ -68,13 +68,6 @@ double? calcaularlista(List<double>? numeros) {
   return soma;
 }
 
-double removercaractdouble(String nome) {
-  // remova "R$ " e substitua a , por . mantendo os valores
-  final String valorSemR$ = nome.replaceAll('R\$ ', '');
-  final String valorComPonto = valorSemR$.replaceAll(',', '.');
-  return double.parse(valorComPonto);
-}
-
 String permitirApenasPreco() {
   // crie uma funçao para que o usuario só consiga digitar o preço com ","
   TextEditingController controller = TextEditingController();
@@ -88,4 +81,35 @@ String permitirApenasPreco() {
   }
 
   return controller.text;
+}
+
+String visualizarMarkDown() {
+  // crie um visualizador de markdown
+  return '''
+import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+
+class MarkdownViewer extends StatelessWidget {
+  const MarkdownViewer({Key? key, required this.markdownData}) : super(key: key);
+
+  final String markdownData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Markdown Viewer'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: MarkdownBody(
+            data: markdownData,
+          ),
+        ),
+      ),
+    );
+  }
+}
+''';
 }
