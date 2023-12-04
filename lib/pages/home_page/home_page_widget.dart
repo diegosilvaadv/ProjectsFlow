@@ -464,6 +464,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     context
                                                                         .pushNamed(
                                                                       'Pesquisa',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'pesquisar':
+                                                                            serializeParam(
+                                                                          _model
+                                                                              .textController
+                                                                              .text,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                      }.withoutNulls,
                                                                       extra: <String,
                                                                           dynamic>{
                                                                         kTransitionInfoKey:

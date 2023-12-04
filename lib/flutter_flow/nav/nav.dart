@@ -250,7 +250,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Pesquisa',
           path: '/pesquisa',
-          builder: (context, params) => PesquisaWidget(),
+          builder: (context, params) => PesquisaWidget(
+            pesquisar: params.getParam('pesquisar', ParamType.String),
+          ),
         ),
         FFRoute(
           name: 'EditProjetos',

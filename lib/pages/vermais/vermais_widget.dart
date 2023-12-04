@@ -271,8 +271,6 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                   0.0, 0.0, 0.0, 100.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.8,
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.401,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,

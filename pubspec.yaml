@@ -110,6 +110,7 @@ dependencies:
   stop_watch_timer: 3.0.2
   storage_client: 1.5.4
   stream_transform: 2.1.0
+  substring_highlight: 1.0.33
   supabase: 1.11.11
   supabase_flutter: 1.10.24
   timeago: 3.2.2

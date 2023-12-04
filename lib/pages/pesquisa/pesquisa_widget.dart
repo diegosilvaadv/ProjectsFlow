@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/components/produtos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
+import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -14,7 +15,12 @@ import 'pesquisa_model.dart';
 export 'pesquisa_model.dart';
 
 class PesquisaWidget extends StatefulWidget {
-  const PesquisaWidget({Key? key}) : super(key: key);
+  const PesquisaWidget({
+    Key? key,
+    this.pesquisar,
+  }) : super(key: key);
+
+  final String? pesquisar;
 
   @override
   _PesquisaWidgetState createState() => _PesquisaWidgetState();
@@ -32,7 +38,6 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Pesquisa'});
     _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -114,101 +119,212 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
-                                                child: TextFormField(
-                                                  controller:
-                                                      _model.textController,
-                                                  focusNode:
-                                                      _model.textFieldFocusNode,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    labelText:
-                                                        'Buscar por Projetos',
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 20.0,
+                                                child: StreamBuilder<
+                                                    List<ProjetosRecord>>(
+                                                  stream: queryProjetosRecord(),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child: SpinKitRipple(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            size: 50.0,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<ProjetosRecord>
+                                                        textFieldProjetosRecordList =
+                                                        snapshot.data!;
+                                                    return Autocomplete<String>(
+                                                      initialValue:
+                                                          TextEditingValue(),
+                                                      optionsBuilder:
+                                                          (textEditingValue) {
+                                                        if (textEditingValue
+                                                                .text ==
+                                                            '') {
+                                                          return const Iterable<
+                                                              String>.empty();
+                                                        }
+                                                        return textFieldProjetosRecordList
+                                                            .map(
+                                                                (e) => e.titulo)
+                                                            .toList()
+                                                            .where((option) {
+                                                          final lowercaseOption =
+                                                              option
+                                                                  .toLowerCase();
+                                                          return lowercaseOption
+                                                              .contains(
+                                                                  textEditingValue
+                                                                      .text
+                                                                      .toLowerCase());
+                                                        });
+                                                      },
+                                                      optionsViewBuilder:
+                                                          (context, onSelected,
+                                                              options) {
+                                                        return AutocompleteOptionsList(
+                                                          textFieldKey: _model
+                                                              .textFieldKey,
+                                                          textController: _model
+                                                              .textController!,
+                                                          options:
+                                                              options.toList(),
+                                                          onSelected:
+                                                              onSelected,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium,
+                                                          textHighlightStyle:
+                                                              TextStyle(),
+                                                          elevation: 4.0,
+                                                          optionBackgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryBackground,
+                                                          optionHighlightColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryBackground,
+                                                          maxHeight: 200.0,
+                                                        );
+                                                      },
+                                                      onSelected:
+                                                          (String selection) {
+                                                        setState(() => _model
+                                                                .textFieldSelectedOption =
+                                                            selection);
+                                                        FocusScope.of(context)
+                                                            .unfocus();
+                                                      },
+                                                      fieldViewBuilder: (
+                                                        context,
+                                                        textEditingController,
+                                                        focusNode,
+                                                        onEditingComplete,
+                                                      ) {
+                                                        _model.textFieldFocusNode =
+                                                            focusNode;
+
+                                                        _model.textController =
+                                                            textEditingController;
+                                                        return TextFormField(
+                                                          key: _model
+                                                              .textFieldKey,
+                                                          controller:
+                                                              textEditingController,
+                                                          focusNode: focusNode,
+                                                          onEditingComplete:
+                                                              onEditingComplete,
+                                                          autofocus: true,
+                                                          obscureText: false,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            labelText:
+                                                                'Buscar por Projetos',
+                                                            labelStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      fontSize:
+                                                                          20.0,
+                                                                    ),
+                                                            hintStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium,
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
                                                             ),
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                        width: 2.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        width: 2.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        width: 2.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        width: 2.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                    ),
-                                                    filled: true,
-                                                    fillColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryBackground,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 20.0,
-                                                      ),
-                                                  cursorColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondary,
-                                                  validator: _model
-                                                      .textControllerValidator
-                                                      .asValidator(context),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            errorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            focusedErrorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            filled: true,
+                                                            fillColor: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 20.0,
+                                                              ),
+                                                          cursorColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondary,
+                                                          validator: _model
+                                                              .textControllerValidator
+                                                              .asValidator(
+                                                                  context),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                               Align(
@@ -288,92 +404,259 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.8,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 20.0),
-                                    child: StreamBuilder<List<ProjetosRecord>>(
-                                      stream: queryProjetosRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitRipple(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ProjetosRecord>
-                                            gridViewProjetosRecordList =
-                                            snapshot.data!;
-                                        return GridView.builder(
-                                          padding: EdgeInsets.zero,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 4,
-                                            crossAxisSpacing: 10.0,
-                                            mainAxisSpacing: 10.0,
-                                            childAspectRatio: 0.9,
-                                          ),
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              gridViewProjetosRecordList.length,
-                                          itemBuilder:
-                                              (context, gridViewIndex) {
-                                            final gridViewProjetosRecord =
-                                                gridViewProjetosRecordList[
-                                                    gridViewIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 10.0, 10.0, 10.0),
-                                              child: Material(
-                                                color: Colors.transparent,
-                                                elevation: 8.0,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                child: Container(
-                                                  width: 253.0,
-                                                  height: 289.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: ProdutosWidget(
-                                                    key: Key(
-                                                        'Keywy8_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
-                                                    detlahes:
-                                                        gridViewProjetosRecord,
-                                                  ),
+                                if (_model.textController.text == '')
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.8,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 20.0, 20.0, 20.0),
+                                      child:
+                                          StreamBuilder<List<ProjetosRecord>>(
+                                        stream: queryProjetosRecord(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitRipple(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 50.0,
                                                 ),
                                               ),
                                             );
-                                          },
-                                        );
-                                      },
+                                          }
+                                          List<ProjetosRecord>
+                                              gridViewProjetosRecordList =
+                                              snapshot.data!;
+                                          return GridView.builder(
+                                            padding: EdgeInsets.zero,
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 4,
+                                              crossAxisSpacing: 10.0,
+                                              mainAxisSpacing: 10.0,
+                                              childAspectRatio: 0.9,
+                                            ),
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                gridViewProjetosRecordList
+                                                    .length,
+                                            itemBuilder:
+                                                (context, gridViewIndex) {
+                                              final gridViewProjetosRecord =
+                                                  gridViewProjetosRecordList[
+                                                      gridViewIndex];
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 10.0, 10.0, 10.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'PESQUISA_PAGE_Container_k0htj2x8_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Container_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'detalhes',
+                                                      queryParameters: {
+                                                        'detalhesProjects':
+                                                            serializeParam(
+                                                          gridViewProjetosRecord,
+                                                          ParamType.Document,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        'detalhesProjects':
+                                                            gridViewProjetosRecord,
+                                                      },
+                                                    );
+                                                  },
+                                                  child: Material(
+                                                    color: Colors.transparent,
+                                                    elevation: 8.0,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Container(
+                                                      width: 253.0,
+                                                      height: 289.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      child: ProdutosWidget(
+                                                        key: Key(
+                                                            'Keywy8_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
+                                                        detlahes:
+                                                            gridViewProjetosRecord,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
-                                ),
+                                if (_model.textController.text != '')
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.8,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 20.0, 20.0, 20.0),
+                                      child:
+                                          StreamBuilder<List<ProjetosRecord>>(
+                                        stream: queryProjetosRecord(
+                                          queryBuilder: (projetosRecord) =>
+                                              projetosRecord.where(
+                                            'Titulo',
+                                            isEqualTo:
+                                                _model.textController.text != ''
+                                                    ? _model.textController.text
+                                                    : null,
+                                          ),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitRipple(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 50.0,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<ProjetosRecord>
+                                              gridViewProjetosRecordList =
+                                              snapshot.data!;
+                                          return GridView.builder(
+                                            padding: EdgeInsets.zero,
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 4,
+                                              crossAxisSpacing: 10.0,
+                                              mainAxisSpacing: 10.0,
+                                              childAspectRatio: 0.9,
+                                            ),
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                gridViewProjetosRecordList
+                                                    .length,
+                                            itemBuilder:
+                                                (context, gridViewIndex) {
+                                              final gridViewProjetosRecord =
+                                                  gridViewProjetosRecordList[
+                                                      gridViewIndex];
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 10.0, 10.0, 10.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'PESQUISA_PAGE_Container_p0s1aii8_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Container_navigate_to');
+
+                                                    context.pushNamed(
+                                                      'detalhes',
+                                                      queryParameters: {
+                                                        'detalhesProjects':
+                                                            serializeParam(
+                                                          gridViewProjetosRecord,
+                                                          ParamType.Document,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        'detalhesProjects':
+                                                            gridViewProjetosRecord,
+                                                      },
+                                                    );
+                                                  },
+                                                  child: Material(
+                                                    color: Colors.transparent,
+                                                    elevation: 8.0,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Container(
+                                                      width: 253.0,
+                                                      height: 289.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      child: ProdutosWidget(
+                                                        key: Key(
+                                                            'Key2dj_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
+                                                        detlahes:
+                                                            gridViewProjetosRecord,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
                                 Divider(
                                   thickness: 2.0,
                                   color: FlutterFlowTheme.of(context)

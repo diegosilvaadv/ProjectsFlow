@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/components/produtos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
+import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -19,8 +20,10 @@ class PesquisaModel extends FlutterFlowModel<PesquisaWidget> {
   // Model for AppBar component.
   late AppBarModel appBarModel;
   // State field(s) for TextField widget.
+  final textFieldKey = GlobalKey();
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
+  String? textFieldSelectedOption;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Model for NavBar component.
   late NavBarModel navBarModel;
@@ -36,7 +39,6 @@ class PesquisaModel extends FlutterFlowModel<PesquisaWidget> {
     unfocusNode.dispose();
     appBarModel.dispose();
     textFieldFocusNode?.dispose();
-    textController?.dispose();
 
     navBarModel.dispose();
   }
