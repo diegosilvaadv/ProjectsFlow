@@ -204,29 +204,55 @@ class _AppBarWidgetState extends State<AppBarWidget>
                   context: context,
                   phone: false,
                 ))
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.asset(
-                          'assets/images/ff_logo_small_(1).png',
-                          width: 50.0,
-                          height: 50.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ).animateOnPageLoad(
-                          animationsMap['imageOnPageLoadAnimation']!),
-                      Text(
-                        'Projects Flow',
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Rubik',
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation']!),
-                    ],
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      logFirebaseEvent('APP_BAR_COMP_Row_jt0q4hzp_ON_TAP');
+                      logFirebaseEvent('Row_update_app_state');
+                      setState(() {
+                        FFAppState().AppBar = 'home';
+                      });
+                      logFirebaseEvent('Row_navigate_to');
+
+                      context.goNamed(
+                        'HomePage',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: Image.asset(
+                            'assets/images/ff_logo_small_(1).png',
+                            width: 50.0,
+                            height: 50.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['imageOnPageLoadAnimation']!),
+                        Text(
+                          'Projects Flow',
+                          style:
+                              FlutterFlowTheme.of(context).titleLarge.override(
+                                    fontFamily: 'Rubik',
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation']!),
+                      ],
+                    ),
                   ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
                 if (FFAppState().AppBar == 'home')
                   Row(
@@ -485,95 +511,6 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   logFirebaseEvent(
-                                      'APP_BAR_COMP_COMPRAS_BTN_ON_TAP');
-                                  logFirebaseEvent('Button_update_app_state');
-                                  setState(() {
-                                    FFAppState().AppBar = 'compras';
-                                  });
-                                  logFirebaseEvent('Button_navigate_to');
-
-                                  context.goNamed(
-                                    'compras',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 0),
-                                      ),
-                                    },
-                                  );
-                                },
-                                text: 'Compras',
-                                icon: Icon(
-                                  Icons.shopping_bag,
-                                  color: valueOrDefault<Color>(
-                                    FFAppState().AppBar == 'compras'
-                                        ? Colors.white
-                                        : FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                    FlutterFlowTheme.of(context).primaryText,
-                                  ),
-                                  size: 15.0,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: valueOrDefault<Color>(
-                                    FFAppState().AppBar == 'compras'
-                                        ? FlutterFlowTheme.of(context).primary
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Rubik',
-                                        color: valueOrDefault<Color>(
-                                          FFAppState().AppBar == 'compras'
-                                              ? Colors.white
-                                              : FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                  elevation: 7.0,
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  hoverColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  hoverBorderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    width: 1.0,
-                                  ),
-                                  hoverTextColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                                showLoadingIndicator: false,
-                              ).animateOnActionTrigger(
-                                animationsMap[
-                                    'buttonOnActionTriggerAnimation3']!,
-                              ),
-                            ),
-                          if (currentUserEmail != '')
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
                                       'APP_BAR_COMP_PERFIL_BTN_ON_TAP');
                                   logFirebaseEvent('Button_update_app_state');
                                   setState(() {
@@ -624,6 +561,95 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                         fontFamily: 'Rubik',
                                         color: valueOrDefault<Color>(
                                           FFAppState().AppBar == 'perfil'
+                                              ? Colors.white
+                                              : FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                  elevation: 7.0,
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  hoverColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  hoverBorderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    width: 1.0,
+                                  ),
+                                  hoverTextColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                                showLoadingIndicator: false,
+                              ).animateOnActionTrigger(
+                                animationsMap[
+                                    'buttonOnActionTriggerAnimation3']!,
+                              ),
+                            ),
+                          if (currentUserEmail != '')
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'APP_BAR_COMP_COMPRAS_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_update_app_state');
+                                  setState(() {
+                                    FFAppState().AppBar = 'compras';
+                                  });
+                                  logFirebaseEvent('Button_navigate_to');
+
+                                  context.goNamed(
+                                    'compras',
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
+                                  );
+                                },
+                                text: 'Compras',
+                                icon: Icon(
+                                  Icons.shopping_bag,
+                                  color: valueOrDefault<Color>(
+                                    FFAppState().AppBar == 'compras'
+                                        ? Colors.white
+                                        : FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    FlutterFlowTheme.of(context).primaryText,
+                                  ),
+                                  size: 15.0,
+                                ),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 10.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: valueOrDefault<Color>(
+                                    FFAppState().AppBar == 'compras'
+                                        ? FlutterFlowTheme.of(context).primary
+                                        : FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Rubik',
+                                        color: valueOrDefault<Color>(
+                                          FFAppState().AppBar == 'compras'
                                               ? Colors.white
                                               : FlutterFlowTheme.of(context)
                                                   .primaryText,

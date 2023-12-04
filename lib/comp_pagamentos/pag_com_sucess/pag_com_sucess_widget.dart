@@ -50,7 +50,27 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
       await Future.delayed(const Duration(milliseconds: 3000));
       logFirebaseEvent('pagComSucess_backend_call');
 
-      await PagamentosRecord.collection.doc().set(createPagamentosRecordData(
+      var pagamentosRecordReference = PagamentosRecord.collection.doc();
+      await pagamentosRecordReference.set(createPagamentosRecordData(
+        produto: widget.detalhesProdutos?.titulo,
+        descricao: widget.detalhesProdutos?.descricao,
+        valor: widget.detalhesProdutos?.valor,
+        linkProjeto: widget.detalhesProdutos?.linkProjeto,
+        statusCompra: true,
+        ultimos4dig: widget.cartaoFinal,
+        transacionID: widget.transacionID,
+        userID: widget.detalhesProdutos?.userIDVendedor,
+        nomePagante: currentUserDisplayName,
+        email: currentUserEmail,
+        creatData: getCurrentTimestamp,
+        imgPagante: currentUserPhoto,
+        emailVendedor: widget.detalhesProdutos?.emailVendedor,
+        userIDPagante: currentUserUid,
+        identificacao: 'projeto',
+        nomeVendedor: widget.detalhesProdutos?.postadoPor,
+      ));
+      _model.resultadoBackend = PagamentosRecord.getDocumentFromData(
+          createPagamentosRecordData(
             produto: widget.detalhesProdutos?.titulo,
             descricao: widget.detalhesProdutos?.descricao,
             valor: widget.detalhesProdutos?.valor,
@@ -67,21 +87,22 @@ class _PagComSucessWidgetState extends State<PagComSucessWidget> {
             userIDPagante: currentUserUid,
             identificacao: 'projeto',
             nomeVendedor: widget.detalhesProdutos?.postadoPor,
-          ));
+          ),
+          pagamentosRecordReference);
       logFirebaseEvent('pagComSucess_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
       logFirebaseEvent('pagComSucess_navigate_to');
 
       context.goNamed(
-        'detalhes',
+        'detalhesVendas',
         queryParameters: {
           'detalhesProjects': serializeParam(
-            widget.detalhesProdutos,
+            _model.resultadoBackend,
             ParamType.Document,
           ),
         }.withoutNulls,
         extra: <String, dynamic>{
-          'detalhesProjects': widget.detalhesProdutos,
+          'detalhesProjects': _model.resultadoBackend,
           kTransitionInfoKey: TransitionInfo(
             hasTransition: true,
             transitionType: PageTransitionType.fade,

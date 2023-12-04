@@ -106,29 +106,54 @@ class _NavBarWidgetState extends State<NavBarWidget>
                 context: context,
                 phone: false,
               ))
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(0.0),
-                      child: Image.asset(
-                        'assets/images/ff_logo_small_(1).png',
-                        width: 50.0,
-                        height: 50.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['imageOnPageLoadAnimation']!),
-                    Text(
-                      'Projects Flow',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Rubik',
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                    ).animateOnPageLoad(
-                        animationsMap['textOnPageLoadAnimation']!),
-                  ],
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    logFirebaseEvent('NAV_BAR_COMP_Row_rczfue55_ON_TAP');
+                    logFirebaseEvent('Row_update_app_state');
+                    setState(() {
+                      FFAppState().AppBar = 'home';
+                    });
+                    logFirebaseEvent('Row_navigate_to');
+
+                    context.goNamed(
+                      'HomePage',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(0.0),
+                        child: Image.asset(
+                          'assets/images/ff_logo_small_(1).png',
+                          width: 50.0,
+                          height: 50.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['imageOnPageLoadAnimation']!),
+                      Text(
+                        'Projects Flow',
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              fontFamily: 'Rubik',
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation']!),
+                    ],
+                  ),
                 ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
               Align(
                 alignment: AlignmentDirectional(0.00, -1.00),

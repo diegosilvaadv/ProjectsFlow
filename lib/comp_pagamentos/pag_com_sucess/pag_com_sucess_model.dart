@@ -13,6 +13,11 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class PagComSucessModel extends FlutterFlowModel<PagComSucessWidget> {
+  ///  State fields for stateful widgets in this component.
+
+  // Stores action output result for [Backend Call - Create Document] action in pagComSucess widget.
+  PagamentosRecord? resultadoBackend;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
