@@ -604,14 +604,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
                                                           context.pushNamed(
                                                             'vermais',
-                                                            queryParameters: {
-                                                              'eProjeto':
-                                                                  serializeParam(
-                                                                'true',
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                            }.withoutNulls,
                                                             extra: <String,
                                                                 dynamic>{
                                                               kTransitionInfoKey:
