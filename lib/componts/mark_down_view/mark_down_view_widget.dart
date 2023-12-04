@@ -3,7 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -89,33 +89,6 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
                         Navigator.pop(context);
                       },
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          logFirebaseEvent(
-                              'MARK_DOWN_VIEW_COMP_Icon_rusugtfa_ON_TAP');
-                          logFirebaseEvent('Icon_copy_to_clipboard');
-                          await Clipboard.setData(ClipboardData(
-                              text: valueOrDefault<String>(
-                            widget.markdown,
-                            'teste',
-                          )));
-                          logFirebaseEvent('Icon_bottom_sheet');
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.content_copy,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -136,8 +109,17 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Html(
-                        data: widget.markdown!,
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 0.7,
+                        decoration: BoxDecoration(),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 20.0, 20.0, 20.0),
+                          child: MarkdownBody(
+                            data: widget.markdown!,
+                            selectable: true,
+                          ),
+                        ),
                       ),
                     ),
                   ),

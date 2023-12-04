@@ -4,7 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'mark_down_view_widget.dart' show MarkDownViewWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
