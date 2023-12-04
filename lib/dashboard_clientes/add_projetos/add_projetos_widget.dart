@@ -193,6 +193,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                             await selectMedia(
                                                           maxWidth: 1000.00,
                                                           maxHeight: 1000.00,
+                                                          imageQuality: 50,
+                                                          includeBlurHash: true,
                                                           mediaSource:
                                                               MediaSource
                                                                   .photoGallery,
@@ -213,6 +215,11 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                           var downloadUrls =
                                                               <String>[];
                                                           try {
+                                                            showUploadMessage(
+                                                              context,
+                                                              'Uploading file...',
+                                                              showLoading: true,
+                                                            );
                                                             selectedUploadedFiles =
                                                                 selectedMedia
                                                                     .map((m) =>
@@ -251,6 +258,9 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                         u!)
                                                                     .toList();
                                                           } finally {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .hideCurrentSnackBar();
                                                             _model.isDataUploading1 =
                                                                 false;
                                                           }
@@ -270,11 +280,43 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                   downloadUrls
                                                                       .first;
                                                             });
+                                                            showUploadMessage(
+                                                                context,
+                                                                'Success!');
                                                           } else {
                                                             setState(() {});
+                                                            showUploadMessage(
+                                                                context,
+                                                                'Failed to upload data');
                                                             return;
                                                           }
                                                         }
+
+                                                        logFirebaseEvent(
+                                                            'Container_show_snack_bar');
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              _model
+                                                                  .isDataUploading1
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
                                                       },
                                                       child: Material(
                                                         color:
@@ -1479,7 +1521,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                             maxWidth: 1000.00,
                                                             maxHeight: 1000.00,
                                                             imageQuality: 50,
-                                                            includeDimensions:
+                                                            includeBlurHash:
                                                                 true,
                                                             mediaSource:
                                                                 MediaSource
