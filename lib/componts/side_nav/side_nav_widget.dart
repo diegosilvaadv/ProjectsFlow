@@ -739,7 +739,7 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                         logFirebaseEvent('Icon_navigate_to');
 
                         context.pushNamed(
-                          'perfil',
+                          'HomePage',
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,

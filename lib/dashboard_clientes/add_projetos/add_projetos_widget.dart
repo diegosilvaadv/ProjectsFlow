@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/markdown_link_widget.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
@@ -188,11 +188,13 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                         logFirebaseEvent(
                                                             'ADD_PROJETOS_Container_qhkmt6gc_ON_TAP');
                                                         logFirebaseEvent(
-                                                            'Container_upload_media_to_firebase');
+                                                            'Container_upload_media_to_supabase');
                                                         final selectedMedia =
                                                             await selectMedia(
-                                                          maxWidth: 1000.00,
-                                                          maxHeight: 1000.00,
+                                                          storageFolderPath:
+                                                              'FotosProdutosPF',
+                                                          maxWidth: 1200.00,
+                                                          maxHeight: 800.00,
                                                           imageQuality: 50,
                                                           includeBlurHash: true,
                                                           mediaSource:
@@ -242,21 +244,12 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                     .toList();
 
                                                             downloadUrls =
-                                                                (await Future
-                                                                        .wait(
-                                                              selectedMedia.map(
-                                                                (m) async =>
-                                                                    await uploadData(
-                                                                        m.storagePath,
-                                                                        m.bytes),
-                                                              ),
-                                                            ))
-                                                                    .where((u) =>
-                                                                        u !=
-                                                                        null)
-                                                                    .map((u) =>
-                                                                        u!)
-                                                                    .toList();
+                                                                await uploadSupabaseStorageFiles(
+                                                              bucketName:
+                                                                  'templates',
+                                                              selectedFiles:
+                                                                  selectedMedia,
+                                                            );
                                                           } finally {
                                                             ScaffoldMessenger
                                                                     .of(context)
@@ -1569,11 +1562,11 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                           logFirebaseEvent(
                                                               'ADD_PROJETOS_Container_pzudqjrn_ON_TAP');
                                                           logFirebaseEvent(
-                                                              'Container_upload_media_to_firebase');
+                                                              'Container_upload_media_to_supabase');
                                                           final selectedMedia =
                                                               await selectMedia(
-                                                            maxWidth: 1000.00,
-                                                            maxHeight: 1000.00,
+                                                            storageFolderPath:
+                                                                'FotosProdutosPF',
                                                             imageQuality: 50,
                                                             includeBlurHash:
                                                                 true,
@@ -1621,22 +1614,12 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                       .toList();
 
                                                               downloadUrls =
-                                                                  (await Future
-                                                                          .wait(
-                                                                selectedMedia
-                                                                    .map(
-                                                                  (m) async =>
-                                                                      await uploadData(
-                                                                          m.storagePath,
-                                                                          m.bytes),
-                                                                ),
-                                                              ))
-                                                                      .where((u) =>
-                                                                          u !=
-                                                                          null)
-                                                                      .map((u) =>
-                                                                          u!)
-                                                                      .toList();
+                                                                  await uploadSupabaseStorageFiles(
+                                                                bucketName:
+                                                                    'templates',
+                                                                selectedFiles:
+                                                                    selectedMedia,
+                                                              );
                                                             } finally {
                                                               ScaffoldMessenger
                                                                       .of(context)

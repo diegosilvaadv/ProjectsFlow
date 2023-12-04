@@ -79,7 +79,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                           fadeOutDuration: Duration(milliseconds: 500),
                           imageUrl: valueOrDefault<String>(
                             widget.detlahes?.iMGPrincipal,
-                            'img',
+                            'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                           ),
                           fit: BoxFit.cover,
                           alignment: Alignment(0.00, 0.00),
