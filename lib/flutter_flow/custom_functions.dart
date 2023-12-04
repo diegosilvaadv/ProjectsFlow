@@ -68,6 +68,12 @@ double? calcaularlista(List<double>? numeros) {
   return soma;
 }
 
+double removercaractdouble(String nome) {
+  // remova letras e espaço e substitua a , por .
+  return double.parse(
+      nome.replaceAll(RegExp(r'[a-zA-Z\s,]'), '').replaceAll(',', '.'));
+}
+
 String permitirApenasPreco() {
   // crie uma funçao para que o usuario só consiga digitar o preço com ","
   TextEditingController controller = TextEditingController();

@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,7 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'add_projetos_model.dart';
 export 'add_projetos_model.dart';
@@ -50,9 +50,6 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
 
     _model.linkProjetoController ??= TextEditingController();
     _model.linkProjetoFocusNode ??= FocusNode();
-
-    _model.precoprojetoController ??= TextEditingController();
-    _model.precoprojetoFocusNode ??= FocusNode();
 
     _model.descriVendaController ??= TextEditingController();
     _model.descriVendaFocusNode ??= FocusNode();
@@ -1102,7 +1099,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
+                                                    20.0, 20.0, 20.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1120,7 +1117,11 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                     width: MediaQuery.sizeOf(
                                                                 context)
                                                             .width *
-                                                        0.18,
+                                                        0.15,
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.08,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1134,135 +1135,120 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                       autovalidateMode:
                                                           AutovalidateMode
                                                               .disabled,
-                                                      child: Padding(
-                                                        padding:
+                                                      child:
+                                                          FlutterFlowDropDown<
+                                                              String>(
+                                                        controller: _model
+                                                                .precoValueController ??=
+                                                            FormFieldController<
+                                                                String>(
+                                                          _model.precoValue ??=
+                                                              '',
+                                                        ),
+                                                        options:
+                                                            List<String>.from([
+                                                          '0',
+                                                          '1',
+                                                          '2',
+                                                          '3',
+                                                          '4',
+                                                          '5',
+                                                          '6',
+                                                          '7',
+                                                          '8',
+                                                          '9',
+                                                          '10',
+                                                          '11',
+                                                          '12',
+                                                          '13',
+                                                          '14',
+                                                          '15',
+                                                          '16',
+                                                          '17',
+                                                          '18',
+                                                          '19',
+                                                          '20',
+                                                          '21',
+                                                          '22',
+                                                          '23',
+                                                          '24',
+                                                          '25'
+                                                        ]),
+                                                        optionLabels: [
+                                                          'Grátis',
+                                                          'R\$ 29,90',
+                                                          'R\$ 49,90',
+                                                          'R\$ 54,90',
+                                                          'R\$ 79,90',
+                                                          'R\$ 79,90',
+                                                          'R\$ 84,90',
+                                                          'R\$ 99,90',
+                                                          'R\$ 104,90',
+                                                          'R\$ 129,90',
+                                                          'R\$ 159,90',
+                                                          'R\$ 184,90',
+                                                          'R\$ 199,90',
+                                                          'R\$ 110,90',
+                                                          'R\$ 149,90',
+                                                          'R\$ 189,90',
+                                                          'R\$ 210,90',
+                                                          'R\$ 249,90',
+                                                          'R\$ 289,90',
+                                                          'R\$ 310,90',
+                                                          'R\$ 349,90',
+                                                          'R\$ 389,90',
+                                                          'R\$ 404,90',
+                                                          'R\$ 449,90',
+                                                          'R\$ 489,90',
+                                                          'R\$ 510,90'
+                                                        ],
+                                                        onChanged: (val) =>
+                                                            setState(() => _model
+                                                                    .precoValue =
+                                                                val),
+                                                        width: 300.0,
+                                                        height: 50.0,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      20.0,
+                                                                ),
+                                                        hintText: 'Preço',
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        fillColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBackground,
+                                                        elevation: 2.0,
+                                                        borderColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        borderWidth: 2.0,
+                                                        borderRadius: 8.0,
+                                                        margin:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    8.0,
-                                                                    8.0,
-                                                                    8.0,
-                                                                    8.0),
-                                                        child: TextFormField(
-                                                          controller: _model
-                                                              .precoprojetoController,
-                                                          focusNode: _model
-                                                              .precoprojetoFocusNode,
-                                                          obscureText: false,
-                                                          decoration:
-                                                              InputDecoration(
-                                                            labelText:
-                                                                'Preço do Projeto',
-                                                            labelStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      fontSize:
-                                                                          20.0,
-                                                                    ),
-                                                            hintText:
-                                                                'P/ Grátis deixe 0',
-                                                            hintStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      fontSize:
-                                                                          20.0,
-                                                                    ),
-                                                            enabledBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBackground,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            focusedBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            errorBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            focusedErrorBorder:
-                                                                OutlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            filled: true,
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryBackground,
-                                                            prefixIcon: Icon(
-                                                              Icons
-                                                                  .attach_money,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 35.0,
-                                                            ),
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 20.0,
-                                                              ),
-                                                          keyboardType:
-                                                              TextInputType
-                                                                  .number,
-                                                          validator: _model
-                                                              .precoprojetoControllerValidator
-                                                              .asValidator(
-                                                                  context),
-                                                          inputFormatters: [
-                                                            _model
-                                                                .precoprojetoMask
-                                                          ],
-                                                        ),
+                                                                    16.0,
+                                                                    4.0,
+                                                                    16.0,
+                                                                    4.0),
+                                                        hidesUnderline: true,
+                                                        isOverButton: true,
+                                                        isSearchable: false,
+                                                        isMultiSelect: false,
                                                       ),
                                                     ),
                                                   ),
@@ -1314,7 +1300,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                               FlutterFlowDropDown<
                                                                   String>(
                                                             controller: _model
-                                                                    .dropDownValueController ??=
+                                                                    .categoriaValueController ??=
                                                                 FormFieldController<
                                                                         String>(
                                                                     null),
@@ -1325,7 +1311,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                     .toList(),
                                                             onChanged: (val) =>
                                                                 setState(() =>
-                                                                    _model.dropDownValue =
+                                                                    _model.categoriaValue =
                                                                         val),
                                                             width: 300.0,
                                                             height: 50.0,
@@ -1391,7 +1377,15 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'É um projeto completo?',
+                                                  formatNumber(
+                                                    functions
+                                                        .removercaractdouble(
+                                                            _model.precoValue!),
+                                                    formatType:
+                                                        FormatType.custom,
+                                                    format: '',
+                                                    locale: '',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -2291,7 +2285,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                         return;
                                                       }
                                                       if (_model
-                                                              .dropDownValue ==
+                                                              .categoriaValue ==
                                                           null) {
                                                         await showDialog(
                                                           context: context,
@@ -2360,12 +2354,12 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                             descricao: _model
                                                                 .descriVendaController
                                                                 .text,
-                                                            valor: double
-                                                                .tryParse(_model
-                                                                    .precoprojetoController
-                                                                    .text),
+                                                            valor: functions
+                                                                .removercaractdouble(
+                                                                    _model
+                                                                        .precoValue!),
                                                             categoria: _model
-                                                                .dropDownValue,
+                                                                .categoriaValue,
                                                             linkProjeto: _model
                                                                 .linkProjetoController
                                                                 .text,

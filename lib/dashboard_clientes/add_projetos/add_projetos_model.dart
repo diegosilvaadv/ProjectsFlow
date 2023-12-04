@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'add_projetos_widget.dart' show AddProjetosWidget;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -17,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
@@ -111,22 +111,12 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     return null;
   }
 
-  // State field(s) for precoprojeto widget.
-  FocusNode? precoprojetoFocusNode;
-  TextEditingController? precoprojetoController;
-  final precoprojetoMask = MaskTextInputFormatter(mask: '0-9');
-  String? Function(BuildContext, String?)? precoprojetoControllerValidator;
-  String? _precoprojetoControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Obrigatório';
-    }
-
-    return null;
-  }
-
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for preco widget.
+  String? precoValue;
+  FormFieldController<String>? precoValueController;
+  // State field(s) for categoria widget.
+  String? categoriaValue;
+  FormFieldController<String>? categoriaValueController;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
   bool isDataUploading2 = false;
@@ -179,7 +169,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     subtituloControllerValidator = _subtituloControllerValidator;
     requisitosControllerValidator = _requisitosControllerValidator;
     linkProjetoControllerValidator = _linkProjetoControllerValidator;
-    precoprojetoControllerValidator = _precoprojetoControllerValidator;
     descriVendaControllerValidator = _descriVendaControllerValidator;
     descriCompraControllerValidator = _descriCompraControllerValidator;
   }
@@ -197,9 +186,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
 
     linkProjetoFocusNode?.dispose();
     linkProjetoController?.dispose();
-
-    precoprojetoFocusNode?.dispose();
-    precoprojetoController?.dispose();
 
     descriVendaFocusNode?.dispose();
     descriVendaController?.dispose();
