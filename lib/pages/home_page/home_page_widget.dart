@@ -726,7 +726,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   context)
                                                               .width *
                                                           0.816,
-                                                      height: 306.0,
+                                                      height: 336.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)

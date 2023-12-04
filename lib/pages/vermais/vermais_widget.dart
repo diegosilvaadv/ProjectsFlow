@@ -246,7 +246,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.8,
-                              height: MediaQuery.sizeOf(context).height * 0.34,
+                              height: MediaQuery.sizeOf(context).height * 0.391,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -314,6 +314,9 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                   BorderRadius.circular(8.0),
                                             ),
                                             child: Container(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.533,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
