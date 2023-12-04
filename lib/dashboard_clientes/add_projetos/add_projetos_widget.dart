@@ -324,7 +324,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                     .formKey8,
                                                                 autovalidateMode:
                                                                     AutovalidateMode
-                                                                        .disabled,
+                                                                        .always,
                                                                 child:
                                                                     ClipRRect(
                                                                   borderRadius:

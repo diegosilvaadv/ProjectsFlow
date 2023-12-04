@@ -69,9 +69,10 @@ double? calcaularlista(List<double>? numeros) {
 }
 
 double removercaractdouble(String nome) {
-  // remova letras e espaço e substitua a , por .
-  return double.parse(
-      nome.replaceAll(RegExp(r'[a-zA-Z\s,]'), '').replaceAll(',', '.'));
+  // remova "R$ " e substitua a , por . mantendo os valores
+  final String valorSemR$ = nome.replaceAll('R\$ ', '');
+  final String valorComPonto = valorSemR$.replaceAll(',', '.');
+  return double.parse(valorComPonto);
 }
 
 String permitirApenasPreco() {
