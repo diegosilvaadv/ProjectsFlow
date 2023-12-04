@@ -288,94 +288,89 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                     ),
                                   ),
                                 ),
-                                Flexible(
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.8,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 20.0),
-                                      child:
-                                          StreamBuilder<List<ProjetosRecord>>(
-                                        stream: queryProjetosRecord(),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child: SpinKitRipple(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 50.0,
-                                                ),
+                                Container(
+                                  width: MediaQuery.sizeOf(context).width * 0.8,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 20.0, 20.0, 20.0),
+                                    child: StreamBuilder<List<ProjetosRecord>>(
+                                      stream: queryProjetosRecord(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: SpinKitRipple(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 50.0,
                                               ),
-                                            );
-                                          }
-                                          List<ProjetosRecord>
-                                              gridViewProjetosRecordList =
-                                              snapshot.data!;
-                                          return GridView.builder(
-                                            padding: EdgeInsets.zero,
-                                            gridDelegate:
-                                                SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 4,
-                                              crossAxisSpacing: 10.0,
-                                              mainAxisSpacing: 10.0,
-                                              childAspectRatio: 0.9,
                                             ),
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount:
-                                                gridViewProjetosRecordList
-                                                    .length,
-                                            itemBuilder:
-                                                (context, gridViewIndex) {
-                                              final gridViewProjetosRecord =
-                                                  gridViewProjetosRecordList[
-                                                      gridViewIndex];
-                                              return Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 10.0, 10.0, 10.0),
-                                                child: Material(
-                                                  color: Colors.transparent,
-                                                  elevation: 8.0,
-                                                  shape: RoundedRectangleBorder(
+                                          );
+                                        }
+                                        List<ProjetosRecord>
+                                            gridViewProjetosRecordList =
+                                            snapshot.data!;
+                                        return GridView.builder(
+                                          padding: EdgeInsets.zero,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 4,
+                                            crossAxisSpacing: 10.0,
+                                            mainAxisSpacing: 10.0,
+                                            childAspectRatio: 0.9,
+                                          ),
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount:
+                                              gridViewProjetosRecordList.length,
+                                          itemBuilder:
+                                              (context, gridViewIndex) {
+                                            final gridViewProjetosRecord =
+                                                gridViewProjetosRecordList[
+                                                    gridViewIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 10.0, 10.0, 10.0),
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 8.0,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Container(
+                                                  width: 253.0,
+                                                  height: 289.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
-                                                  child: Container(
-                                                    width: 253.0,
-                                                    height: 289.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                    ),
-                                                    child: ProdutosWidget(
-                                                      key: Key(
-                                                          'Keywy8_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
-                                                      detlahes:
-                                                          gridViewProjetosRecord,
-                                                    ),
+                                                  child: ProdutosWidget(
+                                                    key: Key(
+                                                        'Keywy8_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
+                                                    detlahes:
+                                                        gridViewProjetosRecord,
                                                   ),
                                                 ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                      ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
                                     ),
                                   ),
                                 ),
