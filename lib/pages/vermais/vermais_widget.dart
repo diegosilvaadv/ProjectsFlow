@@ -286,6 +286,12 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                               .where(
                                                 'Valor',
                                                 isEqualTo: widget.gratis,
+                                              )
+                                              .where(
+                                                'Categoria',
+                                                isEqualTo: widget.tag != ''
+                                                    ? widget.tag
+                                                    : null,
                                               ),
                                     ),
                                     builder: (context, snapshot) {
