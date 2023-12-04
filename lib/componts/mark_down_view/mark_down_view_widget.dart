@@ -59,45 +59,48 @@ class _MarkDownViewWidgetState extends State<MarkDownViewWidget> {
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(12.0),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FlutterFlowIconButton(
-                    borderColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: 20.0,
-                    borderWidth: 1.0,
-                    buttonSize: 50.0,
-                    fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                    icon: Icon(
-                      Icons.close,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 30.0,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FlutterFlowIconButton(
+                      borderColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: 20.0,
+                      borderWidth: 1.0,
+                      buttonSize: 50.0,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                      icon: Icon(
+                        Icons.close,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
+                      ),
+                      showLoadingIndicator: true,
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'MARK_DOWN_VIEW_COMP_close_ICN_ON_TAP');
+                        logFirebaseEvent('IconButton_bottom_sheet');
+                        Navigator.pop(context);
+                      },
                     ),
-                    showLoadingIndicator: true,
-                    onPressed: () async {
-                      logFirebaseEvent('MARK_DOWN_VIEW_COMP_close_ICN_ON_TAP');
-                      logFirebaseEvent('IconButton_bottom_sheet');
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-              child: MarkdownBody(
-                data: widget.markdown!,
-                selectable: true,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                child: MarkdownBody(
+                  data: widget.markdown!,
+                  selectable: true,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
