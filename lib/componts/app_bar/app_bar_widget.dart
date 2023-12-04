@@ -11,6 +11,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'app_bar_model.dart';
 export 'app_bar_model.dart';
 
@@ -241,7 +242,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                           ),
                         ).animateOnPageLoad(
                             animationsMap['imageOnPageLoadAnimation']!),
-                        Text(
+                        GradientText(
                           'Projects Flow',
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(
@@ -249,6 +250,12 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     fontSize: 30.0,
                                     fontWeight: FontWeight.w600,
                                   ),
+                          colors: [
+                            FlutterFlowTheme.of(context).primary,
+                            FlutterFlowTheme.of(context).secondary
+                          ],
+                          gradientDirection: GradientDirection.ltr,
+                          gradientType: GradientType.linear,
                         ).animateOnPageLoad(
                             animationsMap['textOnPageLoadAnimation']!),
                       ],
@@ -404,8 +411,8 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
-                                hoverColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                hoverColor:
+                                    FlutterFlowTheme.of(context).accent1,
                                 hoverBorderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).secondary,
                                   width: 1.0,
