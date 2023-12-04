@@ -665,7 +665,7 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                         logFirebaseEvent('SIDE_NAV_COMP_Icon_zly2k334_ON_TAP');
                         logFirebaseEvent('Icon_update_app_state');
                         setState(() {
-                          FFAppState().sideNav = 'home';
+                          FFAppState().AppBar = 'home';
                         });
                         logFirebaseEvent('Icon_navigate_to');
 

@@ -211,6 +211,31 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                     ),
                                               ),
                                             ),
+                                          if (widget.tag != '')
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  widget.tag,
+                                                  'tag',
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelLarge
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      fontSize: 20.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                              ),
+                                            ),
                                         ],
                                       ),
                                     ),
