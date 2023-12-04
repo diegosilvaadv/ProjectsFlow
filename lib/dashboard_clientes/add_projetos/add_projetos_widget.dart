@@ -1377,19 +1377,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  valueOrDefault<String>(
-                                                    formatNumber(
-                                                      functions
-                                                          .removercaractdouble(
-                                                              _model
-                                                                  .precoValue!),
-                                                      formatType:
-                                                          FormatType.custom,
-                                                      format: '',
-                                                      locale: '',
-                                                    ),
-                                                    '0',
-                                                  ),
+                                                  'É um projeto completo?',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
