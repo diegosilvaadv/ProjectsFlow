@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -1137,49 +1136,48 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                               .disabled,
                                                       child:
                                                           FlutterFlowDropDown<
-                                                              String>(
+                                                              double>(
                                                         controller: _model
                                                                 .precoValueController ??=
                                                             FormFieldController<
-                                                                String>(
+                                                                double>(
                                                           _model.precoValue ??=
-                                                              '',
+                                                              0.0,
                                                         ),
                                                         options:
-                                                            List<String>.from([
-                                                          '0',
-                                                          '1',
-                                                          '2',
-                                                          '3',
-                                                          '4',
-                                                          '5',
-                                                          '6',
-                                                          '7',
-                                                          '8',
-                                                          '9',
-                                                          '10',
-                                                          '11',
-                                                          '12',
-                                                          '13',
-                                                          '14',
-                                                          '15',
-                                                          '16',
-                                                          '17',
-                                                          '18',
-                                                          '19',
-                                                          '20',
-                                                          '21',
-                                                          '22',
-                                                          '23',
-                                                          '24',
-                                                          '25'
+                                                            List<double>.from([
+                                                          0.0,
+                                                          29.90,
+                                                          49.90,
+                                                          59.90,
+                                                          64.90,
+                                                          79.90,
+                                                          84.90,
+                                                          99.90,
+                                                          104.90,
+                                                          129.90,
+                                                          159.90,
+                                                          184.90,
+                                                          199.90,
+                                                          210.90,
+                                                          249.90,
+                                                          289.90,
+                                                          310.90,
+                                                          349.90,
+                                                          389.90,
+                                                          410.90,
+                                                          449.90,
+                                                          489.90,
+                                                          504.90,
+                                                          549.90,
+                                                          589.90
                                                         ]),
                                                         optionLabels: [
                                                           'Grátis',
                                                           'R\$ 29,90',
                                                           'R\$ 49,90',
-                                                          'R\$ 54,90',
-                                                          'R\$ 79,90',
+                                                          'R\$ 59,90',
+                                                          'R\$ 64,90',
                                                           'R\$ 79,90',
                                                           'R\$ 84,90',
                                                           'R\$ 99,90',
@@ -1188,19 +1186,18 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                           'R\$ 159,90',
                                                           'R\$ 184,90',
                                                           'R\$ 199,90',
-                                                          'R\$ 110,90',
-                                                          'R\$ 149,90',
-                                                          'R\$ 189,90',
                                                           'R\$ 210,90',
                                                           'R\$ 249,90',
                                                           'R\$ 289,90',
                                                           'R\$ 310,90',
                                                           'R\$ 349,90',
                                                           'R\$ 389,90',
-                                                          'R\$ 404,90',
+                                                          'R\$ 410,90',
                                                           'R\$ 449,90',
                                                           'R\$ 489,90',
-                                                          'R\$ 510,90'
+                                                          'R\$ 504,90',
+                                                          'R\$ 549,90',
+                                                          'R\$ 589,90'
                                                         ],
                                                         onChanged: (val) =>
                                                             setState(() => _model
@@ -2346,10 +2343,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                             descricao: _model
                                                                 .descriVendaController
                                                                 .text,
-                                                            valor: functions
-                                                                .removercaractdouble(
-                                                                    _model
-                                                                        .precoValue!),
+                                                            valor: _model
+                                                                .precoValue,
                                                             categoria: _model
                                                                 .categoriaValue,
                                                             linkProjeto: _model
