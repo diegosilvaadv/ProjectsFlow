@@ -801,6 +801,8 @@ class _ProjetosWidgetState extends State<ProjetosWidget> {
                                                         child: ProdutosWidget(
                                                           key: Key(
                                                               'Keyh0d_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
+                                                          detlahes:
+                                                              gridViewProjetosRecord,
                                                         ),
                                                       ),
                                                     ),

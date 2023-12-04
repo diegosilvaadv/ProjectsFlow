@@ -1529,6 +1529,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           ProdutosWidget(
                                                                         key: Key(
                                                                             'Keyirq_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
+                                                                        detlahes:
+                                                                            listViewProjetosRecord,
                                                                       ),
                                                                     ),
                                                                   ),

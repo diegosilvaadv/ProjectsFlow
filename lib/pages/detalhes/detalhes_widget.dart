@@ -155,29 +155,54 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                         size: 20.0,
                                       ),
                                     ),
-                                    Container(
-                                      height: 100.0,
-                                      decoration: BoxDecoration(),
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            widget.detalhesProjects?.categoria,
-                                            'tag',
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'DETALHES_PAGE_Container_z37py2ry_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+
+                                        context.pushNamed(
+                                          'vermais',
+                                          queryParameters: {
+                                            'tag': serializeParam(
+                                              widget
+                                                  .detalhesProjects?.categoria,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Container(
+                                        height: 100.0,
+                                        decoration: BoxDecoration(),
+                                        alignment:
+                                            AlignmentDirectional(0.00, 0.00),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              widget
+                                                  .detalhesProjects?.categoria,
+                                              'tag',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelLarge
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
                                       ),
                                     ),

@@ -195,7 +195,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                               'FotosProdutosPF',
                                                           maxWidth: 1200.00,
                                                           maxHeight: 800.00,
-                                                          imageQuality: 50,
+                                                          imageQuality: 40,
                                                           includeBlurHash: true,
                                                           mediaSource:
                                                               MediaSource
@@ -1567,7 +1567,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                               await selectMedia(
                                                             storageFolderPath:
                                                                 'FotosProdutosPF',
-                                                            imageQuality: 50,
+                                                            imageQuality: 40,
                                                             includeBlurHash:
                                                                 true,
                                                             mediaSource:
