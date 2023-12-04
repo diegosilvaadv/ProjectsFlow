@@ -942,7 +942,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             queryParameters: {
                                                               'pagos':
                                                                   serializeParam(
-                                                                1.0,
+                                                                0.0,
                                                                 ParamType
                                                                     .double,
                                                               ),

@@ -284,7 +284,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                           projetosRecord
                                               .where(
                                                 'Valor',
-                                                isGreaterThan: widget.pagos,
+                                                isNotEqualTo: widget.pagos,
                                               )
                                               .where(
                                                 'Valor',
