@@ -660,6 +660,10 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               onPressed: () async {
                                 logFirebaseEvent(
                                     'APP_BAR_COMP_DASHBOARD_BTN_ON_TAP');
+                                logFirebaseEvent('Button_update_app_state');
+                                setState(() {
+                                  FFAppState().sideNav = 'Visão geral';
+                                });
                                 logFirebaseEvent('Button_navigate_to');
 
                                 context.pushNamed(
@@ -667,8 +671,8 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
-                                      transitionType:
-                                          PageTransitionType.topToBottom,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
                                     ),
                                   },
                                 );

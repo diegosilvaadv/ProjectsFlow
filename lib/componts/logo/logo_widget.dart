@@ -1,10 +1,7 @@
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,54 +17,8 @@ class LogoWidget extends StatefulWidget {
   _LogoWidgetState createState() => _LogoWidgetState();
 }
 
-class _LogoWidgetState extends State<LogoWidget> with TickerProviderStateMixin {
+class _LogoWidgetState extends State<LogoWidget> {
   late LogoModel _model;
-
-  final animationsMap = {
-    'rowOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 490.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 820.ms,
-          begin: Offset(0.0, -32.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -156,8 +107,7 @@ class _LogoWidgetState extends State<LogoWidget> with TickerProviderStateMixin {
                     ],
                     gradientDirection: GradientDirection.ltr,
                     gradientType: GradientType.linear,
-                  ).animateOnPageLoad(
-                      animationsMap['textOnPageLoadAnimation1']!),
+                  ),
                   Text(
                     'Venda seu Projeto Aqui!',
                     style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -165,14 +115,13 @@ class _LogoWidgetState extends State<LogoWidget> with TickerProviderStateMixin {
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
                         ),
-                  ).animateOnPageLoad(
-                      animationsMap['textOnPageLoadAnimation2']!),
+                  ),
                 ],
               ),
             ),
           ],
         ),
-      ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
+      ),
     );
   }
 }

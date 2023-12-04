@@ -663,6 +663,10 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                       highlightColor: Colors.transparent,
                       onTap: () async {
                         logFirebaseEvent('SIDE_NAV_COMP_Icon_zly2k334_ON_TAP');
+                        logFirebaseEvent('Icon_update_app_state');
+                        setState(() {
+                          FFAppState().sideNav = 'home';
+                        });
                         logFirebaseEvent('Icon_navigate_to');
 
                         context.pushNamed(
