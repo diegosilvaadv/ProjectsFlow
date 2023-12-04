@@ -163,44 +163,42 @@ class _AppBarWidgetState extends State<AppBarWidget>
                   updateCallback: () => setState(() {}),
                   child: LogoWidget(),
                 ),
-                if (FFAppState().AppBar == 'home')
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      child: Text(
+                        functions.saudacao(),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 21.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                    ),
+                    if (currentUserEmail != '')
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          functions.saudacao(),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 21.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                      if (currentUserEmail != '')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: AuthUserStreamWidget(
-                            builder: (context) => Text(
-                              '${currentUserDisplayName}!'.maybeHandleOverflow(
-                                maxChars: 20,
-                                replacement: '…',
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) => Text(
+                            '${currentUserDisplayName}!'.maybeHandleOverflow(
+                              maxChars: 20,
+                              replacement: '…',
                             ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  fontWeight: FontWeight.w600,
+                                ),
                           ),
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
+                ),
                 if (responsiveVisibility(
                   context: context,
                   tablet: false,
