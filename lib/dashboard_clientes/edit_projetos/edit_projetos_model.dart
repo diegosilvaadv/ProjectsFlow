@@ -68,8 +68,8 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
       return 'Obrigatório';
     }
 
-    if (val.length < 100) {
-      return 'Mínimo de 100 caracteres';
+    if (val.length < 50) {
+      return 'Mínimo de 50 caracteres';
     }
     if (val.length > 500) {
       return 'Descrição com Máximo de 500 caracteres';
