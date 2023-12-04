@@ -726,7 +726,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   context)
                                                               .width *
                                                           0.816,
-                                                      height: 287.0,
+                                                      height: 306.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)
@@ -853,8 +853,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         Container(
                                                                       width:
                                                                           270.0,
-                                                                      height:
-                                                                          191.0,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
@@ -866,6 +864,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           ProdutosWidget(
                                                                         key: Key(
                                                                             'Keygxh_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
+                                                                        detlahes:
+                                                                            listViewProjetosRecord,
                                                                       ),
                                                                     ),
                                                                   ),

@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -13,18 +14,10 @@ export 'produtos_model.dart';
 class ProdutosWidget extends StatefulWidget {
   const ProdutosWidget({
     Key? key,
-    this.parameter1,
-    this.parameter2,
-    this.parameter3,
-    this.parameter4,
-    this.parameter5,
+    this.detlahes,
   }) : super(key: key);
 
-  final String? parameter1;
-  final String? parameter2;
-  final double? parameter3;
-  final String? parameter4;
-  final String? parameter5;
+  final ProjetosRecord? detlahes;
 
   @override
   _ProdutosWidgetState createState() => _ProdutosWidgetState();
@@ -82,7 +75,10 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                       child: CachedNetworkImage(
                         fadeInDuration: Duration(milliseconds: 500),
                         fadeOutDuration: Duration(milliseconds: 500),
-                        imageUrl: widget.parameter1!,
+                        imageUrl: valueOrDefault<String>(
+                          widget.detlahes?.iMGPrincipal,
+                          'img',
+                        ),
                         fit: BoxFit.cover,
                         alignment: Alignment(0.00, 0.00),
                       ),
@@ -91,7 +87,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                 ),
               ),
             ),
-            if (widget.parameter3 != 0.0)
+            if (widget.detlahes?.valor != 0.0)
               Align(
                 alignment: AlignmentDirectional(1.00, -1.00),
                 child: Padding(
@@ -107,7 +103,16 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                       child: Text(
-                        widget.parameter2!,
+                        valueOrDefault<String>(
+                          formatNumber(
+                            widget.detlahes?.valor,
+                            formatType: FormatType.custom,
+                            currency: 'R\$ ',
+                            format: '0.00',
+                            locale: 'pt_BR',
+                          ),
+                          '0',
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 16.0,
@@ -117,7 +122,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                   ),
                 ),
               ),
-            if (widget.parameter3 == 0.0)
+            if (widget.detlahes?.valor == 0.0)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 4.0),
                 child: Card(
@@ -147,17 +152,20 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Text(
-                        widget.parameter4!,
+                        valueOrDefault<String>(
+                          widget.detlahes?.titulo,
+                          'titulo',
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
-                              fontSize: 15.0,
+                              fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                             ),
                       ),
@@ -181,8 +189,40 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                       ),
                     ),
                     Text(
-                      widget.parameter5!,
+                      valueOrDefault<String>(
+                        widget.detlahes?.categoria,
+                        'tag',
+                      ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(6.0, 5.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                      child: Icon(
+                        Icons.person_2,
+                        color: FlutterFlowTheme.of(context).secondary,
+                        size: 24.0,
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        valueOrDefault<String>(
+                          widget.detlahes?.postadoPor,
+                          'autor',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              color: FlutterFlowTheme.of(context).secondary,
+                            ),
+                      ),
                     ),
                   ],
                 ),

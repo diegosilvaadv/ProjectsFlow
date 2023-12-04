@@ -246,6 +246,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.8,
+                              height: MediaQuery.sizeOf(context).height * 0.34,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -320,31 +321,18 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
-                                              child: ProdutosWidget(
-                                                key: Key(
-                                                    'Keyd7s_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
-                                                parameter1:
-                                                    valueOrDefault<String>(
-                                                  gridViewProjetosRecord
-                                                      .iMGPrincipal,
-                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/apppizaaria%201200x800.png',
+                                              child: Hero(
+                                                tag: 'teste',
+                                                transitionOnUserGestures: true,
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  child: ProdutosWidget(
+                                                    key: Key(
+                                                        'Keyd7s_${gridViewIndex}_of_${gridViewProjetosRecordList.length}'),
+                                                    detlahes:
+                                                        gridViewProjetosRecord,
+                                                  ),
                                                 ),
-                                                parameter2: formatNumber(
-                                                  gridViewProjetosRecord.valor,
-                                                  formatType: FormatType.custom,
-                                                  currency: 'R\$ ',
-                                                  format: '0.00',
-                                                  locale: 'pt_BR',
-                                                ),
-                                                parameter3:
-                                                    gridViewProjetosRecord
-                                                        .valor,
-                                                parameter4:
-                                                    gridViewProjetosRecord
-                                                        .titulo,
-                                                parameter5:
-                                                    gridViewProjetosRecord
-                                                        .categoria,
                                               ),
                                             ),
                                           ),
