@@ -166,7 +166,7 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          if (widget.pagos == 1.0)
+                                          if (widget.pagos != 0.0)
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -285,23 +285,16 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                               .where(
                                                 'Valor',
                                                 isNotEqualTo: widget.pagos,
-                                                isNull: (widget.pagos) == null,
                                               )
                                               .where(
                                                 'Valor',
                                                 isEqualTo: widget.gratis,
-                                                isNull: (widget.gratis) == null,
                                               )
                                               .where(
                                                 'Eprojeto',
                                                 isEqualTo:
                                                     widget.eProjeto != null &&
                                                         widget.eProjeto != '',
-                                                isNull:
-                                                    (widget.eProjeto != null &&
-                                                            widget.eProjeto !=
-                                                                '') ==
-                                                        null,
                                               ),
                                     ),
                                     builder: (context, snapshot) {
