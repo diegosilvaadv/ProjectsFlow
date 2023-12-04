@@ -1,7 +1,7 @@
 import '/backend/backend.dart';
-import '/components/produtos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
+import '/componts/produtos/produtos_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -383,6 +383,17 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        offset:
+                                                            Offset(0.0, 2.0),
+                                                      )
+                                                    ],
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),

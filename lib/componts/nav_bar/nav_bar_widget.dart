@@ -1,10 +1,8 @@
-import '/flutter_flow/flutter_flow_animations.dart';
+import '/componts/logo/logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -18,55 +16,8 @@ class NavBarWidget extends StatefulWidget {
   _NavBarWidgetState createState() => _NavBarWidgetState();
 }
 
-class _NavBarWidgetState extends State<NavBarWidget>
-    with TickerProviderStateMixin {
+class _NavBarWidgetState extends State<NavBarWidget> {
   late NavBarModel _model;
-
-  final animationsMap = {
-    'rowOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 490.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 820.ms,
-          begin: Offset(0.0, -32.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 230.ms,
-          duration: 600.ms,
-          begin: Offset(-51.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 180.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -102,59 +53,13 @@ class _NavBarWidgetState extends State<NavBarWidget>
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-              ))
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    logFirebaseEvent('NAV_BAR_COMP_Row_rczfue55_ON_TAP');
-                    logFirebaseEvent('Row_update_app_state');
-                    setState(() {
-                      FFAppState().AppBar = 'home';
-                    });
-                    logFirebaseEvent('Row_navigate_to');
-
-                    context.goNamed(
-                      'HomePage',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 0),
-                        ),
-                      },
-                    );
-                  },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.asset(
-                          'assets/images/ff_logo_small_(1).png',
-                          width: 50.0,
-                          height: 50.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ).animateOnPageLoad(
-                          animationsMap['imageOnPageLoadAnimation']!),
-                      Text(
-                        'Projects Flow',
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Rubik',
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation']!),
-                    ],
-                  ),
-                ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
+              Expanded(
+                child: wrapWithModel(
+                  model: _model.logoModel,
+                  updateCallback: () => setState(() {}),
+                  child: LogoWidget(),
+                ),
+              ),
               Align(
                 alignment: AlignmentDirectional(0.00, -1.00),
                 child: Padding(

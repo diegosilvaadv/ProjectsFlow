@@ -6,6 +6,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -38,18 +39,6 @@ class _LogoWidgetState extends State<LogoWidget> with TickerProviderStateMixin {
           delay: 0.ms,
           duration: 820.ms,
           begin: Offset(0.0, -32.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 230.ms,
-          duration: 600.ms,
-          begin: Offset(-51.0, 0.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -139,15 +128,14 @@ class _LogoWidgetState extends State<LogoWidget> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(0.0),
-              child: Image.asset(
-                'assets/images/ff_logo_small_(1).png',
-                width: 50.0,
-                height: 50.0,
-                fit: BoxFit.cover,
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+              child: FaIcon(
+                FontAwesomeIcons.projectDiagram,
+                color: FlutterFlowTheme.of(context).primary,
+                size: 50.0,
               ),
-            ).animateOnPageLoad(animationsMap['imageOnPageLoadAnimation']!),
+            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
               child: Column(

@@ -36,15 +36,15 @@ int doubleToInteger(double valor) {
 String saudacao() {
   var hour = DateTime.now().hour;
   if (hour < 4) {
-    return 'Boa Madrugada';
+    return 'Boa Madrugada, ';
   }
   if (hour < 12) {
-    return 'Bom dia';
+    return 'Bom dia, ';
   }
   if (hour < 17) {
-    return 'Boa Tarde';
+    return 'Boa Tarde, ';
   }
-  return 'Boa Noite';
+  return 'Boa Noite, ';
 }
 
 String removercaract(String nome) {

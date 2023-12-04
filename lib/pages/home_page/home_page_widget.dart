@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/produtos_widget.dart';
 import '/componts/aceitar_termos/aceitar_termos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/app_bar_cell/app_bar_cell_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
+import '/componts/produtos/produtos_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -644,7 +644,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 thickness: 1.0,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryText,
+                                                        .alternate,
                                               ),
                                             ],
                                           ),
@@ -992,8 +992,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ),
                                     Divider(
                                       thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -1336,8 +1336,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ),
                                     Divider(
                                       thickness: 1.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(

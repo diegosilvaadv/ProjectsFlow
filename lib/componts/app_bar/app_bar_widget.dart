@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/logo_widget.dart';
+import '/componts/logo/logo_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -167,22 +167,26 @@ class _AppBarWidgetState extends State<AppBarWidget>
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(
-                        functions.saudacao(),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 21.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          functions.saudacao(),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 21.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
                       ),
                       if (currentUserEmail != '')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 0.0, 0.0, 0.0),
+                              0.0, 0.0, 10.0, 0.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => Text(
-                              ', ${currentUserDisplayName}!'
-                                  .maybeHandleOverflow(
+                              '${currentUserDisplayName}!'.maybeHandleOverflow(
                                 maxChars: 20,
                                 replacement: '…',
                               ),

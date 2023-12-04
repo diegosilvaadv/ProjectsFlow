@@ -302,17 +302,20 @@ class StatusCartaoCall {
     String? accessToken = '',
     String? idPag = '',
   }) async {
-    final response = await makeCloudCall(
-      _kPrivateApiFunctionName,
-      {
-        'callName': 'StatusCartaoCall',
-        'variables': {
-          'accessToken': accessToken,
-          'idPag': idPag,
-        },
+    return ApiManager.instance.makeApiCall(
+      callName: 'Status Cartao',
+      apiUrl: 'https://api.mercadopago.com/v1/payments/${idPag}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+        'Content-Type': 'application/json',
       },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
     );
-    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static dynamic tokenCard(dynamic response) => getJsonField(
