@@ -119,8 +119,9 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
       return 'Obrigatório';
     }
 
-    if (!RegExp('RegExp(r\'^\\d{1,4}(,\\d{2})?\$\')').hasMatch(val)) {
-      return 'Tem que ser virgula';
+    if (!RegExp('RegExp(\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})?)')
+        .hasMatch(val)) {
+      return 'Tem que ser virgula!!!';
     }
     return null;
   }
