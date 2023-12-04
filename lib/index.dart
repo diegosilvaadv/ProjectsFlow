@@ -35,3 +35,4 @@ export '/pages/detalhes_vendas/detalhes_vendas_widget.dart'
 export '/pages/pesquisa/pesquisa_widget.dart' show PesquisaWidget;
 export '/dashboard_clientes/edit_projetos/edit_projetos_widget.dart'
     show EditProjetosWidget;
+export '/pages/cartao_pag/cartao_pag_widget.dart' show CartaoPagWidget;

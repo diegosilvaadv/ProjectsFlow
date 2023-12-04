@@ -4,7 +4,6 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/comp_pagamentos/pag_cartao/pag_cartao_widget.dart';
 import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
-import '/comp_pagamentos/pag_pix/pag_pix_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -1319,14 +1318,9 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                           .viewInsetsOf(
                                                                               context),
                                                                       child:
-                                                                          PagPixWidget(
-                                                                        detalhesProduto:
+                                                                          PagCartaoWidget(
+                                                                        detalhesProdutos:
                                                                             widget.detalhesProjects!,
-                                                                        idpix: PixMercadoPagoCall
-                                                                            .idPedido(
-                                                                          (_model.gerarPedido?.jsonBody ??
-                                                                              ''),
-                                                                        ),
                                                                       ),
                                                                     ),
                                                                   );
