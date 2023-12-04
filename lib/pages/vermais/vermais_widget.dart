@@ -272,15 +272,13 @@ class _VermaisWidgetState extends State<VermaisWidget> {
                                   0.0, 0.0, 0.0, 150.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.8,
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.37,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 20.0),
+                                      20.0, 0.0, 20.0, 0.0),
                                   child: StreamBuilder<List<ProjetosRecord>>(
                                     stream: queryProjetosRecord(
                                       queryBuilder: (projetosRecord) =>

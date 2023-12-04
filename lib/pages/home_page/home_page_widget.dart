@@ -945,6 +945,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 ParamType
                                                                     .double,
                                                               ),
+                                                              'eProjeto':
+                                                                  serializeParam(
+                                                                false,
+                                                                ParamType.bool,
+                                                              ),
                                                             }.withoutNulls,
                                                             extra: <String,
                                                                 dynamic>{
@@ -1278,6 +1283,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 0.0,
                                                                 ParamType
                                                                     .double,
+                                                              ),
+                                                              'eProjeto':
+                                                                  serializeParam(
+                                                                false,
+                                                                ParamType.bool,
                                                               ),
                                                             }.withoutNulls,
                                                             extra: <String,
