@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'add_projetos_model.dart';
 export 'add_projetos_model.dart';
@@ -1257,6 +1258,10 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                               .precoprojetoControllerValidator
                                                               .asValidator(
                                                                   context),
+                                                          inputFormatters: [
+                                                            _model
+                                                                .precoprojetoMask
+                                                          ],
                                                         ),
                                                       ),
                                                     ),
@@ -2444,10 +2449,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
+                                                      color: Color(0xFF0DD60A),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)

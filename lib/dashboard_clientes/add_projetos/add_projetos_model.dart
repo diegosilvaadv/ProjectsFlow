@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
@@ -113,16 +114,13 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   // State field(s) for precoprojeto widget.
   FocusNode? precoprojetoFocusNode;
   TextEditingController? precoprojetoController;
+  final precoprojetoMask = MaskTextInputFormatter(mask: '\\##,##\\###,##');
   String? Function(BuildContext, String?)? precoprojetoControllerValidator;
   String? _precoprojetoControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Obrigatório';
     }
 
-    if (!RegExp('RegExp(\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})?)')
-        .hasMatch(val)) {
-      return 'Tem que ser virgula!!!';
-    }
     return null;
   }
 
