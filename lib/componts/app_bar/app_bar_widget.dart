@@ -412,9 +412,10 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                                 hoverColor:
-                                    FlutterFlowTheme.of(context).accent1,
+                                    FlutterFlowTheme.of(context).primary,
                                 hoverBorderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).secondary,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   width: 1.0,
                                 ),
                                 hoverTextColor:
@@ -497,10 +498,11 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
-                                hoverColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                hoverColor:
+                                    FlutterFlowTheme.of(context).primary,
                                 hoverBorderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).secondary,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   width: 1.0,
                                 ),
                                 hoverTextColor:
@@ -584,11 +586,11 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
-                                  hoverColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  hoverColor:
+                                      FlutterFlowTheme.of(context).primary,
                                   hoverBorderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     width: 1.0,
                                   ),
                                   hoverTextColor:
@@ -673,11 +675,11 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
-                                  hoverColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  hoverColor:
+                                      FlutterFlowTheme.of(context).primary,
                                   hoverBorderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     width: 1.0,
                                   ),
                                   hoverTextColor:
@@ -734,9 +736,10 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 0.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
-                                hoverColor: Color(0x00F1F4F8),
+                                hoverColor: Color(0x7AE13C27),
                                 hoverBorderSide: BorderSide(
-                                  color: Color(0x00F1F4F8),
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   width: 0.0,
                                 ),
                                 hoverTextColor:
@@ -791,7 +794,8 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                   width: 0.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
-                                hoverColor: Color(0x00F1F4F8),
+                                hoverColor:
+                                    FlutterFlowTheme.of(context).primary,
                                 hoverBorderSide: BorderSide(
                                   color: Color(0x00F1F4F8),
                                   width: 0.0,
