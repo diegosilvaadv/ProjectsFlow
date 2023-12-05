@@ -613,57 +613,68 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Material(
-                                              color: Colors.transparent,
-                                              elevation: 5.0,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              child: Container(
-                                                width: 500.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 4.0,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent1,
-                                                      offset: Offset(0.0, 2.0),
-                                                    )
-                                                  ],
+                                          if (widget.detalhesProjects
+                                                  ?.videoTutorial !=
+                                              '')
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 5.0,
+                                                shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.0),
                                                 ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10.0, 10.0,
-                                                          10.0, 10.0),
-                                                  child: FlutterFlowVideoPlayer(
-                                                    path:
-                                                        'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
-                                                    videoType:
-                                                        VideoType.network,
-                                                    autoPlay: false,
-                                                    looping: true,
-                                                    showControls: true,
-                                                    allowFullScreen: true,
-                                                    allowPlaybackSpeedMenu:
-                                                        false,
+                                                child: Container(
+                                                  width: 500.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        offset:
+                                                            Offset(0.0, 2.0),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10.0,
+                                                                10.0,
+                                                                10.0,
+                                                                10.0),
+                                                    child:
+                                                        FlutterFlowVideoPlayer(
+                                                      path: widget
+                                                          .detalhesProjects!
+                                                          .videoTutorial,
+                                                      videoType:
+                                                          VideoType.network,
+                                                      autoPlay: false,
+                                                      looping: true,
+                                                      showControls: true,
+                                                      allowFullScreen: true,
+                                                      allowPlaybackSpeedMenu:
+                                                          false,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
                                           SizedBox(
                                             height: 280.0,
                                             child: VerticalDivider(

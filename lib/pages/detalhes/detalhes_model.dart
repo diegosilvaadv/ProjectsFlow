@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/criarconta/criarconta_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
+import '/componts/video_view/video_view_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
