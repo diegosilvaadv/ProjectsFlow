@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -609,15 +610,82 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                           0.0, 20.0, 10.0, 10.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Expanded(
-                                            child: MarkdownBody(
-                                              data: valueOrDefault<String>(
-                                                widget.detalhesProjects
-                                                    ?.descricaoCompras,
-                                                'DESCRICAO',
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Material(
+                                              color: Colors.transparent,
+                                              elevation: 5.0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
                                               ),
-                                              selectable: true,
+                                              child: Container(
+                                                width: 500.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10.0, 10.0,
+                                                          10.0, 10.0),
+                                                  child: FlutterFlowVideoPlayer(
+                                                    path:
+                                                        'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
+                                                    videoType:
+                                                        VideoType.network,
+                                                    autoPlay: false,
+                                                    looping: true,
+                                                    showControls: true,
+                                                    allowFullScreen: true,
+                                                    allowPlaybackSpeedMenu:
+                                                        false,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 280.0,
+                                            child: VerticalDivider(
+                                              thickness: 2.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: MarkdownBody(
+                                                data: valueOrDefault<String>(
+                                                  widget.detalhesProjects
+                                                      ?.descricaoCompras,
+                                                  'DESCRICAO',
+                                                ),
+                                                selectable: true,
+                                              ),
                                             ),
                                           ),
                                         ],
