@@ -64,7 +64,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                 child: Container(
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
-                    borderRadius: BorderRadius.circular(12.0),
+                    borderRadius: BorderRadius.circular(14.0),
                   ),
                   alignment: AlignmentDirectional(0.00, 0.00),
                   child: Align(

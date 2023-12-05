@@ -535,1558 +535,1562 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 20.0, 20.0, 20.0),
-                                      child: StreamBuilder<List<UserPagRecord>>(
-                                        stream: queryUserPagRecord(
-                                          queryBuilder: (userPagRecord) =>
-                                              userPagRecord.where(
-                                            'userID',
-                                            isEqualTo: currentUserUid,
-                                          ),
-                                          singleRecord: true,
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child: SpinKitRipple(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 50.0,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<UserPagRecord>
-                                              columnUserPagRecordList =
-                                              snapshot.data!;
-                                          final columnUserPagRecord =
-                                              columnUserPagRecordList.isNotEmpty
-                                                  ? columnUserPagRecordList
-                                                      .first
-                                                  : null;
-                                          return SingleChildScrollView(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          30.0, 0.0, 0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      GradientText(
-                                                        'Cartão de Crédito',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  fontSize:
-                                                                      34.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                        colors: [
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary
-                                                        ],
-                                                        gradientDirection:
-                                                            GradientDirection
-                                                                .ltr,
-                                                        gradientType:
-                                                            GradientType.linear,
-                                                      ),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      30.0, 0.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  GradientText(
+                                                    'Cartão de Crédito',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary,
+                                                          fontSize: 34.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary
                                                     ],
+                                                    gradientDirection:
+                                                        GradientDirection.ltr,
+                                                    gradientType:
+                                                        GradientType.linear,
                                                   ),
-                                                ),
-                                                if (FFAppState()
-                                                        .UsarCartaoSalvo ==
-                                                    '0')
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                20.0,
-                                                                20.0,
-                                                                20.0,
-                                                                20.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Material(
-                                                          color: Colors
-                                                              .transparent,
-                                                          elevation: 10.0,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          child: Container(
-                                                            width: 549.0,
-                                                            decoration:
-                                                                BoxDecoration(
+                                                ],
+                                              ),
+                                            ),
+                                            if (FFAppState().UsarCartaoSalvo ==
+                                                '0')
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 20.0, 20.0, 20.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      elevation: 10.0,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                      ),
+                                                      child: Container(
+                                                        width: 549.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryBackground,
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      4.0,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent1,
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          12.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          20.0,
-                                                                          20.0,
-                                                                          20.0),
-                                                              child: Column(
+                                                                  .accent1,
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      20.0,
+                                                                      20.0,
+                                                                      20.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Text(
-                                                                              'Nome Impresso no Cartão',
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
-                                                                                    fontSize: 16.0,
-                                                                                  ),
-                                                                            ),
-                                                                          ],
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Nome Impresso no Cartão',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 16.0,
+                                                                              ),
                                                                         ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Form(
+                                                                    key: _model
+                                                                        .formKey1,
+                                                                    autovalidateMode:
+                                                                        AutovalidateMode
+                                                                            .disabled,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          8.0,
+                                                                          6.0,
+                                                                          8.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          TextFormField(
+                                                                        controller:
+                                                                            _model.nomeController,
+                                                                        focusNode:
+                                                                            _model.nomeFocusNode,
+                                                                        autofillHints: [
+                                                                          AutofillHints
+                                                                              .name
+                                                                        ],
+                                                                        obscureText:
+                                                                            false,
+                                                                        decoration:
+                                                                            InputDecoration(
+                                                                          labelStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 20.0,
+                                                                              ),
+                                                                          hintText:
+                                                                              'João Silva',
+                                                                          hintStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 20.0,
+                                                                              ),
+                                                                          enabledBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                          focusedBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: FlutterFlowTheme.of(context).secondary,
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                          errorBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: FlutterFlowTheme.of(context).error,
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                          focusedErrorBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: FlutterFlowTheme.of(context).error,
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                          filled:
+                                                                              true,
+                                                                          fillColor:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          prefixIcon:
+                                                                              Icon(
+                                                                            Icons.person_sharp,
+                                                                          ),
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              fontSize: 20.0,
+                                                                            ),
+                                                                        keyboardType:
+                                                                            TextInputType.name,
+                                                                        validator: _model
+                                                                            .nomeControllerValidator
+                                                                            .asValidator(context),
                                                                       ),
-                                                                      Form(
-                                                                        key: _model
-                                                                            .formKey1,
-                                                                        autovalidateMode:
-                                                                            AutovalidateMode.disabled,
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              8.0,
-                                                                              6.0,
-                                                                              8.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              TextFormField(
-                                                                            controller:
-                                                                                _model.nomeController,
-                                                                            focusNode:
-                                                                                _model.nomeFocusNode,
-                                                                            autofillHints: [
-                                                                              AutofillHints.name
-                                                                            ],
-                                                                            obscureText:
-                                                                                false,
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
-                                                                                    fontSize: 20.0,
-                                                                                  ),
-                                                                              hintText: 'João Silva',
-                                                                              hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
-                                                                                    fontSize: 20.0,
-                                                                                  ),
-                                                                              enabledBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                              ),
-                                                                              focusedBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: FlutterFlowTheme.of(context).secondary,
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                              ),
-                                                                              errorBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: FlutterFlowTheme.of(context).error,
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                              ),
-                                                                              focusedErrorBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: FlutterFlowTheme.of(context).error,
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                              ),
-                                                                              filled: true,
-                                                                              fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              prefixIcon: Icon(
-                                                                                Icons.person_sharp,
-                                                                              ),
-                                                                            ),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
-                                                                                  fontSize: 20.0,
-                                                                                ),
-                                                                            keyboardType:
-                                                                                TextInputType.name,
-                                                                            validator:
-                                                                                _model.nomeControllerValidator.asValidator(context),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            15.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Text(
-                                                                                'CPF',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 16.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Form(
-                                                                          key: _model
-                                                                              .formKey5,
-                                                                          autovalidateMode:
-                                                                              AutovalidateMode.disabled,
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                8.0,
-                                                                                6.0,
-                                                                                8.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                TextFormField(
-                                                                              controller: _model.cpfController,
-                                                                              focusNode: _model.cpfFocusNode,
-                                                                              obscureText: false,
-                                                                              decoration: InputDecoration(
-                                                                                labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 20.0,
-                                                                                    ),
-                                                                                hintText: '000.000.000-00',
-                                                                                hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 20.0,
-                                                                                    ),
-                                                                                enabledBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                focusedBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).secondary,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                errorBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).error,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                focusedErrorBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).error,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                filled: true,
-                                                                                fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                prefixIcon: Icon(
-                                                                                  Icons.assignment_ind_rounded,
-                                                                                ),
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
-                                                                                    fontSize: 20.0,
-                                                                                  ),
-                                                                              keyboardType: TextInputType.number,
-                                                                              validator: _model.cpfControllerValidator.asValidator(context),
-                                                                              inputFormatters: [
-                                                                                _model.cpfMask
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            15.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Número do Cartão',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 16.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Form(
-                                                                          key: _model
-                                                                              .formKey10,
-                                                                          autovalidateMode:
-                                                                              AutovalidateMode.disabled,
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                8.0,
-                                                                                6.0,
-                                                                                8.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                TextFormField(
-                                                                              controller: _model.numberCartaoController,
-                                                                              focusNode: _model.numberCartaoFocusNode,
-                                                                              autofillHints: [
-                                                                                AutofillHints.password
-                                                                              ],
-                                                                              obscureText: !_model.numberCartaoVisibility,
-                                                                              decoration: InputDecoration(
-                                                                                labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 20.0,
-                                                                                    ),
-                                                                                hintText: '1234 5678 9876 5432',
-                                                                                hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 20.0,
-                                                                                    ),
-                                                                                enabledBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                focusedBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).secondary,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                errorBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).error,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                focusedErrorBorder: OutlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: FlutterFlowTheme.of(context).error,
-                                                                                    width: 1.0,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                ),
-                                                                                filled: true,
-                                                                                fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                prefixIcon: Icon(
-                                                                                  Icons.credit_card,
-                                                                                ),
-                                                                                suffixIcon: InkWell(
-                                                                                  onTap: () => setState(
-                                                                                    () => _model.numberCartaoVisibility = !_model.numberCartaoVisibility,
-                                                                                  ),
-                                                                                  focusNode: FocusNode(skipTraversal: true),
-                                                                                  child: Icon(
-                                                                                    _model.numberCartaoVisibility ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 20.0,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
-                                                                                    fontSize: 20.0,
-                                                                                  ),
-                                                                              keyboardType: TextInputType.number,
-                                                                              validator: _model.numberCartaoControllerValidator.asValidator(context),
-                                                                              inputFormatters: [
-                                                                                _model.numberCartaoMask
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              4.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Informações do Cartão',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 16.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Expanded(
-                                                                              child: Form(
-                                                                                key: _model.formKey6,
-                                                                                autovalidateMode: AutovalidateMode.disabled,
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
-                                                                                  child: TextFormField(
-                                                                                    controller: _model.mesCardController,
-                                                                                    focusNode: _model.mesCardFocusNode,
-                                                                                    obscureText: false,
-                                                                                    decoration: InputDecoration(
-                                                                                      labelText: 'mês',
-                                                                                      labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      hintText: '12',
-                                                                                      hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      enabledBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondary,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      errorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedErrorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      filled: true,
-                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      prefixIcon: Icon(
-                                                                                        Icons.calendar_month,
-                                                                                      ),
-                                                                                    ),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Readex Pro',
-                                                                                          fontSize: 20.0,
-                                                                                        ),
-                                                                                    keyboardType: TextInputType.number,
-                                                                                    validator: _model.mesCardControllerValidator.asValidator(context),
-                                                                                    inputFormatters: [
-                                                                                      _model.mesCardMask
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Expanded(
-                                                                              child: Form(
-                                                                                key: _model.formKey9,
-                                                                                autovalidateMode: AutovalidateMode.disabled,
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
-                                                                                  child: TextFormField(
-                                                                                    controller: _model.anoCardController,
-                                                                                    focusNode: _model.anoCardFocusNode,
-                                                                                    obscureText: false,
-                                                                                    decoration: InputDecoration(
-                                                                                      labelText: 'ano',
-                                                                                      labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      hintText: '2023',
-                                                                                      hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      enabledBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondary,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      errorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedErrorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      filled: true,
-                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      prefixIcon: Icon(
-                                                                                        Icons.calendar_month,
-                                                                                      ),
-                                                                                    ),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Readex Pro',
-                                                                                          fontSize: 20.0,
-                                                                                        ),
-                                                                                    keyboardType: TextInputType.number,
-                                                                                    validator: _model.anoCardControllerValidator.asValidator(context),
-                                                                                    inputFormatters: [
-                                                                                      _model.anoCardMask
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Expanded(
-                                                                              child: Form(
-                                                                                key: _model.formKey3,
-                                                                                autovalidateMode: AutovalidateMode.disabled,
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
-                                                                                  child: TextFormField(
-                                                                                    controller: _model.cvvCardController,
-                                                                                    focusNode: _model.cvvCardFocusNode,
-                                                                                    autofillHints: [
-                                                                                      AutofillHints.password
-                                                                                    ],
-                                                                                    obscureText: !_model.cvvCardVisibility,
-                                                                                    decoration: InputDecoration(
-                                                                                      labelText: 'cvv',
-                                                                                      labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      hintText: '123',
-                                                                                      hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      enabledBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondary,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      errorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedErrorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      filled: true,
-                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      prefixIcon: Icon(
-                                                                                        Icons.security_sharp,
-                                                                                      ),
-                                                                                      suffixIcon: InkWell(
-                                                                                        onTap: () => setState(
-                                                                                          () => _model.cvvCardVisibility = !_model.cvvCardVisibility,
-                                                                                        ),
-                                                                                        focusNode: FocusNode(skipTraversal: true),
-                                                                                        child: Icon(
-                                                                                          _model.cvvCardVisibility ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                          size: 20.0,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Readex Pro',
-                                                                                          fontSize: 20.0,
-                                                                                        ),
-                                                                                    keyboardType: TextInputType.number,
-                                                                                    validator: _model.cvvCardControllerValidator.asValidator(context),
-                                                                                    inputFormatters: [
-                                                                                      _model.cvvCardMask
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              10.0,
-                                                                              0.0,
-                                                                              4.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Informações de Endereço',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 16.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              10.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Expanded(
-                                                                                child: Form(
-                                                                                  key: _model.formKey4,
-                                                                                  autovalidateMode: AutovalidateMode.disabled,
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
-                                                                                    child: TextFormField(
-                                                                                      controller: _model.cepController,
-                                                                                      focusNode: _model.cepFocusNode,
-                                                                                      obscureText: false,
-                                                                                      decoration: InputDecoration(
-                                                                                        labelText: 'CEP',
-                                                                                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                                                                                        hintText: '01234-567',
-                                                                                        hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                              fontFamily: 'Readex Pro',
-                                                                                              fontSize: 20.0,
-                                                                                            ),
-                                                                                        enabledBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        focusedBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).secondary,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        errorBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).error,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        focusedErrorBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).error,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        filled: true,
-                                                                                        fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                        prefixIcon: Icon(
-                                                                                          Icons.add_home,
-                                                                                        ),
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      keyboardType: TextInputType.number,
-                                                                                      validator: _model.cepControllerValidator.asValidator(context),
-                                                                                      inputFormatters: [
-                                                                                        _model.cepMask
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Expanded(
-                                                                                child: Form(
-                                                                                  key: _model.formKey7,
-                                                                                  autovalidateMode: AutovalidateMode.disabled,
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
-                                                                                    child: TextFormField(
-                                                                                      controller: _model.numeroController,
-                                                                                      focusNode: _model.numeroFocusNode,
-                                                                                      obscureText: false,
-                                                                                      decoration: InputDecoration(
-                                                                                        labelText: 'Número',
-                                                                                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                                                                                        hintText: '0123',
-                                                                                        hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                              fontFamily: 'Readex Pro',
-                                                                                              fontSize: 20.0,
-                                                                                            ),
-                                                                                        enabledBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        focusedBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).secondary,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        errorBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).error,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        focusedErrorBorder: OutlineInputBorder(
-                                                                                          borderSide: BorderSide(
-                                                                                            color: FlutterFlowTheme.of(context).error,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(8.0),
-                                                                                        ),
-                                                                                        filled: true,
-                                                                                        fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                        prefixIcon: Icon(
-                                                                                          Icons.add_home,
-                                                                                        ),
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      keyboardType: TextInputType.number,
-                                                                                      validator: _model.numeroControllerValidator.asValidator(context),
-                                                                                      inputFormatters: [
-                                                                                        _model.numeroMask
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Expanded(
-                                                                              child: Form(
-                                                                                key: _model.formKey2,
-                                                                                autovalidateMode: AutovalidateMode.disabled,
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
-                                                                                  child: TextFormField(
-                                                                                    controller: _model.complementoController,
-                                                                                    focusNode: _model.complementoFocusNode,
-                                                                                    obscureText: false,
-                                                                                    decoration: InputDecoration(
-                                                                                      labelText: 'Complemento',
-                                                                                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                                                                                      hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      enabledBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondary,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      errorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedErrorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      filled: true,
-                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      prefixIcon: Icon(
-                                                                                        Icons.add_home,
-                                                                                      ),
-                                                                                    ),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Readex Pro',
-                                                                                          fontSize: 20.0,
-                                                                                        ),
-                                                                                    keyboardType: TextInputType.number,
-                                                                                    validator: _model.complementoControllerValidator.asValidator(context),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            15.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Número do Celular',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 16.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Expanded(
-                                                                              child: Form(
-                                                                                key: _model.formKey8,
-                                                                                autovalidateMode: AutovalidateMode.disabled,
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
-                                                                                  child: TextFormField(
-                                                                                    controller: _model.celularController,
-                                                                                    focusNode: _model.celularFocusNode,
-                                                                                    obscureText: false,
-                                                                                    decoration: InputDecoration(
-                                                                                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                                                                                      hintText: '(11) 91234-5678',
-                                                                                      hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                            fontFamily: 'Readex Pro',
-                                                                                            fontSize: 20.0,
-                                                                                          ),
-                                                                                      enabledBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).secondary,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      errorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      focusedErrorBorder: OutlineInputBorder(
-                                                                                        borderSide: BorderSide(
-                                                                                          color: FlutterFlowTheme.of(context).error,
-                                                                                          width: 1.0,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                      ),
-                                                                                      filled: true,
-                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      prefixIcon: Icon(
-                                                                                        Icons.add_call,
-                                                                                      ),
-                                                                                    ),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Readex Pro',
-                                                                                          fontSize: 20.0,
-                                                                                        ),
-                                                                                    keyboardType: TextInputType.number,
-                                                                                    validator: _model.celularControllerValidator.asValidator(context),
-                                                                                    inputFormatters: [
-                                                                                      _model.celularMask
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Flexible(
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                  child: Text(
-                                                                                    'Deseja Salvar esse cartão?\n*Não salvamos nenhuma informação do seu cartão no nossos servidores, apenas é salvo nos servidores do Mercado Pago.',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Theme(
-                                                                                data: ThemeData(
-                                                                                  checkboxTheme: CheckboxThemeData(
-                                                                                    visualDensity: VisualDensity.compact,
-                                                                                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                                                                    shape: RoundedRectangleBorder(
-                                                                                      borderRadius: BorderRadius.circular(4.0),
-                                                                                    ),
-                                                                                  ),
-                                                                                  unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
-                                                                                ),
-                                                                                child: Checkbox(
-                                                                                  value: _model.checkboxValue ??= true,
-                                                                                  onChanged: (newValue) async {
-                                                                                    setState(() => _model.checkboxValue = newValue!);
-                                                                                  },
-                                                                                  activeColor: FlutterFlowTheme.of(context).primary,
-                                                                                  checkColor: FlutterFlowTheme.of(context).info,
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                      ],
                                                                     ),
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Text(
+                                                                            'CPF',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 16.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Form(
+                                                                      key: _model
+                                                                          .formKey5,
+                                                                      autovalidateMode:
+                                                                          AutovalidateMode
+                                                                              .disabled,
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            8.0,
+                                                                            6.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            TextFormField(
+                                                                          controller:
+                                                                              _model.cpfController,
+                                                                          focusNode:
+                                                                              _model.cpfFocusNode,
+                                                                          obscureText:
+                                                                              false,
+                                                                          decoration:
+                                                                              InputDecoration(
+                                                                            labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 20.0,
+                                                                                ),
+                                                                            hintText:
+                                                                                '000.000.000-00',
+                                                                            hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 20.0,
+                                                                                ),
+                                                                            enabledBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            focusedBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            errorBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).error,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            focusedErrorBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).error,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            filled:
+                                                                                true,
+                                                                            fillColor:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            prefixIcon:
+                                                                                Icon(
+                                                                              Icons.assignment_ind_rounded,
+                                                                            ),
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 20.0,
+                                                                              ),
+                                                                          keyboardType:
+                                                                              TextInputType.number,
+                                                                          validator: _model
+                                                                              .cpfControllerValidator
+                                                                              .asValidator(context),
+                                                                          inputFormatters: [
+                                                                            _model.cpfMask
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Número do Cartão',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 16.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Form(
+                                                                      key: _model
+                                                                          .formKey10,
+                                                                      autovalidateMode:
+                                                                          AutovalidateMode
+                                                                              .disabled,
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            8.0,
+                                                                            6.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            TextFormField(
+                                                                          controller:
+                                                                              _model.numberCartaoController,
+                                                                          focusNode:
+                                                                              _model.numberCartaoFocusNode,
+                                                                          autofillHints: [
+                                                                            AutofillHints.password
+                                                                          ],
+                                                                          obscureText:
+                                                                              !_model.numberCartaoVisibility,
+                                                                          decoration:
+                                                                              InputDecoration(
+                                                                            labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 20.0,
+                                                                                ),
+                                                                            hintText:
+                                                                                '1234 5678 9876 5432',
+                                                                            hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 20.0,
+                                                                                ),
+                                                                            enabledBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            focusedBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            errorBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).error,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            focusedErrorBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).error,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            filled:
+                                                                                true,
+                                                                            fillColor:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            prefixIcon:
+                                                                                Icon(
+                                                                              Icons.credit_card,
+                                                                            ),
+                                                                            suffixIcon:
+                                                                                InkWell(
+                                                                              onTap: () => setState(
+                                                                                () => _model.numberCartaoVisibility = !_model.numberCartaoVisibility,
+                                                                              ),
+                                                                              focusNode: FocusNode(skipTraversal: true),
+                                                                              child: Icon(
+                                                                                _model.numberCartaoVisibility ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                size: 20.0,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 20.0,
+                                                                              ),
+                                                                          keyboardType:
+                                                                              TextInputType.number,
+                                                                          validator: _model
+                                                                              .numberCartaoControllerValidator
+                                                                              .asValidator(context),
+                                                                          inputFormatters: [
+                                                                            _model.numberCartaoMask
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          4.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Informações do Cartão',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 16.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Expanded(
+                                                                          child:
+                                                                              Form(
+                                                                            key:
+                                                                                _model.formKey6,
+                                                                            autovalidateMode:
+                                                                                AutovalidateMode.disabled,
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
+                                                                              child: TextFormField(
+                                                                                controller: _model.mesCardController,
+                                                                                focusNode: _model.mesCardFocusNode,
+                                                                                obscureText: false,
+                                                                                decoration: InputDecoration(
+                                                                                  labelText: 'mês',
+                                                                                  labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  hintText: '12',
+                                                                                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  enabledBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondary,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  errorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedErrorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  filled: true,
+                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  prefixIcon: Icon(
+                                                                                    Icons.calendar_month,
+                                                                                  ),
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Readex Pro',
+                                                                                      fontSize: 20.0,
+                                                                                    ),
+                                                                                keyboardType: TextInputType.number,
+                                                                                validator: _model.mesCardControllerValidator.asValidator(context),
+                                                                                inputFormatters: [
+                                                                                  _model.mesCardMask
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Expanded(
+                                                                          child:
+                                                                              Form(
+                                                                            key:
+                                                                                _model.formKey9,
+                                                                            autovalidateMode:
+                                                                                AutovalidateMode.disabled,
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
+                                                                              child: TextFormField(
+                                                                                controller: _model.anoCardController,
+                                                                                focusNode: _model.anoCardFocusNode,
+                                                                                obscureText: false,
+                                                                                decoration: InputDecoration(
+                                                                                  labelText: 'ano',
+                                                                                  labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  hintText: '2023',
+                                                                                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  enabledBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondary,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  errorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedErrorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  filled: true,
+                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  prefixIcon: Icon(
+                                                                                    Icons.calendar_month,
+                                                                                  ),
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Readex Pro',
+                                                                                      fontSize: 20.0,
+                                                                                    ),
+                                                                                keyboardType: TextInputType.number,
+                                                                                validator: _model.anoCardControllerValidator.asValidator(context),
+                                                                                inputFormatters: [
+                                                                                  _model.anoCardMask
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Expanded(
+                                                                          child:
+                                                                              Form(
+                                                                            key:
+                                                                                _model.formKey3,
+                                                                            autovalidateMode:
+                                                                                AutovalidateMode.disabled,
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
+                                                                              child: TextFormField(
+                                                                                controller: _model.cvvCardController,
+                                                                                focusNode: _model.cvvCardFocusNode,
+                                                                                autofillHints: [
+                                                                                  AutofillHints.password
+                                                                                ],
+                                                                                obscureText: !_model.cvvCardVisibility,
+                                                                                decoration: InputDecoration(
+                                                                                  labelText: 'cvv',
+                                                                                  labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  hintText: '123',
+                                                                                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  enabledBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondary,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  errorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedErrorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  filled: true,
+                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  prefixIcon: Icon(
+                                                                                    Icons.security_sharp,
+                                                                                  ),
+                                                                                  suffixIcon: InkWell(
+                                                                                    onTap: () => setState(
+                                                                                      () => _model.cvvCardVisibility = !_model.cvvCardVisibility,
+                                                                                    ),
+                                                                                    focusNode: FocusNode(skipTraversal: true),
+                                                                                    child: Icon(
+                                                                                      _model.cvvCardVisibility ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      size: 20.0,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Readex Pro',
+                                                                                      fontSize: 20.0,
+                                                                                    ),
+                                                                                keyboardType: TextInputType.number,
+                                                                                validator: _model.cvvCardControllerValidator.asValidator(context),
+                                                                                inputFormatters: [
+                                                                                  _model.cvvCardMask
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          4.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Informações de Endereço',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 16.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Expanded(
+                                                                            child:
+                                                                                Form(
+                                                                              key: _model.formKey4,
+                                                                              autovalidateMode: AutovalidateMode.disabled,
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
+                                                                                child: TextFormField(
+                                                                                  controller: _model.cepController,
+                                                                                  focusNode: _model.cepFocusNode,
+                                                                                  obscureText: false,
+                                                                                  decoration: InputDecoration(
+                                                                                    labelText: 'CEP',
+                                                                                    labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                                                                                    hintText: '01234-567',
+                                                                                    hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                          fontFamily: 'Readex Pro',
+                                                                                          fontSize: 20.0,
+                                                                                        ),
+                                                                                    enabledBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    focusedBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).secondary,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    errorBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).error,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    focusedErrorBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).error,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    filled: true,
+                                                                                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                    prefixIcon: Icon(
+                                                                                      Icons.add_home,
+                                                                                    ),
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  keyboardType: TextInputType.number,
+                                                                                  validator: _model.cepControllerValidator.asValidator(context),
+                                                                                  inputFormatters: [
+                                                                                    _model.cepMask
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Expanded(
+                                                                            child:
+                                                                                Form(
+                                                                              key: _model.formKey7,
+                                                                              autovalidateMode: AutovalidateMode.disabled,
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
+                                                                                child: TextFormField(
+                                                                                  controller: _model.numeroController,
+                                                                                  focusNode: _model.numeroFocusNode,
+                                                                                  obscureText: false,
+                                                                                  decoration: InputDecoration(
+                                                                                    labelText: 'Número',
+                                                                                    labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                                                                                    hintText: '0123',
+                                                                                    hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                          fontFamily: 'Readex Pro',
+                                                                                          fontSize: 20.0,
+                                                                                        ),
+                                                                                    enabledBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    focusedBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).secondary,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    errorBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).error,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    focusedErrorBorder: OutlineInputBorder(
+                                                                                      borderSide: BorderSide(
+                                                                                        color: FlutterFlowTheme.of(context).error,
+                                                                                        width: 1.0,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                    ),
+                                                                                    filled: true,
+                                                                                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                    prefixIcon: Icon(
+                                                                                      Icons.add_home,
+                                                                                    ),
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  keyboardType: TextInputType.number,
+                                                                                  validator: _model.numeroControllerValidator.asValidator(context),
+                                                                                  inputFormatters: [
+                                                                                    _model.numeroMask
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Expanded(
+                                                                          child:
+                                                                              Form(
+                                                                            key:
+                                                                                _model.formKey2,
+                                                                            autovalidateMode:
+                                                                                AutovalidateMode.disabled,
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
+                                                                              child: TextFormField(
+                                                                                controller: _model.complementoController,
+                                                                                focusNode: _model.complementoFocusNode,
+                                                                                obscureText: false,
+                                                                                decoration: InputDecoration(
+                                                                                  labelText: 'Complemento',
+                                                                                  labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                                                                                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  enabledBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondary,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  errorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedErrorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  filled: true,
+                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  prefixIcon: Icon(
+                                                                                    Icons.add_home,
+                                                                                  ),
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Readex Pro',
+                                                                                      fontSize: 20.0,
+                                                                                    ),
+                                                                                keyboardType: TextInputType.number,
+                                                                                validator: _model.complementoControllerValidator.asValidator(context),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Número do Celular',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  fontSize: 16.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Expanded(
+                                                                          child:
+                                                                              Form(
+                                                                            key:
+                                                                                _model.formKey8,
+                                                                            autovalidateMode:
+                                                                                AutovalidateMode.disabled,
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
+                                                                              child: TextFormField(
+                                                                                controller: _model.celularController,
+                                                                                focusNode: _model.celularFocusNode,
+                                                                                obscureText: false,
+                                                                                decoration: InputDecoration(
+                                                                                  labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                                                                                  hintText: '(11) 91234-5678',
+                                                                                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 20.0,
+                                                                                      ),
+                                                                                  enabledBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).secondary,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  errorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  focusedErrorBorder: OutlineInputBorder(
+                                                                                    borderSide: BorderSide(
+                                                                                      color: FlutterFlowTheme.of(context).error,
+                                                                                      width: 1.0,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(8.0),
+                                                                                  ),
+                                                                                  filled: true,
+                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  prefixIcon: Icon(
+                                                                                    Icons.add_call,
+                                                                                  ),
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Readex Pro',
+                                                                                      fontSize: 20.0,
+                                                                                    ),
+                                                                                keyboardType: TextInputType.number,
+                                                                                validator: _model.celularControllerValidator.asValidator(context),
+                                                                                inputFormatters: [
+                                                                                  _model.celularMask
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Flexible(
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                              child: Text(
+                                                                                'Deseja Salvar esse cartão?\n*Não salvamos nenhuma informação do seu cartão no nossos servidores, apenas é salvo nos servidores do Mercado Pago.',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Theme(
+                                                                            data:
+                                                                                ThemeData(
+                                                                              checkboxTheme: CheckboxThemeData(
+                                                                                visualDensity: VisualDensity.compact,
+                                                                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                                                                shape: RoundedRectangleBorder(
+                                                                                  borderRadius: BorderRadius.circular(4.0),
+                                                                                ),
+                                                                              ),
+                                                                              unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
+                                                                            ),
+                                                                            child:
+                                                                                Checkbox(
+                                                                              value: _model.checkboxValue ??= true,
+                                                                              onChanged: (newValue) async {
+                                                                                setState(() => _model.checkboxValue = newValue!);
+                                                                              },
+                                                                              activeColor: FlutterFlowTheme.of(context).primary,
+                                                                              checkColor: FlutterFlowTheme.of(context).info,
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20.0, 15.0,
-                                                          20.0, 20.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      FFButtonWidget(
-                                                        onPressed: () async {
+                                                  ],
+                                                ),
+                                              ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 15.0, 20.0, 20.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  FFButtonWidget(
+                                                    onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'CARTAO_PAG_REALIZAR_PAGAMENTO_BTN_ON_TAP');
+                                                      var _shouldSetState =
+                                                          false;
+                                                      logFirebaseEvent(
+                                                          'Button_backend_call');
+                                                      _model.resultadoCEP =
+                                                          await BuscarcepCall
+                                                              .call(
+                                                        cep: _model
+                                                            .cepController.text,
+                                                      );
+                                                      _shouldSetState = true;
+                                                      if ((_model.resultadoCEP
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        logFirebaseEvent(
+                                                            'Button_backend_call');
+                                                        _model.resultadoGerarToken =
+                                                            await ApiTokenMpCall
+                                                                .call(
+                                                          cardNumber: functions
+                                                              .removercaract(_model
+                                                                  .numberCartaoController
+                                                                  .text),
+                                                          cardholderName: _model
+                                                              .nomeController
+                                                              .text,
+                                                          cardExpirationMonth:
+                                                              _model
+                                                                  .mesCardController
+                                                                  .text,
+                                                          cardExpirationYear: _model
+                                                              .anoCardController
+                                                              .text,
+                                                          securityCode: _model
+                                                              .cvvCardController
+                                                              .text,
+                                                          identificationType:
+                                                              'CPF',
+                                                          identificationNumber:
+                                                              functions.removercaract(
+                                                                  _model
+                                                                      .cpfController
+                                                                      .text),
+                                                          accessToken:
+                                                              'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                                          publicKey:
+                                                              'APP_USR-cb9f113b-ad18-4959-812e-b75e7561c351',
+                                                          uuid4: functions
+                                                              .gerarUUID4(),
+                                                        );
+                                                        _shouldSetState = true;
+                                                        if ((_model
+                                                                .resultadoGerarToken
+                                                                ?.succeeded ??
+                                                            true)) {
                                                           logFirebaseEvent(
-                                                              'CARTAO_PAG_REALIZAR_PAGAMENTO_BTN_ON_TAP');
-                                                          var _shouldSetState =
-                                                              false;
+                                                              'Button_wait__delay');
+                                                          await Future.delayed(
+                                                              const Duration(
+                                                                  milliseconds:
+                                                                      2000));
                                                           logFirebaseEvent(
                                                               'Button_backend_call');
-                                                          _model.resultadoCEP =
-                                                              await BuscarcepCall
+                                                          _model.resultadoCartaoPag =
+                                                              await CriarPagamentosCartaoMPCall
                                                                   .call(
-                                                            cep: _model
-                                                                .cepController
+                                                            accessToken:
+                                                                'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
+                                                            uuid4: functions
+                                                                .gerarUUID4(),
+                                                            transactionAmount:
+                                                                widget
+                                                                    .detalhesProjects
+                                                                    ?.valor,
+                                                            token:
+                                                                ApiTokenMpCall
+                                                                    .tokenCard(
+                                                              (_model.resultadoGerarToken
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            installments: 1,
+                                                            firstName: _model
+                                                                .nomeController
                                                                 .text,
+                                                            email:
+                                                                currentUserEmail,
+                                                            identificationType:
+                                                                'CPF',
+                                                            identificationNumber:
+                                                                functions.removercaract(
+                                                                    _model
+                                                                        .cpfController
+                                                                        .text),
+                                                            zipCode: functions
+                                                                .removercaract(
+                                                                    _model
+                                                                        .cepController
+                                                                        .text),
+                                                            streetName:
+                                                                BuscarcepCall
+                                                                    .endereco(
+                                                              (_model.resultadoCEP
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            streetNumber: _model
+                                                                .numeroController
+                                                                .text,
+                                                            neighborhood:
+                                                                BuscarcepCall
+                                                                    .bairro(
+                                                              (_model.resultadoCEP
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            federalUnit:
+                                                                BuscarcepCall
+                                                                    .cidade(
+                                                              (_model.resultadoCEP
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            description: widget
+                                                                .detalhesProjects
+                                                                ?.titulo,
                                                           );
                                                           _shouldSetState =
                                                               true;
                                                           if ((_model
-                                                                  .resultadoCEP
+                                                                  .resultadoCartaoPag
                                                                   ?.succeeded ??
                                                               true)) {
                                                             logFirebaseEvent(
+                                                                'Button_wait__delay');
+                                                            await Future.delayed(
+                                                                const Duration(
+                                                                    milliseconds:
+                                                                        2000));
+                                                            logFirebaseEvent(
                                                                 'Button_backend_call');
-                                                            _model.resultadoGerarToken =
-                                                                await ApiTokenMpCall
+                                                            _model.resultadoStatus =
+                                                                await StatusCartaoCall
                                                                     .call(
-                                                              cardNumber: functions
-                                                                  .removercaract(
-                                                                      _model
-                                                                          .numberCartaoController
-                                                                          .text),
-                                                              cardholderName: _model
-                                                                  .nomeController
-                                                                  .text,
-                                                              cardExpirationMonth:
-                                                                  _model
-                                                                      .mesCardController
-                                                                      .text,
-                                                              cardExpirationYear:
-                                                                  _model
-                                                                      .anoCardController
-                                                                      .text,
-                                                              securityCode: _model
-                                                                  .cvvCardController
-                                                                  .text,
-                                                              identificationType:
-                                                                  'CPF',
-                                                              identificationNumber:
-                                                                  functions.removercaract(
-                                                                      _model
-                                                                          .cpfController
-                                                                          .text),
                                                               accessToken:
                                                                   'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                                              publicKey:
-                                                                  'APP_USR-cb9f113b-ad18-4959-812e-b75e7561c351',
-                                                              uuid4: functions
-                                                                  .gerarUUID4(),
+                                                              idPag: CriarPagamentosCartaoMPCall
+                                                                  .transacionID(
+                                                                (_model.resultadoCartaoPag
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ).toString(),
                                                             );
                                                             _shouldSetState =
                                                                 true;
                                                             if ((_model
-                                                                    .resultadoGerarToken
+                                                                    .resultadoStatus
                                                                     ?.succeeded ??
                                                                 true)) {
                                                               logFirebaseEvent(
-                                                                  'Button_wait__delay');
-                                                              await Future.delayed(
-                                                                  const Duration(
-                                                                      milliseconds:
-                                                                          2000));
-                                                              logFirebaseEvent(
-                                                                  'Button_backend_call');
-                                                              _model.resultadoCartaoPag =
-                                                                  await CriarPagamentosCartaoMPCall
-                                                                      .call(
-                                                                accessToken:
-                                                                    'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                                                uuid4: functions
-                                                                    .gerarUUID4(),
-                                                                transactionAmount:
-                                                                    widget
-                                                                        .detalhesProjects
-                                                                        ?.valor,
-                                                                token: ApiTokenMpCall
-                                                                    .tokenCard(
-                                                                  (_model.resultadoGerarToken
+                                                                  'Button_update_app_state');
+                                                              setState(() {
+                                                                FFAppState()
+                                                                        .statusCartaodeCredito =
+                                                                    StatusCartaoCall
+                                                                        .statusPag(
+                                                                  (_model.resultadoStatus
                                                                           ?.jsonBody ??
                                                                       ''),
-                                                                ).toString(),
-                                                                installments: 1,
-                                                                firstName: _model
-                                                                    .nomeController
-                                                                    .text,
-                                                                email:
-                                                                    currentUserEmail,
-                                                                identificationType:
-                                                                    'CPF',
-                                                                identificationNumber:
-                                                                    functions.removercaract(_model
-                                                                        .cpfController
-                                                                        .text),
-                                                                zipCode: functions
-                                                                    .removercaract(_model
-                                                                        .cepController
-                                                                        .text),
-                                                                streetName:
-                                                                    BuscarcepCall
-                                                                        .endereco(
-                                                                  (_model.resultadoCEP
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ).toString(),
-                                                                streetNumber: _model
-                                                                    .numeroController
-                                                                    .text,
-                                                                neighborhood:
-                                                                    BuscarcepCall
-                                                                        .bairro(
-                                                                  (_model.resultadoCEP
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ).toString(),
-                                                                federalUnit:
-                                                                    BuscarcepCall
-                                                                        .cidade(
-                                                                  (_model.resultadoCEP
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ).toString(),
-                                                                description: widget
-                                                                    .detalhesProjects
-                                                                    ?.titulo,
-                                                              );
-                                                              _shouldSetState =
-                                                                  true;
-                                                              if ((_model
-                                                                      .resultadoCartaoPag
-                                                                      ?.succeeded ??
-                                                                  true)) {
+                                                                ).toString();
+                                                              });
+                                                              if (FFAppState()
+                                                                      .statusCartaodeCredito ==
+                                                                  'Approved') {
                                                                 logFirebaseEvent(
-                                                                    'Button_wait__delay');
-                                                                await Future.delayed(
-                                                                    const Duration(
-                                                                        milliseconds:
-                                                                            2000));
-                                                                logFirebaseEvent(
-                                                                    'Button_backend_call');
-                                                                _model.resultadoStatus =
-                                                                    await StatusCartaoCall
-                                                                        .call(
-                                                                  accessToken:
-                                                                      'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                                                  idPag: CriarPagamentosCartaoMPCall
-                                                                      .transacionID(
-                                                                    (_model.resultadoCartaoPag
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                  ).toString(),
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
-                                                                if ((_model
-                                                                        .resultadoStatus
-                                                                        ?.succeeded ??
-                                                                    true)) {
-                                                                  logFirebaseEvent(
-                                                                      'Button_update_app_state');
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .statusCartaodeCredito =
-                                                                        StatusCartaoCall
-                                                                            .statusPag(
-                                                                      (_model.resultadoStatus
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                    ).toString();
-                                                                  });
-                                                                  if (FFAppState()
-                                                                          .statusCartaodeCredito ==
-                                                                      'Approved') {
-                                                                    logFirebaseEvent(
-                                                                        'Button_bottom_sheet');
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                PagComSucessWidget(
-                                                                              detalhesProdutos: widget.detalhesProjects,
-                                                                              cartaoFinal: ApiTokenMpCall.ultimos4dig(
-                                                                                (_model.resultadoGerarToken?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                              transacionID: CriarPagamentosCartaoMPCall.transacionID(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else if (FFAppState()
-                                                                          .PagRed
-                                                                          .status ==
-                                                                      'inprocess') {
-                                                                    logFirebaseEvent(
-                                                                        'Button_bottom_sheet');
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Color(
-                                                                              0x81000000),
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                CartaoProcessWidget(
-                                                                              detalhesProdutos: widget.detalhesProjects,
-                                                                              cartaoFinal: CriarPagamentosCartaoMPCall.ultimos4Dig(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                              transacionID: CriarPagamentosCartaoMPCall.transacionID(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else if (FFAppState()
-                                                                          .PagRed
-                                                                          .status ==
-                                                                      'pending') {
-                                                                    logFirebaseEvent(
-                                                                        'Button_bottom_sheet');
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Color(
-                                                                              0x81000000),
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                CartaoProcessWidget(
-                                                                              detalhesProdutos: widget.detalhesProjects,
-                                                                              cartaoFinal: CriarPagamentosCartaoMPCall.ultimos4Dig(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                              transacionID: CriarPagamentosCartaoMPCall.transacionID(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else {
-                                                                    logFirebaseEvent(
-                                                                        'Button_alert_dialog');
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return AlertDialog(
-                                                                          title:
-                                                                              Text('Cartão Recusado!'),
-                                                                          content:
-                                                                              Text(StatusCartaoCall.statusPag(
-                                                                            (_model.resultadoStatus?.jsonBody ??
+                                                                    'Button_bottom_sheet');
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            PagComSucessWidget(
+                                                                          detalhesProdutos:
+                                                                              widget.detalhesProjects,
+                                                                          cartaoFinal:
+                                                                              ApiTokenMpCall.ultimos4dig(
+                                                                            (_model.resultadoGerarToken?.jsonBody ??
                                                                                 ''),
-                                                                          ).toString()),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext),
-                                                                              child: Text('Ok'),
-                                                                            ),
-                                                                          ],
-                                                                        );
-                                                                      },
+                                                                          ).toString(),
+                                                                          transacionID:
+                                                                              CriarPagamentosCartaoMPCall.transacionID(
+                                                                            (_model.resultadoCartaoPag?.jsonBody ??
+                                                                                ''),
+                                                                          ).toString(),
+                                                                        ),
+                                                                      ),
                                                                     );
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  }
-                                                                } else {
-                                                                  logFirebaseEvent(
-                                                                      'Button_alert_dialog');
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Cartão Recusado!'),
-                                                                        content:
-                                                                            Text(StatusCartaoCall.statusPag(
-                                                                          (_model.resultadoStatus?.jsonBody ??
-                                                                              ''),
-                                                                        ).toString()),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
-                                                                  if (_shouldSetState)
-                                                                    setState(
-                                                                        () {});
-                                                                  return;
-                                                                }
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              } else if (FFAppState()
+                                                                      .PagRed
+                                                                      .status ==
+                                                                  'inprocess') {
+                                                                logFirebaseEvent(
+                                                                    'Button_bottom_sheet');
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Color(
+                                                                          0x81000000),
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            CartaoProcessWidget(
+                                                                          detalhesProdutos:
+                                                                              widget.detalhesProjects,
+                                                                          cartaoFinal:
+                                                                              CriarPagamentosCartaoMPCall.ultimos4Dig(
+                                                                            (_model.resultadoCartaoPag?.jsonBody ??
+                                                                                ''),
+                                                                          ).toString(),
+                                                                          transacionID:
+                                                                              CriarPagamentosCartaoMPCall.transacionID(
+                                                                            (_model.resultadoCartaoPag?.jsonBody ??
+                                                                                ''),
+                                                                          ).toString(),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              } else if (FFAppState()
+                                                                      .PagRed
+                                                                      .status ==
+                                                                  'pending') {
+                                                                logFirebaseEvent(
+                                                                    'Button_bottom_sheet');
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Color(
+                                                                          0x81000000),
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            CartaoProcessWidget(
+                                                                          detalhesProdutos:
+                                                                              widget.detalhesProjects,
+                                                                          cartaoFinal:
+                                                                              CriarPagamentosCartaoMPCall.ultimos4Dig(
+                                                                            (_model.resultadoCartaoPag?.jsonBody ??
+                                                                                ''),
+                                                                          ).toString(),
+                                                                          transacionID:
+                                                                              CriarPagamentosCartaoMPCall.transacionID(
+                                                                            (_model.resultadoCartaoPag?.jsonBody ??
+                                                                                ''),
+                                                                          ).toString(),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
                                                               } else {
                                                                 logFirebaseEvent(
                                                                     'Button_alert_dialog');
@@ -2097,11 +2101,11 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                       (alertDialogContext) {
                                                                     return AlertDialog(
                                                                       title: Text(
-                                                                          'Erro ao processar pagamento!'),
+                                                                          'Cartão Recusado!'),
                                                                       content: Text(
-                                                                          CriarPagamentosCartaoMPCall
-                                                                              .erroM(
-                                                                        (_model.resultadoCartaoPag?.jsonBody ??
+                                                                          StatusCartaoCall
+                                                                              .statusPag(
+                                                                        (_model.resultadoStatus?.jsonBody ??
                                                                             ''),
                                                                       ).toString()),
                                                                       actions: [
@@ -2130,11 +2134,11 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        'Erro ao validar cartão!'),
+                                                                        'Cartão Recusado!'),
                                                                     content: Text(
-                                                                        ApiTokenMpCall
-                                                                            .erroMToken(
-                                                                      (_model.resultadoGerarToken
+                                                                        StatusCartaoCall
+                                                                            .statusPag(
+                                                                      (_model.resultadoStatus
                                                                               ?.jsonBody ??
                                                                           ''),
                                                                     ).toString()),
@@ -2163,9 +2167,14 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                   (alertDialogContext) {
                                                                 return AlertDialog(
                                                                   title: Text(
-                                                                      'Cep Inválido!'),
+                                                                      'Erro ao processar pagamento!'),
                                                                   content: Text(
-                                                                      'Preencha um cep Válido!'),
+                                                                      CriarPagamentosCartaoMPCall
+                                                                          .erroM(
+                                                                    (_model.resultadoCartaoPag
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                  ).toString()),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed:
@@ -2182,77 +2191,133 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                               setState(() {});
                                                             return;
                                                           }
-
+                                                        } else {
+                                                          logFirebaseEvent(
+                                                              'Button_alert_dialog');
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Erro ao validar cartão!'),
+                                                                content: Text(
+                                                                    ApiTokenMpCall
+                                                                        .erroMToken(
+                                                                  (_model.resultadoGerarToken
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                ).toString()),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                           if (_shouldSetState)
                                                             setState(() {});
-                                                        },
-                                                        text:
-                                                            'Realizar Pagamento',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          height: 50.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      24.0,
-                                                                      0.0,
-                                                                      24.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                          return;
+                                                        }
+                                                      } else {
+                                                        logFirebaseEvent(
+                                                            'Button_alert_dialog');
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Cep Inválido!'),
+                                                              content: Text(
+                                                                  'Preencha um cep Válido!'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      }
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                    },
+                                                    text: 'Realizar Pagamento',
+                                                    options: FFButtonOptions(
+                                                      height: 50.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  24.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primary,
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        20.0,
-                                                                  ),
-                                                          elevation: 10.0,
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          hoverColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .accent1,
-                                                          hoverBorderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
-                                                            width: 1.0,
-                                                          ),
-                                                          hoverTextColor:
-                                                              Colors.white,
-                                                        ),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 20.0,
+                                                              ),
+                                                      elevation: 10.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
                                                       ),
-                                                    ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      hoverColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      hoverBorderSide:
+                                                          BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        width: 1.0,
+                                                      ),
+                                                      hoverTextColor:
+                                                          Colors.white,
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          );
-                                        },
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

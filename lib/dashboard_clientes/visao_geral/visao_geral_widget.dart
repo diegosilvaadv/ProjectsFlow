@@ -124,42 +124,25 @@ class _VisaoGeralWidgetState extends State<VisaoGeralWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Container(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  2.0, 2.0, 2.0, 2.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 500),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 500),
-                                                imageUrl:
-                                                    valueOrDefault<String>(
-                                                  currentUserPhoto,
-                                                  'https://cdn-icons-png.flaticon.com/512/6596/6596121.png',
-                                                ),
-                                                width: 44.0,
-                                                height: 44.0,
-                                                fit: BoxFit.cover,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            2.0, 2.0, 2.0, 2.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 500),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 500),
+                                              imageUrl: valueOrDefault<String>(
+                                                currentUserPhoto,
+                                                'https://cdn-icons-png.flaticon.com/512/6596/6596121.png',
                                               ),
+                                              width: 44.0,
+                                              height: 44.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),

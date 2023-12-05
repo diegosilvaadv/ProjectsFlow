@@ -350,20 +350,9 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryBackground,
-                                                                    boxShadow: [
-                                                                      BoxShadow(
-                                                                        blurRadius:
-                                                                            4.0,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .accent1,
-                                                                        offset: Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                      )
-                                                                    ],
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            12.0),
+                                                                            13.0),
                                                                   ),
                                                                   child:
                                                                       Padding(
@@ -466,20 +455,9 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryBackground,
-                                                                    boxShadow: [
-                                                                      BoxShadow(
-                                                                        blurRadius:
-                                                                            4.0,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .accent1,
-                                                                        offset: Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                      )
-                                                                    ],
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            12.0),
+                                                                            13.0),
                                                                   ),
                                                                   child:
                                                                       Padding(
@@ -582,20 +560,9 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryBackground,
-                                                                    boxShadow: [
-                                                                      BoxShadow(
-                                                                        blurRadius:
-                                                                            4.0,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .accent1,
-                                                                        offset: Offset(
-                                                                            0.0,
-                                                                            2.0),
-                                                                      )
-                                                                    ],
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            12.0),
+                                                                            13.0),
                                                                   ),
                                                                   child:
                                                                       Padding(
