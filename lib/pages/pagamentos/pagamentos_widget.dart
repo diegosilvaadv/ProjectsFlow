@@ -1372,7 +1372,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                   .round(),
                                                               currency: 'BRL',
                                                               customerEmail:
-                                                                  currentUserUid,
+                                                                  currentUserEmail,
                                                               customerName:
                                                                   currentUserDisplayName,
                                                               description: widget
