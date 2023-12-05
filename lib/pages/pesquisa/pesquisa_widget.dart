@@ -122,219 +122,187 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
-                                                  child: StreamBuilder<
-                                                      List<ProjetosRecord>>(
-                                                    stream:
-                                                        queryProjetosRecord(),
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      // Customize what your widget looks like when it's loading.
-                                                      if (!snapshot.hasData) {
-                                                        return Center(
-                                                          child: SizedBox(
-                                                            width: 50.0,
-                                                            height: 50.0,
-                                                            child:
-                                                                SpinKitRipple(
+                                                  child: Autocomplete<String>(
+                                                    initialValue:
+                                                        TextEditingValue(
+                                                            text: widget
+                                                                .pesquisar!),
+                                                    optionsBuilder:
+                                                        (textEditingValue) {
+                                                      if (textEditingValue
+                                                              .text ==
+                                                          '') {
+                                                        return const Iterable<
+                                                            String>.empty();
+                                                      }
+                                                      return _model
+                                                          .algoliaSearchResults!
+                                                          .map((e) => e.titulo)
+                                                          .toList()
+                                                          .where((option) {
+                                                        final lowercaseOption =
+                                                            option
+                                                                .toLowerCase();
+                                                        return lowercaseOption
+                                                            .contains(
+                                                                textEditingValue
+                                                                    .text
+                                                                    .toLowerCase());
+                                                      });
+                                                    },
+                                                    optionsViewBuilder:
+                                                        (context, onSelected,
+                                                            options) {
+                                                      return AutocompleteOptionsList(
+                                                        textFieldKey:
+                                                            _model.textFieldKey,
+                                                        textController: _model
+                                                            .textController!,
+                                                        options:
+                                                            options.toList(),
+                                                        onSelected: onSelected,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                        textHighlightStyle:
+                                                            TextStyle(),
+                                                        elevation: 4.0,
+                                                        optionBackgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBackground,
+                                                        optionHighlightColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryBackground,
+                                                        maxHeight: 200.0,
+                                                      );
+                                                    },
+                                                    onSelected:
+                                                        (String selection) {
+                                                      setState(() => _model
+                                                              .textFieldSelectedOption =
+                                                          selection);
+                                                      FocusScope.of(context)
+                                                          .unfocus();
+                                                    },
+                                                    fieldViewBuilder: (
+                                                      context,
+                                                      textEditingController,
+                                                      focusNode,
+                                                      onEditingComplete,
+                                                    ) {
+                                                      _model.textFieldFocusNode =
+                                                          focusNode;
+
+                                                      _model.textController =
+                                                          textEditingController;
+                                                      return TextFormField(
+                                                        key:
+                                                            _model.textFieldKey,
+                                                        controller:
+                                                            textEditingController,
+                                                        focusNode: focusNode,
+                                                        onEditingComplete:
+                                                            onEditingComplete,
+                                                        autofocus: true,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              'Buscar por Projetos',
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        20.0,
+                                                                  ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium,
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondaryText,
-                                                              size: 50.0,
+                                                                  .secondary,
+                                                              width: 2.0,
                                                             ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                        );
-                                                      }
-                                                      List<ProjetosRecord>
-                                                          textFieldProjetosRecordList =
-                                                          snapshot.data!;
-                                                      return Autocomplete<
-                                                          String>(
-                                                        initialValue:
-                                                            TextEditingValue(
-                                                                text: widget
-                                                                    .pesquisar!),
-                                                        optionsBuilder:
-                                                            (textEditingValue) {
-                                                          if (textEditingValue
-                                                                  .text ==
-                                                              '') {
-                                                            return const Iterable<
-                                                                String>.empty();
-                                                          }
-                                                          return textFieldProjetosRecordList
-                                                              .map((e) =>
-                                                                  e.titulo)
-                                                              .toList()
-                                                              .where((option) {
-                                                            final lowercaseOption =
-                                                                option
-                                                                    .toLowerCase();
-                                                            return lowercaseOption
-                                                                .contains(
-                                                                    textEditingValue
-                                                                        .text
-                                                                        .toLowerCase());
-                                                          });
-                                                        },
-                                                        optionsViewBuilder:
-                                                            (context,
-                                                                onSelected,
-                                                                options) {
-                                                          return AutocompleteOptionsList(
-                                                            textFieldKey: _model
-                                                                .textFieldKey,
-                                                            textController: _model
-                                                                .textController!,
-                                                            options: options
-                                                                .toList(),
-                                                            onSelected:
-                                                                onSelected,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium,
-                                                            textHighlightStyle:
-                                                                TextStyle(),
-                                                            elevation: 4.0,
-                                                            optionBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBackground,
-                                                            optionHighlightColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                            maxHeight: 200.0,
-                                                          );
-                                                        },
-                                                        onSelected:
-                                                            (String selection) {
-                                                          setState(() => _model
-                                                                  .textFieldSelectedOption =
-                                                              selection);
-                                                          FocusScope.of(context)
-                                                              .unfocus();
-                                                        },
-                                                        fieldViewBuilder: (
-                                                          context,
-                                                          textEditingController,
-                                                          focusNode,
-                                                          onEditingComplete,
-                                                        ) {
-                                                          _model.textFieldFocusNode =
-                                                              focusNode;
-
-                                                          _model.textController =
-                                                              textEditingController;
-                                                          return TextFormField(
-                                                            key: _model
-                                                                .textFieldKey,
-                                                            controller:
-                                                                textEditingController,
-                                                            focusNode:
-                                                                focusNode,
-                                                            onEditingComplete:
-                                                                onEditingComplete,
-                                                            autofocus: true,
-                                                            obscureText: false,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              labelText:
-                                                                  'Buscar por Projetos',
-                                                              labelStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        fontSize:
-                                                                            20.0,
-                                                                      ),
-                                                              hintStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium,
-                                                              enabledBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              focusedBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              errorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              focusedErrorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              filled: true,
-                                                              fillColor: FlutterFlowTheme
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryBackground,
+                                                                  .primary,
+                                                              width: 2.0,
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      20.0,
-                                                                ),
-                                                            cursorColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                            validator: _model
-                                                                .textControllerValidator
-                                                                .asValidator(
-                                                                    context),
-                                                          );
-                                                        },
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              fontSize: 20.0,
+                                                            ),
+                                                        cursorColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        validator: _model
+                                                            .textControllerValidator
+                                                            .asValidator(
+                                                                context),
                                                       );
                                                     },
                                                   ),
@@ -576,10 +544,15 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                           queryBuilder: (projetosRecord) =>
                                               projetosRecord.where(
                                             'Titulo',
-                                            isEqualTo:
-                                                _model.textController.text != ''
-                                                    ? _model.textController.text
-                                                    : null,
+                                            isEqualTo: _model
+                                                        .algoliaSearchResults
+                                                        ?.length
+                                                        ?.toString() !=
+                                                    ''
+                                                ? _model.algoliaSearchResults
+                                                    ?.length
+                                                    ?.toString()
+                                                : null,
                                           ),
                                         ),
                                         builder: (context, snapshot) {
