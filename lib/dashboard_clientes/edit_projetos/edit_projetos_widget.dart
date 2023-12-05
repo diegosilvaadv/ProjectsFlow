@@ -3380,10 +3380,10 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                           'EDIT_PROJETOS_ATUALIZAR_PROJETO_BTN_ON_T');
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey8
+                                                      if (_model.formKey10
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey8
+                                                          !_model.formKey10
                                                               .currentState!
                                                               .validate()) {
                                                         return;
@@ -3535,7 +3535,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                         eprojeto: _model
                                                             .checkboxValue,
                                                         descriVenda: _model
-                                                            .descriVendaController
+                                                            .descriCompraController
                                                             .text,
                                                         videoDemo: _model
                                                             .videoDemoController
