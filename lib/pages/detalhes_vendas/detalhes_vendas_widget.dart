@@ -639,7 +639,7 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                             12.0),
                                                   ),
                                                   child: Container(
-                                                    width: 500.0,
+                                                    width: 901.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -684,6 +684,17 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                   ),
                                                 ),
                                               ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 20.0, 10.0, 10.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
                                             SizedBox(
                                               height: 280.0,
                                               child: VerticalDivider(
