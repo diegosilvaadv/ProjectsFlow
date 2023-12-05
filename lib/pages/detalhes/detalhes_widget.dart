@@ -105,6 +105,13 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4.0,
+                                    color: FlutterFlowTheme.of(context).accent1,
+                                    offset: Offset(0.0, 2.0),
+                                  )
+                                ],
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: SingleChildScrollView(
@@ -311,8 +318,8 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                 .circular(12.0),
                                                       ),
                                                       child: Container(
-                                                        width: 409.0,
-                                                        height: 202.0,
+                                                        width: 515.0,
+                                                        height: 250.0,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
@@ -436,7 +443,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                             height:
                                                                                 200.0,
                                                                             fit:
-                                                                                BoxFit.contain,
+                                                                                BoxFit.cover,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -511,14 +518,14 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                                 FlutterFlowExpandedImageView(
                                                                               image: Image.network(
                                                                                 valueOrDefault<String>(
-                                                                                  widget.detalhesProjects?.iMGPrincipal,
+                                                                                  widget.detalhesProjects?.img2,
                                                                                   'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                                 ),
                                                                                 fit: BoxFit.contain,
                                                                               ),
                                                                               allowRotation: false,
                                                                               tag: valueOrDefault<String>(
-                                                                                widget.detalhesProjects?.iMGPrincipal,
+                                                                                widget.detalhesProjects?.img2,
                                                                                 'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                               ),
                                                                               useHeroAnimation: true,
@@ -532,7 +539,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                             String>(
                                                                           widget
                                                                               .detalhesProjects
-                                                                              ?.iMGPrincipal,
+                                                                              ?.img2,
                                                                           'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                         ),
                                                                         transitionOnUserGestures:
@@ -544,7 +551,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                           child:
                                                                               Image.network(
                                                                             valueOrDefault<String>(
-                                                                              widget.detalhesProjects?.iMGPrincipal,
+                                                                              widget.detalhesProjects?.img2,
                                                                               'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                             ),
                                                                             width:
@@ -552,7 +559,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                             height:
                                                                                 200.0,
                                                                             fit:
-                                                                                BoxFit.contain,
+                                                                                BoxFit.cover,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -627,14 +634,14 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                                 FlutterFlowExpandedImageView(
                                                                               image: Image.network(
                                                                                 valueOrDefault<String>(
-                                                                                  widget.detalhesProjects?.iMGPrincipal,
+                                                                                  widget.detalhesProjects?.img3,
                                                                                   'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                                 ),
                                                                                 fit: BoxFit.contain,
                                                                               ),
                                                                               allowRotation: false,
                                                                               tag: valueOrDefault<String>(
-                                                                                widget.detalhesProjects?.iMGPrincipal,
+                                                                                widget.detalhesProjects?.img3,
                                                                                 'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                               ),
                                                                               useHeroAnimation: true,
@@ -648,7 +655,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                             String>(
                                                                           widget
                                                                               .detalhesProjects
-                                                                              ?.iMGPrincipal,
+                                                                              ?.img3,
                                                                           'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                         ),
                                                                         transitionOnUserGestures:
@@ -660,7 +667,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                           child:
                                                                               Image.network(
                                                                             valueOrDefault<String>(
-                                                                              widget.detalhesProjects?.iMGPrincipal,
+                                                                              widget.detalhesProjects?.img3,
                                                                               'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                                             ),
                                                                             width:
@@ -668,7 +675,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                             height:
                                                                                 200.0,
                                                                             fit:
-                                                                                BoxFit.contain,
+                                                                                BoxFit.cover,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -699,12 +706,12 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                               autoPlayAnimationDuration:
                                                                   Duration(
                                                                       milliseconds:
-                                                                          400),
+                                                                          700),
                                                               autoPlayInterval:
                                                                   Duration(
                                                                       milliseconds:
-                                                                          (400 +
-                                                                              2000)),
+                                                                          (700 +
+                                                                              3000)),
                                                               autoPlayCurve:
                                                                   Curves.linear,
                                                               pauseAutoPlayInFiniteScroll:

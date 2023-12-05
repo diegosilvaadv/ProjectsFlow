@@ -146,6 +146,13 @@ class _AppBarWidgetState extends State<AppBarWidget>
         height: MediaQuery.sizeOf(context).height * 0.111,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 4.0,
+              color: FlutterFlowTheme.of(context).accent1,
+              offset: Offset(0.0, 2.0),
+            )
+          ],
           border: Border.all(
             color: Color(0x004B39EF),
           ),
