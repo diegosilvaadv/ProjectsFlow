@@ -18,6 +18,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'pagamentos_model.dart';
 export 'pagamentos_model.dart';
 
@@ -377,7 +378,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                               FontWeight.bold,
                                                         ),
                                                   ),
-                                                  Text(
+                                                  GradientText(
                                                     formatNumber(
                                                       widget.detalhesProjects!
                                                           .valor,
@@ -399,6 +400,18 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary
+                                                    ],
+                                                    gradientDirection:
+                                                        GradientDirection.ltr,
+                                                    gradientType:
+                                                        GradientType.linear,
                                                   ),
                                                 ],
                                               ),
