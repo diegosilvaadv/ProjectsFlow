@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/markdown_link/markdown_link_widget.dart';
-import '/componts/view_i_m_g/view_i_m_g_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -68,6 +67,10 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
     ));
     _model.requisitosFocusNode ??= FocusNode();
 
+    _model.videoDemoController ??=
+        TextEditingController(text: widget.detalhesEdit?.videoDemo);
+    _model.videoDemoFocusNode ??= FocusNode();
+
     _model.linkProjetoController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.detalhesEdit?.linkProjeto,
@@ -88,6 +91,10 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
       'descV',
     ));
     _model.descriCompraFocusNode ??= FocusNode();
+
+    _model.videoTutorialController ??=
+        TextEditingController(text: widget.detalhesEdit?.videoTutorial);
+    _model.videoTutorialFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -365,7 +372,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                             children: [
                                                               Form(
                                                                 key: _model
-                                                                    .formKey7,
+                                                                    .formKey8,
                                                                 autovalidateMode:
                                                                     AutovalidateMode
                                                                         .always,
@@ -437,7 +444,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                'Imagem do Projeto',
+                                                                'Imagem Principal',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -452,77 +459,504 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                     ),
                                                               ),
                                                             ),
-                                                            if (_model
-                                                                    .uploadedFileUrl1 !=
-                                                                '')
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    logFirebaseEvent(
-                                                                        'EDIT_PROJETOS_PAGE_Icon_8pjfxvmg_ON_TAP');
-                                                                    logFirebaseEvent(
-                                                                        'Icon_bottom_sheet');
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Color(
-                                                                              0x75000000),
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return WebViewAware(
-                                                                            child:
-                                                                                GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                ViewIMGWidget(
-                                                                              img: _model.uploadedFileUrl1,
-                                                                            ),
-                                                                          ),
-                                                                        ));
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-                                                                  },
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .visibility,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                    size: 24.0,
+                                                          ],
+                                                        ),
+                                                        Text(
+                                                          'Formato: 1200x800',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 16.0,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'EDIT_PROJETOS_Container_p7me9wen_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_upload_media_to_supabase');
+                                                        final selectedMedia =
+                                                            await selectMedia(
+                                                          storageFolderPath:
+                                                              'FotosProdutosPF',
+                                                          maxWidth: 1200.00,
+                                                          maxHeight: 800.00,
+                                                          imageQuality: 50,
+                                                          includeBlurHash: true,
+                                                          mediaSource:
+                                                              MediaSource
+                                                                  .photoGallery,
+                                                          multiImage: false,
+                                                        );
+                                                        if (selectedMedia !=
+                                                                null &&
+                                                            selectedMedia.every((m) =>
+                                                                validateFileFormat(
+                                                                    m.storagePath,
+                                                                    context))) {
+                                                          setState(() => _model
+                                                                  .isDataUploading2 =
+                                                              true);
+                                                          var selectedUploadedFiles =
+                                                              <FFUploadedFile>[];
+
+                                                          var downloadUrls =
+                                                              <String>[];
+                                                          try {
+                                                            showUploadMessage(
+                                                              context,
+                                                              'Uploading file...',
+                                                              showLoading: true,
+                                                            );
+                                                            selectedUploadedFiles =
+                                                                selectedMedia
+                                                                    .map((m) =>
+                                                                        FFUploadedFile(
+                                                                          name: m
+                                                                              .storagePath
+                                                                              .split('/')
+                                                                              .last,
+                                                                          bytes:
+                                                                              m.bytes,
+                                                                          height: m
+                                                                              .dimensions
+                                                                              ?.height,
+                                                                          width: m
+                                                                              .dimensions
+                                                                              ?.width,
+                                                                          blurHash:
+                                                                              m.blurHash,
+                                                                        ))
+                                                                    .toList();
+
+                                                            downloadUrls =
+                                                                await uploadSupabaseStorageFiles(
+                                                              bucketName:
+                                                                  'templates',
+                                                              selectedFiles:
+                                                                  selectedMedia,
+                                                            );
+                                                          } finally {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .hideCurrentSnackBar();
+                                                            _model.isDataUploading2 =
+                                                                false;
+                                                          }
+                                                          if (selectedUploadedFiles
+                                                                      .length ==
+                                                                  selectedMedia
+                                                                      .length &&
+                                                              downloadUrls
+                                                                      .length ==
+                                                                  selectedMedia
+                                                                      .length) {
+                                                            setState(() {
+                                                              _model.uploadedLocalFile2 =
+                                                                  selectedUploadedFiles
+                                                                      .first;
+                                                              _model.uploadedFileUrl2 =
+                                                                  downloadUrls
+                                                                      .first;
+                                                            });
+                                                            showUploadMessage(
+                                                                context,
+                                                                'Success!');
+                                                          } else {
+                                                            setState(() {});
+                                                            showUploadMessage(
+                                                                context,
+                                                                'Failed to upload data');
+                                                            return;
+                                                          }
+                                                        }
+
+                                                        if (_model
+                                                                .uploadedFileUrl2 !=
+                                                            '') {
+                                                          logFirebaseEvent(
+                                                              'Container_backend_call');
+
+                                                          await widget
+                                                              .detalhesEdit!
+                                                              .reference
+                                                              .update(
+                                                                  createProjetosRecordData(
+                                                            img2: _model
+                                                                .uploadedFileUrl2,
+                                                          ));
+                                                          return;
+                                                        } else {
+                                                          return;
+                                                        }
+                                                      },
+                                                      child: Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        elevation: 3.0,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Form(
+                                                                key: _model
+                                                                    .formKey4,
+                                                                autovalidateMode:
+                                                                    AutovalidateMode
+                                                                        .always,
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      widget
+                                                                          .detalhesEdit
+                                                                          ?.img2,
+                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
+                                                                    ),
+                                                                    width:
+                                                                        100.0,
+                                                                    height:
+                                                                        100.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
                                                                 ),
                                                               ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                'Imagem 2',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Text(
+                                                          'Formato: 1200x800',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 16.0,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'EDIT_PROJETOS_Container_f1ebfl6h_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_upload_media_to_supabase');
+                                                        final selectedMedia =
+                                                            await selectMedia(
+                                                          storageFolderPath:
+                                                              'FotosProdutosPF',
+                                                          maxWidth: 1200.00,
+                                                          maxHeight: 800.00,
+                                                          imageQuality: 50,
+                                                          includeBlurHash: true,
+                                                          mediaSource:
+                                                              MediaSource
+                                                                  .photoGallery,
+                                                          multiImage: false,
+                                                        );
+                                                        if (selectedMedia !=
+                                                                null &&
+                                                            selectedMedia.every((m) =>
+                                                                validateFileFormat(
+                                                                    m.storagePath,
+                                                                    context))) {
+                                                          setState(() => _model
+                                                                  .isDataUploading3 =
+                                                              true);
+                                                          var selectedUploadedFiles =
+                                                              <FFUploadedFile>[];
+
+                                                          var downloadUrls =
+                                                              <String>[];
+                                                          try {
+                                                            showUploadMessage(
+                                                              context,
+                                                              'Uploading file...',
+                                                              showLoading: true,
+                                                            );
+                                                            selectedUploadedFiles =
+                                                                selectedMedia
+                                                                    .map((m) =>
+                                                                        FFUploadedFile(
+                                                                          name: m
+                                                                              .storagePath
+                                                                              .split('/')
+                                                                              .last,
+                                                                          bytes:
+                                                                              m.bytes,
+                                                                          height: m
+                                                                              .dimensions
+                                                                              ?.height,
+                                                                          width: m
+                                                                              .dimensions
+                                                                              ?.width,
+                                                                          blurHash:
+                                                                              m.blurHash,
+                                                                        ))
+                                                                    .toList();
+
+                                                            downloadUrls =
+                                                                await uploadSupabaseStorageFiles(
+                                                              bucketName:
+                                                                  'templates',
+                                                              selectedFiles:
+                                                                  selectedMedia,
+                                                            );
+                                                          } finally {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .hideCurrentSnackBar();
+                                                            _model.isDataUploading3 =
+                                                                false;
+                                                          }
+                                                          if (selectedUploadedFiles
+                                                                      .length ==
+                                                                  selectedMedia
+                                                                      .length &&
+                                                              downloadUrls
+                                                                      .length ==
+                                                                  selectedMedia
+                                                                      .length) {
+                                                            setState(() {
+                                                              _model.uploadedLocalFile3 =
+                                                                  selectedUploadedFiles
+                                                                      .first;
+                                                              _model.uploadedFileUrl3 =
+                                                                  downloadUrls
+                                                                      .first;
+                                                            });
+                                                            showUploadMessage(
+                                                                context,
+                                                                'Success!');
+                                                          } else {
+                                                            setState(() {});
+                                                            showUploadMessage(
+                                                                context,
+                                                                'Failed to upload data');
+                                                            return;
+                                                          }
+                                                        }
+
+                                                        if (_model
+                                                                .uploadedFileUrl3 !=
+                                                            '') {
+                                                          logFirebaseEvent(
+                                                              'Container_backend_call');
+
+                                                          await widget
+                                                              .detalhesEdit!
+                                                              .reference
+                                                              .update(
+                                                                  createProjetosRecordData(
+                                                            img3: _model
+                                                                .uploadedFileUrl3,
+                                                          ));
+                                                          return;
+                                                        } else {
+                                                          return;
+                                                        }
+                                                      },
+                                                      child: Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        elevation: 3.0,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Form(
+                                                                key: _model
+                                                                    .formKey10,
+                                                                autovalidateMode:
+                                                                    AutovalidateMode
+                                                                        .always,
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      widget
+                                                                          .detalhesEdit
+                                                                          ?.img3,
+                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/logos/Animation%20-%201701374450376%20(1).gif',
+                                                                    ),
+                                                                    width:
+                                                                        100.0,
+                                                                    height:
+                                                                        100.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                'Imagem 3',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ),
                                                           ],
                                                         ),
                                                         Text(
@@ -573,7 +1007,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                             8.0),
                                                   ),
                                                   child: Form(
-                                                    key: _model.formKey8,
+                                                    key: _model.formKey9,
                                                     autovalidateMode:
                                                         AutovalidateMode
                                                             .disabled,
@@ -930,7 +1364,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                         children: [
                                                           Form(
                                                             key:
-                                                                _model.formKey6,
+                                                                _model.formKey7,
                                                             autovalidateMode:
                                                                 AutovalidateMode
                                                                     .disabled,
@@ -1196,6 +1630,162 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8.0,
+                                                                  8.0,
+                                                                  8.0,
+                                                                  8.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .videoDemoController,
+                                                        focusNode: _model
+                                                            .videoDemoFocusNode,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              'Video Demonstração',
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        20.0,
+                                                                  ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        20.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryBackground,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          prefixIcon: Icon(
+                                                            Icons
+                                                                .video_collection_sharp,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            size: 30.0,
+                                                          ),
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              fontSize: 20.0,
+                                                            ),
+                                                        validator: _model
+                                                            .videoDemoControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 5.0,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.4,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
                                                     child: Form(
                                                       key: _model.formKey1,
                                                       autovalidateMode:
@@ -1363,7 +1953,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                               8.0),
                                                     ),
                                                     child: Form(
-                                                      key: _model.formKey5,
+                                                      key: _model.formKey6,
                                                       autovalidateMode:
                                                           AutovalidateMode
                                                               .disabled,
@@ -1746,7 +2336,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                       m.storagePath,
                                                                       context))) {
                                                             setState(() => _model
-                                                                    .isDataUploading2 =
+                                                                    .isDataUploading4 =
                                                                 true);
                                                             var selectedUploadedFiles =
                                                                 <FFUploadedFile>[];
@@ -1788,7 +2378,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                               ScaffoldMessenger
                                                                       .of(context)
                                                                   .hideCurrentSnackBar();
-                                                              _model.isDataUploading2 =
+                                                              _model.isDataUploading4 =
                                                                   false;
                                                             }
                                                             if (selectedUploadedFiles
@@ -1800,10 +2390,10 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                     selectedMedia
                                                                         .length) {
                                                               setState(() {
-                                                                _model.uploadedLocalFile2 =
+                                                                _model.uploadedLocalFile4 =
                                                                     selectedUploadedFiles
                                                                         .first;
-                                                                _model.uploadedFileUrl2 =
+                                                                _model.uploadedFileUrl4 =
                                                                     downloadUrls
                                                                         .first;
                                                               });
@@ -1850,7 +2440,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                               children: [
                                                                 Form(
                                                                   key: _model
-                                                                      .formKey4,
+                                                                      .formKey5,
                                                                   autovalidateMode:
                                                                       AutovalidateMode
                                                                           .disabled,
@@ -1901,7 +2491,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                       String>(
                                                                     functions.visualizarFinalTexto36(
                                                                         _model
-                                                                            .uploadedFileUrl2),
+                                                                            .uploadedFileUrl4),
                                                                     'A URL aparecerá aqui.',
                                                                   ).maybeHandleOverflow(
                                                                       maxChars:
@@ -1962,7 +2552,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                             text:
                                                                                 valueOrDefault<String>(
                                                                       _model
-                                                                          .uploadedFileUrl2,
+                                                                          .uploadedFileUrl4,
                                                                       'O link da URL aparecerá aqui.',
                                                                     )));
                                                                     logFirebaseEvent(
@@ -2073,7 +2663,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                             1.0, 1.0),
                                                     children: [
                                                       Form(
-                                                        key: _model.formKey10,
+                                                        key: _model.formKey12,
                                                         autovalidateMode:
                                                             AutovalidateMode
                                                                 .disabled,
@@ -2378,7 +2968,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                             1.0, 1.0),
                                                     children: [
                                                       Form(
-                                                        key: _model.formKey9,
+                                                        key: _model.formKey11,
                                                         autovalidateMode:
                                                             AutovalidateMode
                                                                 .disabled,
@@ -2621,6 +3211,163 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Material(
+                                                    color: Colors.transparent,
+                                                    elevation: 5.0,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.4,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    8.0,
+                                                                    8.0,
+                                                                    8.0),
+                                                        child: TextFormField(
+                                                          controller: _model
+                                                              .videoTutorialController,
+                                                          focusNode: _model
+                                                              .videoTutorialFocusNode,
+                                                          obscureText: false,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            labelText:
+                                                                'Vídeo Tutorial',
+                                                            labelStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      fontSize:
+                                                                          20.0,
+                                                                    ),
+                                                            hintStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      fontSize:
+                                                                          20.0,
+                                                                    ),
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            errorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            focusedErrorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            filled: true,
+                                                            fillColor: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                            prefixIcon: Icon(
+                                                              Icons
+                                                                  .video_settings_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 30.0,
+                                                            ),
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 20.0,
+                                                              ),
+                                                          validator: _model
+                                                              .videoTutorialControllerValidator
+                                                              .asValidator(
+                                                                  context),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
                                                       0.0, 20.0, 0.0, 20.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -2633,20 +3380,20 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                           'EDIT_PROJETOS_ATUALIZAR_PROJETO_BTN_ON_T');
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey7
+                                                      if (_model.formKey8
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey7
+                                                          !_model.formKey8
                                                               .currentState!
                                                               .validate()) {
                                                         return;
                                                       }
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey8
+                                                      if (_model.formKey9
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey8
+                                                          !_model.formKey9
                                                               .currentState!
                                                               .validate()) {
                                                         return;
@@ -2663,10 +3410,10 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                       }
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey6
+                                                      if (_model.formKey7
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey6
+                                                          !_model.formKey7
                                                               .currentState!
                                                               .validate()) {
                                                         return;
@@ -2683,10 +3430,10 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                       }
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey5
+                                                      if (_model.formKey6
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey5
+                                                          !_model.formKey6
                                                               .currentState!
                                                               .validate()) {
                                                         return;
@@ -2731,30 +3478,30 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                       }
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey10
+                                                      if (_model.formKey12
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey10
+                                                          !_model.formKey12
                                                               .currentState!
                                                               .validate()) {
                                                         return;
                                                       }
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey9
+                                                      if (_model.formKey11
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey9
+                                                          !_model.formKey11
                                                               .currentState!
                                                               .validate()) {
                                                         return;
                                                       }
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
-                                                      if (_model.formKey4
+                                                      if (_model.formKey5
                                                                   .currentState ==
                                                               null ||
-                                                          !_model.formKey4
+                                                          !_model.formKey5
                                                               .currentState!
                                                               .validate()) {
                                                         return;
@@ -2789,6 +3536,12 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                             .checkboxValue,
                                                         descriVenda: _model
                                                             .descriVendaController
+                                                            .text,
+                                                        videoDemo: _model
+                                                            .videoDemoController
+                                                            .text,
+                                                        videoTutorial: _model
+                                                            .videoTutorialController
                                                             .text,
                                                       ));
                                                       logFirebaseEvent(

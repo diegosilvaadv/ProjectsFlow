@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/markdown_link/markdown_link_widget.dart';
-import '/componts/view_i_m_g/view_i_m_g_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -26,20 +25,32 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey7 = GlobalKey<FormState>();
   final formKey8 = GlobalKey<FormState>();
-  final formKey2 = GlobalKey<FormState>();
-  final formKey6 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
-  final formKey5 = GlobalKey<FormState>();
-  final formKey3 = GlobalKey<FormState>();
   final formKey4 = GlobalKey<FormState>();
   final formKey10 = GlobalKey<FormState>();
   final formKey9 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
+  final formKey7 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey6 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
+  final formKey12 = GlobalKey<FormState>();
+  final formKey11 = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl1 = '';
+
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl2 = '';
+
+  bool isDataUploading3 = false;
+  FFUploadedFile uploadedLocalFile3 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl3 = '';
 
   // State field(s) for titulo widget.
   FocusNode? tituloFocusNode;
@@ -100,6 +111,10 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
     return null;
   }
 
+  // State field(s) for videoDemo widget.
+  FocusNode? videoDemoFocusNode;
+  TextEditingController? videoDemoController;
+  String? Function(BuildContext, String?)? videoDemoControllerValidator;
   // State field(s) for linkProjeto widget.
   FocusNode? linkProjetoFocusNode;
   TextEditingController? linkProjetoController;
@@ -123,10 +138,10 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
   FormFieldController<String>? categoriaValueController;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
+  bool isDataUploading4 = false;
+  FFUploadedFile uploadedLocalFile4 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
+  String uploadedFileUrl4 = '';
 
   // Model for MarkdownLink component.
   late MarkdownLinkModel markdownLinkModel2;
@@ -170,6 +185,11 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
     return null;
   }
 
+  // State field(s) for videoTutorial widget.
+  FocusNode? videoTutorialFocusNode;
+  TextEditingController? videoTutorialController;
+  String? Function(BuildContext, String?)? videoTutorialControllerValidator;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
@@ -196,6 +216,9 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
     requisitosFocusNode?.dispose();
     requisitosController?.dispose();
 
+    videoDemoFocusNode?.dispose();
+    videoDemoController?.dispose();
+
     linkProjetoFocusNode?.dispose();
     linkProjetoController?.dispose();
 
@@ -206,6 +229,9 @@ class EditProjetosModel extends FlutterFlowModel<EditProjetosWidget> {
     markdownLinkModel3.dispose();
     descriCompraFocusNode?.dispose();
     descriCompraController?.dispose();
+
+    videoTutorialFocusNode?.dispose();
+    videoTutorialController?.dispose();
   }
 
   /// Action blocks are added here.

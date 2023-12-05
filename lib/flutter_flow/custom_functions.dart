@@ -92,3 +92,8 @@ String visualizarFinalTexto36(String texto) {
     return texto.substring(texto.length - 36);
   }
 }
+
+String videoYotube(String link) {
+  // criar função para visualizar video do youtube
+  return 'https://www.youtube.com/embed/${link.substring(link.indexOf('=') + 1)}';
+}
