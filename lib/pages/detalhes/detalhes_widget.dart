@@ -1045,10 +1045,26 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                 logFirebaseEvent(
                                                                     'DETALHES_PAGE_ACESSAR_PROJETO_BTN_ON_TAP');
                                                                 logFirebaseEvent(
-                                                                    'Button_launch_u_r_l');
-                                                                await launchURL(widget
-                                                                    .detalhesProjects!
-                                                                    .linkProjeto);
+                                                                    'Button_navigate_to');
+
+                                                                context
+                                                                    .pushNamed(
+                                                                  'detalhesVendas',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'detalhesProjects':
+                                                                        serializeParam(
+                                                                      rowPagamentosRecord,
+                                                                      ParamType
+                                                                          .Document,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                  extra: <String,
+                                                                      dynamic>{
+                                                                    'detalhesProjects':
+                                                                        rowPagamentosRecord,
+                                                                  },
+                                                                );
                                                               },
                                                               text:
                                                                   'Acessar Projeto',
