@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,7 +18,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'detalhes_model.dart';
@@ -1285,51 +1285,42 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                         ),
                                                   ),
                                                 ),
-                                                Builder(
-                                                  builder: (context) => Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: FlutterFlowIconButton(
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    borderRadius: 6.0,
+                                                    borderWidth: 1.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent1,
+                                                    icon: Icon(
+                                                      Icons.share_sharp,
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primary,
-                                                      borderRadius: 6.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 40.0,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent1,
-                                                      icon: Icon(
-                                                        Icons.share_sharp,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 24.0,
-                                                      ),
-                                                      showLoadingIndicator:
-                                                          true,
-                                                      onPressed: () async {
-                                                        logFirebaseEvent(
-                                                            'DETALHES_PAGE_share_sharp_ICN_ON_TAP');
-                                                        logFirebaseEvent(
-                                                            'IconButton_share');
-                                                        await Share.share(
-                                                          widget
-                                                              .detalhesProjects!
-                                                              .reference
-                                                              .id,
-                                                          sharePositionOrigin:
-                                                              getWidgetBoundingBox(
-                                                                  context),
-                                                        );
-                                                      },
+                                                              .primaryText,
+                                                      size: 24.0,
                                                     ),
+                                                    showLoadingIndicator: true,
+                                                    onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'DETALHES_PAGE_share_sharp_ICN_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'IconButton_update_app_state');
+                                                      setState(() {
+                                                        FFAppState().GerarUUID =
+                                                            functions
+                                                                .linkdaPage();
+                                                      });
+                                                    },
                                                   ),
                                                 ),
                                               ],
@@ -1350,7 +1341,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Descrição do Projeto',
+                                            FFAppState().GerarUUID,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

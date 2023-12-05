@@ -1,14 +1,14 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'direcionar_senha_widget.dart' show DirecionarSenhaWidget;
+import 'compartilhar_link_widget.dart' show CompartilharLinkWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class DirecionarSenhaModel extends FlutterFlowModel<DirecionarSenhaWidget> {
+class CompartilharLinkModel extends FlutterFlowModel<CompartilharLinkWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

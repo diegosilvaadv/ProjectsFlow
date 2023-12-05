@@ -6,18 +6,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'direcionar_senha_model.dart';
-export 'direcionar_senha_model.dart';
+import 'compartilhar_link_model.dart';
+export 'compartilhar_link_model.dart';
 
-class DirecionarSenhaWidget extends StatefulWidget {
-  const DirecionarSenhaWidget({Key? key}) : super(key: key);
+class CompartilharLinkWidget extends StatefulWidget {
+  const CompartilharLinkWidget({Key? key}) : super(key: key);
 
   @override
-  _DirecionarSenhaWidgetState createState() => _DirecionarSenhaWidgetState();
+  _CompartilharLinkWidgetState createState() => _CompartilharLinkWidgetState();
 }
 
-class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
-  late DirecionarSenhaModel _model;
+class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget> {
+  late CompartilharLinkModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +28,7 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DirecionarSenhaModel());
+    _model = createModel(context, () => CompartilharLinkModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -94,7 +94,7 @@ class _DirecionarSenhaWidgetState extends State<DirecionarSenhaWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
-                                'DIRECIONAR_SENHA_Button-Login_ON_TAP');
+                                'COMPARTILHAR_LINK_Button-Login_ON_TAP');
                             logFirebaseEvent('Button-Login_navigate_to');
 
                             context.goNamed(
