@@ -313,6 +313,25 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                             return;
                                                           }
                                                         }
+
+                                                        if (_model
+                                                                .uploadedFileUrl1 !=
+                                                            '') {
+                                                          logFirebaseEvent(
+                                                              'Container_backend_call');
+
+                                                          await widget
+                                                              .detalhesEdit!
+                                                              .reference
+                                                              .update(
+                                                                  createProjetosRecordData(
+                                                            iMGPrincipal: _model
+                                                                .uploadedFileUrl1,
+                                                          ));
+                                                          return;
+                                                        } else {
+                                                          return;
+                                                        }
                                                       },
                                                       child: Material(
                                                         color:
@@ -2750,8 +2769,6 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                         linkProjeto: _model
                                                             .linkProjetoController
                                                             .text,
-                                                        iMGPrincipal: _model
-                                                            .uploadedFileUrl1,
                                                         requisitos: _model
                                                             .requisitosController
                                                             .text,
