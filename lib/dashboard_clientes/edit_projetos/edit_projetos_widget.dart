@@ -19,6 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_projetos_model.dart';
 export 'edit_projetos_model.dart';
 
@@ -491,7 +492,9 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                           context,
                                                                       builder:
                                                                           (context) {
-                                                                        return GestureDetector(
+                                                                        return WebViewAware(
+                                                                            child:
+                                                                                GestureDetector(
                                                                           onTap: () => _model.unfocusNode.canRequestFocus
                                                                               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                               : FocusScope.of(context).unfocus(),
@@ -504,7 +507,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                               img: _model.uploadedFileUrl1,
                                                                             ),
                                                                           ),
-                                                                        );
+                                                                        ));
                                                                       },
                                                                     ).then((value) =>
                                                                         safeSetState(
@@ -1092,7 +1095,8 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                             context,
                                                                         builder:
                                                                             (context) {
-                                                                          return GestureDetector(
+                                                                          return WebViewAware(
+                                                                              child: GestureDetector(
                                                                             onTap: () => _model.unfocusNode.canRequestFocus
                                                                                 ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                                 : FocusScope.of(context).unfocus(),
@@ -1103,7 +1107,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                                 markdown: _model.requisitosController.text,
                                                                               ),
                                                                             ),
-                                                                          );
+                                                                          ));
                                                                         },
                                                                       ).then((value) =>
                                                                           safeSetState(
@@ -2236,7 +2240,9 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                         context,
                                                                     builder:
                                                                         (context) {
-                                                                      return GestureDetector(
+                                                                      return WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
                                                                         onTap: () => _model.unfocusNode.canRequestFocus
                                                                             ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                             : FocusScope.of(context).unfocus(),
@@ -2250,7 +2256,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                                 _model.descriVendaController.text,
                                                                           ),
                                                                         ),
-                                                                      );
+                                                                      ));
                                                                     },
                                                                   ).then((value) =>
                                                                       safeSetState(
@@ -2539,7 +2545,9 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                         context,
                                                                     builder:
                                                                         (context) {
-                                                                      return GestureDetector(
+                                                                      return WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
                                                                         onTap: () => _model.unfocusNode.canRequestFocus
                                                                             ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                             : FocusScope.of(context).unfocus(),
@@ -2553,7 +2561,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                                 _model.descriCompraController.text,
                                                                           ),
                                                                         ),
-                                                                      );
+                                                                      ));
                                                                     },
                                                                   ).then((value) =>
                                                                       safeSetState(
@@ -2700,7 +2708,9 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                           context: context,
                                                           builder:
                                                               (alertDialogContext) {
-                                                            return AlertDialog(
+                                                            return WebViewAware(
+                                                                child:
+                                                                    AlertDialog(
                                                               title: Text(
                                                                   'Categoria é Obrigatória'),
                                                               content: Text(
@@ -2714,7 +2724,7 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                       'Ok'),
                                                                 ),
                                                               ],
-                                                            );
+                                                            ));
                                                           },
                                                         );
                                                         return;

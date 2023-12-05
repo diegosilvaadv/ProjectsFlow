@@ -21,6 +21,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class PagPixModel extends FlutterFlowModel<PagPixWidget> {
   ///  State fields for stateful widgets in this component.

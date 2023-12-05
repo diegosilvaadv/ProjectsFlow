@@ -21,6 +21,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_projetos_model.dart';
 export 'add_projetos_model.dart';
 
@@ -421,7 +422,9 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                           context,
                                                                       builder:
                                                                           (context) {
-                                                                        return GestureDetector(
+                                                                        return WebViewAware(
+                                                                            child:
+                                                                                GestureDetector(
                                                                           onTap: () => _model.unfocusNode.canRequestFocus
                                                                               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                               : FocusScope.of(context).unfocus(),
@@ -434,7 +437,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                               img: _model.uploadedFileUrl1,
                                                                             ),
                                                                           ),
-                                                                        );
+                                                                        ));
                                                                       },
                                                                     ).then((value) =>
                                                                         safeSetState(
@@ -1022,7 +1025,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                             context,
                                                                         builder:
                                                                             (context) {
-                                                                          return GestureDetector(
+                                                                          return WebViewAware(
+                                                                              child: GestureDetector(
                                                                             onTap: () => _model.unfocusNode.canRequestFocus
                                                                                 ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                                 : FocusScope.of(context).unfocus(),
@@ -1033,7 +1037,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                                 markdown: _model.requisitosController.text,
                                                                               ),
                                                                             ),
-                                                                          );
+                                                                          ));
                                                                         },
                                                                       ).then((value) =>
                                                                           safeSetState(
@@ -2152,7 +2156,9 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                         context,
                                                                     builder:
                                                                         (context) {
-                                                                      return GestureDetector(
+                                                                      return WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
                                                                         onTap: () => _model.unfocusNode.canRequestFocus
                                                                             ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                             : FocusScope.of(context).unfocus(),
@@ -2166,7 +2172,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                                 _model.descriVendaController.text,
                                                                           ),
                                                                         ),
-                                                                      );
+                                                                      ));
                                                                     },
                                                                   ).then((value) =>
                                                                       safeSetState(
@@ -2455,7 +2461,9 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                         context,
                                                                     builder:
                                                                         (context) {
-                                                                      return GestureDetector(
+                                                                      return WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
                                                                         onTap: () => _model.unfocusNode.canRequestFocus
                                                                             ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                             : FocusScope.of(context).unfocus(),
@@ -2469,7 +2477,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                                 _model.descriCompraController.text,
                                                                           ),
                                                                         ),
-                                                                      );
+                                                                      ));
                                                                     },
                                                                   ).then((value) =>
                                                                       safeSetState(
@@ -2616,7 +2624,9 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                           context: context,
                                                           builder:
                                                               (alertDialogContext) {
-                                                            return AlertDialog(
+                                                            return WebViewAware(
+                                                                child:
+                                                                    AlertDialog(
                                                               title: Text(
                                                                   'Categoria é Obrigatória'),
                                                               content: Text(
@@ -2630,7 +2640,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                       'Ok'),
                                                                 ),
                                                               ],
-                                                            );
+                                                            ));
                                                           },
                                                         );
                                                         return;
@@ -2727,7 +2737,9 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
-                                                          return GestureDetector(
+                                                          return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
                                                             onTap: () => _model
                                                                     .unfocusNode
                                                                     .canRequestFocus
@@ -2746,7 +2758,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                               child:
                                                                   ProjetoCriadoWidget(),
                                                             ),
-                                                          );
+                                                          ));
                                                         },
                                                       ).then((value) =>
                                                           safeSetState(() {}));

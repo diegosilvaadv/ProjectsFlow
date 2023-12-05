@@ -18,6 +18,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'detalhes_model.dart';
 export 'detalhes_model.dart';
 
@@ -828,7 +829,9 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                     context,
                                                                 builder:
                                                                     (context) {
-                                                                  return GestureDetector(
+                                                                  return WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
                                                                     onTap: () => _model
                                                                             .unfocusNode
                                                                             .canRequestFocus
@@ -848,7 +851,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                             ?.videoDemo,
                                                                       ),
                                                                     ),
-                                                                  );
+                                                                  ));
                                                                 },
                                                               ).then((value) =>
                                                                   safeSetState(
@@ -979,7 +982,9 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                       context,
                                                                   builder:
                                                                       (context) {
-                                                                    return GestureDetector(
+                                                                    return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
                                                                       onTap: () => _model
                                                                               .unfocusNode
                                                                               .canRequestFocus
@@ -994,7 +999,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                         child:
                                                                             CriarcontaWidget(),
                                                                       ),
-                                                                    );
+                                                                    ));
                                                                   },
                                                                 ).then((value) =>
                                                                     safeSetState(

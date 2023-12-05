@@ -19,6 +19,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class DetalhesModel extends FlutterFlowModel<DetalhesWidget> {
   ///  State fields for stateful widgets in this page.

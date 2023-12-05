@@ -19,6 +19,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'pagamentos_model.dart';
 export 'pagamentos_model.dart';
 
@@ -888,7 +889,9 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                       context,
                                                                   builder:
                                                                       (context) {
-                                                                    return GestureDetector(
+                                                                    return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
                                                                       onTap: () => _model
                                                                               .unfocusNode
                                                                               .canRequestFocus
@@ -916,7 +919,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    );
+                                                                    ));
                                                                   },
                                                                 ).then((value) =>
                                                                     safeSetState(
@@ -1069,7 +1072,9 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                       context,
                                                                   builder:
                                                                       (context) {
-                                                                    return GestureDetector(
+                                                                    return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
                                                                       onTap: () => _model
                                                                               .unfocusNode
                                                                               .canRequestFocus
@@ -1097,7 +1102,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    );
+                                                                    ));
                                                                   },
                                                                 ).then((value) =>
                                                                     safeSetState(
@@ -1320,7 +1325,9 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                     context,
                                                                 builder:
                                                                     (context) {
-                                                                  return GestureDetector(
+                                                                  return WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
                                                                     onTap: () => _model
                                                                             .unfocusNode
                                                                             .canRequestFocus
@@ -1344,7 +1351,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  );
+                                                                  ));
                                                                 },
                                                               ).then((value) =>
                                                                   safeSetState(
@@ -1442,7 +1449,9 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                     context,
                                                                 builder:
                                                                     (context) {
-                                                                  return GestureDetector(
+                                                                  return WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
                                                                     onTap: () => _model
                                                                             .unfocusNode
                                                                             .canRequestFocus
@@ -1465,7 +1474,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                             _model.paymentId!,
                                                                       ),
                                                                     ),
-                                                                  );
+                                                                  ));
                                                                 },
                                                               ).then((value) =>
                                                                   safeSetState(

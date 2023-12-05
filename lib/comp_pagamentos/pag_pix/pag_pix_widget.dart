@@ -20,6 +20,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'pag_pix_model.dart';
 export 'pag_pix_model.dart';
 
@@ -95,11 +96,12 @@ class _PagPixWidgetState extends State<PagPixWidget> {
               builder: (dialogContext) {
                 return Material(
                   color: Colors.transparent,
-                  child: PagComSucessWidget(
+                  child: WebViewAware(
+                      child: PagComSucessWidget(
                     detalhesProdutos: widget.detalhesProduto,
                     cartaoFinal: 'PÍX',
                     transacionID: widget.idpix!.toString(),
-                  ),
+                  )),
                 );
               },
             ).then((value) => setState(() {}));
@@ -213,7 +215,8 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                                     context: context,
                                                     builder:
                                                         (alertDialogContext) {
-                                                      return AlertDialog(
+                                                      return WebViewAware(
+                                                          child: AlertDialog(
                                                         title: Text(
                                                             'Cancelar PIX'),
                                                         content: Text(
@@ -234,7 +237,7 @@ class _PagPixWidgetState extends State<PagPixWidget> {
                                                             child: Text('Sim'),
                                                           ),
                                                         ],
-                                                      );
+                                                      ));
                                                     },
                                                   ) ??
                                                   false;

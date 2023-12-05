@@ -18,6 +18,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'cartao_pag_model.dart';
 export 'cartao_pag_model.dart';
 
@@ -1941,7 +1942,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                       context,
                                                                   builder:
                                                                       (context) {
-                                                                    return GestureDetector(
+                                                                    return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
                                                                       onTap: () => _model
                                                                               .unfocusNode
                                                                               .canRequestFocus
@@ -1969,7 +1972,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                           ).toString(),
                                                                         ),
                                                                       ),
-                                                                    );
+                                                                    ));
                                                                   },
                                                                 ).then((value) =>
                                                                     safeSetState(
@@ -1997,7 +2000,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                       context,
                                                                   builder:
                                                                       (context) {
-                                                                    return GestureDetector(
+                                                                    return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
                                                                       onTap: () => _model
                                                                               .unfocusNode
                                                                               .canRequestFocus
@@ -2025,7 +2030,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                           ).toString(),
                                                                         ),
                                                                       ),
-                                                                    );
+                                                                    ));
                                                                   },
                                                                 ).then((value) =>
                                                                     safeSetState(
@@ -2053,7 +2058,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                       context,
                                                                   builder:
                                                                       (context) {
-                                                                    return GestureDetector(
+                                                                    return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
                                                                       onTap: () => _model
                                                                               .unfocusNode
                                                                               .canRequestFocus
@@ -2081,7 +2088,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                           ).toString(),
                                                                         ),
                                                                       ),
-                                                                    );
+                                                                    ));
                                                                   },
                                                                 ).then((value) =>
                                                                     safeSetState(
@@ -2099,7 +2106,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                       context,
                                                                   builder:
                                                                       (alertDialogContext) {
-                                                                    return AlertDialog(
+                                                                    return WebViewAware(
+                                                                        child:
+                                                                            AlertDialog(
                                                                       title: Text(
                                                                           'Cartão Recusado!'),
                                                                       content: Text(
@@ -2116,7 +2125,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                               Text('Ok'),
                                                                         ),
                                                                       ],
-                                                                    );
+                                                                    ));
                                                                   },
                                                                 );
                                                                 if (_shouldSetState)
@@ -2132,7 +2141,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                     context,
                                                                 builder:
                                                                     (alertDialogContext) {
-                                                                  return AlertDialog(
+                                                                  return WebViewAware(
+                                                                      child:
+                                                                          AlertDialog(
                                                                     title: Text(
                                                                         'Cartão Recusado!'),
                                                                     content: Text(
@@ -2151,7 +2162,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                             'Ok'),
                                                                       ),
                                                                     ],
-                                                                  );
+                                                                  ));
                                                                 },
                                                               );
                                                               if (_shouldSetState)
@@ -2165,7 +2176,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                               context: context,
                                                               builder:
                                                                   (alertDialogContext) {
-                                                                return AlertDialog(
+                                                                return WebViewAware(
+                                                                    child:
+                                                                        AlertDialog(
                                                                   title: Text(
                                                                       'Erro ao processar pagamento!'),
                                                                   content: Text(
@@ -2184,7 +2197,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                           'Ok'),
                                                                     ),
                                                                   ],
-                                                                );
+                                                                ));
                                                               },
                                                             );
                                                             if (_shouldSetState)
@@ -2198,7 +2211,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                             context: context,
                                                             builder:
                                                                 (alertDialogContext) {
-                                                              return AlertDialog(
+                                                              return WebViewAware(
+                                                                  child:
+                                                                      AlertDialog(
                                                                 title: Text(
                                                                     'Erro ao validar cartão!'),
                                                                 content: Text(
@@ -2217,7 +2232,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                         'Ok'),
                                                                   ),
                                                                 ],
-                                                              );
+                                                              ));
                                                             },
                                                           );
                                                           if (_shouldSetState)
@@ -2231,7 +2246,9 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                           context: context,
                                                           builder:
                                                               (alertDialogContext) {
-                                                            return AlertDialog(
+                                                            return WebViewAware(
+                                                                child:
+                                                                    AlertDialog(
                                                               title: Text(
                                                                   'Cep Inválido!'),
                                                               content: Text(
@@ -2245,7 +2262,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                       'Ok'),
                                                                 ),
                                                               ],
-                                                            );
+                                                            ));
                                                           },
                                                         );
                                                         if (_shouldSetState)

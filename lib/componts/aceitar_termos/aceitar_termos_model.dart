@@ -13,6 +13,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class AceitarTermosModel extends FlutterFlowModel<AceitarTermosWidget> {
   ///  State fields for stateful widgets in this component.

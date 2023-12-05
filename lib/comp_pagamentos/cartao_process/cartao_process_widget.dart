@@ -11,6 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'cartao_process_model.dart';
 export 'cartao_process_model.dart';
 
@@ -72,14 +73,15 @@ class _CartaoProcessWidgetState extends State<CartaoProcessWidget> {
               enableDrag: false,
               context: context,
               builder: (context) {
-                return Padding(
+                return WebViewAware(
+                    child: Padding(
                   padding: MediaQuery.viewInsetsOf(context),
                   child: PagComSucessWidget(
                     detalhesProdutos: widget.detalhesProdutos,
                     cartaoFinal: widget.cartaoFinal!,
                     transacionID: widget.transacionID!,
                   ),
-                );
+                ));
               },
             ).then((value) => safeSetState(() {}));
 

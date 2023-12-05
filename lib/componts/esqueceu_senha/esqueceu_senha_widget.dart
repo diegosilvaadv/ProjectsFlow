@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'esqueceu_senha_model.dart';
 export 'esqueceu_senha_model.dart';
 
@@ -262,7 +263,8 @@ class _EsqueceuSenhaWidgetState extends State<EsqueceuSenhaWidget> {
                                   await showDialog(
                                     context: context,
                                     builder: (alertDialogContext) {
-                                      return AlertDialog(
+                                      return WebViewAware(
+                                          child: AlertDialog(
                                         title: Text(
                                             'Link enviado para seu E-mail!'),
                                         content: Text(
@@ -274,7 +276,7 @@ class _EsqueceuSenhaWidgetState extends State<EsqueceuSenhaWidget> {
                                             child: Text('Ok'),
                                           ),
                                         ],
-                                      );
+                                      ));
                                     },
                                   );
                                 },

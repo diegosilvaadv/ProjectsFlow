@@ -1,7 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_video_player.dart';
+import '/flutter_flow/flutter_flow_youtube_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -111,15 +111,15 @@ class _VideoViewWidgetState extends State<VideoViewWidget> {
                 alignment: AlignmentDirectional(0.00, 0.00),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-                  child: FlutterFlowVideoPlayer(
-                    path: widget.video!,
-                    videoType: VideoType.network,
+                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                  child: FlutterFlowYoutubePlayer(
+                    url: widget.video!,
                     autoPlay: false,
                     looping: true,
+                    mute: false,
                     showControls: true,
-                    allowFullScreen: true,
-                    allowPlaybackSpeedMenu: false,
+                    showFullScreen: true,
+                    strictRelatedVideos: false,
                   ),
                 ),
               ),

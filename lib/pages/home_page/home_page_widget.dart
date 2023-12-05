@@ -20,6 +20,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -221,12 +222,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
         builder: (dialogContext) {
           return Material(
             color: Colors.transparent,
-            child: GestureDetector(
+            child: WebViewAware(
+                child: GestureDetector(
               onTap: () => _model.unfocusNode.canRequestFocus
                   ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                   : FocusScope.of(context).unfocus(),
               child: AceitarTermosWidget(),
-            ),
+            )),
           );
         },
       ).then((value) => setState(() {}));
