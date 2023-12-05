@@ -1374,7 +1374,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            FFAppState().GerarUUID,
+                                            'Descrição do Projeto',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

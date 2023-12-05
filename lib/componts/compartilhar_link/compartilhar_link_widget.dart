@@ -82,19 +82,6 @@ class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget>
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 6.0),
-                  child: Text(
-                    'https://projectsflow.flutterflow.app/detalhes?detalhesProjects=${widget.referencia}',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          fontSize: 23.0,
-                        ),
-                  ),
-                ),
-              ),
               InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -126,6 +113,19 @@ class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget>
                   Icons.content_copy,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 40.0,
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 6.0),
+                  child: Text(
+                    'https://projectsflow.flutterflow.app/detalhes?detalhesProjects=${widget.referencia}',
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Outfit',
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          fontSize: 23.0,
+                        ),
+                  ),
                 ),
               ),
             ],
