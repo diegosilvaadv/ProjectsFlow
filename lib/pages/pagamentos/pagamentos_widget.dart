@@ -1396,7 +1396,7 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                   .detalhesProjects!
                                                                   .titulo,
                                                               allowGooglePay:
-                                                                  false,
+                                                                  true,
                                                               allowApplePay:
                                                                   false,
                                                               buttonColor:
