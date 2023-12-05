@@ -1237,6 +1237,8 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                         onPressed: () async {
                                                           logFirebaseEvent(
                                                               'PAGAMENTOS_IR_PARA_PAGAMENTO_BTN_ON_TAP');
+                                                          var _shouldSetState =
+                                                              false;
                                                           if (FFAppState()
                                                                   .FormadePag ==
                                                               'pix') {
@@ -1269,6 +1271,8 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                 true,
                                                               )}',
                                                             );
+                                                            _shouldSetState =
+                                                                true;
                                                             if ((_model
                                                                     .gerarPedido
                                                                     ?.succeeded ??
@@ -1419,39 +1423,85 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                         .paymentId ??
                                                                     '';
 
+                                                            _shouldSetState =
+                                                                true;
                                                             if (_model
-                                                                    .paymentId ==
-                                                                'card_declined') {
+                                                                    .paymentId !=
+                                                                '') {
                                                               logFirebaseEvent(
-                                                                  'Button_alert_dialog');
-                                                              await showDialog(
+                                                                  'Button_bottom_sheet');
+                                                              await showModalBottomSheet(
+                                                                isScrollControlled:
+                                                                    true,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                enableDrag:
+                                                                    false,
                                                                 context:
                                                                     context,
                                                                 builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        _model
-                                                                            .paymentId!),
-                                                                    content: Text(
-                                                                        _model
-                                                                            .paymentId!),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
+                                                                    (context) {
+                                                                  return GestureDetector(
+                                                                    onTap: () => _model
+                                                                            .unfocusNode
+                                                                            .canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model
+                                                                            .unfocusNode)
+                                                                        : FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          PagComSucessWidget(
+                                                                        detalhesProdutos:
+                                                                            widget.detalhesProjects,
+                                                                        cartaoFinal:
+                                                                            'Stripe',
+                                                                        transacionID:
+                                                                            _model.paymentId!,
                                                                       ),
-                                                                    ],
+                                                                    ),
                                                                   );
                                                                 },
-                                                              );
+                                                              ).then((value) =>
+                                                                  safeSetState(
+                                                                      () {}));
+
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                              return;
                                                             } else {
                                                               logFirebaseEvent(
-                                                                  'Button_navigate_back');
-                                                              context.safePop();
+                                                                  'Button_show_snack_bar');
+                                                              ScaffoldMessenger
+                                                                      .of(context)
+                                                                  .showSnackBar(
+                                                                SnackBar(
+                                                                  content: Text(
+                                                                    'Erro!',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                    ),
+                                                                  ),
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          4000),
+                                                                  backgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary,
+                                                                ),
+                                                              );
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                              return;
                                                             }
                                                           } else {
                                                             logFirebaseEvent(
@@ -1480,7 +1530,8 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                             );
                                                           }
 
-                                                          setState(() {});
+                                                          if (_shouldSetState)
+                                                            setState(() {});
                                                         },
                                                         text:
                                                             'Ir Para Pagamento',
