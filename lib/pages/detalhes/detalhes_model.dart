@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'detalhes_widget.dart' show DetalhesWidget;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -24,6 +25,11 @@ class DetalhesModel extends FlutterFlowModel<DetalhesWidget> {
   final unfocusNode = FocusNode();
   // Model for AppBar component.
   late AppBarModel appBarModel;
+  // State field(s) for Carousel widget.
+  CarouselController? carouselController;
+
+  int carouselCurrentIndex = 1;
+
   // Model for NavBar component.
   late NavBarModel navBarModel;
 

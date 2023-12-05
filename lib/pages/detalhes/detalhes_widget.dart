@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -302,7 +303,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                 10.0, 0.0),
                                                     child: Material(
                                                       color: Colors.transparent,
-                                                      elevation: 5.0,
+                                                      elevation: 0.0,
                                                       shape:
                                                           RoundedRectangleBorder(
                                                         borderRadius:
@@ -310,106 +311,408 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                 .circular(12.0),
                                                       ),
                                                       child: Container(
+                                                        width: 409.0,
+                                                        height: 202.0,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryBackground,
+                                                              .secondaryBackground,
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
                                                                       12.0),
                                                         ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      10.0,
-                                                                      10.0,
-                                                                      10.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              logFirebaseEvent(
-                                                                  'DETALHES_PAGE_Image_tr2dizzj_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Image_expand_image');
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
+                                                        child: Container(
+                                                          width: 159.0,
+                                                          height: 200.0,
+                                                          child: CarouselSlider(
+                                                            items: [
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBackground,
+                                                                    boxShadow: [
+                                                                      BoxShadow(
+                                                                        blurRadius:
+                                                                            4.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent1,
+                                                                        offset: Offset(
+                                                                            0.0,
+                                                                            2.0),
+                                                                      )
+                                                                    ],
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                  ),
                                                                   child:
-                                                                      FlutterFlowExpandedImageView(
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        widget
-                                                                            .detalhesProjects
-                                                                            ?.iMGPrincipal,
-                                                                        'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            5.0,
+                                                                            5.0,
+                                                                            5.0),
+                                                                    child:
+                                                                        InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'DETALHES_PAGE_Image_jla2t4s6_ON_TAP');
+                                                                        logFirebaseEvent(
+                                                                            'Image_expand_image');
+                                                                        await Navigator
+                                                                            .push(
+                                                                          context,
+                                                                          PageTransition(
+                                                                            type:
+                                                                                PageTransitionType.fade,
+                                                                            child:
+                                                                                FlutterFlowExpandedImageView(
+                                                                              image: Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  widget.detalhesProjects?.iMGPrincipal,
+                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                                ),
+                                                                                fit: BoxFit.contain,
+                                                                              ),
+                                                                              allowRotation: false,
+                                                                              tag: valueOrDefault<String>(
+                                                                                widget.detalhesProjects?.iMGPrincipal,
+                                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                              ),
+                                                                              useHeroAnimation: true,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                      child:
+                                                                          Hero(
+                                                                        tag: valueOrDefault<
+                                                                            String>(
+                                                                          widget
+                                                                              .detalhesProjects
+                                                                              ?.iMGPrincipal,
+                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                        ),
+                                                                        transitionOnUserGestures:
+                                                                            true,
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.network(
+                                                                            valueOrDefault<String>(
+                                                                              widget.detalhesProjects?.iMGPrincipal,
+                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                            ),
+                                                                            width:
+                                                                                300.0,
+                                                                            height:
+                                                                                200.0,
+                                                                            fit:
+                                                                                BoxFit.contain,
+                                                                          ),
+                                                                        ),
                                                                       ),
-                                                                      fit: BoxFit
-                                                                          .contain,
                                                                     ),
-                                                                    allowRotation:
-                                                                        false,
-                                                                    tag: valueOrDefault<
-                                                                        String>(
-                                                                      widget
-                                                                          .detalhesProjects
-                                                                          ?.iMGPrincipal,
-                                                                      'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
-                                                                    ),
-                                                                    useHeroAnimation:
-                                                                        true,
                                                                   ),
                                                                 ),
-                                                              );
-                                                            },
-                                                            child: Hero(
-                                                              tag:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                widget
-                                                                    .detalhesProjects
-                                                                    ?.iMGPrincipal,
-                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
                                                               ),
-                                                              transitionOnUserGestures:
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBackground,
+                                                                    boxShadow: [
+                                                                      BoxShadow(
+                                                                        blurRadius:
+                                                                            4.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent1,
+                                                                        offset: Offset(
+                                                                            0.0,
+                                                                            2.0),
+                                                                      )
+                                                                    ],
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            5.0,
+                                                                            5.0,
+                                                                            5.0),
+                                                                    child:
+                                                                        InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'DETALHES_PAGE_Image_e118jysm_ON_TAP');
+                                                                        logFirebaseEvent(
+                                                                            'Image_expand_image');
+                                                                        await Navigator
+                                                                            .push(
+                                                                          context,
+                                                                          PageTransition(
+                                                                            type:
+                                                                                PageTransitionType.fade,
+                                                                            child:
+                                                                                FlutterFlowExpandedImageView(
+                                                                              image: Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  widget.detalhesProjects?.iMGPrincipal,
+                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                                ),
+                                                                                fit: BoxFit.contain,
+                                                                              ),
+                                                                              allowRotation: false,
+                                                                              tag: valueOrDefault<String>(
+                                                                                widget.detalhesProjects?.iMGPrincipal,
+                                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                              ),
+                                                                              useHeroAnimation: true,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                      child:
+                                                                          Hero(
+                                                                        tag: valueOrDefault<
+                                                                            String>(
+                                                                          widget
+                                                                              .detalhesProjects
+                                                                              ?.iMGPrincipal,
+                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                        ),
+                                                                        transitionOnUserGestures:
+                                                                            true,
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.network(
+                                                                            valueOrDefault<String>(
+                                                                              widget.detalhesProjects?.iMGPrincipal,
+                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                            ),
+                                                                            width:
+                                                                                300.0,
+                                                                            height:
+                                                                                200.0,
+                                                                            fit:
+                                                                                BoxFit.contain,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBackground,
+                                                                    boxShadow: [
+                                                                      BoxShadow(
+                                                                        blurRadius:
+                                                                            4.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent1,
+                                                                        offset: Offset(
+                                                                            0.0,
+                                                                            2.0),
+                                                                      )
+                                                                    ],
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            5.0,
+                                                                            5.0,
+                                                                            5.0),
+                                                                    child:
+                                                                        InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'DETALHES_PAGE_Image_gh3t1ay3_ON_TAP');
+                                                                        logFirebaseEvent(
+                                                                            'Image_expand_image');
+                                                                        await Navigator
+                                                                            .push(
+                                                                          context,
+                                                                          PageTransition(
+                                                                            type:
+                                                                                PageTransitionType.fade,
+                                                                            child:
+                                                                                FlutterFlowExpandedImageView(
+                                                                              image: Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  widget.detalhesProjects?.iMGPrincipal,
+                                                                                  'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                                ),
+                                                                                fit: BoxFit.contain,
+                                                                              ),
+                                                                              allowRotation: false,
+                                                                              tag: valueOrDefault<String>(
+                                                                                widget.detalhesProjects?.iMGPrincipal,
+                                                                                'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                              ),
+                                                                              useHeroAnimation: true,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                      child:
+                                                                          Hero(
+                                                                        tag: valueOrDefault<
+                                                                            String>(
+                                                                          widget
+                                                                              .detalhesProjects
+                                                                              ?.iMGPrincipal,
+                                                                          'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                        ),
+                                                                        transitionOnUserGestures:
+                                                                            true,
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.network(
+                                                                            valueOrDefault<String>(
+                                                                              widget.detalhesProjects?.iMGPrincipal,
+                                                                              'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
+                                                                            ),
+                                                                            width:
+                                                                                300.0,
+                                                                            height:
+                                                                                200.0,
+                                                                            fit:
+                                                                                BoxFit.contain,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                            carouselController:
+                                                                _model.carouselController ??=
+                                                                    CarouselController(),
+                                                            options:
+                                                                CarouselOptions(
+                                                              initialPage: 1,
+                                                              viewportFraction:
+                                                                  0.7,
+                                                              disableCenter:
                                                                   true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    widget
-                                                                        .detalhesProjects
-                                                                        ?.iMGPrincipal,
-                                                                    'https://gthmauklpdygyjahreur.supabase.co/storage/v1/object/public/templates/FotosProdutosPF/Sem%20IMAGEM.png',
-                                                                  ),
-                                                                  width: 300.0,
-                                                                  height: 200.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
+                                                              enlargeCenterPage:
+                                                                  true,
+                                                              enlargeFactor:
+                                                                  0.2,
+                                                              enableInfiniteScroll:
+                                                                  true,
+                                                              scrollDirection:
+                                                                  Axis.horizontal,
+                                                              autoPlay: true,
+                                                              autoPlayAnimationDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          400),
+                                                              autoPlayInterval:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          (400 +
+                                                                              2000)),
+                                                              autoPlayCurve:
+                                                                  Curves.linear,
+                                                              pauseAutoPlayInFiniteScroll:
+                                                                  true,
+                                                              onPageChanged:
+                                                                  (index, _) =>
+                                                                      _model.carouselCurrentIndex =
+                                                                          index,
                                                             ),
                                                           ),
                                                         ),
@@ -459,80 +762,6 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                   fontSize:
                                                                       20.0,
                                                                 ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      20.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: FFButtonWidget(
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
-                                                            },
-                                                            text:
-                                                                'Vídeo de Apresentação',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              height: 40.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          24.0,
-                                                                          0.0,
-                                                                          24.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                      ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              hoverColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent1,
-                                                              hoverBorderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                width: 1.0,
-                                                              ),
-                                                              hoverTextColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                            ),
                                                           ),
                                                         ),
                                                       ],
@@ -593,220 +822,317 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
+                                                      if (widget
+                                                              .detalhesProjects
+                                                              ?.videoDemo !=
+                                                          '')
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      20.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child: FFButtonWidget(
+                                                            onPressed: () {
+                                                              print(
+                                                                  'Button pressed ...');
+                                                            },
+                                                            text:
+                                                                'Demonstração',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              height: 40.0,
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                              hoverBorderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                width: 1.0,
+                                                              ),
+                                                              hoverTextColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                            ),
+                                                          ),
+                                                        ),
                                                       if (rowPagamentosRecord
                                                               ?.userIDPagante !=
                                                           currentUserUid)
-                                                        FFButtonWidget(
-                                                          onPressed: () async {
-                                                            logFirebaseEvent(
-                                                                'DETALHES_PAGE_COMPRAR_PROJETO_BTN_ON_TAP');
-                                                            if (currentUserEmail !=
-                                                                '') {
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child: FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
                                                               logFirebaseEvent(
-                                                                  'Button_navigate_to');
+                                                                  'DETALHES_PAGE_COMPRAR_PROJETO_BTN_ON_TAP');
+                                                              if (currentUserEmail !=
+                                                                  '') {
+                                                                logFirebaseEvent(
+                                                                    'Button_navigate_to');
 
-                                                              context.pushNamed(
-                                                                'Pagamentos',
-                                                                queryParameters:
-                                                                    {
-                                                                  'detalhesProjects':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .detalhesProjects,
-                                                                    ParamType
-                                                                        .Document,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                                extra: <String,
-                                                                    dynamic>{
-                                                                  'detalhesProjects':
+                                                                context
+                                                                    .pushNamed(
+                                                                  'Pagamentos',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'detalhesProjects':
+                                                                        serializeParam(
                                                                       widget
                                                                           .detalhesProjects,
-                                                                  kTransitionInfoKey:
-                                                                      TransitionInfo(
-                                                                    hasTransition:
-                                                                        true,
-                                                                    transitionType:
-                                                                        PageTransitionType
-                                                                            .fade,
-                                                                  ),
-                                                                },
-                                                              );
-                                                            } else {
-                                                              logFirebaseEvent(
-                                                                  'Button_bottom_sheet');
-                                                              await showModalBottomSheet(
-                                                                isScrollControlled:
-                                                                    true,
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xBE14181B),
-                                                                enableDrag:
-                                                                    false,
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (context) {
-                                                                  return GestureDetector(
-                                                                    onTap: () => _model
-                                                                            .unfocusNode
-                                                                            .canRequestFocus
-                                                                        ? FocusScope.of(context).requestFocus(_model
-                                                                            .unfocusNode)
-                                                                        : FocusScope.of(context)
-                                                                            .unfocus(),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: MediaQuery
-                                                                          .viewInsetsOf(
-                                                                              context),
+                                                                      ParamType
+                                                                          .Document,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                  extra: <String,
+                                                                      dynamic>{
+                                                                    'detalhesProjects':
+                                                                        widget
+                                                                            .detalhesProjects,
+                                                                    kTransitionInfoKey:
+                                                                        TransitionInfo(
+                                                                      hasTransition:
+                                                                          true,
+                                                                      transitionType:
+                                                                          PageTransitionType
+                                                                              .fade,
+                                                                    ),
+                                                                  },
+                                                                );
+                                                              } else {
+                                                                logFirebaseEvent(
+                                                                    'Button_bottom_sheet');
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Color(
+                                                                          0xBE14181B),
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
                                                                       child:
-                                                                          CriarcontaWidget(),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                              ).then((value) =>
-                                                                  safeSetState(
-                                                                      () {}));
-                                                            }
-                                                          },
-                                                          text:
-                                                              'Comprar Projeto',
-                                                          options:
-                                                              FFButtonOptions(
-                                                            height: 40.0,
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        0.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                            iconPadding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: Color(
-                                                                          0xFFECECEC),
-                                                                      fontSize:
-                                                                          20.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                    ),
-                                                            elevation: 3.0,
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              width: 1.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            hoverColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                            hoverBorderSide:
-                                                                BorderSide(
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            CriarcontaWidget(),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+                                                              }
+                                                            },
+                                                            text:
+                                                                'Comprar Projeto',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              height: 40.0,
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondaryText,
-                                                              width: 1.0,
-                                                            ),
-                                                            hoverTextColor:
-                                                                FlutterFlowTheme.of(
+                                                                  .primary,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: Color(
+                                                                            0xFFECECEC),
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                              hoverBorderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
+                                                                    .secondaryText,
+                                                                width: 1.0,
+                                                              ),
+                                                              hoverTextColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                            ),
                                                           ),
                                                         ),
                                                       if (rowPagamentosRecord
                                                               ?.userIDPagante ==
                                                           currentUserUid)
-                                                        FFButtonWidget(
-                                                          onPressed: () async {
-                                                            logFirebaseEvent(
-                                                                'DETALHES_PAGE_ACESSAR_PROJETO_BTN_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'Button_launch_u_r_l');
-                                                            await launchURL(widget
-                                                                .detalhesProjects!
-                                                                .linkProjeto);
-                                                          },
-                                                          text:
-                                                              'Acessar Projeto',
-                                                          options:
-                                                              FFButtonOptions(
-                                                            height: 40.0,
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        0.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                            iconPadding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            color: Color(
-                                                                0xFF10DAD3),
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child: FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              logFirebaseEvent(
+                                                                  'DETALHES_PAGE_ACESSAR_PROJETO_BTN_ON_TAP');
+                                                              logFirebaseEvent(
+                                                                  'Button_launch_u_r_l');
+                                                              await launchURL(widget
+                                                                  .detalhesProjects!
+                                                                  .linkProjeto);
+                                                            },
+                                                            text:
+                                                                'Acessar Projeto',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              height: 40.0,
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: Color(
+                                                                  0xFF10DAD3),
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: Color(
+                                                                            0xFF131313),
+                                                                        fontSize:
+                                                                            20.0,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                              hoverBorderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: Color(
-                                                                          0xFF131313),
-                                                                      fontSize:
-                                                                          20.0,
-                                                                    ),
-                                                            elevation: 3.0,
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              width: 1.0,
+                                                                    .accent2,
+                                                                width: 1.0,
+                                                              ),
+                                                              hoverTextColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                             ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            hoverColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                            hoverBorderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent2,
-                                                              width: 1.0,
-                                                            ),
-                                                            hoverTextColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
                                                           ),
                                                         ),
                                                       if (widget
@@ -818,7 +1144,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
-                                                                      10.0,
+                                                                      0.0,
                                                                       10.0,
                                                                       0.0),
                                                           child: GradientText(
@@ -870,7 +1196,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
-                                                                      10.0,
+                                                                      0.0,
                                                                       10.0,
                                                                       0.0),
                                                           child: GradientText(

@@ -91,6 +91,26 @@ class ProjetosRecord extends FirestoreRecord {
   String get descriVenda => _descriVenda ?? '';
   bool hasDescriVenda() => _descriVenda != null;
 
+  // "videoDemo" field.
+  String? _videoDemo;
+  String get videoDemo => _videoDemo ?? '';
+  bool hasVideoDemo() => _videoDemo != null;
+
+  // "videoTutorial" field.
+  String? _videoTutorial;
+  String get videoTutorial => _videoTutorial ?? '';
+  bool hasVideoTutorial() => _videoTutorial != null;
+
+  // "img2" field.
+  String? _img2;
+  String get img2 => _img2 ?? '';
+  bool hasImg2() => _img2 != null;
+
+  // "img3" field.
+  String? _img3;
+  String get img3 => _img3 ?? '';
+  bool hasImg3() => _img3 != null;
+
   void _initializeFields() {
     _titulo = snapshotData['Titulo'] as String?;
     _descricao = snapshotData['Descricao'] as String?;
@@ -107,6 +127,10 @@ class ProjetosRecord extends FirestoreRecord {
     _subtitulo = snapshotData['subtitulo'] as String?;
     _eprojeto = snapshotData['Eprojeto'] as bool?;
     _descriVenda = snapshotData['descriVenda'] as String?;
+    _videoDemo = snapshotData['videoDemo'] as String?;
+    _videoTutorial = snapshotData['videoTutorial'] as String?;
+    _img2 = snapshotData['img2'] as String?;
+    _img3 = snapshotData['img3'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -159,6 +183,10 @@ Map<String, dynamic> createProjetosRecordData({
   String? subtitulo,
   bool? eprojeto,
   String? descriVenda,
+  String? videoDemo,
+  String? videoTutorial,
+  String? img2,
+  String? img3,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -177,6 +205,10 @@ Map<String, dynamic> createProjetosRecordData({
       'subtitulo': subtitulo,
       'Eprojeto': eprojeto,
       'descriVenda': descriVenda,
+      'videoDemo': videoDemo,
+      'videoTutorial': videoTutorial,
+      'img2': img2,
+      'img3': img3,
     }.withoutNulls,
   );
 
@@ -202,7 +234,11 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e1?.requisitos == e2?.requisitos &&
         e1?.subtitulo == e2?.subtitulo &&
         e1?.eprojeto == e2?.eprojeto &&
-        e1?.descriVenda == e2?.descriVenda;
+        e1?.descriVenda == e2?.descriVenda &&
+        e1?.videoDemo == e2?.videoDemo &&
+        e1?.videoTutorial == e2?.videoTutorial &&
+        e1?.img2 == e2?.img2 &&
+        e1?.img3 == e2?.img3;
   }
 
   @override
@@ -221,7 +257,11 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e?.requisitos,
         e?.subtitulo,
         e?.eprojeto,
-        e?.descriVenda
+        e?.descriVenda,
+        e?.videoDemo,
+        e?.videoTutorial,
+        e?.img2,
+        e?.img3
       ]);
 
   @override
