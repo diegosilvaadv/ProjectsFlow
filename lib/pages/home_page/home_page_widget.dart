@@ -37,6 +37,80 @@ class _HomePageWidgetState extends State<HomePageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
+    'textOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeIn,
+          delay: 280.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, -51.0),
+          end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'textOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 500.ms,
+          duration: 940.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeOut,
+          delay: 490.ms,
+          duration: 960.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'buttonOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeOut,
+          delay: 490.ms,
+          duration: 960.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'dividerOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 580.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 440.ms,
+          duration: 600.ms,
+          begin: Offset(-85.0, -12.0),
+          end: Offset(-72.0, 0.0),
+        ),
+      ],
+    ),
     'containerOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -53,6 +127,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
           duration: 600.ms,
           begin: Offset(-53.0, 0.0),
           end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'dividerOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 580.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 440.ms,
+          duration: 600.ms,
+          begin: Offset(-85.0, -12.0),
+          end: Offset(-72.0, 0.0),
         ),
       ],
     ),
@@ -284,7 +377,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           gradientType:
                                                               GradientType
                                                                   .linear,
-                                                        )),
+                                                        )).animateOnPageLoad(
+                                                            animationsMap[
+                                                                'textOnPageLoadAnimation1']!),
                                                       ),
                                                     ),
                                                   ],
@@ -301,7 +396,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .headlineSmall,
-                                                  )),
+                                                  )).animateOnPageLoad(
+                                                      animationsMap[
+                                                          'textOnPageLoadAnimation2']!),
                                                 ],
                                               ),
                                               Container(
@@ -521,7 +618,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                             .asValidator(context),
                                                                       );
                                                                     },
-                                                                  );
+                                                                  ).animateOnPageLoad(
+                                                                      animationsMap[
+                                                                          'textFieldOnPageLoadAnimation']!);
                                                                 },
                                                               ),
                                                             ),
@@ -630,7 +729,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         Color(
                                                                             0xFFE5E5E5),
                                                                   ),
-                                                                ),
+                                                                ).animateOnPageLoad(
+                                                                        animationsMap[
+                                                                            'buttonOnPageLoadAnimation']!),
                                                               ),
                                                             ),
                                                           ],
@@ -645,7 +746,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
-                                              ),
+                                              ).animateOnPageLoad(animationsMap[
+                                                  'dividerOnPageLoadAnimation1']!),
                                             ],
                                           ),
                                         ],
@@ -899,7 +1001,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       thickness: 1.0,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
-                                    ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'dividerOnPageLoadAnimation2']!),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           150.0, 25.0, 150.0, 0.0),
