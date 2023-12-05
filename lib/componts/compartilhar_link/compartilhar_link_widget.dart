@@ -70,14 +70,14 @@ class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget>
     return Align(
       alignment: AlignmentDirectional(0.00, 0.00),
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.5,
-        height: MediaQuery.sizeOf(context).height * 0.2,
+        width: MediaQuery.sizeOf(context).width * 0.333,
+        height: MediaQuery.sizeOf(context).height * 0.11,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -90,7 +90,7 @@ class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget>
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                           fontFamily: 'Outfit',
                           color: FlutterFlowTheme.of(context).secondaryText,
-                          fontSize: 30.0,
+                          fontSize: 23.0,
                         ),
                   ),
                 ),
@@ -125,7 +125,7 @@ class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget>
                 child: Icon(
                   Icons.content_copy,
                   color: FlutterFlowTheme.of(context).primaryText,
-                  size: 50.0,
+                  size: 40.0,
                 ),
               ),
             ],

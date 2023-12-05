@@ -1319,7 +1319,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                         isScrollControlled:
                                                             true,
                                                         backgroundColor:
-                                                            Color(0x82000000),
+                                                            Color(0x1F000000),
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
