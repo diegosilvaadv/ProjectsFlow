@@ -36,3 +36,5 @@ export '/pages/pesquisa/pesquisa_widget.dart' show PesquisaWidget;
 export '/dashboard_clientes/edit_projetos/edit_projetos_widget.dart'
     show EditProjetosWidget;
 export '/pages/cartao_pag/cartao_pag_widget.dart' show CartaoPagWidget;
+export '/pages/cartao_pag_stripe/cartao_pag_stripe_widget.dart'
+    show CartaoPagStripeWidget;

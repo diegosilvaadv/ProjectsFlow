@@ -1,15 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/comp_pagamentos/cartao_process/cartao_process_widget.dart';
-import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
+import '/backend/stripe/payment_manager.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,11 +15,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import 'cartao_pag_model.dart';
-export 'cartao_pag_model.dart';
+import 'cartao_pag_stripe_model.dart';
+export 'cartao_pag_stripe_model.dart';
 
-class CartaoPagWidget extends StatefulWidget {
-  const CartaoPagWidget({
+class CartaoPagStripeWidget extends StatefulWidget {
+  const CartaoPagStripeWidget({
     Key? key,
     required this.detalhesProjects,
   }) : super(key: key);
@@ -30,20 +27,21 @@ class CartaoPagWidget extends StatefulWidget {
   final ProjetosRecord? detalhesProjects;
 
   @override
-  _CartaoPagWidgetState createState() => _CartaoPagWidgetState();
+  _CartaoPagStripeWidgetState createState() => _CartaoPagStripeWidgetState();
 }
 
-class _CartaoPagWidgetState extends State<CartaoPagWidget> {
-  late CartaoPagModel _model;
+class _CartaoPagStripeWidgetState extends State<CartaoPagStripeWidget> {
+  late CartaoPagStripeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CartaoPagModel());
+    _model = createModel(context, () => CartaoPagStripeModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'CartaoPag'});
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'CartaoPagStripe'});
     _model.nomeController ??= TextEditingController();
     _model.nomeFocusNode ??= FocusNode();
 
@@ -99,7 +97,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'PagamentoCartao',
+        title: 'CartaoPagStripe',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -178,7 +176,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                   ),
                                                   onPressed: () async {
                                                     logFirebaseEvent(
-                                                        'CARTAO_PAG_PAGE_home_rounded_ICN_ON_TAP');
+                                                        'CARTAO_PAG_STRIPE_home_rounded_ICN_ON_TA');
                                                     logFirebaseEvent(
                                                         'IconButton_navigate_to');
 
@@ -217,7 +215,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   logFirebaseEvent(
-                                                      'CARTAO_PAG_Container_fm3n5s9f_ON_TAP');
+                                                      'CARTAO_PAG_STRIPE_Container_avci36r9_ON_');
                                                   logFirebaseEvent(
                                                       'Container_navigate_to');
 
@@ -295,7 +293,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     logFirebaseEvent(
-                                                        'CARTAO_PAG_Container_2en60mt0_ON_TAP');
+                                                        'CARTAO_PAG_STRIPE_Container_ohmuzfzm_ON_');
                                                     logFirebaseEvent(
                                                         'Container_navigate_to');
 
@@ -393,7 +391,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     logFirebaseEvent(
-                                                        'CARTAO_PAG_Container_yfb402rw_ON_TAP');
+                                                        'CARTAO_PAG_STRIPE_Container_xnas8gun_ON_');
                                                     logFirebaseEvent(
                                                         'Container_navigate_to');
 
@@ -716,7 +714,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                       ),
                                                                       Form(
                                                                         key: _model
-                                                                            .formKey1,
+                                                                            .formKey9,
                                                                         autovalidateMode:
                                                                             AutovalidateMode.disabled,
                                                                         child:
@@ -831,7 +829,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                         ),
                                                                         Form(
                                                                           key: _model
-                                                                              .formKey5,
+                                                                              .formKey8,
                                                                           autovalidateMode:
                                                                               AutovalidateMode.disabled,
                                                                           child:
@@ -941,7 +939,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                         ),
                                                                         Form(
                                                                           key: _model
-                                                                              .formKey10,
+                                                                              .formKey3,
                                                                           autovalidateMode:
                                                                               AutovalidateMode.disabled,
                                                                           child:
@@ -1069,7 +1067,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                           children: [
                                                                             Expanded(
                                                                               child: Form(
-                                                                                key: _model.formKey6,
+                                                                                key: _model.formKey5,
                                                                                 autovalidateMode: AutovalidateMode.disabled,
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
@@ -1137,7 +1135,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                             ),
                                                                             Expanded(
                                                                               child: Form(
-                                                                                key: _model.formKey9,
+                                                                                key: _model.formKey6,
                                                                                 autovalidateMode: AutovalidateMode.disabled,
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
@@ -1205,7 +1203,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                             ),
                                                                             Expanded(
                                                                               child: Form(
-                                                                                key: _model.formKey3,
+                                                                                key: _model.formKey4,
                                                                                 autovalidateMode: AutovalidateMode.disabled,
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
@@ -1337,7 +1335,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                             children: [
                                                                               Expanded(
                                                                                 child: Form(
-                                                                                  key: _model.formKey4,
+                                                                                  key: _model.formKey7,
                                                                                   autovalidateMode: AutovalidateMode.disabled,
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
@@ -1402,7 +1400,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                               ),
                                                                               Expanded(
                                                                                 child: Form(
-                                                                                  key: _model.formKey7,
+                                                                                  key: _model.formKey10,
                                                                                   autovalidateMode: AutovalidateMode.disabled,
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
@@ -1474,7 +1472,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                           children: [
                                                                             Expanded(
                                                                               child: Form(
-                                                                                key: _model.formKey2,
+                                                                                key: _model.formKey1,
                                                                                 autovalidateMode: AutovalidateMode.disabled,
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
@@ -1578,7 +1576,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                           children: [
                                                                             Expanded(
                                                                               child: Form(
-                                                                                key: _model.formKey8,
+                                                                                key: _model.formKey2,
                                                                                 autovalidateMode: AutovalidateMode.disabled,
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 0.0),
@@ -1710,481 +1708,46 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                       FFButtonWidget(
                                                         onPressed: () async {
                                                           logFirebaseEvent(
-                                                              'CARTAO_PAG_REALIZAR_PAGAMENTO_BTN_ON_TAP');
-                                                          var _shouldSetState =
-                                                              false;
+                                                              'CARTAO_PAG_STRIPE_REALIZAR_PAGAMENTO_BTN');
                                                           logFirebaseEvent(
-                                                              'Button_backend_call');
-                                                          _model.resultadoCEP =
-                                                              await BuscarcepCall
-                                                                  .call(
-                                                            cep: _model
-                                                                .cepController
-                                                                .text,
+                                                              'Button_stripe_payment');
+                                                          final paymentResponse =
+                                                              await processStripePayment(
+                                                            context,
+                                                            amount: widget
+                                                                .detalhesProjects!
+                                                                .valor
+                                                                .round(),
+                                                            currency: 'BRL',
+                                                            customerEmail:
+                                                                currentUserUid,
+                                                            customerName:
+                                                                currentUserDisplayName,
+                                                            description: widget
+                                                                .detalhesProjects!
+                                                                .titulo,
+                                                            allowGooglePay:
+                                                                false,
+                                                            allowApplePay:
+                                                                false,
                                                           );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if ((_model
-                                                                  .resultadoCEP
-                                                                  ?.succeeded ??
-                                                              true)) {
-                                                            logFirebaseEvent(
-                                                                'Button_backend_call');
-                                                            _model.resultadoGerarToken =
-                                                                await ApiTokenMpCall
-                                                                    .call(
-                                                              cardNumber: functions
-                                                                  .removercaract(
-                                                                      _model
-                                                                          .numberCartaoController
-                                                                          .text),
-                                                              cardholderName: _model
-                                                                  .nomeController
-                                                                  .text,
-                                                              cardExpirationMonth:
-                                                                  _model
-                                                                      .mesCardController
-                                                                      .text,
-                                                              cardExpirationYear:
-                                                                  _model
-                                                                      .anoCardController
-                                                                      .text,
-                                                              securityCode: _model
-                                                                  .cvvCardController
-                                                                  .text,
-                                                              identificationType:
-                                                                  'CPF',
-                                                              identificationNumber:
-                                                                  functions.removercaract(
-                                                                      _model
-                                                                          .cpfController
-                                                                          .text),
-                                                              accessToken:
-                                                                  'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                                              publicKey:
-                                                                  'APP_USR-cb9f113b-ad18-4959-812e-b75e7561c351',
-                                                              uuid4: functions
-                                                                  .gerarUUID4(),
+                                                          if (paymentResponse
+                                                                      .paymentId ==
+                                                                  null &&
+                                                              paymentResponse
+                                                                      .errorMessage !=
+                                                                  null) {
+                                                            showSnackbar(
+                                                              context,
+                                                              'Error: ${paymentResponse.errorMessage}',
                                                             );
-                                                            _shouldSetState =
-                                                                true;
-                                                            if ((_model
-                                                                    .resultadoGerarToken
-                                                                    ?.succeeded ??
-                                                                true)) {
-                                                              logFirebaseEvent(
-                                                                  'Button_wait__delay');
-                                                              await Future.delayed(
-                                                                  const Duration(
-                                                                      milliseconds:
-                                                                          2000));
-                                                              logFirebaseEvent(
-                                                                  'Button_backend_call');
-                                                              _model.resultadoCartaoPag =
-                                                                  await CriarPagamentosCartaoMPCall
-                                                                      .call(
-                                                                accessToken:
-                                                                    'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                                                uuid4: functions
-                                                                    .gerarUUID4(),
-                                                                transactionAmount:
-                                                                    widget
-                                                                        .detalhesProjects
-                                                                        ?.valor,
-                                                                token: ApiTokenMpCall
-                                                                    .tokenCard(
-                                                                  (_model.resultadoGerarToken
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ).toString(),
-                                                                installments: 1,
-                                                                firstName: _model
-                                                                    .nomeController
-                                                                    .text,
-                                                                email:
-                                                                    currentUserEmail,
-                                                                identificationType:
-                                                                    'CPF',
-                                                                identificationNumber:
-                                                                    functions.removercaract(_model
-                                                                        .cpfController
-                                                                        .text),
-                                                                zipCode: functions
-                                                                    .removercaract(_model
-                                                                        .cepController
-                                                                        .text),
-                                                                streetName:
-                                                                    BuscarcepCall
-                                                                        .endereco(
-                                                                  (_model.resultadoCEP
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ).toString(),
-                                                                streetNumber: _model
-                                                                    .numeroController
-                                                                    .text,
-                                                                neighborhood:
-                                                                    BuscarcepCall
-                                                                        .bairro(
-                                                                  (_model.resultadoCEP
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ).toString(),
-                                                                federalUnit:
-                                                                    BuscarcepCall
-                                                                        .cidade(
-                                                                  (_model.resultadoCEP
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                ).toString(),
-                                                                description: widget
-                                                                    .detalhesProjects
-                                                                    ?.titulo,
-                                                              );
-                                                              _shouldSetState =
-                                                                  true;
-                                                              if ((_model
-                                                                      .resultadoCartaoPag
-                                                                      ?.succeeded ??
-                                                                  true)) {
-                                                                logFirebaseEvent(
-                                                                    'Button_wait__delay');
-                                                                await Future.delayed(
-                                                                    const Duration(
-                                                                        milliseconds:
-                                                                            2000));
-                                                                logFirebaseEvent(
-                                                                    'Button_backend_call');
-                                                                _model.resultadoStatus =
-                                                                    await StatusCartaoCall
-                                                                        .call(
-                                                                  accessToken:
-                                                                      'APP_USR-2540313967326267-111909-94d7cfcc16413329acb45f48567519c7-433297459',
-                                                                  idPag: CriarPagamentosCartaoMPCall
-                                                                      .transacionID(
-                                                                    (_model.resultadoCartaoPag
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                  ).toString(),
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
-                                                                if ((_model
-                                                                        .resultadoStatus
-                                                                        ?.succeeded ??
-                                                                    true)) {
-                                                                  logFirebaseEvent(
-                                                                      'Button_update_app_state');
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .statusCartaodeCredito =
-                                                                        StatusCartaoCall
-                                                                            .statusPag(
-                                                                      (_model.resultadoStatus
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                    ).toString();
-                                                                  });
-                                                                  if (FFAppState()
-                                                                          .statusCartaodeCredito ==
-                                                                      'Approved') {
-                                                                    logFirebaseEvent(
-                                                                        'Button_bottom_sheet');
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                PagComSucessWidget(
-                                                                              detalhesProdutos: widget.detalhesProjects,
-                                                                              cartaoFinal: ApiTokenMpCall.ultimos4dig(
-                                                                                (_model.resultadoGerarToken?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                              transacionID: CriarPagamentosCartaoMPCall.transacionID(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else if (FFAppState()
-                                                                          .PagRed
-                                                                          .status ==
-                                                                      'inprocess') {
-                                                                    logFirebaseEvent(
-                                                                        'Button_bottom_sheet');
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Color(
-                                                                              0x81000000),
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                CartaoProcessWidget(
-                                                                              detalhesProdutos: widget.detalhesProjects,
-                                                                              cartaoFinal: CriarPagamentosCartaoMPCall.ultimos4Dig(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                              transacionID: CriarPagamentosCartaoMPCall.transacionID(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else if (FFAppState()
-                                                                          .PagRed
-                                                                          .status ==
-                                                                      'pending') {
-                                                                    logFirebaseEvent(
-                                                                        'Button_bottom_sheet');
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Color(
-                                                                              0x81000000),
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                CartaoProcessWidget(
-                                                                              detalhesProdutos: widget.detalhesProjects,
-                                                                              cartaoFinal: CriarPagamentosCartaoMPCall.ultimos4Dig(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                              transacionID: CriarPagamentosCartaoMPCall.transacionID(
-                                                                                (_model.resultadoCartaoPag?.jsonBody ?? ''),
-                                                                              ).toString(),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else {
-                                                                    logFirebaseEvent(
-                                                                        'Button_alert_dialog');
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return AlertDialog(
-                                                                          title:
-                                                                              Text('Cartão Recusado!'),
-                                                                          content:
-                                                                              Text(StatusCartaoCall.statusPag(
-                                                                            (_model.resultadoStatus?.jsonBody ??
-                                                                                ''),
-                                                                          ).toString()),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext),
-                                                                              child: Text('Ok'),
-                                                                            ),
-                                                                          ],
-                                                                        );
-                                                                      },
-                                                                    );
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  }
-                                                                } else {
-                                                                  logFirebaseEvent(
-                                                                      'Button_alert_dialog');
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Cartão Recusado!'),
-                                                                        content:
-                                                                            Text(StatusCartaoCall.statusPag(
-                                                                          (_model.resultadoStatus?.jsonBody ??
-                                                                              ''),
-                                                                        ).toString()),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
-                                                                  if (_shouldSetState)
-                                                                    setState(
-                                                                        () {});
-                                                                  return;
-                                                                }
-                                                              } else {
-                                                                logFirebaseEvent(
-                                                                    'Button_alert_dialog');
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          'Erro ao processar pagamento!'),
-                                                                      content: Text(
-                                                                          CriarPagamentosCartaoMPCall
-                                                                              .erroM(
-                                                                        (_model.resultadoCartaoPag?.jsonBody ??
-                                                                            ''),
-                                                                      ).toString()),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                          child:
-                                                                              Text('Ok'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                );
-                                                                if (_shouldSetState)
-                                                                  setState(
-                                                                      () {});
-                                                                return;
-                                                              }
-                                                            } else {
-                                                              logFirebaseEvent(
-                                                                  'Button_alert_dialog');
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        'Erro ao validar cartão!'),
-                                                                    content: Text(
-                                                                        ApiTokenMpCall
-                                                                            .erroMToken(
-                                                                      (_model.resultadoGerarToken
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                    ).toString()),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
-                                                              );
-                                                              if (_shouldSetState)
-                                                                setState(() {});
-                                                              return;
-                                                            }
-                                                          } else {
-                                                            logFirebaseEvent(
-                                                                'Button_alert_dialog');
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'Cep Inválido!'),
-                                                                  content: Text(
-                                                                      'Preencha um cep Válido!'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
                                                           }
+                                                          _model.paymentId =
+                                                              paymentResponse
+                                                                      .paymentId ??
+                                                                  '';
 
-                                                          if (_shouldSetState)
-                                                            setState(() {});
+                                                          setState(() {});
                                                         },
                                                         text:
                                                             'Realizar Pagamento',
@@ -2539,7 +2102,7 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                                             child:
                                                                                 FFButtonWidget(
                                                                               onPressed: () async {
-                                                                                logFirebaseEvent('CARTAO_PAG_PAGE_SELECIONAR_BTN_ON_TAP');
+                                                                                logFirebaseEvent('CARTAO_PAG_STRIPE_SELECIONAR_BTN_ON_TAP');
                                                                                 logFirebaseEvent('Button_update_app_state');
                                                                                 setState(() {
                                                                                   FFAppState().UsarCartaoSalvo = listViewUserPagRecord.idCartao;
@@ -2628,69 +2191,6 @@ class _CartaoPagWidgetState extends State<CartaoPagWidget> {
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.00, 0.00),
-                                                  child: Material(
-                                                    color: Colors.transparent,
-                                                    elevation: 5.0,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.0),
-                                                    ),
-                                                    child: Container(
-                                                      width: 500.0,
-                                                      height: 150.0,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.00, 0.00),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    20.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.asset(
-                                                            'assets/images/mercado-pago-logo__05862_zoom.png',
-                                                            width: 500.0,
-                                                            fit: BoxFit.cover,
-                                                            alignment:
-                                                                Alignment(
-                                                                    0.00, 0.00),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
                                             ),
                                           ),
                                         ],

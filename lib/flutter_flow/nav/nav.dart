@@ -275,6 +275,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             detalhesProjects:
                 params.getParam('detalhesProjects', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'CartaoPagStripe',
+          path: '/CartaoPagStripe',
+          asyncParams: {
+            'detalhesProjects':
+                getDoc(['Projetos'], ProjetosRecord.fromSnapshot),
+          },
+          builder: (context, params) => CartaoPagStripeWidget(
+            detalhesProjects:
+                params.getParam('detalhesProjects', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

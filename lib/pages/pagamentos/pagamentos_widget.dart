@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/stripe/payment_manager.dart';
 import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/comp_pagamentos/pag_pix/pag_pix_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
@@ -1361,35 +1362,72 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                   .FormadePag ==
                                                               'cartao') {
                                                             logFirebaseEvent(
-                                                                'Button_navigate_to');
+                                                                'Button_stripe_payment');
+                                                            final paymentResponse =
+                                                                await processStripePayment(
+                                                              context,
+                                                              amount: widget
+                                                                  .detalhesProjects!
+                                                                  .valor
+                                                                  .round(),
+                                                              currency: 'BRL',
+                                                              customerEmail:
+                                                                  currentUserUid,
+                                                              customerName:
+                                                                  currentUserDisplayName,
+                                                              description: widget
+                                                                  .detalhesProjects!
+                                                                  .titulo,
+                                                              allowGooglePay:
+                                                                  false,
+                                                              allowApplePay:
+                                                                  false,
+                                                              buttonColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              buttonTextColor:
+                                                                  Color(
+                                                                      0xFFD2D2D2),
+                                                            );
+                                                            if (paymentResponse
+                                                                        .paymentId ==
+                                                                    null &&
+                                                                paymentResponse
+                                                                        .errorMessage !=
+                                                                    null) {
+                                                              showSnackbar(
+                                                                context,
+                                                                'Error: ${paymentResponse.errorMessage}',
+                                                              );
+                                                            }
+                                                            _model.paymentId =
+                                                                paymentResponse
+                                                                        .paymentId ??
+                                                                    '';
 
-                                                            context.pushNamed(
-                                                              'CartaoPag',
-                                                              queryParameters: {
-                                                                'detalhesProjects':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .detalhesProjects,
-                                                                  ParamType
-                                                                      .Document,
-                                                                ),
-                                                              }.withoutNulls,
-                                                              extra: <String,
-                                                                  dynamic>{
-                                                                'detalhesProjects':
-                                                                    widget
-                                                                        .detalhesProjects,
-                                                                kTransitionInfoKey:
-                                                                    TransitionInfo(
-                                                                  hasTransition:
-                                                                      true,
-                                                                  transitionType:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          0),
-                                                                ),
+                                                            logFirebaseEvent(
+                                                                'Button_alert_dialog');
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(_model
+                                                                      .paymentId!),
+                                                                  content: Text(
+                                                                      _model
+                                                                          .paymentId!),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
                                                               },
                                                             );
                                                           } else {

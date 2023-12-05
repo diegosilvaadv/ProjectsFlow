@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/comp_pagamentos/cartao_process/cartao_process_widget.dart';
 import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
@@ -9,7 +10,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'cartao_pag_widget.dart' show CartaoPagWidget;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +48,7 @@ class CartaoPagModel extends FlutterFlowModel<CartaoPagWidget> {
   // State field(s) for number_cartao widget.
   FocusNode? numberCartaoFocusNode;
   TextEditingController? numberCartaoController;
+  late bool numberCartaoVisibility;
   final numberCartaoMask = MaskTextInputFormatter(mask: '#### #### #### #### ');
   String? Function(BuildContext, String?)? numberCartaoControllerValidator;
   // State field(s) for mes_card widget.
@@ -63,6 +64,7 @@ class CartaoPagModel extends FlutterFlowModel<CartaoPagWidget> {
   // State field(s) for cvv_card widget.
   FocusNode? cvvCardFocusNode;
   TextEditingController? cvvCardController;
+  late bool cvvCardVisibility;
   final cvvCardMask = MaskTextInputFormatter(mask: '####');
   String? Function(BuildContext, String?)? cvvCardControllerValidator;
   // State field(s) for cep widget.
@@ -104,6 +106,8 @@ class CartaoPagModel extends FlutterFlowModel<CartaoPagWidget> {
 
   void initState(BuildContext context) {
     appBarModel = createModel(context, () => AppBarModel());
+    numberCartaoVisibility = false;
+    cvvCardVisibility = false;
     navBarModel = createModel(context, () => NavBarModel());
   }
 

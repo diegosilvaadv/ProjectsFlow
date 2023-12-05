@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/stripe/payment_manager.dart';
 import '/comp_pagamentos/pag_com_sucess/pag_com_sucess_widget.dart';
 import '/comp_pagamentos/pag_pix/pag_pix_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
@@ -29,6 +30,8 @@ class PagamentosModel extends FlutterFlowModel<PagamentosWidget> {
   bool mouseRegionHovered = false;
   // Stores action output result for [Backend Call - API (Pix Mercado Pago)] action in Button widget.
   ApiCallResponse? gerarPedido;
+  // Stores action output result for [Stripe Payment] action in Button widget.
+  String? paymentId;
   // Model for NavBar component.
   late NavBarModel navBarModel;
 
