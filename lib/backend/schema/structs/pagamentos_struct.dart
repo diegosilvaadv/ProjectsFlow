@@ -1,5 +1,5 @@
 // ignore_for_file: unnecessary_getters_setters
-
+import '/backend/algolia/serialization_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -124,6 +124,39 @@ class PagamentosStruct extends FFFirebaseStruct {
           data['id_pedido'],
           ParamType.int,
           false,
+        ),
+      );
+
+  static PagamentosStruct fromAlgoliaData(Map<String, dynamic> data) =>
+      PagamentosStruct(
+        status: convertAlgoliaParam(
+          data['status'],
+          ParamType.String,
+          false,
+        ),
+        chavepix: convertAlgoliaParam(
+          data['chavepix'],
+          ParamType.String,
+          false,
+        ),
+        qRcode: convertAlgoliaParam(
+          data['QRcode'],
+          ParamType.String,
+          false,
+        ),
+        qrCodeIMG: convertAlgoliaParam(
+          data['QrCodeIMG'],
+          ParamType.String,
+          false,
+        ),
+        idPedido: convertAlgoliaParam(
+          data['id_pedido'],
+          ParamType.int,
+          false,
+        ),
+        firestoreUtilData: FirestoreUtilData(
+          clearUnsetFields: false,
+          create: true,
         ),
       );
 

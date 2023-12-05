@@ -1,5 +1,5 @@
 // ignore_for_file: unnecessary_getters_setters
-
+import '/backend/algolia/serialization_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -66,6 +66,24 @@ class FormasdepagStruct extends FFFirebaseStruct {
           data['cardaodecredito'],
           ParamType.String,
           false,
+        ),
+      );
+
+  static FormasdepagStruct fromAlgoliaData(Map<String, dynamic> data) =>
+      FormasdepagStruct(
+        pix: convertAlgoliaParam(
+          data['pix'],
+          ParamType.String,
+          false,
+        ),
+        cardaodecredito: convertAlgoliaParam(
+          data['cardaodecredito'],
+          ParamType.String,
+          false,
+        ),
+        firestoreUtilData: FirestoreUtilData(
+          clearUnsetFields: false,
+          create: true,
         ),
       );
 

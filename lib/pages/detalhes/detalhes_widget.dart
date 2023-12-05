@@ -838,7 +838,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
-                                                                      20.0,
+                                                                      0.0,
                                                                       0.0,
                                                                       10.0),
                                                           child: FFButtonWidget(

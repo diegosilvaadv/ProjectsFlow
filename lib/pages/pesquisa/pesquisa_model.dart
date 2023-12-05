@@ -25,6 +25,8 @@ class PesquisaModel extends FlutterFlowModel<PesquisaWidget> {
   TextEditingController? textController;
   String? textFieldSelectedOption;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Algolia Search Results from action on Button
+  List<ProjetosRecord>? algoliaSearchResults = [];
   // Model for NavBar component.
   late NavBarModel navBarModel;
 

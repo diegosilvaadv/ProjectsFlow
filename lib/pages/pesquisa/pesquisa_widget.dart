@@ -349,9 +349,29 @@ class _PesquisaWidgetState extends State<PesquisaWidget> {
                                                             .fromSTEB(0.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: FFButtonWidget(
-                                                      onPressed: () {
-                                                        print(
-                                                            'Button pressed ...');
+                                                      onPressed: () async {
+                                                        logFirebaseEvent(
+                                                            'PESQUISA_PAGE_BUSCAR_BTN_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Button_algolia_search');
+                                                        safeSetState(() => _model
+                                                                .algoliaSearchResults =
+                                                            null);
+                                                        await ProjetosRecord
+                                                                .search(
+                                                          term: _model
+                                                              .textController
+                                                              .text,
+                                                        )
+                                                            .then((r) => _model
+                                                                    .algoliaSearchResults =
+                                                                r)
+                                                            .onError((_, __) =>
+                                                                _model.algoliaSearchResults =
+                                                                    [])
+                                                            .whenComplete(() =>
+                                                                setState(
+                                                                    () {}));
                                                       },
                                                       text: 'Buscar',
                                                       options: FFButtonOptions(

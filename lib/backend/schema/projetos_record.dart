@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:from_css_color/from_css_color.dart';
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -153,6 +156,58 @@ class ProjetosRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       ProjetosRecord._(reference, mapFromFirestore(data));
+
+  static ProjetosRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      ProjetosRecord.getDocumentFromData(
+        {
+          'Titulo': snapshot.data['Titulo'],
+          'Descricao': snapshot.data['Descricao'],
+          'Valor': convertAlgoliaParam(
+            snapshot.data['Valor'],
+            ParamType.double,
+            false,
+          ),
+          'Categoria': snapshot.data['Categoria'],
+          'LinkProjeto': snapshot.data['LinkProjeto'],
+          'PostadoPor': snapshot.data['PostadoPor'],
+          'IMGPrincipal': snapshot.data['IMGPrincipal'],
+          'creatData': convertAlgoliaParam(
+            snapshot.data['creatData'],
+            ParamType.DateTime,
+            false,
+          ),
+          'identificacao': snapshot.data['identificacao'],
+          'userIDVendedor': snapshot.data['userIDVendedor'],
+          'emailVendedor': snapshot.data['emailVendedor'],
+          'requisitos': snapshot.data['requisitos'],
+          'subtitulo': snapshot.data['subtitulo'],
+          'Eprojeto': snapshot.data['Eprojeto'],
+          'descriVenda': snapshot.data['descriVenda'],
+          'videoDemo': snapshot.data['videoDemo'],
+          'videoTutorial': snapshot.data['videoTutorial'],
+          'img2': snapshot.data['img2'],
+          'img3': snapshot.data['img3'],
+        },
+        ProjetosRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<ProjetosRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'Projetos',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>
