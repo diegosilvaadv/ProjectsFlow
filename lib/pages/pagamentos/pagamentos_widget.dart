@@ -1405,6 +1405,31 @@ class _PagamentosWidgetState extends State<PagamentosWidget> {
                                                                 paymentResponse
                                                                         .paymentId ??
                                                                     '';
+
+                                                            logFirebaseEvent(
+                                                                'Button_alert_dialog');
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(_model
+                                                                      .paymentId!),
+                                                                  content: Text(
+                                                                      _model
+                                                                          .paymentId!),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
                                                           } else {
                                                             logFirebaseEvent(
                                                                 'Button_show_snack_bar');
