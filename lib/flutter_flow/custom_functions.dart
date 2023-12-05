@@ -94,6 +94,13 @@ String visualizarFinalTexto36(String texto) {
 }
 
 String videoYotube(String link) {
-  // criar função para visualizar video do youtube
-  return 'https://www.youtube.com/embed/${link.substring(link.indexOf('=') + 1)}';
+  // visualizar video youtube atraveis do link
+  final RegExp regExp = RegExp(
+      r'^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*');
+  final Match? match = regExp.firstMatch(link);
+  if (match != null && match.groupCount >= 2) {
+    return 'https://www.youtube.com/embed/${match.group(2)}';
+  } else {
+    return '';
+  }
 }
