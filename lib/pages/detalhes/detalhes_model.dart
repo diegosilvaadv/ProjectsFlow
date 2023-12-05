@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
+import '/componts/compartilhar_link/compartilhar_link_widget.dart';
 import '/componts/criarconta/criarconta_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/componts/video_view/video_view_widget.dart';

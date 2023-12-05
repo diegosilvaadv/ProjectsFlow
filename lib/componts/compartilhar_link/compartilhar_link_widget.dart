@@ -1,8 +1,10 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,14 +12,35 @@ import 'compartilhar_link_model.dart';
 export 'compartilhar_link_model.dart';
 
 class CompartilharLinkWidget extends StatefulWidget {
-  const CompartilharLinkWidget({Key? key}) : super(key: key);
+  const CompartilharLinkWidget({
+    Key? key,
+    this.referencia,
+  }) : super(key: key);
+
+  final String? referencia;
 
   @override
   _CompartilharLinkWidgetState createState() => _CompartilharLinkWidgetState();
 }
 
-class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget> {
+class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget>
+    with TickerProviderStateMixin {
   late CompartilharLinkModel _model;
+
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 760.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void setState(VoidCallback callback) {
@@ -53,92 +76,62 @@ class _CompartilharLinkWidgetState extends State<CompartilharLinkWidget> {
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(12.0),
         ),
-        child: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
-          child: Column(
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
+          child: Row(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 6.0),
-                      child: Text(
-                        'Senha Alterada com Sucesso!',
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: 'Outfit',
-                              fontSize: 30.0,
-                            ),
-                      ),
-                    ),
-                  ],
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 6.0),
+                  child: Text(
+                    'https://projectsflow.flutterflow.app/detalhes?detalhesProjects=${widget.referencia}',
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Outfit',
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          fontSize: 30.0,
+                        ),
+                  ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 20.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            logFirebaseEvent(
-                                'COMPARTILHAR_LINK_Button-Login_ON_TAP');
-                            logFirebaseEvent('Button-Login_navigate_to');
-
-                            context.goNamed(
-                              'HomePage',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType:
-                                      PageTransitionType.bottomToTop,
-                                ),
-                              },
-                            );
-                          },
-                          text: 'Página Inicial',
-                          options: FFButtonOptions(
-                            width: 270.0,
-                            height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 25.0,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                          ),
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('COMPARTILHAR_LINK_Icon_m1fjdr4g_ON_TAP');
+                  logFirebaseEvent('Icon_copy_to_clipboard');
+                  await Clipboard.setData(ClipboardData(
+                      text:
+                          'https://projectsflow.flutterflow.app/detalhes?detalhesProjects=${widget.referencia}'));
+                  logFirebaseEvent('Icon_bottom_sheet');
+                  Navigator.pop(context);
+                  logFirebaseEvent('Icon_show_snack_bar');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'Link Copiado!',
+                        style: TextStyle(
+                          color: FlutterFlowTheme.of(context).primaryText,
                         ),
                       ),
+                      duration: Duration(milliseconds: 4000),
+                      backgroundColor: FlutterFlowTheme.of(context).secondary,
                     ),
-                  ],
+                  );
+                },
+                child: Icon(
+                  Icons.content_copy,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 50.0,
                 ),
               ),
             ],
           ),
         ),
-      ),
+      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
     );
   }
 }

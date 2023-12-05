@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/app_bar/app_bar_widget.dart';
+import '/componts/compartilhar_link/compartilhar_link_widget.dart';
 import '/componts/criarconta/criarconta_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/componts/video_view/video_view_widget.dart';
@@ -1313,14 +1314,45 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                       logFirebaseEvent(
                                                           'DETALHES_PAGE_share_sharp_ICN_ON_TAP');
                                                       logFirebaseEvent(
-                                                          'IconButton_update_app_state');
-                                                      setState(() {
-                                                        FFAppState().GerarUUID =
-                                                            widget
-                                                                .detalhesProjects!
-                                                                .reference
-                                                                .id;
-                                                      });
+                                                          'IconButton_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Color(0x82000000),
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  CompartilharLinkWidget(
+                                                                referencia: widget
+                                                                    .detalhesProjects
+                                                                    ?.reference
+                                                                    .id,
+                                                              ),
+                                                            ),
+                                                          ));
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
                                                     },
                                                   ),
                                                 ),
