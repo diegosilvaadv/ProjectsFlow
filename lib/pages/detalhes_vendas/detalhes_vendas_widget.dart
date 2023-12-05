@@ -234,6 +234,8 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Flexible(
                                               child: Padding(
@@ -379,6 +381,8 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Column(
                                                   mainAxisSize:

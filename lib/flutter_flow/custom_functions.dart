@@ -104,3 +104,10 @@ String videoYotube(String link) {
     return '';
   }
 }
+
+String linkdaPage() {
+  // crie uma url da pagina atual para compartilhar
+  final String currentUrl = 'https://example.com/current-page';
+  final String sharedUrl = Uri.encodeFull(currentUrl);
+  return sharedUrl;
+}
