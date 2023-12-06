@@ -24,6 +24,21 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _nomeUser = prefs.getString('ff_nomeUser') ?? _nomeUser;
     });
+    _safeInit(() {
+      _CodigosRef = prefs
+              .getStringList('ff_CodigosRef')
+              ?.map((x) {
+                try {
+                  return CodigosStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _CodigosRef;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -119,6 +134,47 @@ class FFAppState extends ChangeNotifier {
   bool get isOptionsExpanded => _isOptionsExpanded;
   set isOptionsExpanded(bool _value) {
     _isOptionsExpanded = _value;
+  }
+
+  List<CodigosStruct> _CodigosRef = [];
+  List<CodigosStruct> get CodigosRef => _CodigosRef;
+  set CodigosRef(List<CodigosStruct> _value) {
+    _CodigosRef = _value;
+    prefs.setStringList(
+        'ff_CodigosRef', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToCodigosRef(CodigosStruct _value) {
+    _CodigosRef.add(_value);
+    prefs.setStringList(
+        'ff_CodigosRef', _CodigosRef.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromCodigosRef(CodigosStruct _value) {
+    _CodigosRef.remove(_value);
+    prefs.setStringList(
+        'ff_CodigosRef', _CodigosRef.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromCodigosRef(int _index) {
+    _CodigosRef.removeAt(_index);
+    prefs.setStringList(
+        'ff_CodigosRef', _CodigosRef.map((x) => x.serialize()).toList());
+  }
+
+  void updateCodigosRefAtIndex(
+    int _index,
+    CodigosStruct Function(CodigosStruct) updateFn,
+  ) {
+    _CodigosRef[_index] = updateFn(_CodigosRef[_index]);
+    prefs.setStringList(
+        'ff_CodigosRef', _CodigosRef.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInCodigosRef(int _index, CodigosStruct _value) {
+    _CodigosRef.insert(_index, _value);
+    prefs.setStringList(
+        'ff_CodigosRef', _CodigosRef.map((x) => x.serialize()).toList());
   }
 }
 

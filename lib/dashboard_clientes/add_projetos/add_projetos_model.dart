@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/adcionar_code_widget.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/markdown_link/markdown_link_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';

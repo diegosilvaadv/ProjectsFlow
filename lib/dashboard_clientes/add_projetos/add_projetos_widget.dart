@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/adcionar_code_widget.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/markdown_link/markdown_link_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
@@ -3085,6 +3086,82 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  logFirebaseEvent(
+                                                      'ADD_PROJETOS_ADICIONAR_CODIGOS_COPIÁVEIS');
+                                                  logFirebaseEvent(
+                                                      'Button_bottom_sheet');
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Color(0x3E000000),
+                                                    enableDrag: false,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              AdcionarCodeWidget(),
+                                                        ),
+                                                      ));
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() {}));
+                                                },
+                                                text:
+                                                    'Adicionar Codigos Copiáveis',
+                                                options: FFButtonOptions(
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          24.0, 0.0, 24.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: Colors.white,
+                                                          ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
                                                       0.0, 20.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -3386,62 +3463,73 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                       await ProjetosRecord
                                                           .collection
                                                           .doc()
-                                                          .set(
-                                                              createProjetosRecordData(
-                                                            titulo: _model
-                                                                .tituloController
-                                                                .text,
-                                                            descricao: _model
-                                                                .descriVendaController
-                                                                .text,
-                                                            valor: _model
-                                                                .precoValue,
-                                                            categoria: _model
-                                                                .categoriaValue,
-                                                            linkProjeto: _model
-                                                                .videoDemoController
-                                                                .text,
-                                                            postadoPor:
-                                                                currentUserDisplayName,
-                                                            iMGPrincipal: _model
-                                                                .uploadedFileUrl1,
-                                                            creatData:
-                                                                getCurrentTimestamp,
-                                                            identificacao:
-                                                                random_data
-                                                                    .randomString(
-                                                              10,
-                                                              12,
-                                                              true,
-                                                              false,
-                                                              true,
-                                                            ),
-                                                            userIDVendedor:
-                                                                currentUserUid,
-                                                            emailVendedor:
-                                                                currentUserEmail,
-                                                            requisitos: _model
-                                                                .requisitosController
-                                                                .text,
-                                                            subtitulo: _model
-                                                                .subtituloController
-                                                                .text,
-                                                            eprojeto: _model
-                                                                .checkboxValue,
-                                                            descriVenda: _model
-                                                                .descriCompraController
-                                                                .text,
-                                                            videoDemo: _model
-                                                                .videoDemoController
-                                                                .text,
-                                                            videoTutorial: _model
-                                                                .videoTutorialController
-                                                                .text,
-                                                            img2: _model
-                                                                .uploadedFileUrl2,
-                                                            img3: _model
-                                                                .uploadedFileUrl3,
-                                                          ));
+                                                          .set({
+                                                        ...createProjetosRecordData(
+                                                          titulo: _model
+                                                              .tituloController
+                                                              .text,
+                                                          descricao: _model
+                                                              .descriVendaController
+                                                              .text,
+                                                          valor:
+                                                              _model.precoValue,
+                                                          categoria: _model
+                                                              .categoriaValue,
+                                                          linkProjeto: _model
+                                                              .videoDemoController
+                                                              .text,
+                                                          postadoPor:
+                                                              currentUserDisplayName,
+                                                          iMGPrincipal: _model
+                                                              .uploadedFileUrl1,
+                                                          creatData:
+                                                              getCurrentTimestamp,
+                                                          identificacao:
+                                                              random_data
+                                                                  .randomString(
+                                                            10,
+                                                            12,
+                                                            true,
+                                                            false,
+                                                            true,
+                                                          ),
+                                                          userIDVendedor:
+                                                              currentUserUid,
+                                                          emailVendedor:
+                                                              currentUserEmail,
+                                                          requisitos: _model
+                                                              .requisitosController
+                                                              .text,
+                                                          subtitulo: _model
+                                                              .subtituloController
+                                                              .text,
+                                                          eprojeto: _model
+                                                              .checkboxValue,
+                                                          descriVenda: _model
+                                                              .descriCompraController
+                                                              .text,
+                                                          videoDemo: _model
+                                                              .videoDemoController
+                                                              .text,
+                                                          videoTutorial: _model
+                                                              .videoTutorialController
+                                                              .text,
+                                                          img2: _model
+                                                              .uploadedFileUrl2,
+                                                          img3: _model
+                                                              .uploadedFileUrl3,
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'codigosCopiar':
+                                                                FFAppState()
+                                                                    .CodigosRef
+                                                                    .map((e) =>
+                                                                        e.textoCode)
+                                                                    .toList(),
+                                                          },
+                                                        ),
+                                                      });
                                                       logFirebaseEvent(
                                                           'Button_bottom_sheet');
                                                       await showModalBottomSheet(
