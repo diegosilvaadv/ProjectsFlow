@@ -14,11 +14,13 @@ class CodigosStruct extends FFFirebaseStruct {
     String? tituloCode,
     String? descricaoCode,
     String? linkProjeto,
+    int? ordem,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _textoCode = textoCode,
         _tituloCode = tituloCode,
         _descricaoCode = descricaoCode,
         _linkProjeto = linkProjeto,
+        _ordem = ordem,
         super(firestoreUtilData);
 
   // "textoCode" field.
@@ -45,11 +47,19 @@ class CodigosStruct extends FFFirebaseStruct {
   set linkProjeto(String? val) => _linkProjeto = val;
   bool hasLinkProjeto() => _linkProjeto != null;
 
+  // "ordem" field.
+  int? _ordem;
+  int get ordem => _ordem ?? 0;
+  set ordem(int? val) => _ordem = val;
+  void incrementOrdem(int amount) => _ordem = ordem + amount;
+  bool hasOrdem() => _ordem != null;
+
   static CodigosStruct fromMap(Map<String, dynamic> data) => CodigosStruct(
         textoCode: data['textoCode'] as String?,
         tituloCode: data['TituloCode'] as String?,
         descricaoCode: data['DescricaoCode'] as String?,
         linkProjeto: data['LinkProjeto'] as String?,
+        ordem: castToType<int>(data['ordem']),
       );
 
   static CodigosStruct? maybeFromMap(dynamic data) =>
@@ -60,6 +70,7 @@ class CodigosStruct extends FFFirebaseStruct {
         'TituloCode': _tituloCode,
         'DescricaoCode': _descricaoCode,
         'LinkProjeto': _linkProjeto,
+        'ordem': _ordem,
       }.withoutNulls;
 
   @override
@@ -79,6 +90,10 @@ class CodigosStruct extends FFFirebaseStruct {
         'LinkProjeto': serializeParam(
           _linkProjeto,
           ParamType.String,
+        ),
+        'ordem': serializeParam(
+          _ordem,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -102,6 +117,11 @@ class CodigosStruct extends FFFirebaseStruct {
         linkProjeto: deserializeParam(
           data['LinkProjeto'],
           ParamType.String,
+          false,
+        ),
+        ordem: deserializeParam(
+          data['ordem'],
+          ParamType.int,
           false,
         ),
       );
@@ -128,6 +148,11 @@ class CodigosStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        ordem: convertAlgoliaParam(
+          data['ordem'],
+          ParamType.int,
+          false,
+        ),
         firestoreUtilData: FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
@@ -143,12 +168,13 @@ class CodigosStruct extends FFFirebaseStruct {
         textoCode == other.textoCode &&
         tituloCode == other.tituloCode &&
         descricaoCode == other.descricaoCode &&
-        linkProjeto == other.linkProjeto;
+        linkProjeto == other.linkProjeto &&
+        ordem == other.ordem;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([textoCode, tituloCode, descricaoCode, linkProjeto]);
+      .hash([textoCode, tituloCode, descricaoCode, linkProjeto, ordem]);
 }
 
 CodigosStruct createCodigosStruct({
@@ -156,6 +182,7 @@ CodigosStruct createCodigosStruct({
   String? tituloCode,
   String? descricaoCode,
   String? linkProjeto,
+  int? ordem,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -166,6 +193,7 @@ CodigosStruct createCodigosStruct({
       tituloCode: tituloCode,
       descricaoCode: descricaoCode,
       linkProjeto: linkProjeto,
+      ordem: ordem,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

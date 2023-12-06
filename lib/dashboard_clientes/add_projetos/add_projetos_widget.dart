@@ -3318,9 +3318,10 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                   'sem',
                                                                 ),
                                                                 ordem: FFAppState()
-                                                                    .CodigosRef
-                                                                    .length
-                                                                    .toString(),
+                                                                    .CodigosRef[
+                                                                        FFAppState()
+                                                                            .contador]
+                                                                    .ordem,
                                                               ));
                                                           logFirebaseEvent(
                                                               'Button_wait__delay');

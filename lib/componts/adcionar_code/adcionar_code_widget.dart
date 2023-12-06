@@ -90,7 +90,6 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                           child: TextFormField(
                             controller: _model.tituloController,
                             focusNode: _model.tituloFocusNode,
-                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Titulo',
@@ -158,7 +157,6 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                           child: TextFormField(
                             controller: _model.descricaoController,
                             focusNode: _model.descricaoFocusNode,
-                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Descrição',
@@ -227,7 +225,6 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                           child: TextFormField(
                             controller: _model.codigoController,
                             focusNode: _model.codigoFocusNode,
-                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Colar Codigo',
@@ -299,6 +296,7 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                               textoCode: _model.codigoController.text,
                               tituloCode: _model.tituloController.text,
                               descricaoCode: _model.descricaoController.text,
+                              ordem: FFAppState().CodigosRef.last.ordem + 1,
                             ));
                           });
                           logFirebaseEvent(

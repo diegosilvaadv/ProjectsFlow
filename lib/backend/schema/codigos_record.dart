@@ -37,8 +37,8 @@ class CodigosRecord extends FirestoreRecord {
   bool hasCodigos() => _codigos != null;
 
   // "ordem" field.
-  String? _ordem;
-  String get ordem => _ordem ?? '';
+  int? _ordem;
+  int get ordem => _ordem ?? 0;
   bool hasOrdem() => _ordem != null;
 
   void _initializeFields() {
@@ -46,7 +46,7 @@ class CodigosRecord extends FirestoreRecord {
     _tituloCode = snapshotData['TituloCode'] as String?;
     _descricaoCode = snapshotData['DescricaoCode'] as String?;
     _codigos = snapshotData['Codigos'] as String?;
-    _ordem = snapshotData['ordem'] as String?;
+    _ordem = castToType<int>(snapshotData['ordem']);
   }
 
   static CollectionReference get collection =>
@@ -88,7 +88,7 @@ Map<String, dynamic> createCodigosRecordData({
   String? tituloCode,
   String? descricaoCode,
   String? codigos,
-  String? ordem,
+  int? ordem,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
