@@ -859,7 +859,7 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     if (columnCodigosRecord
-                                                            .tituloCode !=
+                                                            .tituloCode ==
                                                         'sem')
                                                       Row(
                                                         mainAxisSize:
