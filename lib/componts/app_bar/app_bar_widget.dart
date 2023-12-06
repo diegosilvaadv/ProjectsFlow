@@ -139,28 +139,36 @@ class _AppBarWidgetState extends State<AppBarWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Material(
-      color: Colors.transparent,
-      elevation: 3.0,
-      child: Container(
-        height: MediaQuery.sizeOf(context).height * 0.111,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 4.0,
-              color: FlutterFlowTheme.of(context).accent1,
-              offset: Offset(0.0, 2.0),
-            )
-          ],
-          border: Border.all(
-            color: Color(0x004B39EF),
-          ),
+    return Align(
+      alignment: AlignmentDirectional(0.00, -1.00),
+      child: Material(
+        color: Colors.transparent,
+        elevation: 3.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
         ),
-        child: Align(
+        child: Container(
+          height: MediaQuery.sizeOf(context).height * 0.111,
+          constraints: BoxConstraints(
+            maxWidth: 1400.0,
+          ),
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 4.0,
+                color: FlutterFlowTheme.of(context).accent1,
+                offset: Offset(0.0, 2.0),
+              )
+            ],
+            borderRadius: BorderRadius.circular(12.0),
+            border: Border.all(
+              color: Color(0x004B39EF),
+            ),
+          ),
           alignment: AlignmentDirectional(0.00, 0.00),
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+          child: Align(
+            alignment: AlignmentDirectional(0.00, 0.00),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
