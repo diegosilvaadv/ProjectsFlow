@@ -825,13 +825,8 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                     .where(
                                                       'LinkProjeto',
                                                       isEqualTo: widget
-                                                                  .detalhesProjects
-                                                                  ?.linkProjeto !=
-                                                              ''
-                                                          ? widget
-                                                              .detalhesProjects
-                                                              ?.linkProjeto
-                                                          : null,
+                                                          .detalhesProjects
+                                                          ?.linkProjeto,
                                                     )
                                                     .orderBy('ordem'),
                                           ),
