@@ -11,8 +11,14 @@ import '/flutter_flow/flutter_flow_util.dart';
 class CodigosStruct extends FFFirebaseStruct {
   CodigosStruct({
     String? textoCode,
+    String? tituloCode,
+    String? descricaoCode,
+    String? linkProjeto,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _textoCode = textoCode,
+        _tituloCode = tituloCode,
+        _descricaoCode = descricaoCode,
+        _linkProjeto = linkProjeto,
         super(firestoreUtilData);
 
   // "textoCode" field.
@@ -21,8 +27,29 @@ class CodigosStruct extends FFFirebaseStruct {
   set textoCode(String? val) => _textoCode = val;
   bool hasTextoCode() => _textoCode != null;
 
+  // "TituloCode" field.
+  String? _tituloCode;
+  String get tituloCode => _tituloCode ?? '';
+  set tituloCode(String? val) => _tituloCode = val;
+  bool hasTituloCode() => _tituloCode != null;
+
+  // "DescricaoCode" field.
+  String? _descricaoCode;
+  String get descricaoCode => _descricaoCode ?? '';
+  set descricaoCode(String? val) => _descricaoCode = val;
+  bool hasDescricaoCode() => _descricaoCode != null;
+
+  // "LinkProjeto" field.
+  String? _linkProjeto;
+  String get linkProjeto => _linkProjeto ?? '';
+  set linkProjeto(String? val) => _linkProjeto = val;
+  bool hasLinkProjeto() => _linkProjeto != null;
+
   static CodigosStruct fromMap(Map<String, dynamic> data) => CodigosStruct(
         textoCode: data['textoCode'] as String?,
+        tituloCode: data['TituloCode'] as String?,
+        descricaoCode: data['DescricaoCode'] as String?,
+        linkProjeto: data['LinkProjeto'] as String?,
       );
 
   static CodigosStruct? maybeFromMap(dynamic data) =>
@@ -30,12 +57,27 @@ class CodigosStruct extends FFFirebaseStruct {
 
   Map<String, dynamic> toMap() => {
         'textoCode': _textoCode,
+        'TituloCode': _tituloCode,
+        'DescricaoCode': _descricaoCode,
+        'LinkProjeto': _linkProjeto,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
         'textoCode': serializeParam(
           _textoCode,
+          ParamType.String,
+        ),
+        'TituloCode': serializeParam(
+          _tituloCode,
+          ParamType.String,
+        ),
+        'DescricaoCode': serializeParam(
+          _descricaoCode,
+          ParamType.String,
+        ),
+        'LinkProjeto': serializeParam(
+          _linkProjeto,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -47,12 +89,42 @@ class CodigosStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        tituloCode: deserializeParam(
+          data['TituloCode'],
+          ParamType.String,
+          false,
+        ),
+        descricaoCode: deserializeParam(
+          data['DescricaoCode'],
+          ParamType.String,
+          false,
+        ),
+        linkProjeto: deserializeParam(
+          data['LinkProjeto'],
+          ParamType.String,
+          false,
+        ),
       );
 
   static CodigosStruct fromAlgoliaData(Map<String, dynamic> data) =>
       CodigosStruct(
         textoCode: convertAlgoliaParam(
           data['textoCode'],
+          ParamType.String,
+          false,
+        ),
+        tituloCode: convertAlgoliaParam(
+          data['TituloCode'],
+          ParamType.String,
+          false,
+        ),
+        descricaoCode: convertAlgoliaParam(
+          data['DescricaoCode'],
+          ParamType.String,
+          false,
+        ),
+        linkProjeto: convertAlgoliaParam(
+          data['LinkProjeto'],
           ParamType.String,
           false,
         ),
@@ -67,15 +139,23 @@ class CodigosStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
-    return other is CodigosStruct && textoCode == other.textoCode;
+    return other is CodigosStruct &&
+        textoCode == other.textoCode &&
+        tituloCode == other.tituloCode &&
+        descricaoCode == other.descricaoCode &&
+        linkProjeto == other.linkProjeto;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([textoCode]);
+  int get hashCode => const ListEquality()
+      .hash([textoCode, tituloCode, descricaoCode, linkProjeto]);
 }
 
 CodigosStruct createCodigosStruct({
   String? textoCode,
+  String? tituloCode,
+  String? descricaoCode,
+  String? linkProjeto,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -83,6 +163,9 @@ CodigosStruct createCodigosStruct({
 }) =>
     CodigosStruct(
       textoCode: textoCode,
+      tituloCode: tituloCode,
+      descricaoCode: descricaoCode,
+      linkProjeto: linkProjeto,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

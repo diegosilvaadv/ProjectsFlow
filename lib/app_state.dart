@@ -176,6 +176,12 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList(
         'ff_CodigosRef', _CodigosRef.map((x) => x.serialize()).toList());
   }
+
+  int _contador = -1;
+  int get contador => _contador;
+  set contador(int _value) {
+    _contador = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/adcionar_code_widget.dart';
+import '/componts/adcionar_code/adcionar_code_widget.dart';
 import '/componts/mark_down_view/mark_down_view_widget.dart';
 import '/componts/markdown_link/markdown_link_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
@@ -30,16 +30,15 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   final unfocusNode = FocusNode();
   final formKey9 = GlobalKey<FormState>();
   final formKey4 = GlobalKey<FormState>();
-  final formKey12 = GlobalKey<FormState>();
+  final formKey11 = GlobalKey<FormState>();
   final formKey7 = GlobalKey<FormState>();
   final formKey6 = GlobalKey<FormState>();
-  final formKey11 = GlobalKey<FormState>();
+  final formKey10 = GlobalKey<FormState>();
   final formKey8 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey5 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
-  final formKey10 = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -167,27 +166,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     return null;
   }
 
-  // Model for MarkdownLink component.
-  late MarkdownLinkModel markdownLinkModel3;
-  // State field(s) for descriCompra widget.
-  FocusNode? descriCompraFocusNode;
-  TextEditingController? descriCompraController;
-  String? Function(BuildContext, String?)? descriCompraControllerValidator;
-  String? _descriCompraControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Obrigatório';
-    }
-
-    if (val.length < 100) {
-      return 'Mínimo de 100 caracteres';
-    }
-    if (val.length > 10000) {
-      return 'Máximo de 10000 caracteres';
-    }
-
-    return null;
-  }
-
   // State field(s) for videoTutorial widget.
   FocusNode? videoTutorialFocusNode;
   TextEditingController? videoTutorialController;
@@ -203,8 +181,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     linkProjetoControllerValidator = _linkProjetoControllerValidator;
     markdownLinkModel2 = createModel(context, () => MarkdownLinkModel());
     descriVendaControllerValidator = _descriVendaControllerValidator;
-    markdownLinkModel3 = createModel(context, () => MarkdownLinkModel());
-    descriCompraControllerValidator = _descriCompraControllerValidator;
   }
 
   void dispose() {
@@ -228,10 +204,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     markdownLinkModel2.dispose();
     descriVendaFocusNode?.dispose();
     descriVendaController?.dispose();
-
-    markdownLinkModel3.dispose();
-    descriCompraFocusNode?.dispose();
-    descriCompraController?.dispose();
 
     videoTutorialFocusNode?.dispose();
     videoTutorialController?.dispose();

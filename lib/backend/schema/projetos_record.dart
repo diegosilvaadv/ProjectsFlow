@@ -114,11 +114,6 @@ class ProjetosRecord extends FirestoreRecord {
   String get videoTutorial => _videoTutorial ?? '';
   bool hasVideoTutorial() => _videoTutorial != null;
 
-  // "codigosCopiar" field.
-  List<String>? _codigosCopiar;
-  List<String> get codigosCopiar => _codigosCopiar ?? const [];
-  bool hasCodigosCopiar() => _codigosCopiar != null;
-
   void _initializeFields() {
     _titulo = snapshotData['Titulo'] as String?;
     _descricao = snapshotData['Descricao'] as String?;
@@ -139,7 +134,6 @@ class ProjetosRecord extends FirestoreRecord {
     _img3 = snapshotData['img3'] as String?;
     _videoDemo = snapshotData['videoDemo'] as String?;
     _videoTutorial = snapshotData['videoTutorial'] as String?;
-    _codigosCopiar = getDataList(snapshotData['codigosCopiar']);
   }
 
   static CollectionReference get collection =>
@@ -193,9 +187,6 @@ class ProjetosRecord extends FirestoreRecord {
           'img3': snapshot.data['img3'],
           'videoDemo': snapshot.data['videoDemo'],
           'videoTutorial': snapshot.data['videoTutorial'],
-          'codigosCopiar': safeGet(
-            () => snapshot.data['codigosCopiar'].toList(),
-          ),
         },
         ProjetosRecord.collection.doc(snapshot.objectID),
       );
@@ -284,7 +275,6 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
 
   @override
   bool equals(ProjetosRecord? e1, ProjetosRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.titulo == e2?.titulo &&
         e1?.descricao == e2?.descricao &&
         e1?.valor == e2?.valor &&
@@ -303,8 +293,7 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e1?.img2 == e2?.img2 &&
         e1?.img3 == e2?.img3 &&
         e1?.videoDemo == e2?.videoDemo &&
-        e1?.videoTutorial == e2?.videoTutorial &&
-        listEquality.equals(e1?.codigosCopiar, e2?.codigosCopiar);
+        e1?.videoTutorial == e2?.videoTutorial;
   }
 
   @override
@@ -327,8 +316,7 @@ class ProjetosRecordDocumentEquality implements Equality<ProjetosRecord> {
         e?.img2,
         e?.img3,
         e?.videoDemo,
-        e?.videoTutorial,
-        e?.codigosCopiar
+        e?.videoTutorial
       ]);
 
   @override

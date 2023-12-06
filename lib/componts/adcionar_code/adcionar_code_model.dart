@@ -12,18 +12,32 @@ import 'package:provider/provider.dart';
 class AdcionarCodeModel extends FlutterFlowModel<AdcionarCodeWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for titulo widget.
+  FocusNode? tituloFocusNode;
+  TextEditingController? tituloController;
+  String? Function(BuildContext, String?)? tituloControllerValidator;
+  // State field(s) for descricao widget.
+  FocusNode? descricaoFocusNode;
+  TextEditingController? descricaoController;
+  String? Function(BuildContext, String?)? descricaoControllerValidator;
+  // State field(s) for codigo widget.
+  FocusNode? codigoFocusNode;
+  TextEditingController? codigoController;
+  String? Function(BuildContext, String?)? codigoControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    tituloFocusNode?.dispose();
+    tituloController?.dispose();
+
+    descricaoFocusNode?.dispose();
+    descricaoController?.dispose();
+
+    codigoFocusNode?.dispose();
+    codigoController?.dispose();
   }
 
   /// Action blocks are added here.
