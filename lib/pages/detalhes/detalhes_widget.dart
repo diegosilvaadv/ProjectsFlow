@@ -13,7 +13,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -835,7 +834,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      Expanded(
+                                                                      Flexible(
                                                                         child: SelectionArea(
                                                                             child: Text(
                                                                           valueOrDefault<
@@ -1405,7 +1404,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
-                                                            fontSize: 20.0,
+                                                            fontSize: 25.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),
@@ -1416,16 +1415,26 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Expanded(
-                                                    child: MarkdownBody(
-                                                      data: valueOrDefault<
-                                                          String>(
+                                                  Flexible(
+                                                    child: SelectionArea(
+                                                        child: Text(
+                                                      valueOrDefault<String>(
                                                         widget.detalhesProjects
                                                             ?.descricao,
-                                                        'DESCRICAO',
+                                                        'descri',
                                                       ),
-                                                      selectable: true,
-                                                    ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Serif',
+                                                                fontSize: 20.0,
+                                                              ),
+                                                    )),
                                                   ),
                                                 ],
                                               ),
@@ -1446,7 +1455,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
-                                                          fontSize: 20.0,
+                                                          fontSize: 25.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1456,16 +1465,26 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Expanded(
-                                                    child: MarkdownBody(
-                                                      data: valueOrDefault<
-                                                          String>(
+                                                  Flexible(
+                                                    child: SelectionArea(
+                                                        child: Text(
+                                                      valueOrDefault<String>(
                                                         widget.detalhesProjects
                                                             ?.requisitos,
-                                                        'Requisitos',
+                                                        'Rqsi',
                                                       ),
-                                                      selectable: true,
-                                                    ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Serif',
+                                                                fontSize: 20.0,
+                                                              ),
+                                                    )),
                                                   ),
                                                 ],
                                               ),

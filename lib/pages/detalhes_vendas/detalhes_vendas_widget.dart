@@ -758,57 +758,62 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 6.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 6.0, 50.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Icon(
-                                                  Icons.article,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .tertiary,
-                                                  size: 30.0,
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          5.0, 0.0, 0.0, 0.0),
-                                                  child: SelectionArea(
-                                                      child: Text(
-                                                    'Documentação',
-                                                    style: FlutterFlowTheme.of(
+                                    if (_model.condicaoDoc?.ordem != 0)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 6.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 6.0, 50.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Icon(
+                                                    Icons.article,
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiary,
-                                                          fontSize: 30.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                  )),
-                                                ),
-                                              ],
+                                                        .tertiary,
+                                                    size: 30.0,
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: SelectionArea(
+                                                        child: Text(
+                                                      'Documentação',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                fontSize: 30.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                    )),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
                                     Align(
                                       alignment:
                                           AlignmentDirectional(-1.00, 0.00),
@@ -819,16 +824,27 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                         decoration: BoxDecoration(),
                                         child: StreamBuilder<
                                             List<CodigosCopiRecord>>(
-                                          stream: queryCodigosCopiRecord(
-                                            queryBuilder: (codigosCopiRecord) =>
-                                                codigosCopiRecord
-                                                    .where(
-                                                      'LinkProjeto',
-                                                      isEqualTo: widget
-                                                          .detalhesProjects
-                                                          ?.linkProjeto,
-                                                    )
-                                                    .orderBy('ordem'),
+                                          stream: FFAppState().doc(
+                                            uniqueQueryKey:
+                                                valueOrDefault<String>(
+                                              _model.condicaoDoc?.linkProjeto,
+                                              'link',
+                                            ),
+                                            overrideCache:
+                                                _model.condicaoDoc != null,
+                                            requestFn: () =>
+                                                queryCodigosCopiRecord(
+                                              queryBuilder:
+                                                  (codigosCopiRecord) =>
+                                                      codigosCopiRecord
+                                                          .where(
+                                                            'LinkProjeto',
+                                                            isEqualTo: widget
+                                                                .detalhesProjects
+                                                                ?.linkProjeto,
+                                                          )
+                                                          .orderBy('ordem'),
+                                            ),
                                           ),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.

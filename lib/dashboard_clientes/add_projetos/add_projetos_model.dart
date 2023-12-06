@@ -2,8 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
 import '/componts/adcionar_code/adcionar_code_widget.dart';
-import '/componts/mark_down_view/mark_down_view_widget.dart';
-import '/componts/markdown_link/markdown_link_widget.dart';
 import '/componts/projeto_criado/projeto_criado_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -13,10 +11,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/upload_data.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'add_projetos_widget.dart' show AddProjetosWidget;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,17 +25,16 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey9 = GlobalKey<FormState>();
-  final formKey4 = GlobalKey<FormState>();
-  final formKey11 = GlobalKey<FormState>();
-  final formKey7 = GlobalKey<FormState>();
-  final formKey6 = GlobalKey<FormState>();
-  final formKey10 = GlobalKey<FormState>();
   final formKey8 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
+  final formKey10 = GlobalKey<FormState>();
+  final formKey6 = GlobalKey<FormState>();
   final formKey5 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
+  final formKey9 = GlobalKey<FormState>();
+  final formKey7 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -93,8 +88,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     return null;
   }
 
-  // Model for MarkdownLink component.
-  late MarkdownLinkModel markdownLinkModel1;
   // State field(s) for requisitos widget.
   FocusNode? requisitosFocusNode;
   TextEditingController? requisitosController;
@@ -141,13 +134,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   FormFieldController<String>? categoriaValueController;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  bool isDataUploading4 = false;
-  FFUploadedFile uploadedLocalFile4 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl4 = '';
-
-  // Model for MarkdownLink component.
-  late MarkdownLinkModel markdownLinkModel2;
   // State field(s) for descriVenda widget.
   FocusNode? descriVendaFocusNode;
   TextEditingController? descriVendaController;
@@ -180,10 +166,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   void initState(BuildContext context) {
     tituloControllerValidator = _tituloControllerValidator;
     subtituloControllerValidator = _subtituloControllerValidator;
-    markdownLinkModel1 = createModel(context, () => MarkdownLinkModel());
     requisitosControllerValidator = _requisitosControllerValidator;
     linkProjetoControllerValidator = _linkProjetoControllerValidator;
-    markdownLinkModel2 = createModel(context, () => MarkdownLinkModel());
     descriVendaControllerValidator = _descriVendaControllerValidator;
   }
 
@@ -195,7 +179,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     subtituloFocusNode?.dispose();
     subtituloController?.dispose();
 
-    markdownLinkModel1.dispose();
     requisitosFocusNode?.dispose();
     requisitosController?.dispose();
 
@@ -205,7 +188,6 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
     linkProjetoFocusNode?.dispose();
     linkProjetoController?.dispose();
 
-    markdownLinkModel2.dispose();
     descriVendaFocusNode?.dispose();
     descriVendaController?.dispose();
 

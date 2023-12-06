@@ -77,7 +77,7 @@ class _ComprasWidgetState extends State<ComprasWidget> {
                     child: Container(
                       width: double.infinity,
                       constraints: BoxConstraints(
-                        maxWidth: double.infinity,
+                        maxWidth: 1200.0,
                       ),
                       decoration: BoxDecoration(),
                       child: Column(
