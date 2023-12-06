@@ -945,37 +945,41 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                                         BorderRadius.circular(
                                                                             12.0),
                                                                   ),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Expanded(
-                                                                        child:
-                                                                            Align(
-                                                                          alignment: AlignmentDirectional(
-                                                                              -1.00,
-                                                                              0.00),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            10.0,
+                                                                            10.0,
+                                                                            10.0),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Expanded(
                                                                           child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                10.0,
-                                                                                10.0,
-                                                                                10.0,
-                                                                                10.0),
-                                                                            child: SelectionArea(
-                                                                                child: Text(
-                                                                              columnCodigosRecord.codigos,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
-                                                                                    fontSize: 15.0,
-                                                                                    fontWeight: FontWeight.w300,
-                                                                                  ),
-                                                                            )),
+                                                                              Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(-1.00, 0.00),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                                                                              child: SelectionArea(
+                                                                                  child: Text(
+                                                                                columnCodigosRecord.codigos,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Readex Pro',
+                                                                                      fontSize: 15.0,
+                                                                                      fontWeight: FontWeight.w300,
+                                                                                    ),
+                                                                              )),
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    ],
+                                                                      ],
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
