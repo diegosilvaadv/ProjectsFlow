@@ -111,7 +111,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
         ),
       ],
     ),
-    'dividerOnPageLoadAnimation1': AnimationInfo(
+    'dividerOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
@@ -139,18 +139,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
           duration: 600.ms,
           begin: Offset(-53.0, 0.0),
           end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'dividerOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 760.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
         ),
       ],
     ),
@@ -781,7 +769,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
                                   ).animateOnPageLoad(animationsMap[
-                                      'dividerOnPageLoadAnimation1']!),
+                                      'dividerOnPageLoadAnimation']!),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
@@ -1029,12 +1017,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ).animateOnPageLoad(animationsMap[
                                         'containerOnPageLoadAnimation1']!),
                                   ),
-                                  Divider(
-                                    thickness: 1.0,
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                  ).animateOnPageLoad(animationsMap[
-                                      'dividerOnPageLoadAnimation2']!),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
@@ -1383,11 +1365,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ).animateOnPageLoad(animationsMap[
                                         'containerOnPageLoadAnimation2']!),
                                   ),
-                                  Divider(
-                                    thickness: 1.0,
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                  ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 20.0),
@@ -1721,8 +1698,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                   Divider(
                                     thickness: 2.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                   ),
                                   if (responsiveVisibility(
                                     context: context,

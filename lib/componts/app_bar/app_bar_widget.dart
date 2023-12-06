@@ -217,7 +217,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               builder: (context) => Text(
                                 '${currentUserDisplayName}!'
                                     .maybeHandleOverflow(
-                                  maxChars: 20,
+                                  maxChars: 15,
                                   replacement: '…',
                                 ),
                                 style: FlutterFlowTheme.of(context)
