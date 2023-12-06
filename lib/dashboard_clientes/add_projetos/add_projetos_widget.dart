@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -3066,8 +3067,6 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                     onPressed: () async {
                                                       logFirebaseEvent(
                                                           'ADD_PROJETOS_CRIAR_PROJETO_BTN_ON_TAP');
-                                                      var _shouldSetState =
-                                                          false;
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
                                                       if (_model.formKey11
@@ -3307,121 +3306,127 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                         .uploadedFileUrl3,
                                                                   ),
                                                                   projetosRecordReference);
-                                                      _shouldSetState = true;
                                                       logFirebaseEvent(
                                                           'Button_wait__delay');
                                                       await Future.delayed(
                                                           const Duration(
                                                               milliseconds:
                                                                   2000));
-                                                      if (FFAppState()
-                                                              .CodigosRef
-                                                              .length >=
-                                                          1) {
-                                                        logFirebaseEvent(
-                                                            'Button_update_app_state');
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .contador = -1;
-                                                        });
-                                                        while (FFAppState()
-                                                                .contador <=
-                                                            FFAppState()
-                                                                .CodigosRef
-                                                                .length) {
-                                                          logFirebaseEvent(
-                                                              'Button_update_app_state');
-                                                          setState(() {
-                                                            FFAppState()
-                                                                    .contador =
+                                                      logFirebaseEvent(
+                                                          'Button_start_periodic_action');
+                                                      _model.instantTimer =
+                                                          InstantTimer.periodic(
+                                                        duration: Duration(
+                                                            milliseconds: 1000),
+                                                        callback:
+                                                            (timer) async {
+                                                          if (FFAppState()
+                                                                  .CodigosRef
+                                                                  .length >=
+                                                              1) {
+                                                            logFirebaseEvent(
+                                                                'Button_update_app_state');
+                                                            setState(() {
+                                                              FFAppState()
+                                                                  .contador = -1;
+                                                            });
+                                                            while (FFAppState()
+                                                                    .contador <=
                                                                 FFAppState()
-                                                                        .contador +
-                                                                    1;
-                                                          });
-                                                          logFirebaseEvent(
-                                                              'Button_backend_call');
+                                                                    .CodigosRef
+                                                                    .length) {
+                                                              logFirebaseEvent(
+                                                                  'Button_update_app_state');
+                                                              setState(() {
+                                                                FFAppState()
+                                                                        .contador =
+                                                                    FFAppState()
+                                                                            .contador +
+                                                                        1;
+                                                              });
+                                                              logFirebaseEvent(
+                                                                  'Button_backend_call');
 
-                                                          await CodigosCopiRecord
-                                                                  .createDoc(_model
-                                                                      .resultadoProjeto!
-                                                                      .reference)
-                                                              .set(
-                                                                  createCodigosCopiRecordData(
-                                                            linkProjeto: _model
-                                                                .linkProjetoController
-                                                                .text,
-                                                            tituloCode: FFAppState()
-                                                                .CodigosRef[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .tituloCode,
-                                                            descricaoCode: FFAppState()
-                                                                .CodigosRef[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .descricaoCode,
-                                                            codigos: FFAppState()
-                                                                .CodigosRef[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .textoCode,
-                                                            ordem: FFAppState()
-                                                                .CodigosRef[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .ordem,
-                                                          ));
-                                                          logFirebaseEvent(
-                                                              'Button_wait__delay');
-                                                          await Future.delayed(
-                                                              const Duration(
-                                                                  milliseconds:
-                                                                      2000));
-                                                          logFirebaseEvent(
-                                                              'Button_bottom_sheet');
-                                                          showModalBottomSheet(
-                                                            isScrollControlled:
-                                                                true,
-                                                            backgroundColor:
-                                                                Color(
-                                                                    0x9C000000),
-                                                            enableDrag: false,
-                                                            context: context,
-                                                            builder: (context) {
-                                                              return WebViewAware(
-                                                                  child:
-                                                                      GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      ProjetoCriadoWidget(),
-                                                                ),
+                                                              await CodigosCopiRecord
+                                                                      .createDoc(_model
+                                                                          .resultadoProjeto!
+                                                                          .reference)
+                                                                  .set(
+                                                                      createCodigosCopiRecordData(
+                                                                linkProjeto: _model
+                                                                    .linkProjetoController
+                                                                    .text,
+                                                                tituloCode: FFAppState()
+                                                                    .CodigosRef[
+                                                                        FFAppState()
+                                                                            .contador]
+                                                                    .tituloCode,
+                                                                descricaoCode: FFAppState()
+                                                                    .CodigosRef[
+                                                                        FFAppState()
+                                                                            .contador]
+                                                                    .descricaoCode,
+                                                                codigos: FFAppState()
+                                                                    .CodigosRef[
+                                                                        FFAppState()
+                                                                            .contador]
+                                                                    .textoCode,
+                                                                ordem: FFAppState()
+                                                                    .CodigosRef[
+                                                                        FFAppState()
+                                                                            .contador]
+                                                                    .ordem,
                                                               ));
-                                                            },
-                                                          ).then((value) =>
-                                                              safeSetState(
-                                                                  () {}));
-                                                        }
-                                                      } else {
-                                                        if (_shouldSetState)
-                                                          setState(() {});
-                                                        return;
-                                                      }
+                                                            }
+                                                          } else {
+                                                            logFirebaseEvent(
+                                                                'Button_stop_periodic_action');
+                                                            _model.instantTimer
+                                                                ?.cancel();
+                                                            logFirebaseEvent(
+                                                                'Button_bottom_sheet');
+                                                            showModalBottomSheet(
+                                                              isScrollControlled:
+                                                                  true,
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0x9C000000),
+                                                              enableDrag: false,
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return WebViewAware(
+                                                                    child:
+                                                                        GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
+                                                                              .unfocusNode)
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: MediaQuery
+                                                                        .viewInsetsOf(
+                                                                            context),
+                                                                    child:
+                                                                        ProjetoCriadoWidget(),
+                                                                  ),
+                                                                ));
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(
+                                                                    () {}));
+                                                          }
+                                                        },
+                                                        startImmediately: true,
+                                                      );
 
-                                                      if (_shouldSetState)
-                                                        setState(() {});
+                                                      setState(() {});
                                                     },
                                                     text: 'Criar Projeto',
                                                     options: FFButtonOptions(

@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -172,6 +173,7 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   String? Function(BuildContext, String?)? videoTutorialControllerValidator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ProjetosRecord? resultadoProjeto;
+  InstantTimer? instantTimer;
 
   /// Initialization and disposal methods.
 
@@ -209,6 +211,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
 
     videoTutorialFocusNode?.dispose();
     videoTutorialController?.dispose();
+
+    instantTimer?.cancel();
   }
 
   /// Action blocks are added here.
