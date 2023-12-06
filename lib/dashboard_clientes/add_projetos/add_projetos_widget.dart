@@ -3279,28 +3279,54 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                               .doc()
                                                               .set(
                                                                   createCodigosRecordData(
-                                                                linkProjeto: _model
-                                                                    .linkProjetoController
-                                                                    .text,
-                                                                tituloCode: FFAppState()
-                                                                    .CodigosRef[
-                                                                        FFAppState()
-                                                                            .contador]
-                                                                    .tituloCode,
-                                                                descricaoCode: FFAppState()
-                                                                    .CodigosRef[
-                                                                        FFAppState()
-                                                                            .contador]
-                                                                    .descricaoCode,
-                                                                codigos: FFAppState()
-                                                                    .CodigosRef[
-                                                                        FFAppState()
-                                                                            .contador]
-                                                                    .textoCode,
+                                                                linkProjeto:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  _model
+                                                                      .linkProjetoController
+                                                                      .text,
+                                                                  'sem',
+                                                                ),
+                                                                tituloCode:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  FFAppState()
+                                                                      .CodigosRef[
+                                                                          FFAppState()
+                                                                              .contador]
+                                                                      .tituloCode,
+                                                                  'sem',
+                                                                ),
+                                                                descricaoCode:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  FFAppState()
+                                                                      .CodigosRef[
+                                                                          FFAppState()
+                                                                              .contador]
+                                                                      .descricaoCode,
+                                                                  'sem',
+                                                                ),
+                                                                codigos:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  FFAppState()
+                                                                      .CodigosRef[
+                                                                          FFAppState()
+                                                                              .contador]
+                                                                      .textoCode,
+                                                                  'sem',
+                                                                ),
                                                               ));
                                                           logFirebaseEvent(
+                                                              'Button_wait__delay');
+                                                          await Future.delayed(
+                                                              const Duration(
+                                                                  milliseconds:
+                                                                      2000));
+                                                          logFirebaseEvent(
                                                               'Button_bottom_sheet');
-                                                          await showModalBottomSheet(
+                                                          showModalBottomSheet(
                                                             isScrollControlled:
                                                                 true,
                                                             backgroundColor:

@@ -746,291 +746,247 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                     Align(
                                       alignment:
                                           AlignmentDirectional(-1.00, 0.00),
-                                      child:
-                                          StreamBuilder<List<ProjetosRecord>>(
-                                        stream: queryProjetosRecord(
-                                          queryBuilder: (projetosRecord) =>
-                                              projetosRecord.where(
-                                            'LinkProjeto',
-                                            isEqualTo: widget
-                                                .detalhesProjects?.linkProjeto,
-                                          ),
-                                          singleRecord: true,
+                                      child: Container(
+                                        constraints: BoxConstraints(
+                                          maxWidth: 1000.0,
                                         ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child: SpinKitRipple(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 50.0,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<ProjetosRecord>
-                                              containerProjetosRecordList =
-                                              snapshot.data!;
-                                          // Return an empty Container when the item does not exist.
-                                          if (snapshot.data!.isEmpty) {
-                                            return Container();
-                                          }
-                                          final containerProjetosRecord =
-                                              containerProjetosRecordList
-                                                      .isNotEmpty
-                                                  ? containerProjetosRecordList
-                                                      .first
-                                                  : null;
-                                          return Container(
-                                            constraints: BoxConstraints(
-                                              maxWidth: 1000.0,
+                                        decoration: BoxDecoration(),
+                                        child:
+                                            StreamBuilder<List<CodigosRecord>>(
+                                          stream: queryCodigosRecord(
+                                            queryBuilder: (codigosRecord) =>
+                                                codigosRecord.where(
+                                              'LinkProjeto',
+                                              isEqualTo: widget.detalhesProjects
+                                                  ?.linkProjeto,
                                             ),
-                                            decoration: BoxDecoration(),
-                                            child: StreamBuilder<
-                                                List<CodigosRecord>>(
-                                              stream: queryCodigosRecord(
-                                                queryBuilder: (codigosRecord) =>
-                                                    codigosRecord.where(
-                                                  'LinkProjeto',
-                                                  isEqualTo:
-                                                      containerProjetosRecord
-                                                          ?.linkProjeto,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child: SpinKitRipple(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 50.0,
+                                                  ),
                                                 ),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child: SpinKitRipple(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 50.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<CodigosRecord>
-                                                    columnCodigosRecordList =
-                                                    snapshot.data!;
+                                              );
+                                            }
+                                            List<CodigosRecord>
+                                                columnCodigosRecordList =
+                                                snapshot.data!;
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                  columnCodigosRecordList
+                                                      .length, (columnIndex) {
+                                                final columnCodigosRecord =
+                                                    columnCodigosRecordList[
+                                                        columnIndex];
                                                 return Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
-                                                  children: List.generate(
-                                                      columnCodigosRecordList
-                                                          .length,
-                                                      (columnIndex) {
-                                                    final columnCodigosRecord =
-                                                        columnCodigosRecordList[
-                                                            columnIndex];
-                                                    return Column(
+                                                  children: [
+                                                    Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
+                                                        SelectionArea(
+                                                            child: Text(
+                                                          columnCodigosRecord
+                                                              .tituloCode,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                fontSize: 25.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        )),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        SelectionArea(
+                                                            child: Text(
+                                                          columnCodigosRecord
+                                                              .descricaoCode,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                fontSize: 20.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        )),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Stack(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  1.0, -1.0),
                                                           children: [
-                                                            SelectionArea(
-                                                                child: Text(
-                                                              columnCodigosRecord
-                                                                  .tituloCode,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .titleLarge
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Outfit',
-                                                                    fontSize:
-                                                                        25.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                            )),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            SelectionArea(
-                                                                child: Text(
-                                                              columnCodigosRecord
-                                                                  .descricaoCode,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .titleLarge
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Outfit',
-                                                                    fontSize:
-                                                                        20.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                            )),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Stack(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      1.0,
-                                                                      -1.0),
-                                                              children: [
-                                                                Material(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  elevation:
-                                                                      5.0,
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              elevation: 5.0,
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
                                                                             12.0),
-                                                                  ),
-                                                                  child:
-                                                                      Container(
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryBackground,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
+                                                              ),
+                                                              child: Container(
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
                                                                               12.0),
-                                                                    ),
-                                                                    child:
-                                                                        Align(
-                                                                      alignment: AlignmentDirectional(
+                                                                ),
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
                                                                           0.00,
                                                                           0.00),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            10.0,
-                                                                            10.0,
-                                                                            10.0,
-                                                                            10.0),
-                                                                        child: SelectionArea(
-                                                                            child: Text(
-                                                                          columnCodigosRecord
-                                                                              .codigos,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Readex Pro',
-                                                                                fontSize: 15.0,
-                                                                                fontWeight: FontWeight.w300,
-                                                                              ),
-                                                                        )),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Opacity(
-                                                                  opacity: 0.7,
                                                                   child:
                                                                       Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0.0,
                                                                             10.0,
                                                                             10.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        InkWell(
-                                                                      splashColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      focusColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      hoverColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      highlightColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      onTap:
-                                                                          () async {
-                                                                        logFirebaseEvent(
-                                                                            'DETALHES_VENDAS_Icon_9fokr8re_ON_TAP');
-                                                                        logFirebaseEvent(
-                                                                            'Icon_copy_to_clipboard');
-                                                                        await Clipboard.setData(ClipboardData(
-                                                                            text:
-                                                                                columnCodigosRecord.codigos));
-                                                                        logFirebaseEvent(
-                                                                            'Icon_show_snack_bar');
-                                                                        ScaffoldMessenger.of(context)
-                                                                            .showSnackBar(
-                                                                          SnackBar(
-                                                                            content:
-                                                                                Text(
-                                                                              'Copiado!',
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                              ),
-                                                                            ),
-                                                                            duration:
-                                                                                Duration(milliseconds: 4000),
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).secondary,
+                                                                            10.0,
+                                                                            10.0),
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      columnCodigosRecord
+                                                                          .codigos,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Readex Pro',
+                                                                            fontSize:
+                                                                                15.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
                                                                           ),
-                                                                        );
-                                                                      },
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .content_copy,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .warning,
-                                                                        size:
-                                                                            30.0,
-                                                                      ),
-                                                                    ),
+                                                                    )),
                                                                   ),
                                                                 ),
-                                                              ],
+                                                              ),
+                                                            ),
+                                                            Opacity(
+                                                              opacity: 0.7,
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                                child: InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    logFirebaseEvent(
+                                                                        'DETALHES_VENDAS_Icon_9fokr8re_ON_TAP');
+                                                                    logFirebaseEvent(
+                                                                        'Icon_copy_to_clipboard');
+                                                                    await Clipboard.setData(
+                                                                        ClipboardData(
+                                                                            text:
+                                                                                columnCodigosRecord.codigos));
+                                                                    logFirebaseEvent(
+                                                                        'Icon_show_snack_bar');
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      SnackBar(
+                                                                        content:
+                                                                            Text(
+                                                                          'Copiado!',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                          ),
+                                                                        ),
+                                                                        duration:
+                                                                            Duration(milliseconds: 4000),
+                                                                        backgroundColor:
+                                                                            FlutterFlowTheme.of(context).secondary,
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .content_copy,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .warning,
+                                                                    size: 30.0,
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ],
                                                         ),
-                                                        Divider(
-                                                          thickness: 1.0,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                      ],
+                                                    ),
+                                                    Divider(
+                                                      thickness: 1.0,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .alternate,
-                                                        ),
-                                                      ]
-                                                          .divide(SizedBox(
-                                                              height: 5.0))
-                                                          .addToEnd(SizedBox(
-                                                              height: 10.0)),
-                                                    );
-                                                  }),
+                                                    ),
+                                                  ]
+                                                      .divide(
+                                                          SizedBox(height: 5.0))
+                                                      .addToEnd(SizedBox(
+                                                          height: 10.0)),
                                                 );
-                                              },
-                                            ),
-                                          );
-                                        },
+                                              }),
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ]
