@@ -14,6 +14,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -332,6 +333,20 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
+                                                      if (responsiveVisibility(
+                                                        context: context,
+                                                        phone: false,
+                                                      ))
+                                                        SizedBox(
+                                                          height: 300.0,
+                                                          child:
+                                                              VerticalDivider(
+                                                            thickness: 2.0,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .alternate,
+                                                          ),
+                                                        ),
                                                       Material(
                                                         color:
                                                             Colors.transparent,
@@ -736,7 +751,8 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                 .alternate,
                                                           ),
                                                         ),
-                                                    ],
+                                                    ].divide(
+                                                        SizedBox(width: 10.0)),
                                                   ),
                                                 ),
                                                 if (responsiveVisibility(
@@ -827,114 +843,25 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      if (widget
-                                                                              .detalhesProjects
-                                                                              ?.videoDemo !=
-                                                                          '')
-                                                                        FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            logFirebaseEvent('DETALHES_PAGE_DEMONSTRAÇÃO_BTN_ON_TAP');
-                                                                            logFirebaseEvent('Button_bottom_sheet');
-                                                                            await showModalBottomSheet(
-                                                                              isScrollControlled: true,
-                                                                              backgroundColor: Color(0x75000000),
-                                                                              enableDrag: false,
-                                                                              context: context,
-                                                                              builder: (context) {
-                                                                                return WebViewAware(
-                                                                                    child: GestureDetector(
-                                                                                  onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                  child: Padding(
-                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: VideoViewWidget(
-                                                                                      video: widget.detalhesProjects?.videoDemo,
-                                                                                    ),
-                                                                                  ),
-                                                                                ));
-                                                                              },
-                                                                            ).then((value) =>
-                                                                                safeSetState(() {}));
-                                                                          },
-                                                                          text:
-                                                                              'Demonstração',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            height:
-                                                                                40.0,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                24.0,
-                                                                                0.0,
-                                                                                24.0,
-                                                                                0.0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).alternate,
-                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  fontFamily: 'Readex Pro',
-                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                ),
-                                                                            elevation:
-                                                                                3.0,
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Colors.transparent,
-                                                                              width: 1.0,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                            hoverColor:
-                                                                                FlutterFlowTheme.of(context).accent1,
-                                                                            hoverBorderSide:
-                                                                                BorderSide(
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              width: 1.0,
-                                                                            ),
-                                                                            hoverTextColor:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                          ),
-                                                                        ),
-                                                                      if (rowPagamentosRecord
-                                                                              ?.userIDPagante !=
-                                                                          currentUserUid)
-                                                                        FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            logFirebaseEvent('DETALHES_PAGE_COMPRAR_PROJETO_BTN_ON_TAP');
-                                                                            if (currentUserEmail !=
-                                                                                '') {
-                                                                              logFirebaseEvent('Button_navigate_to');
-
-                                                                              context.pushNamed(
-                                                                                'Pagamentos',
-                                                                                queryParameters: {
-                                                                                  'detalhesProjects': serializeParam(
-                                                                                    widget.detalhesProjects,
-                                                                                    ParamType.Document,
-                                                                                  ),
-                                                                                }.withoutNulls,
-                                                                                extra: <String, dynamic>{
-                                                                                  'detalhesProjects': widget.detalhesProjects,
-                                                                                  kTransitionInfoKey: TransitionInfo(
-                                                                                    hasTransition: true,
-                                                                                    transitionType: PageTransitionType.fade,
-                                                                                  ),
-                                                                                },
-                                                                              );
-                                                                            } else {
+                                                                  SingleChildScrollView(
+                                                                    scrollDirection:
+                                                                        Axis.horizontal,
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children:
+                                                                          [
+                                                                        if (widget.detalhesProjects?.videoDemo !=
+                                                                            '')
+                                                                          FFButtonWidget(
+                                                                            onPressed:
+                                                                                () async {
+                                                                              logFirebaseEvent('DETALHES_PAGE_DEMONSTRAÇÃO_BTN_ON_TAP');
                                                                               logFirebaseEvent('Button_bottom_sheet');
                                                                               await showModalBottomSheet(
                                                                                 isScrollControlled: true,
-                                                                                backgroundColor: Color(0xBE14181B),
+                                                                                backgroundColor: Color(0x75000000),
                                                                                 enableDrag: false,
                                                                                 context: context,
                                                                                 builder: (context) {
@@ -943,125 +870,164 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                                     onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                     child: Padding(
                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                      child: CriarcontaWidget(),
+                                                                                      child: VideoViewWidget(
+                                                                                        video: widget.detalhesProjects?.videoDemo,
+                                                                                      ),
                                                                                     ),
                                                                                   ));
                                                                                 },
                                                                               ).then((value) => safeSetState(() {}));
-                                                                            }
-                                                                          },
-                                                                          text:
-                                                                              'Comprar Projeto',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            height:
-                                                                                40.0,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                24.0,
-                                                                                0.0,
-                                                                                24.0,
-                                                                                0.0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primary,
-                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  fontFamily: 'Readex Pro',
-                                                                                  color: Color(0xFFECECEC),
-                                                                                  fontSize: 20.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                            elevation:
-                                                                                3.0,
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Colors.transparent,
-                                                                              width: 1.0,
+                                                                            },
+                                                                            text:
+                                                                                'Demonstração',
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 40.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: FlutterFlowTheme.of(context).alternate,
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: 'Readex Pro',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  ),
+                                                                              elevation: 3.0,
+                                                                              borderSide: BorderSide(
+                                                                                color: Colors.transparent,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              hoverColor: FlutterFlowTheme.of(context).accent1,
+                                                                              hoverBorderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              hoverTextColor: FlutterFlowTheme.of(context).primaryText,
                                                                             ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                            hoverColor:
-                                                                                FlutterFlowTheme.of(context).accent1,
-                                                                            hoverBorderSide:
-                                                                                BorderSide(
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              width: 1.0,
-                                                                            ),
-                                                                            hoverTextColor:
-                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
-                                                                        ),
-                                                                      if (rowPagamentosRecord
-                                                                              ?.userIDPagante ==
-                                                                          currentUserUid)
-                                                                        FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            logFirebaseEvent('DETALHES_PAGE_ACESSAR_PROJETO_BTN_ON_TAP');
-                                                                            logFirebaseEvent('Button_navigate_to');
+                                                                        if (rowPagamentosRecord?.userIDPagante !=
+                                                                            currentUserUid)
+                                                                          FFButtonWidget(
+                                                                            onPressed:
+                                                                                () async {
+                                                                              logFirebaseEvent('DETALHES_PAGE_COMPRAR_PROJETO_BTN_ON_TAP');
+                                                                              if (currentUserEmail != '') {
+                                                                                logFirebaseEvent('Button_navigate_to');
 
-                                                                            context.pushNamed(
-                                                                              'detalhesVendas',
-                                                                              queryParameters: {
-                                                                                'detalhesProjects': serializeParam(
-                                                                                  rowPagamentosRecord,
-                                                                                  ParamType.Document,
-                                                                                ),
-                                                                              }.withoutNulls,
-                                                                              extra: <String, dynamic>{
-                                                                                'detalhesProjects': rowPagamentosRecord,
-                                                                              },
-                                                                            );
-                                                                          },
-                                                                          text:
-                                                                              'Acessar Projeto',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            height:
-                                                                                40.0,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                24.0,
-                                                                                0.0,
-                                                                                24.0,
-                                                                                0.0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            color:
-                                                                                Color(0xFF10DAD3),
-                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  fontFamily: 'Readex Pro',
-                                                                                  color: Color(0xFF131313),
-                                                                                  fontSize: 20.0,
-                                                                                ),
-                                                                            elevation:
-                                                                                3.0,
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Colors.transparent,
-                                                                              width: 1.0,
+                                                                                context.pushNamed(
+                                                                                  'Pagamentos',
+                                                                                  queryParameters: {
+                                                                                    'detalhesProjects': serializeParam(
+                                                                                      widget.detalhesProjects,
+                                                                                      ParamType.Document,
+                                                                                    ),
+                                                                                  }.withoutNulls,
+                                                                                  extra: <String, dynamic>{
+                                                                                    'detalhesProjects': widget.detalhesProjects,
+                                                                                    kTransitionInfoKey: TransitionInfo(
+                                                                                      hasTransition: true,
+                                                                                      transitionType: PageTransitionType.fade,
+                                                                                    ),
+                                                                                  },
+                                                                                );
+                                                                              } else {
+                                                                                logFirebaseEvent('Button_bottom_sheet');
+                                                                                await showModalBottomSheet(
+                                                                                  isScrollControlled: true,
+                                                                                  backgroundColor: Color(0xBE14181B),
+                                                                                  enableDrag: false,
+                                                                                  context: context,
+                                                                                  builder: (context) {
+                                                                                    return WebViewAware(
+                                                                                        child: GestureDetector(
+                                                                                      onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                      child: Padding(
+                                                                                        padding: MediaQuery.viewInsetsOf(context),
+                                                                                        child: CriarcontaWidget(),
+                                                                                      ),
+                                                                                    ));
+                                                                                  },
+                                                                                ).then((value) => safeSetState(() {}));
+                                                                              }
+                                                                            },
+                                                                            text:
+                                                                                'Comprar Projeto',
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 40.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: 'Readex Pro',
+                                                                                    color: Color(0xFFECECEC),
+                                                                                    fontSize: 20.0,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                              elevation: 3.0,
+                                                                              borderSide: BorderSide(
+                                                                                color: Colors.transparent,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              hoverColor: FlutterFlowTheme.of(context).accent1,
+                                                                              hoverBorderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              hoverTextColor: FlutterFlowTheme.of(context).primaryText,
                                                                             ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                            hoverColor:
-                                                                                FlutterFlowTheme.of(context).accent1,
-                                                                            hoverBorderSide:
-                                                                                BorderSide(
-                                                                              color: FlutterFlowTheme.of(context).accent2,
-                                                                              width: 1.0,
-                                                                            ),
-                                                                            hoverTextColor:
-                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
-                                                                        ),
-                                                                    ].divide(SizedBox(
-                                                                        width:
-                                                                            10.0)),
+                                                                        if (rowPagamentosRecord?.userIDPagante ==
+                                                                            currentUserUid)
+                                                                          FFButtonWidget(
+                                                                            onPressed:
+                                                                                () async {
+                                                                              logFirebaseEvent('DETALHES_PAGE_ACESSAR_PROJETO_BTN_ON_TAP');
+                                                                              logFirebaseEvent('Button_navigate_to');
+
+                                                                              context.pushNamed(
+                                                                                'detalhesVendas',
+                                                                                queryParameters: {
+                                                                                  'detalhesProjects': serializeParam(
+                                                                                    rowPagamentosRecord,
+                                                                                    ParamType.Document,
+                                                                                  ),
+                                                                                }.withoutNulls,
+                                                                                extra: <String, dynamic>{
+                                                                                  'detalhesProjects': rowPagamentosRecord,
+                                                                                },
+                                                                              );
+                                                                            },
+                                                                            text:
+                                                                                'Acessar Projeto',
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 40.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: Color(0xFF10DAD3),
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: 'Readex Pro',
+                                                                                    color: Color(0xFF131313),
+                                                                                    fontSize: 20.0,
+                                                                                  ),
+                                                                              elevation: 3.0,
+                                                                              borderSide: BorderSide(
+                                                                                color: Colors.transparent,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              hoverColor: FlutterFlowTheme.of(context).accent1,
+                                                                              hoverBorderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).accent2,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                              hoverTextColor: FlutterFlowTheme.of(context).primaryText,
+                                                                            ),
+                                                                          ),
+                                                                      ].divide(SizedBox(
+                                                                              width: 10.0)),
+                                                                    ),
                                                                   ),
                                                                   Column(
                                                                     mainAxisSize:
@@ -1071,68 +1037,68 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                         CrossAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      if (widget
-                                                                              .detalhesProjects
-                                                                              ?.valor !=
-                                                                          0.0)
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              GradientText(
-                                                                            formatNumber(
-                                                                              widget.detalhesProjects!.valor,
-                                                                              formatType: FormatType.custom,
-                                                                              currency: 'R\$ ',
-                                                                              format: '0.00',
-                                                                              locale: 'pt_BR',
+                                                                      SingleChildScrollView(
+                                                                        scrollDirection:
+                                                                            Axis.horizontal,
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children:
+                                                                              [
+                                                                            if (widget.detalhesProjects?.valor !=
+                                                                                0.0)
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                child: SelectionArea(
+                                                                                    child: Text(
+                                                                                  formatNumber(
+                                                                                    widget.detalhesProjects!.valor,
+                                                                                    formatType: FormatType.custom,
+                                                                                    currency: 'R\$ ',
+                                                                                    format: '0.00',
+                                                                                    locale: 'pt_BR',
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 30.0,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
+                                                                                )),
+                                                                              ),
+                                                                            if (widget.detalhesProjects?.valor ==
+                                                                                0.0)
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                child: GradientText(
+                                                                                  'Grátis',
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Readex Pro',
+                                                                                        fontSize: 30.0,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
+                                                                                  colors: [
+                                                                                    FlutterFlowTheme.of(context).secondary,
+                                                                                    FlutterFlowTheme.of(context).warning
+                                                                                  ],
+                                                                                  gradientDirection: GradientDirection.ltr,
+                                                                                  gradientType: GradientType.linear,
+                                                                                ),
+                                                                              ),
+                                                                            RatingBarIndicator(
+                                                                              itemBuilder: (context, index) => Icon(
+                                                                                Icons.star_rounded,
+                                                                                color: FlutterFlowTheme.of(context).warning,
+                                                                              ),
+                                                                              direction: Axis.horizontal,
+                                                                              rating: 4.5,
+                                                                              unratedColor: FlutterFlowTheme.of(context).secondaryText,
+                                                                              itemCount: 5,
+                                                                              itemSize: 40.0,
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
-                                                                                  fontSize: 30.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                ),
-                                                                            colors: [
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                              FlutterFlowTheme.of(context).secondary
-                                                                            ],
-                                                                            gradientDirection:
-                                                                                GradientDirection.ltr,
-                                                                            gradientType:
-                                                                                GradientType.linear,
-                                                                          ),
+                                                                          ].divide(SizedBox(width: 10.0)),
                                                                         ),
-                                                                      if (widget
-                                                                              .detalhesProjects
-                                                                              ?.valor ==
-                                                                          0.0)
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              GradientText(
-                                                                            'Grátis',
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
-                                                                                  fontSize: 30.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                ),
-                                                                            colors: [
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                              FlutterFlowTheme.of(context).secondary
-                                                                            ],
-                                                                            gradientDirection:
-                                                                                GradientDirection.ltr,
-                                                                            gradientType:
-                                                                                GradientType.linear,
-                                                                          ),
-                                                                        ),
+                                                                      ),
                                                                     ],
                                                                   ),
                                                                 ].divide(SizedBox(
