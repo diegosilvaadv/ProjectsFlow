@@ -90,139 +90,77 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                     updateCallback: () => setState(() {}),
                     child: AppBarWidget(),
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 12.0, 12.0, 12.0),
-                          child: Material(
-                            color: Colors.transparent,
-                            elevation: 3.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: 49.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 4.0,
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    offset: Offset(0.0, 2.0),
-                                  )
-                                ],
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 1200.0,
+                    ),
+                    decoration: BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 12.0, 12.0, 12.0),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 3.0,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 2.0, 0.0, 2.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: Icon(
-                                        Icons.home_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 30.0,
-                                      ),
-                                      onPressed: () async {
-                                        logFirebaseEvent(
-                                            'DETALHES_PAGE_home_rounded_ICN_ON_TAP');
-                                        logFirebaseEvent(
-                                            'IconButton_navigate_to');
-
-                                        context.pushNamed(
-                                          'HomePage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                            ),
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    child: Icon(
-                                      Icons.chevron_right_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 20.0,
-                                    ),
-                                  ),
-                                  if (responsiveVisibility(
-                                    context: context,
-                                    phone: false,
-                                  ))
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'DETALHES_PAGE_Container_z37py2ry_ON_TAP');
-                                        logFirebaseEvent(
-                                            'Container_navigate_to');
-
-                                        context.pushNamed(
-                                          'vermais',
-                                          queryParameters: {
-                                            'tag': serializeParam(
-                                              widget
-                                                  .detalhesProjects?.categoria,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
-                                      child: Container(
-                                        height: 100.0,
-                                        decoration: BoxDecoration(),
-                                        alignment:
-                                            AlignmentDirectional(0.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              widget
-                                                  .detalhesProjects?.categoria,
-                                              'tag',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
+                              child: Container(
+                                width: double.infinity,
+                                height: 49.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      offset: Offset(0.0, 2.0),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 2.0, 0.0, 2.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 30.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 50.0,
+                                        icon: Icon(
+                                          Icons.home_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 30.0,
                                         ),
+                                        onPressed: () async {
+                                          logFirebaseEvent(
+                                              'DETALHES_PAGE_home_rounded_ICN_ON_TAP');
+                                          logFirebaseEvent(
+                                              'IconButton_navigate_to');
+
+                                          context.pushNamed(
+                                            'HomePage',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                              ),
+                                            },
+                                          );
+                                        },
                                       ),
                                     ),
-                                  if (responsiveVisibility(
-                                    context: context,
-                                    phone: false,
-                                  ))
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
@@ -233,53 +171,125 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                         size: 20.0,
                                       ),
                                     ),
-                                  Flexible(
-                                    child: Container(
-                                      height: 100.0,
-                                      decoration: BoxDecoration(),
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  widget
-                                                      .detalhesProjects?.titulo,
-                                                  'Titulo',
-                                                ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 20.0,
-                                                      fontWeight:
-                                                          FontWeight.w300,
-                                                    ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                    ))
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'DETALHES_PAGE_Container_z37py2ry_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Container_navigate_to');
+
+                                          context.pushNamed(
+                                            'vermais',
+                                            queryParameters: {
+                                              'tag': serializeParam(
+                                                widget.detalhesProjects
+                                                    ?.categoria,
+                                                ParamType.String,
                                               ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: Container(
+                                          height: 100.0,
+                                          decoration: BoxDecoration(),
+                                          alignment:
+                                              AlignmentDirectional(0.00, 0.00),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                widget.detalhesProjects
+                                                    ?.categoria,
+                                                'tag',
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                             ),
                                           ),
-                                        ],
+                                        ),
+                                      ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                    ))
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 0.0, 12.0, 0.0),
+                                        child: Icon(
+                                          Icons.chevron_right_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 20.0,
+                                        ),
+                                      ),
+                                    Flexible(
+                                      child: Container(
+                                        height: 100.0,
+                                        decoration: BoxDecoration(),
+                                        alignment:
+                                            AlignmentDirectional(0.00, 0.00),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    widget.detalhesProjects
+                                                        ?.titulo,
+                                                    'Titulo',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Expanded(
                     child: Padding(
