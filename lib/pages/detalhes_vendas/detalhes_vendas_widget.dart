@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -685,45 +684,137 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                         ],
                                       ),
                                     ),
-                                    Container(
-                                      constraints: BoxConstraints(
-                                        maxWidth: 1000.0,
-                                      ),
-                                      decoration: BoxDecoration(),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 20.0, 10.0, 10.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              height: 280.0,
-                                              child: VerticalDivider(
-                                                thickness: 2.0,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: MarkdownBody(
-                                                  data: valueOrDefault<String>(
-                                                    widget.detalhesProjects
-                                                        ?.descricaoCompras,
-                                                    'DESCRICAO',
-                                                  ),
-                                                  selectable: true,
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.00, 0.00),
+                                      child:
+                                          StreamBuilder<List<ProjetosRecord>>(
+                                        stream: queryProjetosRecord(
+                                          queryBuilder: (projetosRecord) =>
+                                              projetosRecord.where(
+                                            'LinkProjeto',
+                                            isEqualTo: widget
+                                                .detalhesProjects?.linkProjeto,
+                                          ),
+                                          singleRecord: true,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitRipple(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 50.0,
                                                 ),
                                               ),
+                                            );
+                                          }
+                                          List<ProjetosRecord>
+                                              containerProjetosRecordList =
+                                              snapshot.data!;
+                                          // Return an empty Container when the item does not exist.
+                                          if (snapshot.data!.isEmpty) {
+                                            return Container();
+                                          }
+                                          final containerProjetosRecord =
+                                              containerProjetosRecordList
+                                                      .isNotEmpty
+                                                  ? containerProjetosRecordList
+                                                      .first
+                                                  : null;
+                                          return Container(
+                                            constraints: BoxConstraints(
+                                              maxWidth: 1000.0,
                                             ),
-                                          ],
-                                        ),
+                                            decoration: BoxDecoration(),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final codigos =
+                                                    containerProjetosRecord
+                                                            ?.codigosCopiar
+                                                            ?.toList() ??
+                                                        [];
+                                                return Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: List.generate(
+                                                      codigos.length,
+                                                      (codigosIndex) {
+                                                    final codigosItem =
+                                                        codigos[codigosIndex];
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  20.0,
+                                                                  10.0,
+                                                                  10.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Material(
+                                                            color: Colors
+                                                                .transparent,
+                                                            elevation: 5.0,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.0),
+                                                            ),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12.0),
+                                                              ),
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                                child: Text(
+                                                                  codigosItem,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        fontSize:
+                                                                            20.0,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  }),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ]

@@ -1385,11 +1385,6 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                             ],
                                           ),
                                         ),
-                                        Divider(
-                                          thickness: 2.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
                                         Container(
                                           constraints: BoxConstraints(
                                             maxWidth: 1200.0,
@@ -1474,7 +1469,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                   ),
                                                 ],
                                               ),
-                                            ],
+                                            ].divide(SizedBox(height: 10.0)),
                                           ),
                                         ),
                                       ].divide(SizedBox(height: 10.0)),
