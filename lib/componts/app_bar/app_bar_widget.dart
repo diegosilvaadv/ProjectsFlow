@@ -168,7 +168,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
             alignment: AlignmentDirectional(0.00, 0.00),
             child: Row(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 wrapWithModel(
                   model: _model.logoWModel,
