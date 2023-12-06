@@ -438,7 +438,7 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Flexible(
+                                    Expanded(
                                       child: Align(
                                         alignment:
                                             AlignmentDirectional(-1.00, 0.00),
@@ -466,11 +466,11 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Flexible(
+                                                    Expanded(
                                                       child: Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                0.00, 0.00),
+                                                                -1.00, 0.00),
                                                         child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
