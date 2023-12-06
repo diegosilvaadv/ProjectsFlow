@@ -140,7 +140,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, -1.00),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
@@ -163,7 +163,6 @@ class _AppBarWidgetState extends State<AppBarWidget>
               color: Color(0x004B39EF),
             ),
           ),
-          alignment: AlignmentDirectional(0.00, 0.00),
           child: Align(
             alignment: AlignmentDirectional(0.00, 0.00),
             child: Row(
@@ -695,10 +694,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                       ],
                     ),
                   ),
-              ]
-                  .divide(SizedBox(width: 10.0))
-                  .addToStart(SizedBox(width: 10.0))
-                  .addToEnd(SizedBox(width: 10.0)),
+              ].divide(SizedBox(width: 10.0)),
             ),
           ),
         ),
