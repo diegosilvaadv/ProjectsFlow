@@ -589,7 +589,7 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                                           20.0,
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .bold,
+                                                                              .w600,
                                                                     ),
                                                                 elevation: 3.0,
                                                                 borderSide:

@@ -121,6 +121,9 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                               buttonSize: 50.0,
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
+                              hoverColor: FlutterFlowTheme.of(context).accent1,
+                              hoverIconColor:
+                                  FlutterFlowTheme.of(context).primaryText,
                               icon: Icon(
                                 Icons.close,
                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -3064,6 +3067,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                     onPressed: () async {
                                                       logFirebaseEvent(
                                                           'ADD_PROJETOS_CRIAR_PROJETO_BTN_ON_TAP');
+                                                      var _shouldSetState =
+                                                          false;
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
                                                       if (_model.formKey11
@@ -3185,62 +3190,125 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                       logFirebaseEvent(
                                                           'Button_backend_call');
 
-                                                      await ProjetosRecord
-                                                          .collection
-                                                          .doc()
+                                                      var projetosRecordReference =
+                                                          ProjetosRecord
+                                                              .collection
+                                                              .doc();
+                                                      await projetosRecordReference
                                                           .set(
                                                               createProjetosRecordData(
-                                                            titulo: _model
-                                                                .tituloController
-                                                                .text,
-                                                            descricao: _model
-                                                                .descriVendaController
-                                                                .text,
-                                                            valor: _model
-                                                                .precoValue,
-                                                            categoria: _model
-                                                                .categoriaValue,
-                                                            linkProjeto: _model
-                                                                .linkProjetoController
-                                                                .text,
-                                                            postadoPor:
-                                                                currentUserDisplayName,
-                                                            iMGPrincipal: _model
-                                                                .uploadedFileUrl1,
-                                                            creatData:
-                                                                getCurrentTimestamp,
-                                                            identificacao:
-                                                                random_data
-                                                                    .randomString(
-                                                              10,
-                                                              12,
-                                                              true,
-                                                              false,
-                                                              true,
-                                                            ),
-                                                            userIDVendedor:
-                                                                currentUserUid,
-                                                            emailVendedor:
-                                                                currentUserEmail,
-                                                            requisitos: _model
-                                                                .requisitosController
-                                                                .text,
-                                                            subtitulo: _model
-                                                                .subtituloController
-                                                                .text,
-                                                            eprojeto: _model
-                                                                .checkboxValue,
-                                                            videoDemo: _model
-                                                                .videoDemoController
-                                                                .text,
-                                                            videoTutorial: _model
-                                                                .videoTutorialController
-                                                                .text,
-                                                            img2: _model
-                                                                .uploadedFileUrl2,
-                                                            img3: _model
-                                                                .uploadedFileUrl3,
-                                                          ));
+                                                        titulo: _model
+                                                            .tituloController
+                                                            .text,
+                                                        descricao: _model
+                                                            .descriVendaController
+                                                            .text,
+                                                        valor:
+                                                            _model.precoValue,
+                                                        categoria: _model
+                                                            .categoriaValue,
+                                                        linkProjeto: _model
+                                                            .linkProjetoController
+                                                            .text,
+                                                        postadoPor:
+                                                            currentUserDisplayName,
+                                                        iMGPrincipal: _model
+                                                            .uploadedFileUrl1,
+                                                        creatData:
+                                                            getCurrentTimestamp,
+                                                        identificacao:
+                                                            random_data
+                                                                .randomString(
+                                                          10,
+                                                          12,
+                                                          true,
+                                                          false,
+                                                          true,
+                                                        ),
+                                                        userIDVendedor:
+                                                            currentUserUid,
+                                                        emailVendedor:
+                                                            currentUserEmail,
+                                                        requisitos: _model
+                                                            .requisitosController
+                                                            .text,
+                                                        subtitulo: _model
+                                                            .subtituloController
+                                                            .text,
+                                                        eprojeto: _model
+                                                            .checkboxValue,
+                                                        videoDemo: _model
+                                                            .videoDemoController
+                                                            .text,
+                                                        videoTutorial: _model
+                                                            .videoTutorialController
+                                                            .text,
+                                                        img2: _model
+                                                            .uploadedFileUrl2,
+                                                        img3: _model
+                                                            .uploadedFileUrl3,
+                                                      ));
+                                                      _model.resultadoProjeto =
+                                                          ProjetosRecord
+                                                              .getDocumentFromData(
+                                                                  createProjetosRecordData(
+                                                                    titulo: _model
+                                                                        .tituloController
+                                                                        .text,
+                                                                    descricao: _model
+                                                                        .descriVendaController
+                                                                        .text,
+                                                                    valor: _model
+                                                                        .precoValue,
+                                                                    categoria:
+                                                                        _model
+                                                                            .categoriaValue,
+                                                                    linkProjeto:
+                                                                        _model
+                                                                            .linkProjetoController
+                                                                            .text,
+                                                                    postadoPor:
+                                                                        currentUserDisplayName,
+                                                                    iMGPrincipal:
+                                                                        _model
+                                                                            .uploadedFileUrl1,
+                                                                    creatData:
+                                                                        getCurrentTimestamp,
+                                                                    identificacao:
+                                                                        random_data
+                                                                            .randomString(
+                                                                      10,
+                                                                      12,
+                                                                      true,
+                                                                      false,
+                                                                      true,
+                                                                    ),
+                                                                    userIDVendedor:
+                                                                        currentUserUid,
+                                                                    emailVendedor:
+                                                                        currentUserEmail,
+                                                                    requisitos: _model
+                                                                        .requisitosController
+                                                                        .text,
+                                                                    subtitulo: _model
+                                                                        .subtituloController
+                                                                        .text,
+                                                                    eprojeto: _model
+                                                                        .checkboxValue,
+                                                                    videoDemo: _model
+                                                                        .videoDemoController
+                                                                        .text,
+                                                                    videoTutorial:
+                                                                        _model
+                                                                            .videoTutorialController
+                                                                            .text,
+                                                                    img2: _model
+                                                                        .uploadedFileUrl2,
+                                                                    img3: _model
+                                                                        .uploadedFileUrl3,
+                                                                  ),
+                                                                  projetosRecordReference);
+                                                      _shouldSetState = true;
                                                       logFirebaseEvent(
                                                           'Button_wait__delay');
                                                       await Future.delayed(
@@ -3324,6 +3392,39 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                     .ordem,
                                                               ));
                                                           logFirebaseEvent(
+                                                              'Button_backend_call');
+
+                                                          await CodigosCopiRecord
+                                                                  .createDoc(_model
+                                                                      .resultadoProjeto!
+                                                                      .reference)
+                                                              .set(
+                                                                  createCodigosCopiRecordData(
+                                                            linkProjeto: _model
+                                                                .linkProjetoController
+                                                                .text,
+                                                            tituloCode: FFAppState()
+                                                                .CodigosRef[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .tituloCode,
+                                                            descricaoCode: FFAppState()
+                                                                .CodigosRef[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .descricaoCode,
+                                                            codigos: FFAppState()
+                                                                .CodigosRef[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .textoCode,
+                                                            ordem: FFAppState()
+                                                                .CodigosRef[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .ordem,
+                                                          ));
+                                                          logFirebaseEvent(
                                                               'Button_wait__delay');
                                                           await Future.delayed(
                                                               const Duration(
@@ -3367,8 +3468,13 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                   () {}));
                                                         }
                                                       } else {
+                                                        if (_shouldSetState)
+                                                          setState(() {});
                                                         return;
                                                       }
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
                                                     },
                                                     text: 'Criar Projeto',
                                                     options: FFButtonOptions(

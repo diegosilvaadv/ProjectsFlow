@@ -170,6 +170,8 @@ class AddProjetosModel extends FlutterFlowModel<AddProjetosWidget> {
   FocusNode? videoTutorialFocusNode;
   TextEditingController? videoTutorialController;
   String? Function(BuildContext, String?)? videoTutorialControllerValidator;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  ProjetosRecord? resultadoProjeto;
 
   /// Initialization and disposal methods.
 

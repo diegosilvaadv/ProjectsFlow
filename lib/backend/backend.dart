@@ -11,6 +11,7 @@ import 'schema/categorias_record.dart';
 import 'schema/pagamentos_record.dart';
 import 'schema/user_pag_record.dart';
 import 'schema/codigos_record.dart';
+import 'schema/codigos_copi_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,6 +25,7 @@ export 'schema/categorias_record.dart';
 export 'schema/pagamentos_record.dart';
 export 'schema/user_pag_record.dart';
 export 'schema/codigos_record.dart';
+export 'schema/codigos_copi_record.dart';
 
 /// Functions to query ProjetosRecords (as a Stream and as a Future).
 Future<int> queryProjetosRecordCount({
@@ -242,6 +244,46 @@ Future<List<CodigosRecord>> queryCodigosRecordOnce({
     queryCollectionOnce(
       CodigosRecord.collection,
       CodigosRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CodigosCopiRecords (as a Stream and as a Future).
+Future<int> queryCodigosCopiRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CodigosCopiRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CodigosCopiRecord>> queryCodigosCopiRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CodigosCopiRecord.collection(parent),
+      CodigosCopiRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CodigosCopiRecord>> queryCodigosCopiRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CodigosCopiRecord.collection(parent),
+      CodigosCopiRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
