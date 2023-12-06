@@ -1181,305 +1181,284 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 6.0, 0.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  6.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Icon(
-                                                            Icons.person_2,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.person_2,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .secondaryText,
-                                                            size: 24.0,
+                                                        size: 24.0,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            widget
+                                                                .detalhesProjects
+                                                                ?.postadoPor,
+                                                            'criador',
                                                           ),
-                                                          Padding(
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Serif',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                                fontSize: 20.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      if (responsiveVisibility(
+                                                        context: context,
+                                                        phone: false,
+                                                      ))
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            dateTimeFormat(
+                                                                '|   dd/MM/yyyy | kk:mm    |',
+                                                                widget
+                                                                    .detalhesProjects!
+                                                                    .creatData!),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      20.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      if (responsiveVisibility(
+                                                        context: context,
+                                                        phone: false,
+                                                        tablet: false,
+                                                        tabletLandscape: false,
+                                                      ))
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child:
+                                                              FlutterFlowIconButton(
+                                                            borderColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            borderRadius: 6.0,
+                                                            borderWidth: 1.0,
+                                                            buttonSize: 40.0,
+                                                            fillColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent1,
+                                                            icon: Icon(
+                                                              Icons.share_sharp,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                              size: 24.0,
+                                                            ),
+                                                            showLoadingIndicator:
+                                                                true,
+                                                            onPressed:
+                                                                () async {
+                                                              logFirebaseEvent(
+                                                                  'DETALHES_PAGE_IconButtonWeb_ON_TAP');
+                                                              logFirebaseEvent(
+                                                                  'IconButtonWeb_bottom_sheet');
+                                                              await showModalBottomSheet(
+                                                                isScrollControlled:
+                                                                    true,
+                                                                backgroundColor:
+                                                                    Color(
+                                                                        0x1F000000),
+                                                                enableDrag:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
+                                                                    onTap: () => _model
+                                                                            .unfocusNode
+                                                                            .canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model
+                                                                            .unfocusNode)
+                                                                        : FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          CompartilharLinkWidget(
+                                                                        referencia: widget
+                                                                            .detalhesProjects
+                                                                            ?.reference
+                                                                            .id,
+                                                                      ),
+                                                                    ),
+                                                                  ));
+                                                                },
+                                                              ).then((value) =>
+                                                                  safeSetState(
+                                                                      () {}));
+                                                            },
+                                                          ),
+                                                        ),
+                                                      if (responsiveVisibility(
+                                                        context: context,
+                                                        desktop: false,
+                                                      ))
+                                                        Builder(
+                                                          builder: (context) =>
+                                                              Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        8.0,
+                                                                        10.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                widget
-                                                                    .detalhesProjects
-                                                                    ?.postadoPor,
-                                                                'criador',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Noto Serif',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondary,
-                                                                    fontSize:
-                                                                        20.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    fontStyle:
-                                                                        FontStyle
-                                                                            .italic,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          if (responsiveVisibility(
-                                                            context: context,
-                                                            phone: false,
-                                                          ))
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                dateTimeFormat(
-                                                                    '|   dd/MM/yyyy | kk:mm    |',
-                                                                    widget
-                                                                        .detalhesProjects!
-                                                                        .creatData!),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      fontSize:
-                                                                          20.0,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          if (responsiveVisibility(
-                                                            context: context,
-                                                            phone: false,
-                                                            tablet: false,
-                                                            tabletLandscape:
-                                                                false,
-                                                          ))
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child:
-                                                                  FlutterFlowIconButton(
-                                                                borderColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                borderRadius:
-                                                                    6.0,
-                                                                borderWidth:
-                                                                    1.0,
-                                                                buttonSize:
-                                                                    40.0,
-                                                                fillColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent1,
-                                                                icon: Icon(
-                                                                  Icons
-                                                                      .share_sharp,
-                                                                  color: FlutterFlowTheme.of(
+                                                            child:
+                                                                FlutterFlowIconButton(
+                                                              borderColor:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
-                                                                  size: 24.0,
-                                                                ),
-                                                                showLoadingIndicator:
-                                                                    true,
-                                                                onPressed:
-                                                                    () async {
-                                                                  logFirebaseEvent(
-                                                                      'DETALHES_PAGE_IconButtonWeb_ON_TAP');
-                                                                  logFirebaseEvent(
-                                                                      'IconButtonWeb_bottom_sheet');
-                                                                  await showModalBottomSheet(
-                                                                    isScrollControlled:
-                                                                        true,
-                                                                    backgroundColor:
-                                                                        Color(
-                                                                            0x1F000000),
-                                                                    enableDrag:
-                                                                        false,
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (context) {
-                                                                      return WebViewAware(
-                                                                          child:
-                                                                              GestureDetector(
-                                                                        onTap: () => _model.unfocusNode.canRequestFocus
-                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                            : FocusScope.of(context).unfocus(),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              MediaQuery.viewInsetsOf(context),
-                                                                          child:
-                                                                              CompartilharLinkWidget(
-                                                                            referencia:
-                                                                                widget.detalhesProjects?.reference.id,
-                                                                          ),
-                                                                        ),
-                                                                      ));
-                                                                    },
-                                                                  ).then((value) =>
-                                                                      safeSetState(
-                                                                          () {}));
-                                                                },
-                                                              ),
-                                                            ),
-                                                          if (responsiveVisibility(
-                                                            context: context,
-                                                            desktop: false,
-                                                          ))
-                                                            Builder(
-                                                              builder:
-                                                                  (context) =>
-                                                                      Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child:
-                                                                    FlutterFlowIconButton(
-                                                                  borderColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                  borderRadius:
-                                                                      6.0,
-                                                                  borderWidth:
-                                                                      1.0,
-                                                                  buttonSize:
-                                                                      40.0,
-                                                                  fillColor: FlutterFlowTheme.of(
+                                                                      .primary,
+                                                              borderRadius: 6.0,
+                                                              borderWidth: 1.0,
+                                                              buttonSize: 40.0,
+                                                              fillColor:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .accent1,
-                                                                  icon: Icon(
-                                                                    Icons
-                                                                        .share_sharp,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    size: 24.0,
-                                                                  ),
-                                                                  showLoadingIndicator:
-                                                                      true,
-                                                                  onPressed:
-                                                                      () async {
-                                                                    logFirebaseEvent(
-                                                                        'DETALHES_PAGE_share_sharp_ICN_ON_TAP');
-                                                                    logFirebaseEvent(
-                                                                        'IconButton_share');
-                                                                    await Share
-                                                                        .share(
-                                                                      'https://projectsflow.flutterflow.app/detalhes?detalhesProjects=${widget.detalhesProjects?.reference.id}',
-                                                                      sharePositionOrigin:
-                                                                          getWidgetBoundingBox(
-                                                                              context),
-                                                                    );
-                                                                  },
-                                                                ),
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .share_sharp,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                size: 24.0,
                                                               ),
-                                                            ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        if (responsiveVisibility(
-                                                          context: context,
-                                                          tablet: false,
-                                                          tabletLandscape:
-                                                              false,
-                                                          desktop: false,
-                                                        ))
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        20.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              dateTimeFormat(
-                                                                  '|   dd/MM/yyyy | kk:mm    |',
-                                                                  widget
-                                                                      .detalhesProjects!
-                                                                      .creatData!),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    fontSize:
-                                                                        20.0,
-                                                                  ),
+                                                              showLoadingIndicator:
+                                                                  true,
+                                                              onPressed:
+                                                                  () async {
+                                                                logFirebaseEvent(
+                                                                    'DETALHES_PAGE_share_sharp_ICN_ON_TAP');
+                                                                logFirebaseEvent(
+                                                                    'IconButton_share');
+                                                                await Share
+                                                                    .share(
+                                                                  'https://projectsflow.flutterflow.app/detalhes?detalhesProjects=${widget.detalhesProjects?.reference.id}',
+                                                                  sharePositionOrigin:
+                                                                      getWidgetBoundingBox(
+                                                                          context),
+                                                                );
+                                                              },
                                                             ),
                                                           ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
+                                                        ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      if (responsiveVisibility(
+                                                        context: context,
+                                                        tablet: false,
+                                                        tabletLandscape: false,
+                                                        desktop: false,
+                                                      ))
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            dateTimeFormat(
+                                                                '|   dd/MM/yyyy | kk:mm    |',
+                                                                widget
+                                                                    .detalhesProjects!
+                                                                    .creatData!),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      20.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
                                           Divider(
                                             thickness: 2.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 200.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Flexible(
+                                                child: Text(
                                                   'Descrição do Projeto',
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1492,80 +1471,63 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                             FontWeight.bold,
                                                       ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 200.0, 20.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: MarkdownBody(
-                                                    data:
-                                                        valueOrDefault<String>(
-                                                      widget.detalhesProjects
-                                                          ?.descricao,
-                                                      'DESCRICAO',
-                                                    ),
-                                                    selectable: true,
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: MarkdownBody(
+                                                  data: valueOrDefault<String>(
+                                                    widget.detalhesProjects
+                                                        ?.descricao,
+                                                    'DESCRICAO',
                                                   ),
+                                                  selectable: true,
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                           Divider(
                                             thickness: 2.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 200.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  'Requisitos do Projeto',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 20.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                'Requisitos do Projeto',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 20.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                            ],
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 200.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: MarkdownBody(
-                                                    data:
-                                                        valueOrDefault<String>(
-                                                      widget.detalhesProjects
-                                                          ?.requisitos,
-                                                      'Requisitos',
-                                                    ),
-                                                    selectable: true,
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: MarkdownBody(
+                                                  data: valueOrDefault<String>(
+                                                    widget.detalhesProjects
+                                                        ?.requisitos,
+                                                    'Requisitos',
                                                   ),
+                                                  selectable: true,
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ].divide(SizedBox(height: 10.0)),
                                       ),
                                     ),
                                   ],
