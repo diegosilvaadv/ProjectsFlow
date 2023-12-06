@@ -3382,7 +3382,6 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                             .contador]
                                                                     .ordem,
                                                               ));
-                                                              break;
                                                             }
                                                             logFirebaseEvent(
                                                                 'Button_stop_periodic_action');
