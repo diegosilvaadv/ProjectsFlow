@@ -301,6 +301,13 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                               descricaoCode: _model.descricaoController.text,
                             ));
                           });
+                          logFirebaseEvent(
+                              'Button_clear_text_fields_pin_codes');
+                          setState(() {
+                            _model.codigoController?.clear();
+                            _model.descricaoController?.clear();
+                            _model.tituloController?.clear();
+                          });
                         },
                         text: 'Adcionar',
                         icon: Icon(
@@ -359,34 +366,67 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                               children: [
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SelectionArea(
-                                        child: Text(
-                                      codigosItem.tituloCode,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    )),
+                                    Flexible(
+                                      child: SelectionArea(
+                                          child: Text(
+                                        codigosItem.tituloCode,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              fontSize: 25.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      )),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 5.0, 5.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'ADCIONAR_CODE_COMP_Icon_ucpxqrin_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Icon_update_app_state');
+                                          setState(() {
+                                            FFAppState()
+                                                .removeAtIndexFromCodigosRef(
+                                                    codigosIndex);
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.delete_sweep,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 30.0,
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    SelectionArea(
-                                        child: Text(
-                                      codigosItem.descricaoCode,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                    )),
+                                    Flexible(
+                                      child: SelectionArea(
+                                          child: Text(
+                                        codigosItem.descricaoCode,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                      )),
+                                    ),
                                   ],
                                 ),
                                 Row(
