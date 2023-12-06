@@ -341,7 +341,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                         MainAxisAlignment.start,
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
-                                                            .start,
+                                                            .center,
                                                     children: [
                                                       if (responsiveVisibility(
                                                         context: context,
@@ -836,8 +836,8 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Expanded(
-                                                                        child:
-                                                                            Text(
+                                                                        child: SelectionArea(
+                                                                            child: Text(
                                                                           valueOrDefault<
                                                                               String>(
                                                                             widget.detalhesProjects?.subtitulo,
@@ -849,7 +849,7 @@ class _DetalhesWidgetState extends State<DetalhesWidget> {
                                                                                 fontFamily: 'Noto Serif',
                                                                                 fontSize: 20.0,
                                                                               ),
-                                                                        ),
+                                                                        )),
                                                                       ),
                                                                     ],
                                                                   ),
