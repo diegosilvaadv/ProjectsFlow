@@ -18,10 +18,6 @@ import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class DetalhesVendasModel extends FlutterFlowModel<DetalhesVendasWidget> {
-  ///  Local state fields for this page.
-
-  CodigosCopiRecord? condicaoDoc;
-
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

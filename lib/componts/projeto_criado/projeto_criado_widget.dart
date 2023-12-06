@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,10 @@ class _ProjetoCriadoWidgetState extends State<ProjetoCriadoWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('PROJETO_CRIADO_ProjetoCriado_ON_INIT_STA');
+      logFirebaseEvent('ProjetoCriado_update_app_state');
+      setState(() {
+        FFAppState().CodigosRef = [];
+      });
       logFirebaseEvent('ProjetoCriado_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));
       logFirebaseEvent('ProjetoCriado_navigate_to');

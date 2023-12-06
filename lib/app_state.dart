@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
@@ -183,21 +182,6 @@ class FFAppState extends ChangeNotifier {
   set contador(int _value) {
     _contador = _value;
   }
-
-  final _docManager = StreamRequestManager<List<CodigosCopiRecord>>();
-  Stream<List<CodigosCopiRecord>> doc({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<List<CodigosCopiRecord>> Function() requestFn,
-  }) =>
-      _docManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearDocCache() => _docManager.clear();
-  void clearDocCacheKey(String? uniqueKey) =>
-      _docManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
-import '/componts/adcionar_code/adcionar_code_widget.dart';
+import '/componts/editar_projets_comp/editar_projets_comp_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -23,9 +23,11 @@ class EditProjetosWidget extends StatefulWidget {
   const EditProjetosWidget({
     Key? key,
     required this.detalhesEdit,
+    this.codigos,
   }) : super(key: key);
 
   final ProjetosRecord? detalhesEdit;
+  final DocumentReference? codigos;
 
   @override
   _EditProjetosWidgetState createState() => _EditProjetosWidgetState();
@@ -2369,7 +2371,11 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                       .viewInsetsOf(
                                                                           context),
                                                                   child:
-                                                                      AdcionarCodeWidget(),
+                                                                      EditarProjetsCompWidget(
+                                                                    referencia: widget
+                                                                        .detalhesEdit
+                                                                        ?.reference,
+                                                                  ),
                                                                 ),
                                                               ));
                                                             },

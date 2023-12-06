@@ -263,6 +263,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           },
           builder: (context, params) => EditProjetosWidget(
             detalhesEdit: params.getParam('detalhesEdit', ParamType.Document),
+            codigos: params.getParam('codigos', ParamType.DocumentReference,
+                false, ['Projetos', 'codigosCopi']),
           ),
         ),
         FFRoute(
