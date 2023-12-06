@@ -298,14 +298,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: wrapWithModel(
-                          model: _model.appBarModel,
-                          updateCallback: () => setState(() {}),
-                          child: AppBarWidget(),
-                        ),
+                      wrapWithModel(
+                        model: _model.appBarModel,
+                        updateCallback: () => setState(() {}),
+                        child: AppBarWidget(),
                       ),
                       Expanded(
                         child: Card(

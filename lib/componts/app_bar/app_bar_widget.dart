@@ -143,7 +143,12 @@ class _AppBarWidgetState extends State<AppBarWidget>
       color: Colors.transparent,
       elevation: 3.0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(12.0),
+          bottomRight: Radius.circular(12.0),
+          topLeft: Radius.circular(0.0),
+          topRight: Radius.circular(0.0),
+        ),
       ),
       child: Container(
         constraints: BoxConstraints(
@@ -158,7 +163,12 @@ class _AppBarWidgetState extends State<AppBarWidget>
               offset: Offset(0.0, 2.0),
             )
           ],
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(12.0),
+            bottomRight: Radius.circular(12.0),
+            topLeft: Radius.circular(0.0),
+            topRight: Radius.circular(0.0),
+          ),
           border: Border.all(
             color: Color(0x004B39EF),
           ),
@@ -300,8 +310,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               color: FlutterFlowTheme.of(context).primaryText,
                               width: 1.0,
                             ),
-                            hoverTextColor:
-                                FlutterFlowTheme.of(context).primaryText,
+                            hoverTextColor: Colors.white,
                           ),
                           showLoadingIndicator: false,
                         ).animateOnActionTrigger(
@@ -380,8 +389,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                               color: FlutterFlowTheme.of(context).primaryText,
                               width: 1.0,
                             ),
-                            hoverTextColor:
-                                FlutterFlowTheme.of(context).primaryText,
+                            hoverTextColor: Colors.white,
                           ),
                           showLoadingIndicator: false,
                         ).animateOnActionTrigger(
@@ -464,8 +472,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 width: 1.0,
                               ),
-                              hoverTextColor:
-                                  FlutterFlowTheme.of(context).primaryText,
+                              hoverTextColor: Colors.white,
                             ),
                             showLoadingIndicator: false,
                           ).animateOnActionTrigger(
@@ -548,8 +555,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 width: 1.0,
                               ),
-                              hoverTextColor:
-                                  FlutterFlowTheme.of(context).primaryText,
+                              hoverTextColor: Colors.white,
                             ),
                             showLoadingIndicator: false,
                           ).animateOnActionTrigger(
