@@ -3067,6 +3067,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                     onPressed: () async {
                                                       logFirebaseEvent(
                                                           'ADD_PROJETOS_CRIAR_PROJETO_BTN_ON_TAP');
+                                                      var _shouldSetState =
+                                                          false;
                                                       logFirebaseEvent(
                                                           'Button_validate_form');
                                                       if (_model.formKey11
@@ -3306,30 +3308,33 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                         .uploadedFileUrl3,
                                                                   ),
                                                                   projetosRecordReference);
+                                                      _shouldSetState = true;
                                                       logFirebaseEvent(
                                                           'Button_wait__delay');
                                                       await Future.delayed(
                                                           const Duration(
                                                               milliseconds:
                                                                   2000));
-                                                      logFirebaseEvent(
-                                                          'Button_start_periodic_action');
-                                                      _model.instantTimer =
-                                                          InstantTimer.periodic(
-                                                        duration: Duration(
-                                                            milliseconds: 1000),
-                                                        callback:
-                                                            (timer) async {
-                                                          if (FFAppState()
-                                                                  .CodigosRef
-                                                                  .length >=
-                                                              1) {
-                                                            logFirebaseEvent(
-                                                                'Button_update_app_state');
-                                                            setState(() {
-                                                              FFAppState()
-                                                                  .contador = -1;
-                                                            });
+                                                      if (FFAppState()
+                                                              .CodigosRef
+                                                              .length >=
+                                                          1) {
+                                                        logFirebaseEvent(
+                                                            'Button_update_app_state');
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .contador = -1;
+                                                        });
+                                                        logFirebaseEvent(
+                                                            'Button_start_periodic_action');
+                                                        _model.instantTimer =
+                                                            InstantTimer
+                                                                .periodic(
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  1000),
+                                                          callback:
+                                                              (timer) async {
                                                             while (FFAppState()
                                                                     .contador <=
                                                                 FFAppState()
@@ -3377,8 +3382,8 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                             .contador]
                                                                     .ordem,
                                                               ));
+                                                              break;
                                                             }
-                                                          } else {
                                                             logFirebaseEvent(
                                                                 'Button_stop_periodic_action');
                                                             _model.instantTimer
@@ -3421,12 +3426,18 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                             ).then((value) =>
                                                                 safeSetState(
                                                                     () {}));
-                                                          }
-                                                        },
-                                                        startImmediately: true,
-                                                      );
+                                                          },
+                                                          startImmediately:
+                                                              true,
+                                                        );
+                                                      } else {
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      }
 
-                                                      setState(() {});
+                                                      if (_shouldSetState)
+                                                        setState(() {});
                                                     },
                                                     text: 'Criar Projeto',
                                                     options: FFButtonOptions(
