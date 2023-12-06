@@ -208,7 +208,7 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                                   fontFamily: 'Readex Pro',
                                   fontSize: 16.0,
                                 ),
-                            maxLines: 3,
+                            maxLines: 5,
                             validator: _model.descricaoControllerValidator
                                 .asValidator(context),
                           ),

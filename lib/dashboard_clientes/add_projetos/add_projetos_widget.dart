@@ -3201,7 +3201,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                             categoria: _model
                                                                 .categoriaValue,
                                                             linkProjeto: _model
-                                                                .videoDemoController
+                                                                .linkProjetoController
                                                                 .text,
                                                             postadoPor:
                                                                 currentUserDisplayName,
