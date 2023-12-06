@@ -73,6 +73,20 @@
           "order": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "codigosCopi",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "LinkProjeto",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "ordem",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ]
 }

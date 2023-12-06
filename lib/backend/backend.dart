@@ -10,7 +10,6 @@ import 'schema/users_record.dart';
 import 'schema/categorias_record.dart';
 import 'schema/pagamentos_record.dart';
 import 'schema/user_pag_record.dart';
-import 'schema/codigos_record.dart';
 import 'schema/codigos_copi_record.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -24,7 +23,6 @@ export 'schema/users_record.dart';
 export 'schema/categorias_record.dart';
 export 'schema/pagamentos_record.dart';
 export 'schema/user_pag_record.dart';
-export 'schema/codigos_record.dart';
 export 'schema/codigos_copi_record.dart';
 
 /// Functions to query ProjetosRecords (as a Stream and as a Future).
@@ -207,43 +205,6 @@ Future<List<UserPagRecord>> queryUserPagRecordOnce({
     queryCollectionOnce(
       UserPagRecord.collection,
       UserPagRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query CodigosRecords (as a Stream and as a Future).
-Future<int> queryCodigosRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      CodigosRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<CodigosRecord>> queryCodigosRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      CodigosRecord.collection,
-      CodigosRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<CodigosRecord>> queryCodigosRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      CodigosRecord.collection,
-      CodigosRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

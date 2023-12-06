@@ -122,8 +122,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                               hoverColor: FlutterFlowTheme.of(context).accent1,
-                              hoverIconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
+                              hoverIconColor: Color(0xFFDDDDDD),
                               icon: Icon(
                                 Icons.close,
                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -3339,58 +3338,6 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                         .contador +
                                                                     1;
                                                           });
-                                                          logFirebaseEvent(
-                                                              'Button_backend_call');
-
-                                                          await CodigosRecord
-                                                              .collection
-                                                              .doc()
-                                                              .set(
-                                                                  createCodigosRecordData(
-                                                                linkProjeto:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  _model
-                                                                      .linkProjetoController
-                                                                      .text,
-                                                                  'sem',
-                                                                ),
-                                                                tituloCode:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  FFAppState()
-                                                                      .CodigosRef[
-                                                                          FFAppState()
-                                                                              .contador]
-                                                                      .tituloCode,
-                                                                  'sem',
-                                                                ),
-                                                                descricaoCode:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  FFAppState()
-                                                                      .CodigosRef[
-                                                                          FFAppState()
-                                                                              .contador]
-                                                                      .descricaoCode,
-                                                                  'sem',
-                                                                ),
-                                                                codigos:
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  FFAppState()
-                                                                      .CodigosRef[
-                                                                          FFAppState()
-                                                                              .contador]
-                                                                      .textoCode,
-                                                                  'sem',
-                                                                ),
-                                                                ordem: FFAppState()
-                                                                    .CodigosRef[
-                                                                        FFAppState()
-                                                                            .contador]
-                                                                    .ordem,
-                                                              ));
                                                           logFirebaseEvent(
                                                               'Button_backend_call');
 
