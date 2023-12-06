@@ -790,10 +790,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ],
                                     ),
                                   ),
-                                  Divider(
-                                    thickness: 1.0,
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
+                                  SizedBox(
+                                    width: 10000.0,
+                                    child: Divider(
+                                      thickness: 1.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                    ),
                                   ).animateOnPageLoad(animationsMap[
                                       'dividerOnPageLoadAnimation1']!),
                                   Padding(
@@ -875,9 +878,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             .width *
                                                         0.816,
                                                     height: 336.0,
-                                                    constraints: BoxConstraints(
-                                                      maxWidth: 1000.0,
-                                                    ),
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1072,164 +1072,152 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth: 1000.0,
-                                              ),
-                                              decoration: BoxDecoration(),
-                                              alignment: AlignmentDirectional(
-                                                  0.00, 0.00),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Row(
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    SelectionArea(
+                                                        child: Text(
+                                                      'Projetos Pagos',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .titleLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Outfit',
+                                                            fontSize: 30.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                    )),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        FFButtonWidget(
+                                                          onPressed: () async {
+                                                            logFirebaseEvent(
+                                                                'HOME_PAGE_PAGE_VER_MAIS_BTN_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'Button_navigate_to');
+
+                                                            context.pushNamed(
+                                                              'vermais',
+                                                              queryParameters: {
+                                                                'pagos':
+                                                                    serializeParam(
+                                                                  0.0,
+                                                                  ParamType
+                                                                      .double,
+                                                                ),
+                                                              }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
+                                                                    TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .rightToLeft,
+                                                                ),
+                                                              },
+                                                            );
+                                                          },
+                                                          text: 'VER MAIS',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                            hoverColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                            hoverTextColor:
+                                                                Color(
+                                                                    0xFFF0F0F0),
+                                                            hoverElevation: 5.0,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 6.0, 0.0, 10.0),
+                                                  child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                        MainAxisAlignment.start,
                                                     children: [
                                                       SelectionArea(
                                                           child: Text(
-                                                        'Projetos Pagos',
+                                                        'Os projetos pagos mais vendidos.',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .titleLarge
+                                                            .labelLarge
                                                             .override(
                                                               fontFamily:
-                                                                  'Outfit',
-                                                              fontSize: 30.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
+                                                                  'Readex Pro',
+                                                              fontSize: 20.0,
                                                             ),
                                                       )),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              logFirebaseEvent(
-                                                                  'HOME_PAGE_PAGE_VER_MAIS_BTN_ON_TAP');
-                                                              logFirebaseEvent(
-                                                                  'Button_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'vermais',
-                                                                queryParameters:
-                                                                    {
-                                                                  'pagos':
-                                                                      serializeParam(
-                                                                    0.0,
-                                                                    ParamType
-                                                                        .double,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                                extra: <String,
-                                                                    dynamic>{
-                                                                  kTransitionInfoKey:
-                                                                      TransitionInfo(
-                                                                    hasTransition:
-                                                                        true,
-                                                                    transitionType:
-                                                                        PageTransitionType
-                                                                            .rightToLeft,
-                                                                  ),
-                                                                },
-                                                              );
-                                                            },
-                                                            text: 'VER MAIS',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              height: 40.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        fontSize:
-                                                                            18.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              hoverColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBackground,
-                                                              hoverTextColor:
-                                                                  Color(
-                                                                      0xFFF0F0F0),
-                                                              hoverElevation:
-                                                                  5.0,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
                                                     ],
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 6.0,
-                                                                0.0, 10.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        SelectionArea(
-                                                            child: Text(
-                                                          'Os projetos pagos mais vendidos.',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 20.0,
-                                                              ),
-                                                        )),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
@@ -1242,9 +1230,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             .width *
                                                         0.824,
                                                     height: 336.0,
-                                                    constraints: BoxConstraints(
-                                                      maxWidth: 1000.0,
-                                                    ),
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
