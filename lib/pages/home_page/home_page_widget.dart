@@ -785,18 +785,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 ),
                                               ),
                                             ),
-                                            Divider(
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ).animateOnPageLoad(animationsMap[
-                                                'dividerOnPageLoadAnimation1']!),
                                           ],
                                         ),
                                       ],
                                     ),
                                   ),
+                                  Divider(
+                                    thickness: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                  ).animateOnPageLoad(animationsMap[
+                                      'dividerOnPageLoadAnimation1']!),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),

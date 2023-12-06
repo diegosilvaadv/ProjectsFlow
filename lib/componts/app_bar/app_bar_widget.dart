@@ -149,9 +149,6 @@ class _AppBarWidgetState extends State<AppBarWidget>
         ),
         child: Container(
           height: MediaQuery.sizeOf(context).height * 0.111,
-          constraints: BoxConstraints(
-            maxWidth: 1400.0,
-          ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             boxShadow: [
