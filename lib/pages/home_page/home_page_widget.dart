@@ -116,17 +116,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
       effects: [
         FadeEffect(
           curve: Curves.easeInOut,
-          delay: 580.ms,
+          delay: 760.ms,
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 440.ms,
-          duration: 600.ms,
-          begin: Offset(-85.0, -12.0),
-          end: Offset(-72.0, 0.0),
         ),
       ],
     ),
@@ -154,17 +147,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
       effects: [
         FadeEffect(
           curve: Curves.easeInOut,
-          delay: 580.ms,
+          delay: 760.ms,
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 440.ms,
-          duration: 600.ms,
-          begin: Offset(-85.0, -12.0),
-          end: Offset(-72.0, 0.0),
         ),
       ],
     ),
@@ -790,13 +776,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 10000.0,
-                                    child: Divider(
-                                      thickness: 1.0,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                    ),
+                                  Divider(
+                                    thickness: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                   ).animateOnPageLoad(animationsMap[
                                       'dividerOnPageLoadAnimation1']!),
                                   Padding(
