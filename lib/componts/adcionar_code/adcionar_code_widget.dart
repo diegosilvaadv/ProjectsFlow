@@ -438,105 +438,131 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Stack(
-                                      alignment:
-                                          AlignmentDirectional(1.0, -1.0),
-                                      children: [
-                                        Material(
-                                          color: Colors.transparent,
-                                          elevation: 5.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                                    Flexible(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.00, 0.00),
+                                        child: Stack(
+                                          alignment:
+                                              AlignmentDirectional(1.0, -1.0),
+                                          children: [
+                                            Material(
+                                              color: Colors.transparent,
+                                              elevation: 5.0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .primaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Flexible(
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      10.0,
+                                                                      10.0,
+                                                                      10.0),
+                                                          child: SelectionArea(
+                                                              child: Text(
+                                                            codigosItem
+                                                                .textoCode,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                          )),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
                                             ),
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.00, 0.00),
+                                            Opacity(
+                                              opacity: 0.7,
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        10.0, 10.0, 10.0, 10.0),
-                                                child: SelectionArea(
-                                                    child: Text(
-                                                  codigosItem.textoCode,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 15.0,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                )),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Opacity(
-                                          opacity: 0.7,
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 10.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'ADCIONAR_CODE_COMP_Icon_qgdeaklx_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Icon_copy_to_clipboard');
-                                                await Clipboard.setData(
-                                                    ClipboardData(
-                                                        text: codigosItem
-                                                            .textoCode));
-                                                logFirebaseEvent(
-                                                    'Icon_show_snack_bar');
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'Copiado!',
-                                                      style: TextStyle(
-                                                        color:
+                                                        0.0, 10.0, 10.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'ADCIONAR_CODE_COMP_Icon_qgdeaklx_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Icon_copy_to_clipboard');
+                                                    await Clipboard.setData(
+                                                        ClipboardData(
+                                                            text: codigosItem
+                                                                .textoCode));
+                                                    logFirebaseEvent(
+                                                        'Icon_show_snack_bar');
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Copiado!',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .secondary,
                                                       ),
-                                                    ),
-                                                    duration: Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary,
-                                                  ),
-                                                );
-                                              },
-                                              child: Icon(
-                                                Icons.content_copy,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                                    );
+                                                  },
+                                                  child: Icon(
+                                                    Icons.content_copy,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .warning,
-                                                size: 30.0,
+                                                    size: 30.0,
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ],
                                 ),
