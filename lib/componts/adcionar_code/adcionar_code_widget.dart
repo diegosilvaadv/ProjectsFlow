@@ -297,10 +297,13 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                               tituloCode: _model.tituloController.text,
                               descricaoCode: _model.descricaoController.text,
                               ordem: valueOrDefault<int>(
-                                    FFAppState().CodigosRef.last.ordem,
-                                    0,
-                                  ) +
-                                  1,
+                                valueOrDefault<int>(
+                                      FFAppState().CodigosRef.length,
+                                      0,
+                                    ) +
+                                    1,
+                                0,
+                              ),
                             ));
                           });
                           logFirebaseEvent(
