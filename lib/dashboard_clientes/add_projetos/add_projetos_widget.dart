@@ -2656,7 +2656,7 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                                   fontSize:
                                                                       20.0,
                                                                 ),
-                                                            maxLines: 7,
+                                                            maxLines: 12,
                                                             validator: _model
                                                                 .descriVendaControllerValidator
                                                                 .asValidator(
@@ -2879,6 +2879,18 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
+                                                  hoverColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .accent1,
+                                                  hoverBorderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    width: 1.0,
+                                                  ),
+                                                  hoverTextColor:
+                                                      Color(0xFFDFDFDF),
                                                 ),
                                               ),
                                             ),
@@ -3322,8 +3334,6 @@ class _AddProjetosWidgetState extends State<AddProjetosWidget> {
                                                           ).then((value) =>
                                                               safeSetState(
                                                                   () {}));
-
-                                                          return;
                                                         }
                                                       } else {
                                                         return;
