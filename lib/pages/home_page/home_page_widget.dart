@@ -298,10 +298,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      wrapWithModel(
-                        model: _model.appBarModel,
-                        updateCallback: () => setState(() {}),
-                        child: AppBarWidget(),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        child: wrapWithModel(
+                          model: _model.appBarModel,
+                          updateCallback: () => setState(() {}),
+                          child: AppBarWidget(),
+                        ),
                       ),
                       Expanded(
                         child: Card(
@@ -802,7 +806,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     child: Container(
                                       width: double.infinity,
                                       constraints: BoxConstraints(
-                                        maxWidth: 1000.0,
+                                        maxWidth: 1200.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -1058,7 +1062,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     child: Container(
                                       width: double.infinity,
                                       constraints: BoxConstraints(
-                                        maxWidth: 1000.0,
+                                        maxWidth: 1200.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -1426,7 +1430,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     child: Container(
                                       width: double.infinity,
                                       constraints: BoxConstraints(
-                                        maxWidth: 1000.0,
+                                        maxWidth: 1200.0,
                                       ),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
