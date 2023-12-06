@@ -36,11 +36,17 @@ class CodigosRecord extends FirestoreRecord {
   String get codigos => _codigos ?? '';
   bool hasCodigos() => _codigos != null;
 
+  // "ordem" field.
+  String? _ordem;
+  String get ordem => _ordem ?? '';
+  bool hasOrdem() => _ordem != null;
+
   void _initializeFields() {
     _linkProjeto = snapshotData['LinkProjeto'] as String?;
     _tituloCode = snapshotData['TituloCode'] as String?;
     _descricaoCode = snapshotData['DescricaoCode'] as String?;
     _codigos = snapshotData['Codigos'] as String?;
+    _ordem = snapshotData['ordem'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -82,6 +88,7 @@ Map<String, dynamic> createCodigosRecordData({
   String? tituloCode,
   String? descricaoCode,
   String? codigos,
+  String? ordem,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -89,6 +96,7 @@ Map<String, dynamic> createCodigosRecordData({
       'TituloCode': tituloCode,
       'DescricaoCode': descricaoCode,
       'Codigos': codigos,
+      'ordem': ordem,
     }.withoutNulls,
   );
 
@@ -103,12 +111,13 @@ class CodigosRecordDocumentEquality implements Equality<CodigosRecord> {
     return e1?.linkProjeto == e2?.linkProjeto &&
         e1?.tituloCode == e2?.tituloCode &&
         e1?.descricaoCode == e2?.descricaoCode &&
-        e1?.codigos == e2?.codigos;
+        e1?.codigos == e2?.codigos &&
+        e1?.ordem == e2?.ordem;
   }
 
   @override
-  int hash(CodigosRecord? e) => const ListEquality()
-      .hash([e?.linkProjeto, e?.tituloCode, e?.descricaoCode, e?.codigos]);
+  int hash(CodigosRecord? e) => const ListEquality().hash(
+      [e?.linkProjeto, e?.tituloCode, e?.descricaoCode, e?.codigos, e?.ordem]);
 
   @override
   bool isValidKey(Object? o) => o is CodigosRecord;
