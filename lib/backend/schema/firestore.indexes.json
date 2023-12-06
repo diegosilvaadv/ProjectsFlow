@@ -51,6 +51,20 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
+          "fieldPath": "userID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "valor",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Pagamentos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
           "fieldPath": "userIDPagante",
           "order": "ASCENDING"
         },

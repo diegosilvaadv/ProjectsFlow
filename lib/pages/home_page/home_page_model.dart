@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/aceitar_termos/aceitar_termos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
-import '/componts/app_bar_cell/app_bar_cell_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/componts/produtos/produtos_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -29,8 +28,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   final unfocusNode = FocusNode();
   // Model for AppBar component.
   late AppBarModel appBarModel;
-  // Model for AppBarCell component.
-  late AppBarCellModel appBarCellModel;
   // State field(s) for TextField widget.
   final textFieldKey = GlobalKey();
   FocusNode? textFieldFocusNode;
@@ -44,14 +41,12 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   void initState(BuildContext context) {
     appBarModel = createModel(context, () => AppBarModel());
-    appBarCellModel = createModel(context, () => AppBarCellModel());
     navBarModel = createModel(context, () => NavBarModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     appBarModel.dispose();
-    appBarCellModel.dispose();
     textFieldFocusNode?.dispose();
 
     navBarModel.dispose();

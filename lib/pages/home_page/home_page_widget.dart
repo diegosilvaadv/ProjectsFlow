@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componts/aceitar_termos/aceitar_termos_widget.dart';
 import '/componts/app_bar/app_bar_widget.dart';
-import '/componts/app_bar_cell/app_bar_cell_widget.dart';
 import '/componts/nav_bar/nav_bar_widget.dart';
 import '/componts/produtos/produtos_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -58,6 +57,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
       ],
     ),
     'textOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeIn,
+          delay: 280.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, -51.0),
+          end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'textOnPageLoadAnimation3': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
@@ -280,134 +298,169 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      if (responsiveVisibility(
-                        context: context,
-                        phone: false,
-                      ))
-                        wrapWithModel(
-                          model: _model.appBarModel,
-                          updateCallback: () => setState(() {}),
-                          child: AppBarWidget(),
-                        ),
-                      if (responsiveVisibility(
-                        context: context,
-                        tablet: false,
-                        tabletLandscape: false,
-                        desktop: false,
-                      ))
-                        wrapWithModel(
-                          model: _model.appBarCellModel,
-                          updateCallback: () => setState(() {}),
-                          child: AppBarCellWidget(),
-                        ),
-                      if (responsiveVisibility(
-                        context: context,
-                        phone: false,
-                        tablet: false,
-                      ))
-                        Expanded(
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(0.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 16.0),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Container(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          1.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Stack(
-                                        children: [
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 30.0, 0.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: BackdropFilter(
-                                                        filter:
-                                                            ImageFilter.blur(
-                                                          sigmaX: 10.0,
-                                                          sigmaY: 10.0,
-                                                        ),
-                                                        child: SelectionArea(
-                                                            child: GradientText(
-                                                          'Trabalhar com FlutterFlow',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .displayMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                          colors: [
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary
-                                                          ],
-                                                          gradientDirection:
-                                                              GradientDirection
-                                                                  .ltr,
-                                                          gradientType:
-                                                              GradientType
-                                                                  .linear,
-                                                        )).animateOnPageLoad(
-                                                            animationsMap[
-                                                                'textOnPageLoadAnimation1']!),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Row(
+                      wrapWithModel(
+                        model: _model.appBarModel,
+                        updateCallback: () => setState(() {}),
+                        child: AppBarWidget(),
+                      ),
+                      Expanded(
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 16.0),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 30.0, 0.0, 0.0),
+                                              child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  SelectionArea(
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                    child: BackdropFilter(
+                                                      filter: ImageFilter.blur(
+                                                        sigmaX: 10.0,
+                                                        sigmaY: 10.0,
+                                                      ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          if (responsiveVisibility(
+                                                            context: context,
+                                                            phone: false,
+                                                            tablet: false,
+                                                          ))
+                                                            SelectionArea(
+                                                                child:
+                                                                    GradientText(
+                                                              'Trabalhar com FlutterFlow',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .displayMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Outfit',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                              colors: [
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary
+                                                              ],
+                                                              gradientDirection:
+                                                                  GradientDirection
+                                                                      .ltr,
+                                                              gradientType:
+                                                                  GradientType
+                                                                      .linear,
+                                                            )).animateOnPageLoad(
+                                                                animationsMap[
+                                                                    'textOnPageLoadAnimation1']!),
+                                                          if (responsiveVisibility(
+                                                            context: context,
+                                                            tabletLandscape:
+                                                                false,
+                                                            desktop: false,
+                                                          ))
+                                                            SelectionArea(
+                                                                child:
+                                                                    GradientText(
+                                                              'Trabalhar com FlutterFlow',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .displayMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Outfit',
+                                                                    fontSize:
+                                                                        30.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                              colors: [
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary
+                                                              ],
+                                                              gradientDirection:
+                                                                  GradientDirection
+                                                                      .ltr,
+                                                              gradientType:
+                                                                  GradientType
+                                                                      .linear,
+                                                            )).animateOnPageLoad(
+                                                                animationsMap[
+                                                                    'textOnPageLoadAnimation2']!),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Flexible(
+                                                  child: SelectionArea(
                                                       child: Text(
                                                     'Transforme seus projetos em dinheiro',
+                                                    textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .headlineSmall,
                                                   )).animateOnPageLoad(
                                                       animationsMap[
-                                                          'textOnPageLoadAnimation2']!),
-                                                ],
-                                              ),
-                                              Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.4,
+                                                          'textOnPageLoadAnimation3']!),
+                                                ),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 10.0, 0.0),
+                                              child: Container(
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 500.0,
+                                                ),
                                                 decoration: BoxDecoration(),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -731,43 +784,47 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   ),
                                                 ),
                                               ),
-                                              Divider(
-                                                thickness: 1.0,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                              ).animateOnPageLoad(animationsMap[
-                                                  'dividerOnPageLoadAnimation1']!),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          150.0, 25.0, 150.0, 0.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
+                                            ),
+                                            Divider(
+                                              thickness: 1.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                            ).animateOnPageLoad(animationsMap[
+                                                'dividerOnPageLoadAnimation1']!),
+                                          ],
                                         ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 15.0, 15.0, 15.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  SelectionArea(
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      constraints: BoxConstraints(
+                                        maxWidth: 1000.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 15.0, 15.0, 15.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Flexible(
+                                                  child: SelectionArea(
                                                       child: Text(
                                                     'Projetos Completos',
                                                     style: FlutterFlowTheme.of(
@@ -780,17 +837,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               FontWeight.bold,
                                                         ),
                                                   )),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 6.0, 0.0, 10.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    SelectionArea(
+                                                ),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 6.0, 0.0, 10.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: SelectionArea(
                                                         child: Text(
                                                       'Copie todo um projeto e use como quiser.',
                                                       style:
@@ -803,894 +861,917 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 fontSize: 20.0,
                                                               ),
                                                     )),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                              SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.816,
-                                                      height: 336.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(16.0),
-                                                      ),
-                                                      child: StreamBuilder<
-                                                          List<ProjetosRecord>>(
-                                                        stream:
-                                                            queryProjetosRecord(
-                                                          queryBuilder:
-                                                              (projetosRecord) =>
-                                                                  projetosRecord
-                                                                      .where(
-                                                            'Eprojeto',
-                                                            isEqualTo: true,
-                                                          ),
-                                                          limit: 10,
+                                            ),
+                                            SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.816,
+                                                    height: 336.0,
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 1000.0,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              16.0),
+                                                    ),
+                                                    child: StreamBuilder<
+                                                        List<ProjetosRecord>>(
+                                                      stream:
+                                                          queryProjetosRecord(
+                                                        queryBuilder:
+                                                            (projetosRecord) =>
+                                                                projetosRecord
+                                                                    .where(
+                                                          'Eprojeto',
+                                                          isEqualTo: true,
                                                         ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50.0,
-                                                                height: 50.0,
-                                                                child:
-                                                                    SpinKitRipple(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  size: 50.0,
-                                                                ),
+                                                        limit: 10,
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  SpinKitRipple(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 50.0,
                                                               ),
-                                                            );
-                                                          }
-                                                          List<ProjetosRecord>
-                                                              listViewProjetosRecordList =
-                                                              snapshot.data!;
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            itemCount:
-                                                                listViewProjetosRecordList
-                                                                    .length,
-                                                            itemBuilder: (context,
-                                                                listViewIndex) {
-                                                              final listViewProjetosRecord =
-                                                                  listViewProjetosRecordList[
-                                                                      listViewIndex];
-                                                              return Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    logFirebaseEvent(
-                                                                        'HOME_PAGE_PAGE_Container_xr7rxynq_ON_TAP');
-                                                                    logFirebaseEvent(
-                                                                        'Container_navigate_to');
-
-                                                                    context
-                                                                        .pushNamed(
-                                                                      'detalhes',
-                                                                      queryParameters:
-                                                                          {
-                                                                        'detalhesProjects':
-                                                                            serializeParam(
-                                                                          listViewProjetosRecord,
-                                                                          ParamType
-                                                                              .Document,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                      extra: <String,
-                                                                          dynamic>{
-                                                                        'detalhesProjects':
-                                                                            listViewProjetosRecord,
-                                                                        kTransitionInfoKey:
-                                                                            TransitionInfo(
-                                                                          hasTransition:
-                                                                              true,
-                                                                          transitionType:
-                                                                              PageTransitionType.rightToLeft,
-                                                                          duration:
-                                                                              Duration(milliseconds: 500),
-                                                                        ),
-                                                                      },
-                                                                    );
-                                                                  },
-                                                                  child:
-                                                                      Material(
-                                                                    color: Colors
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<ProjetosRecord>
+                                                            listViewProjetosRecordList =
+                                                            snapshot.data!;
+                                                        return ListView.builder(
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          itemCount:
+                                                              listViewProjetosRecordList
+                                                                  .length,
+                                                          itemBuilder: (context,
+                                                              listViewIndex) {
+                                                            final listViewProjetosRecord =
+                                                                listViewProjetosRecordList[
+                                                                    listViewIndex];
+                                                            return Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0),
+                                                              child: InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
                                                                         .transparent,
-                                                                    elevation:
-                                                                        8.0,
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
+                                                                onTap:
+                                                                    () async {
+                                                                  logFirebaseEvent(
+                                                                      'HOME_PAGE_PAGE_Container_xr7rxynq_ON_TAP');
+                                                                  logFirebaseEvent(
+                                                                      'Container_navigate_to');
+
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'detalhes',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'detalhesProjects':
+                                                                          serializeParam(
+                                                                        listViewProjetosRecord,
+                                                                        ParamType
+                                                                            .Document,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      'detalhesProjects':
+                                                                          listViewProjetosRecord,
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.rightToLeft,
+                                                                        duration:
+                                                                            Duration(milliseconds: 500),
+                                                                      ),
+                                                                    },
+                                                                  );
+                                                                },
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation:
+                                                                      8.0,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        270.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      boxShadow: [
+                                                                        BoxShadow(
+                                                                          blurRadius:
+                                                                              4.0,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).accent1,
+                                                                          offset: Offset(
+                                                                              0.0,
+                                                                              2.0),
+                                                                        )
+                                                                      ],
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8.0),
                                                                     ),
                                                                     child:
-                                                                        Container(
-                                                                      width:
-                                                                          270.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        boxShadow: [
-                                                                          BoxShadow(
-                                                                            blurRadius:
-                                                                                4.0,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).accent1,
-                                                                            offset:
-                                                                                Offset(0.0, 2.0),
-                                                                          )
-                                                                        ],
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                      ),
-                                                                      child:
-                                                                          ProdutosWidget(
-                                                                        key: Key(
-                                                                            'Keygxh_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
-                                                                        detlahes:
-                                                                            listViewProjetosRecord,
-                                                                      ),
+                                                                        ProdutosWidget(
+                                                                      key: Key(
+                                                                          'Keygxh_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
+                                                                      detlahes:
+                                                                          listViewProjetosRecord,
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              );
-                                                            },
-                                                          );
-                                                        },
-                                                      ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation1']!),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
+                                      ),
                                     ).animateOnPageLoad(animationsMap[
-                                        'dividerOnPageLoadAnimation2']!),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          150.0, 25.0, 150.0, 0.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 15.0, 15.0, 15.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Row(
+                                        'containerOnPageLoadAnimation1']!),
+                                  ),
+                                  Divider(
+                                    thickness: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                  ).animateOnPageLoad(animationsMap[
+                                      'dividerOnPageLoadAnimation2']!),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      constraints: BoxConstraints(
+                                        maxWidth: 1000.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 15.0, 15.0, 15.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              constraints: BoxConstraints(
+                                                maxWidth: 1000.0,
+                                              ),
+                                              decoration: BoxDecoration(),
+                                              alignment: AlignmentDirectional(
+                                                  0.00, 0.00),
+                                              child: Column(
                                                 mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
                                                 children: [
-                                                  SelectionArea(
-                                                      child: Text(
-                                                    'Projetos Pagos',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          fontSize: 30.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                  )),
                                                   Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: [
-                                                      FFButtonWidget(
-                                                        onPressed: () async {
-                                                          logFirebaseEvent(
-                                                              'HOME_PAGE_PAGE_VER_MAIS_BTN_ON_TAP');
-                                                          logFirebaseEvent(
-                                                              'Button_navigate_to');
+                                                      SelectionArea(
+                                                          child: Text(
+                                                        'Projetos Pagos',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .titleLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Outfit',
+                                                              fontSize: 30.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                            ),
+                                                      )),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              logFirebaseEvent(
+                                                                  'HOME_PAGE_PAGE_VER_MAIS_BTN_ON_TAP');
+                                                              logFirebaseEvent(
+                                                                  'Button_navigate_to');
 
-                                                          context.pushNamed(
-                                                            'vermais',
-                                                            queryParameters: {
-                                                              'pagos':
-                                                                  serializeParam(
-                                                                0.0,
-                                                                ParamType
-                                                                    .double,
-                                                              ),
-                                                            }.withoutNulls,
-                                                            extra: <String,
-                                                                dynamic>{
-                                                              kTransitionInfoKey:
-                                                                  TransitionInfo(
-                                                                hasTransition:
-                                                                    true,
-                                                                transitionType:
-                                                                    PageTransitionType
-                                                                        .rightToLeft,
-                                                              ),
-                                                            },
-                                                          );
-                                                        },
-                                                        text: 'VER MAIS',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          height: 40.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    fontSize:
-                                                                        18.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
+                                                              context.pushNamed(
+                                                                'vermais',
+                                                                queryParameters:
+                                                                    {
+                                                                  'pagos':
+                                                                      serializeParam(
+                                                                    0.0,
+                                                                    ParamType
+                                                                        .double,
                                                                   ),
-                                                          elevation: 3.0,
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 1.0,
+                                                                }.withoutNulls,
+                                                                extra: <String,
+                                                                    dynamic>{
+                                                                  kTransitionInfoKey:
+                                                                      TransitionInfo(
+                                                                    hasTransition:
+                                                                        true,
+                                                                    transitionType:
+                                                                        PageTransitionType
+                                                                            .rightToLeft,
+                                                                  ),
+                                                                },
+                                                              );
+                                                            },
+                                                            text: 'VER MAIS',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              height: 40.0,
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        fontSize:
+                                                                            18.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                              hoverTextColor:
+                                                                  Color(
+                                                                      0xFFF0F0F0),
+                                                              hoverElevation:
+                                                                  5.0,
+                                                            ),
                                                           ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          hoverColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryBackground,
-                                                          hoverTextColor:
-                                                              Color(0xFFF0F0F0),
-                                                          hoverElevation: 5.0,
-                                                        ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 6.0, 0.0, 10.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    SelectionArea(
-                                                        child: Text(
-                                                      'Os projetos pagos mais vendidos.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 6.0,
+                                                                0.0, 10.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        SelectionArea(
+                                                            child: Text(
+                                                          'Os projetos pagos mais vendidos.',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .labelLarge
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
                                                                 fontSize: 20.0,
                                                               ),
-                                                    )),
-                                                  ],
-                                                ),
+                                                        )),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.824,
-                                                      height: 336.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(16.0),
-                                                      ),
-                                                      child: StreamBuilder<
-                                                          List<ProjetosRecord>>(
-                                                        stream:
-                                                            queryProjetosRecord(
-                                                          queryBuilder:
-                                                              (projetosRecord) =>
-                                                                  projetosRecord
-                                                                      .where(
-                                                            'Valor',
-                                                            isGreaterThan: 1.0,
-                                                          ),
+                                            ),
+                                            SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.824,
+                                                    height: 336.0,
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 1000.0,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              16.0),
+                                                    ),
+                                                    child: StreamBuilder<
+                                                        List<ProjetosRecord>>(
+                                                      stream:
+                                                          queryProjetosRecord(
+                                                        queryBuilder:
+                                                            (projetosRecord) =>
+                                                                projetosRecord
+                                                                    .where(
+                                                          'Valor',
+                                                          isGreaterThan: 1.0,
                                                         ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50.0,
-                                                                height: 50.0,
-                                                                child:
-                                                                    SpinKitRipple(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  size: 50.0,
-                                                                ),
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  SpinKitRipple(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 50.0,
                                                               ),
-                                                            );
-                                                          }
-                                                          List<ProjetosRecord>
-                                                              listViewProjetosRecordList =
-                                                              snapshot.data!;
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            shrinkWrap: true,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            itemCount:
-                                                                listViewProjetosRecordList
-                                                                    .length,
-                                                            itemBuilder: (context,
-                                                                listViewIndex) {
-                                                              final listViewProjetosRecord =
-                                                                  listViewProjetosRecordList[
-                                                                      listViewIndex];
-                                                              return Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    logFirebaseEvent(
-                                                                        'HOME_PAGE_PAGE_Container_tkadzqqe_ON_TAP');
-                                                                    logFirebaseEvent(
-                                                                        'Container_navigate_to');
-
-                                                                    context
-                                                                        .pushNamed(
-                                                                      'detalhes',
-                                                                      queryParameters:
-                                                                          {
-                                                                        'detalhesProjects':
-                                                                            serializeParam(
-                                                                          listViewProjetosRecord,
-                                                                          ParamType
-                                                                              .Document,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                      extra: <String,
-                                                                          dynamic>{
-                                                                        'detalhesProjects':
-                                                                            listViewProjetosRecord,
-                                                                        kTransitionInfoKey:
-                                                                            TransitionInfo(
-                                                                          hasTransition:
-                                                                              true,
-                                                                          transitionType:
-                                                                              PageTransitionType.rightToLeft,
-                                                                          duration:
-                                                                              Duration(milliseconds: 500),
-                                                                        ),
-                                                                      },
-                                                                    );
-                                                                  },
-                                                                  child:
-                                                                      Material(
-                                                                    color: Colors
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<ProjetosRecord>
+                                                            listViewProjetosRecordList =
+                                                            snapshot.data!;
+                                                        return ListView.builder(
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          shrinkWrap: true,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          itemCount:
+                                                              listViewProjetosRecordList
+                                                                  .length,
+                                                          itemBuilder: (context,
+                                                              listViewIndex) {
+                                                            final listViewProjetosRecord =
+                                                                listViewProjetosRecordList[
+                                                                    listViewIndex];
+                                                            return Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0),
+                                                              child: InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
                                                                         .transparent,
-                                                                    elevation:
-                                                                        8.0,
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
+                                                                onTap:
+                                                                    () async {
+                                                                  logFirebaseEvent(
+                                                                      'HOME_PAGE_PAGE_Container_tkadzqqe_ON_TAP');
+                                                                  logFirebaseEvent(
+                                                                      'Container_navigate_to');
+
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'detalhes',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'detalhesProjects':
+                                                                          serializeParam(
+                                                                        listViewProjetosRecord,
+                                                                        ParamType
+                                                                            .Document,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      'detalhesProjects':
+                                                                          listViewProjetosRecord,
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.rightToLeft,
+                                                                        duration:
+                                                                            Duration(milliseconds: 500),
+                                                                      ),
+                                                                    },
+                                                                  );
+                                                                },
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation:
+                                                                      8.0,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        262.0,
+                                                                    height:
+                                                                        200.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      boxShadow: [
+                                                                        BoxShadow(
+                                                                          blurRadius:
+                                                                              4.0,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).accent1,
+                                                                          offset: Offset(
+                                                                              0.0,
+                                                                              2.0),
+                                                                        )
+                                                                      ],
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8.0),
                                                                     ),
                                                                     child:
-                                                                        Container(
-                                                                      width:
-                                                                          262.0,
-                                                                      height:
-                                                                          200.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        boxShadow: [
-                                                                          BoxShadow(
-                                                                            blurRadius:
-                                                                                4.0,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).accent1,
-                                                                            offset:
-                                                                                Offset(0.0, 2.0),
-                                                                          )
-                                                                        ],
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                      ),
-                                                                      child:
-                                                                          ProdutosWidget(
-                                                                        key: Key(
-                                                                            'Keyjiy_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
-                                                                        detlahes:
-                                                                            listViewProjetosRecord,
-                                                                      ),
+                                                                        ProdutosWidget(
+                                                                      key: Key(
+                                                                          'Keyjiy_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
+                                                                      detlahes:
+                                                                          listViewProjetosRecord,
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              );
-                                                            },
-                                                          );
-                                                        },
-                                                      ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
                                                     ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation2']!),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          150.0, 20.0, 150.0, 20.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(18.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 15.0, 15.0, 15.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  SelectionArea(
-                                                      child: Text(
-                                                    'Projetos Grátis',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          fontSize: 30.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                  )),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      FFButtonWidget(
-                                                        onPressed: () async {
-                                                          logFirebaseEvent(
-                                                              'HOME_PAGE_PAGE_VER_MAIS_BTN_ON_TAP');
-                                                          logFirebaseEvent(
-                                                              'Button_navigate_to');
-
-                                                          context.pushNamed(
-                                                            'vermais',
-                                                            queryParameters: {
-                                                              'gratis':
-                                                                  serializeParam(
-                                                                0.0,
-                                                                ParamType
-                                                                    .double,
-                                                              ),
-                                                            }.withoutNulls,
-                                                            extra: <String,
-                                                                dynamic>{
-                                                              kTransitionInfoKey:
-                                                                  TransitionInfo(
-                                                                hasTransition:
-                                                                    true,
-                                                                transitionType:
-                                                                    PageTransitionType
-                                                                        .rightToLeft,
-                                                              ),
-                                                            },
-                                                          );
-                                                        },
-                                                        text: 'VER MAIS',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          height: 40.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    fontSize:
-                                                                        18.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                  ),
-                                                          elevation: 3.0,
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          hoverColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryBackground,
-                                                          hoverTextColor:
-                                                              Color(0xFFF0F0F0),
-                                                          hoverElevation: 5.0,
-                                                        ),
-                                                      ),
-                                                    ],
                                                   ),
                                                 ],
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 6.0, 0.0, 0.0),
-                                                child: Row(
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'containerOnPageLoadAnimation2']!),
+                                  ),
+                                  Divider(
+                                    thickness: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 0.0, 20.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      constraints: BoxConstraints(
+                                        maxWidth: 1000.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 15.0, 15.0, 15.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                SelectionArea(
+                                                    child: Text(
+                                                  'Projetos Grátis',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 30.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                )),
+                                                Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    SelectionArea(
-                                                        child: Text(
-                                                      'Projetos Grátis mais acessados.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 20.0,
-                                                              ),
-                                                    )),
-                                                  ],
-                                                ),
-                                              ),
-                                              SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.815,
-                                                      height: 336.0,
-                                                      decoration: BoxDecoration(
+                                                    FFButtonWidget(
+                                                      onPressed: () async {
+                                                        logFirebaseEvent(
+                                                            'HOME_PAGE_PAGE_VER_MAIS_BTN_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Button_navigate_to');
+
+                                                        context.pushNamed(
+                                                          'vermais',
+                                                          queryParameters: {
+                                                            'gratis':
+                                                                serializeParam(
+                                                              0.0,
+                                                              ParamType.double,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            kTransitionInfoKey:
+                                                                TransitionInfo(
+                                                              hasTransition:
+                                                                  true,
+                                                              transitionType:
+                                                                  PageTransitionType
+                                                                      .rightToLeft,
+                                                            ),
+                                                          },
+                                                        );
+                                                      },
+                                                      text: 'VER MAIS',
+                                                      options: FFButtonOptions(
+                                                        height: 40.0,
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                        elevation: 3.0,
+                                                        borderSide: BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(8.0),
+                                                        hoverColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBackground,
+                                                        hoverTextColor:
+                                                            Color(0xFFF0F0F0),
+                                                        hoverElevation: 5.0,
                                                       ),
-                                                      child: StreamBuilder<
-                                                          List<ProjetosRecord>>(
-                                                        stream:
-                                                            queryProjetosRecord(
-                                                          queryBuilder:
-                                                              (projetosRecord) =>
-                                                                  projetosRecord
-                                                                      .where(
-                                                            'Valor',
-                                                            isEqualTo: 0.0,
-                                                          ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 6.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  SelectionArea(
+                                                      child: Text(
+                                                    'Projetos Grátis mais acessados.',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 20.0,
                                                         ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50.0,
-                                                                height: 50.0,
-                                                                child:
-                                                                    SpinKitRipple(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  size: 50.0,
-                                                                ),
+                                                  )),
+                                                ],
+                                              ),
+                                            ),
+                                            SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.815,
+                                                    height: 336.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: StreamBuilder<
+                                                        List<ProjetosRecord>>(
+                                                      stream:
+                                                          queryProjetosRecord(
+                                                        queryBuilder:
+                                                            (projetosRecord) =>
+                                                                projetosRecord
+                                                                    .where(
+                                                          'Valor',
+                                                          isEqualTo: 0.0,
+                                                        ),
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  SpinKitRipple(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 50.0,
                                                               ),
-                                                            );
-                                                          }
-                                                          List<ProjetosRecord>
-                                                              listViewProjetosRecordList =
-                                                              snapshot.data!;
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            itemCount:
-                                                                listViewProjetosRecordList
-                                                                    .length,
-                                                            itemBuilder: (context,
-                                                                listViewIndex) {
-                                                              final listViewProjetosRecord =
-                                                                  listViewProjetosRecordList[
-                                                                      listViewIndex];
-                                                              return Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    logFirebaseEvent(
-                                                                        'HOME_PAGE_PAGE_Container_nfh392oz_ON_TAP');
-                                                                    logFirebaseEvent(
-                                                                        'Container_navigate_to');
-
-                                                                    context
-                                                                        .pushNamed(
-                                                                      'detalhes',
-                                                                      queryParameters:
-                                                                          {
-                                                                        'detalhesProjects':
-                                                                            serializeParam(
-                                                                          listViewProjetosRecord,
-                                                                          ParamType
-                                                                              .Document,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                      extra: <String,
-                                                                          dynamic>{
-                                                                        'detalhesProjects':
-                                                                            listViewProjetosRecord,
-                                                                        kTransitionInfoKey:
-                                                                            TransitionInfo(
-                                                                          hasTransition:
-                                                                              true,
-                                                                          transitionType:
-                                                                              PageTransitionType.rightToLeft,
-                                                                          duration:
-                                                                              Duration(milliseconds: 500),
-                                                                        ),
-                                                                      },
-                                                                    );
-                                                                  },
-                                                                  child:
-                                                                      Material(
-                                                                    color: Colors
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<ProjetosRecord>
+                                                            listViewProjetosRecordList =
+                                                            snapshot.data!;
+                                                        return ListView.builder(
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          itemCount:
+                                                              listViewProjetosRecordList
+                                                                  .length,
+                                                          itemBuilder: (context,
+                                                              listViewIndex) {
+                                                            final listViewProjetosRecord =
+                                                                listViewProjetosRecordList[
+                                                                    listViewIndex];
+                                                            return Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0),
+                                                              child: InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
                                                                         .transparent,
-                                                                    elevation:
-                                                                        8.0,
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
+                                                                onTap:
+                                                                    () async {
+                                                                  logFirebaseEvent(
+                                                                      'HOME_PAGE_PAGE_Container_nfh392oz_ON_TAP');
+                                                                  logFirebaseEvent(
+                                                                      'Container_navigate_to');
+
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'detalhes',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'detalhesProjects':
+                                                                          serializeParam(
+                                                                        listViewProjetosRecord,
+                                                                        ParamType
+                                                                            .Document,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      'detalhesProjects':
+                                                                          listViewProjetosRecord,
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.rightToLeft,
+                                                                        duration:
+                                                                            Duration(milliseconds: 500),
+                                                                      ),
+                                                                    },
+                                                                  );
+                                                                },
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation:
+                                                                      8.0,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        262.0,
+                                                                    height:
+                                                                        200.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      boxShadow: [
+                                                                        BoxShadow(
+                                                                          blurRadius:
+                                                                              4.0,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).accent1,
+                                                                          offset: Offset(
+                                                                              0.0,
+                                                                              2.0),
+                                                                        )
+                                                                      ],
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8.0),
                                                                     ),
                                                                     child:
-                                                                        Container(
-                                                                      width:
-                                                                          262.0,
-                                                                      height:
-                                                                          200.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        boxShadow: [
-                                                                          BoxShadow(
-                                                                            blurRadius:
-                                                                                4.0,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).accent1,
-                                                                            offset:
-                                                                                Offset(0.0, 2.0),
-                                                                          )
-                                                                        ],
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                      ),
-                                                                      child:
-                                                                          ProdutosWidget(
-                                                                        key: Key(
-                                                                            'Keyirq_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
-                                                                        detlahes:
-                                                                            listViewProjetosRecord,
-                                                                      ),
+                                                                        ProdutosWidget(
+                                                                      key: Key(
+                                                                          'Keyirq_${listViewIndex}_of_${listViewProjetosRecordList.length}'),
+                                                                      detlahes:
+                                                                          listViewProjetosRecord,
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              );
-                                                            },
-                                                          );
-                                                        },
-                                                      ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation3']!),
-                                    ),
-                                    Divider(
-                                      thickness: 2.0,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                    ),
+                                      ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'containerOnPageLoadAnimation3']!),
+                                  ),
+                                  Divider(
+                                    thickness: 2.0,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                  ),
+                                  if (responsiveVisibility(
+                                    context: context,
+                                    phone: false,
+                                  ))
                                     wrapWithModel(
                                       model: _model.navBarModel,
                                       updateCallback: () => setState(() {}),
                                       child: NavBarWidget(),
                                     ),
-                                  ],
-                                ),
+                                ],
                               ),
                             ),
                           ),
                         ),
+                      ),
                     ],
                   ),
                 ),

@@ -17,17 +17,17 @@ import 'package:provider/provider.dart';
 class AppBarModel extends FlutterFlowModel<AppBarWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Model for logo component.
-  late LogoModel logoModel;
+  // Model for logoW.
+  late LogoModel logoWModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    logoModel = createModel(context, () => LogoModel());
+    logoWModel = createModel(context, () => LogoModel());
   }
 
   void dispose() {
-    logoModel.dispose();
+    logoWModel.dispose();
   }
 
   /// Action blocks are added here.

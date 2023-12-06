@@ -391,14 +391,14 @@ class _DetalhesVendasWidgetState extends State<DetalhesVendasWidget> {
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         logFirebaseEvent(
-                                                            'DETALHES_VENDAS_ACESSAR_PROJETO_BTN_ON_T');
+                                                            'DETALHES_VENDAS_CLONAR_PROJETO_BTN_ON_TA');
                                                         logFirebaseEvent(
                                                             'Button_launch_u_r_l');
                                                         await launchURL(widget
                                                             .detalhesProjects!
                                                             .linkProjeto);
                                                       },
-                                                      text: 'Acessar Projeto',
+                                                      text: 'Clonar Projeto',
                                                       options: FFButtonOptions(
                                                         height: 40.0,
                                                         padding:

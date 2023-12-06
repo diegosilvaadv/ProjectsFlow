@@ -45,82 +45,76 @@ class _LogoWidgetState extends State<LogoWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Visibility(
-      visible: responsiveVisibility(
-        context: context,
-        phone: false,
-      ),
-      child: InkWell(
-        splashColor: Colors.transparent,
-        focusColor: Colors.transparent,
-        hoverColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onTap: () async {
-          logFirebaseEvent('LOGO_COMP_Row_yy3dzs1t_ON_TAP');
-          logFirebaseEvent('Row_update_app_state');
-          setState(() {
-            FFAppState().AppBar = 'home';
-          });
-          logFirebaseEvent('Row_navigate_to');
+    return InkWell(
+      splashColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: () async {
+        logFirebaseEvent('LOGO_COMP_Row_yy3dzs1t_ON_TAP');
+        logFirebaseEvent('Row_update_app_state');
+        setState(() {
+          FFAppState().AppBar = 'home';
+        });
+        logFirebaseEvent('Row_navigate_to');
 
-          context.goNamed(
-            'HomePage',
-            extra: <String, dynamic>{
-              kTransitionInfoKey: TransitionInfo(
-                hasTransition: true,
-                transitionType: PageTransitionType.fade,
-                duration: Duration(milliseconds: 0),
-              ),
-            },
-          );
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-              child: FaIcon(
-                FontAwesomeIcons.projectDiagram,
-                color: FlutterFlowTheme.of(context).primary,
-                size: 50.0,
-              ),
+        context.goNamed(
+          'HomePage',
+          extra: <String, dynamic>{
+            kTransitionInfoKey: TransitionInfo(
+              hasTransition: true,
+              transitionType: PageTransitionType.fade,
+              duration: Duration(milliseconds: 0),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GradientText(
-                    'Projects Flow',
-                    style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Rubik',
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                    colors: [
-                      FlutterFlowTheme.of(context).primary,
-                      FlutterFlowTheme.of(context).secondary
-                    ],
-                    gradientDirection: GradientDirection.ltr,
-                    gradientType: GradientType.linear,
-                  ),
-                  Text(
-                    'Venda seu Projeto Aqui!',
-                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                          fontFamily: 'Readex Pro',
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                ],
-              ),
+          },
+        );
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+            child: FaIcon(
+              FontAwesomeIcons.projectDiagram,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 50.0,
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GradientText(
+                  'Projects Flow',
+                  style: FlutterFlowTheme.of(context).titleLarge.override(
+                        fontFamily: 'Rubik',
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                  colors: [
+                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).secondary
+                  ],
+                  gradientDirection: GradientDirection.ltr,
+                  gradientType: GradientType.linear,
+                ),
+                Text(
+                  'Venda seu Projeto Aqui!',
+                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                        fontFamily: 'Readex Pro',
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

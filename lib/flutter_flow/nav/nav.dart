@@ -238,6 +238,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'detalhesVendas',
           path: '/detalhesVendas',
+          requireAuth: true,
           asyncParams: {
             'detalhesProjects':
                 getDoc(['Pagamentos'], PagamentosRecord.fromSnapshot),

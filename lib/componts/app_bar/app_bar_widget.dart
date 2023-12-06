@@ -160,93 +160,73 @@ class _AppBarWidgetState extends State<AppBarWidget>
         child: Align(
           alignment: AlignmentDirectional(0.00, 0.00),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(100.0, 20.0, 100.0, 20.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                wrapWithModel(
-                  model: _model.logoModel,
-                  updateCallback: () => setState(() {}),
-                  child: LogoWidget(),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                      child: Text(
-                        functions.saudacao(),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 21.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                      ),
-                    ),
-                    if (currentUserEmail != '')
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                        child: AuthUserStreamWidget(
-                          builder: (context) => Text(
-                            '${currentUserDisplayName}!'.maybeHandleOverflow(
-                              maxChars: 20,
-                              replacement: '…',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-                if (responsiveVisibility(
-                  context: context,
-                  tablet: false,
-                  tabletLandscape: false,
-                  desktop: false,
-                ))
-                  Expanded(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.asset(
-                            'assets/images/ff_logo_small_(1).png',
-                            width: 50.0,
-                            height: 50.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            'Copy Page',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Rubik',
-                                  fontSize: 30.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  wrapWithModel(
+                    model: _model.logoWModel,
+                    updateCallback: () => setState(() {}),
+                    child: LogoWidget(),
                   ),
-                if (responsiveVisibility(
-                  context: context,
-                  phone: false,
-                ))
-                  Flexible(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (responsiveVisibility(
+                        context: context,
+                        phone: false,
+                        tablet: false,
+                      ))
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                functions.saudacao(),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 21.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                            if (currentUserEmail != '')
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 10.0, 0.0),
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => Text(
+                                    '${currentUserDisplayName}!'
+                                        .maybeHandleOverflow(
+                                      maxChars: 20,
+                                      replacement: '…',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                    ],
+                  ),
+                  if (responsiveVisibility(
+                    context: context,
+                    phone: false,
+                  ))
+                    Flexible(
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -725,8 +705,11 @@ class _AppBarWidgetState extends State<AppBarWidget>
                         ],
                       ),
                     ),
-                  ),
-              ],
+                ]
+                    .divide(SizedBox(width: 10.0))
+                    .addToStart(SizedBox(width: 10.0))
+                    .addToEnd(SizedBox(width: 10.0)),
+              ),
             ),
           ),
         ),
