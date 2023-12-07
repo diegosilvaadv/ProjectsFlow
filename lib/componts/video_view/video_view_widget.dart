@@ -59,29 +59,32 @@ class _VideoViewWidgetState extends State<VideoViewWidget> {
           Align(
             alignment: AlignmentDirectional(0.00, 0.00),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FlutterFlowIconButton(
-                    borderColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: 20.0,
-                    borderWidth: 1.0,
-                    buttonSize: 50.0,
-                    fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                    icon: Icon(
-                      Icons.close,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 30.0,
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Color(0x0014181B),
+                      borderRadius: 20.0,
+                      borderWidth: 1.0,
+                      buttonSize: 50.0,
+                      fillColor: Color(0x001D2428),
+                      icon: Icon(
+                        Icons.close,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
+                      ),
+                      showLoadingIndicator: true,
+                      onPressed: () async {
+                        logFirebaseEvent('VIDEO_VIEW_COMP_close_ICN_ON_TAP');
+                        logFirebaseEvent('IconButton_bottom_sheet');
+                        Navigator.pop(context);
+                      },
                     ),
-                    showLoadingIndicator: true,
-                    onPressed: () async {
-                      logFirebaseEvent('VIDEO_VIEW_COMP_close_ICN_ON_TAP');
-                      logFirebaseEvent('IconButton_bottom_sheet');
-                      Navigator.pop(context);
-                    },
                   ),
                 ],
               ),
@@ -89,40 +92,23 @@ class _VideoViewWidgetState extends State<VideoViewWidget> {
           ),
           Align(
             alignment: AlignmentDirectional(0.00, 0.00),
-            child: Material(
-              color: Colors.transparent,
+            child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               elevation: 5.0,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
+                borderRadius: BorderRadius.circular(0.0),
               ),
-              child: Container(
+              child: FlutterFlowYoutubePlayer(
+                url: functions.videoYotube(widget.video!),
                 width: 1280.0,
                 height: 720.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 4.0,
-                      color: FlutterFlowTheme.of(context).accent1,
-                      offset: Offset(0.0, 2.0),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                alignment: AlignmentDirectional(0.00, 0.00),
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                  child: FlutterFlowYoutubePlayer(
-                    url: functions.videoYotube(widget.video!),
-                    autoPlay: false,
-                    looping: true,
-                    mute: false,
-                    showControls: true,
-                    showFullScreen: true,
-                    strictRelatedVideos: false,
-                  ),
-                ),
+                autoPlay: false,
+                looping: true,
+                mute: false,
+                showControls: true,
+                showFullScreen: true,
+                strictRelatedVideos: false,
               ),
             ),
           ),

@@ -83,6 +83,19 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Text(
+                        'Os campos abaixo não são todos obrigatórios.',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 20.0,
+                            ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                       Expanded(
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -282,78 +295,114 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () async {
-                          logFirebaseEvent(
-                              'ADCIONAR_CODE_COMP_ADCIONAR_BTN_ON_TAP');
-                          logFirebaseEvent('Button_update_app_state');
-                          setState(() {
-                            FFAppState().addToCodigosRef(CodigosStruct(
-                              textoCode: _model.codigoController.text,
-                              tituloCode: _model.tituloController.text,
-                              descricaoCode: _model.descricaoController.text,
-                              ordem: valueOrDefault<int>(
-                                valueOrDefault<int>(
-                                      FFAppState().CodigosRef.length,
-                                      0,
-                                    ) +
-                                    1,
-                                0,
+                  FFButtonWidget(
+                    onPressed: () async {
+                      logFirebaseEvent(
+                          'ADCIONAR_CODE_COMP_ADCIONAR_BTN_ON_TAP');
+                      logFirebaseEvent('Button_update_app_state');
+                      setState(() {
+                        FFAppState().addToCodigosRef(CodigosStruct(
+                          textoCode: _model.codigoController.text,
+                          tituloCode: _model.tituloController.text,
+                          descricaoCode: _model.descricaoController.text,
+                          ordem: valueOrDefault<int>(
+                            valueOrDefault<int>(
+                                  FFAppState().CodigosRef.length,
+                                  0,
+                                ) +
+                                1,
+                            0,
+                          ),
+                        ));
+                      });
+                      logFirebaseEvent('Button_clear_text_fields_pin_codes');
+                      setState(() {
+                        _model.codigoController?.clear();
+                        _model.descricaoController?.clear();
+                      });
+                    },
+                    text: 'Adcionar',
+                    icon: Icon(
+                      Icons.add,
+                      size: 15.0,
+                    ),
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Readex Pro',
+                                color: Colors.white,
                               ),
-                            ));
-                          });
-                          logFirebaseEvent(
-                              'Button_clear_text_fields_pin_codes');
-                          setState(() {
-                            _model.codigoController?.clear();
-                            _model.descricaoController?.clear();
-                            _model.tituloController?.clear();
-                          });
-                        },
-                        text: 'Adcionar',
-                        icon: Icon(
-                          Icons.add,
-                          size: 15.0,
+                      elevation: 3.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(1.00, 0.00),
+                    child: Stack(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Visualização Prévia:',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                          ],
                         ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
+                        Align(
+                          alignment: AlignmentDirectional(1.00, 0.00),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'ADCIONAR_CODE_LIMPAR_TUDO_BTN_ON_TAP');
+                              logFirebaseEvent('Button_update_app_state');
+                              setState(() {
+                                FFAppState().CodigosRef = [];
+                              });
+                            },
+                            text: 'Limpar Tudo',
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).error,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
                                     fontFamily: 'Readex Pro',
                                     color: Colors.white,
                                   ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Visualização Prévia:',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                      ),
-                    ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding:
@@ -586,11 +635,11 @@ class _AdcionarCodeWidgetState extends State<AdcionarCodeWidget> {
                       FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
-                              'ADCIONAR_CODE_SAIR_E_SAIR_BTN_ON_TAP');
+                              'ADCIONAR_CODE_COMP_SALVAR_BTN_ON_TAP');
                           logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
-                        text: 'Sair E Sair',
+                        text: 'Salvar',
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
