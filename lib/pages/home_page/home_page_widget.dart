@@ -433,7 +433,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       10.0, 0.0, 10.0, 0.0),
                                               child: Container(
                                                 constraints: BoxConstraints(
-                                                  maxWidth: 500.0,
+                                                  maxWidth: 700.0,
                                                 ),
                                                 decoration: BoxDecoration(),
                                                 child: Padding(

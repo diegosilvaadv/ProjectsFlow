@@ -215,7 +215,7 @@ class _AppBarWidgetState extends State<AppBarWidget>
                           if (currentUserEmail != '')
                             AuthUserStreamWidget(
                               builder: (context) => Text(
-                                '${currentUserDisplayName}!'
+                                ', ${currentUserDisplayName}!'
                                     .maybeHandleOverflow(
                                   maxChars: 15,
                                   replacement: '…',
