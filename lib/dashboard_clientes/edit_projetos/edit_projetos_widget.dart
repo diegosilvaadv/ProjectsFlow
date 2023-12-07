@@ -23,11 +23,9 @@ class EditProjetosWidget extends StatefulWidget {
   const EditProjetosWidget({
     Key? key,
     required this.detalhesEdit,
-    this.codigos,
   }) : super(key: key);
 
   final ProjetosRecord? detalhesEdit;
-  final DocumentReference? codigos;
 
   @override
   _EditProjetosWidgetState createState() => _EditProjetosWidgetState();
@@ -2372,9 +2370,9 @@ class _EditProjetosWidgetState extends State<EditProjetosWidget> {
                                                                           context),
                                                                   child:
                                                                       EditarProjetsCompWidget(
-                                                                    referencia: widget
+                                                                    linkProjeeto: widget
                                                                         .detalhesEdit
-                                                                        ?.reference,
+                                                                        ?.linkProjeto,
                                                                   ),
                                                                 ),
                                                               ));
